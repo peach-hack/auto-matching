@@ -1,0 +1,4 @@
+**/*.js
+**/*.vue
+!app/javascript/**/*.js
+!app/javascript/**/*.vue
