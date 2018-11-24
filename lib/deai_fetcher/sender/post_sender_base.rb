@@ -2,7 +2,7 @@ module DeaiFetcher
   module Sender
     class PostSenderBase < Base
       attr_reader :post, :post_history
-      
+
       def initialize(post: nil, post_history: nil)
         @post = post if post.present?
         @post_history = post_history if post_history.present?
@@ -20,22 +20,6 @@ module DeaiFetcher
       end
 
       private
-
-      def daily_pos_crawl
-        @daily_pos_crawl ||= DailyPosCrawl.create!(
-          book: book,
-          source_site: source_site,
-          crawl_history: crawl_history
-        )
-      end
-
-      def save_error_screenshot
-        tmp_filename = save_current_page_screenshot
-        daily_pos_file = DailyPosFile.new(daily_pos_crawl: daily_pos_crawl, file_type: "png")
-        daily_pos_file.file.attach(io: File.open(tmp_filename), filename: File.basename(tmp_filename))
-        daily_pos_file.save!
-        FileUtils.rm(tmp_filename) if File.exist?(tmp_filename)
-      end
 
       def source_site
         SourceSite.find_by(key: self.class.source_site_key)
