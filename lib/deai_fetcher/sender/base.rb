@@ -20,9 +20,9 @@ module DeaiFetcher
       def capybara_setting
         Capybara.register_driver :headless_chrome do |app|
           driver = Capybara::Selenium::Driver.new(
-              app,
-              browser: :chrome,
-              desired_capabilities: capabilities
+            app,
+            browser: :chrome,
+            desired_capabilities: capabilities
           )
           bridge_setting(driver)
         end
@@ -38,21 +38,21 @@ module DeaiFetcher
         bridge = driver.browser.send(:bridge)
         path = "session/#{bridge.session_id}/chromium/send_command"
         bridge.http.call(:post, path, cmd: "Page.setDownloadBehavior",
-                         params: {
-                             behavior: "allow",
-                             downloadPath: download_dir
-                         })
+                                      params: {
+                                        behavior: "allow",
+                                        downloadPath: download_dir
+                                      })
         driver
       end
 
       def chrome_options
         if ENV["DEBUG"]
           {
-              args: %w[disable-gpu window-size=1920,1200]
+            args: %w[disable-gpu window-size=1920,1200]
           }
         else
           {
-              args: %w[headless disable-gpu window-size=1920,1200]
+            args: %w[headless disable-gpu window-size=1920,1200]
           }
         end
       end
