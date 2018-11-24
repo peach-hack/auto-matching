@@ -85,6 +85,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'better_errors'
+  gem 'annotate'
+  gem 'spring-commands-rspec'
+  gem 'view_source_map'
 end
 
 
