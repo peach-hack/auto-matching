@@ -2,6 +2,7 @@ module DeaiFetcher
   module Sender
     class PostSenderBase < Base
       attr_reader :post, :post_history
+      
       def initialize(post: nil, post_history: nil)
         @post = post if post.present?
         @post_history = post_history if post_history.present?
