@@ -1,0 +1,28 @@
+PreCommit:
+  RuboCop:
+    description: "Rubocopの実行"
+    enabled: true
+    command: ['bundle', 'exec', 'rubocop', '-c', '.rubocop.yml']
+  AuthorName:
+    description: "gitのユーザ名チェック"
+    enabled: false
+  RailsSchemaUpToDate:
+    enabled: true
+  EsLint:
+    description: "eslintの実行"
+    enabled: true
+    required_executable: 'npm'
+    command: ['node_modules/.bin/eslint']
+    flags: ['--format=compact']
+    install_command: 'npm install -g eslint'
+    include:
+      - 'app/javascript/**/*.js'
+      - 'app/javascript/**/*.vue'
+      - '.eslintrc'
+PostCheckout:
+  BundleInstall:
+    description: "bundle installの実行"
+    enabled: true
+  YarnInstall:
+    description: "yarn installの実行"
+    enabled: true
