@@ -35,12 +35,45 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'baby_squeel', github: 'rzane/baby_squeel'
+gem 'simple_form'
+gem 'slim-rails'
+gem 'default_value_for'
+gem 'enumerize', github: 'brainspec/enumerize'
+gem 'meta-tags'
+
+# bulk insert
+gem 'activerecord-import'
+
+# whenever
+gem 'whenever', require: false
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'capybara'
+gem 'selenium-webdriver', '~> 3.4.1'
+gem 'chromedriver-helper'
+gem 'poltergeist'
+gem 'phantomjs', require: 'phantomjs/poltergeist'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'rspec_junit_formatter', '0.2.2' # for circleci
+  gem 'rubocop'
+  gem 'rails_best_practices'
+  gem 'reek'
+
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -50,6 +83,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'better_errors'
+  gem 'annotate'
+  gem 'spring-commands-rspec'
+  gem 'view_source_map'
 end
 
 
