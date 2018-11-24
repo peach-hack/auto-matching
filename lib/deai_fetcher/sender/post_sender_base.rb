@@ -1,0 +1,93 @@
+module DeaiFetcher
+  module Sender
+    class PostSenderBase < Base
+      attr_reader :post, :post_history
+      def initialize(post: nil, post_history: nil)
+        @post = post if post.present?
+        @post_history = post_history if post_history.present?
+        super
+      end
+
+      def run
+        run_process
+      rescue StandardError => e
+        raise e
+      end
+
+      def run_process
+        raise NotImprementedError, "継承先で定義すること"
+      end
+
+      private
+
+      def daily_pos_crawl
+        @daily_pos_crawl ||= DailyPosCrawl.create!(
+          book: book,
+          source_site: source_site,
+          crawl_history: crawl_history
+        )
+      end
+
+      def save_error_screenshot
+        tmp_filename = save_current_page_screenshot
+        daily_pos_file = DailyPosFile.new(daily_pos_crawl: daily_pos_crawl, file_type: "png")
+        daily_pos_file.file.attach(io: File.open(tmp_filename), filename: File.basename(tmp_filename))
+        daily_pos_file.save!
+        FileUtils.rm(tmp_filename) if File.exist?(tmp_filename)
+      end
+
+      def source_site
+        SourceSite.find_by(key: self.class.source_site_key)
+      end
+
+      def source_site_key
+        raise NotImprementedError, "継承先で定義すること"
+      end
+
+      def login_user
+        source_site.login_user
+      end
+
+      def login_password
+        source_site.login_password
+      end
+
+      def url
+        source_site.url
+      end
+
+      def host
+        url.split(URI.parse(url).path).first.to_s
+      end
+
+      def cookie_file_name
+        Rails.root.join("tmp", "#{self.class.source_site_key}_cookie.json")
+      end
+
+      def load_cookie
+        return unless File.exist?(cookie_file_name)
+
+        File.open(cookie_file_name) do |f|
+          return JSON.parse(f.read, symbolize_names: true)
+        end
+      end
+
+      def set_cookie
+        tmp_cookie = load_cookie
+        return if tmp_cookie.blank?
+
+        session.visit(host)
+        tmp_cookie.each do |cookie|
+          session.driver.browser.manage.add_cookie(name: cookie[:name], value: cookie[:value], path: cookie[:path])
+        end
+      end
+
+      def save_cookie
+        tmp_cookies = session.driver.browser.manage.all_cookies
+        File.open(cookie_file_name, "w") do |f|
+          JSON.dump(tmp_cookies, f)
+        end
+      end
+    end
+  end
+end
