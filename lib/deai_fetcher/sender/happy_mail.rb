@@ -6,7 +6,7 @@ module DeaiFetcher
         try_login
 
         # 掲示板過去の記事の削除
-        # delete_past_post
+        delete_past_post
 
         # 記事の投稿
         # send_new_post
@@ -29,13 +29,25 @@ module DeaiFetcher
         set_cookie
         session.visit(url)
 
-        login_mobile
+        login_pc
       end
 
+      def delete_past_post
+        session.visit("https://happymail.co.jp/sp/app/html/keijiban_write_log.php")
+        session.first(".ds_link_tab_text_bg_otherbbs").click
+        session.first(".icon-header_trush").click
+
+        session.find("billboard_id[]").each(&:click)
+
+        session.first(".ds_check_box_submit_delete").click
+        sleep 15
+      end
+
+      # モバイルだとログインできない。ガードされてる？
       def login_mobile
         session.fill_in "TelNo", with: login_user
         session.fill_in "Pass", with: login_password
-        session.first("#login_btn").click
+        session.find_link("login_btn").click
       end
 
       def login_pc
