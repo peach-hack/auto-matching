@@ -46,13 +46,16 @@ module DeaiFetcher
       end
 
       def chrome_options
+        mobile_emulation = { deviceName: "Apple iPhone 6" }
         if ENV["DEBUG"]
           {
-            args: %w[disable-gpu window-size=1920,1200]
+            args: %w[disable-gpu window-size=375,667],
+            mobileEmulation: mobile_emulation
           }
         else
           {
-            args: %w[headless disable-gpu window-size=1920,1200]
+            args: %w[headless disable-gpu window-size=375,667],
+            mobileEmulation: mobile_emulation
           }
         end
       end

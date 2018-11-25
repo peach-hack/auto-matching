@@ -26,11 +26,22 @@ module DeaiFetcher
       end
 
       def try_login
-        return if logged_in?
+        set_cookie
+        session.visit(url)
 
-        # session.fill_in "userid", with: login_user
-        # session.fill_in "password", with: login_password
-        # session.first(".funcBtn_login").click
+        login_mobile
+      end
+
+      def login_mobile
+        session.fill_in "TelNo", with: login_user
+        session.fill_in "Pass", with: login_password
+        session.first("#login_btn").click
+      end
+
+      def login_pc
+        session.fill_in "TelNo", with: login_user
+        session.fill_in "Pass_x", with: login_password
+        session.first("#telLoginLink").click
       end
     end
   end

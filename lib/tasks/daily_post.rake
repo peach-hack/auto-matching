@@ -25,7 +25,7 @@ module DailyPost
 
       # post = Post.sample.first
       post = {title: "test", body: "テストです。"}
-      source_site = SourceSite.find_by(key: sender_class.source_site_key)
+      # source_site = SourceSite.find_by(key: sender_class.source_site_key)
 
       # post_history = PostHistory::ForDailyPost.create(
       #     post: post,
