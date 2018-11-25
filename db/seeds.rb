@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+seed_files = []
+seed_files << 'reset.rb'
+seed_files << 'source_site.rb'
+
+# seedsフォルダを検索して実行するファイルを追加
+Dir.glob(File.join(Rails.root, "db", "seeds", "*.rb")) do |file|
+  basename = File.basename(file)
+  next if seed_files.include?(basename)
+  seed_files << basename
+end
+
+# SEEDを実行
+seed_files.each do |basename|
+  file = File.join(Rails.root, "db", "seeds", basename)
+  # puts "#{basename} seed creating ..."
+  print "."
+  begin
+    load(file)
+  rescue => e
+    puts ""
+    puts "#{basename} seed has error => #{e}"
+  end
+end
+
+puts ""

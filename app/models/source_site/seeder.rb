@@ -18,11 +18,27 @@
 #
 
 class SourceSite < ApplicationRecord
-  KEY_HAPPY_MAIL = "happy_mail".freeze
+  class Seeder < ActiveType::Record[SourceSite]
+    class << self
+      def seed!(key, params)
+        resource = SourceSite.find_or_initialize_by(key: key)
+        if resource.new_record?
+          resource.attributes = params
+        else
+          params = update_if_blank(resource, params, :name)
+          params = update_if_blank(resource, params, :url)
+          params = update_if_blank(resource, params, :login_user)
+          params = update_if_blank(resource, params, :login_password)
+          resource.attributes.merge(params)
+        end
+        resource.save!
+      end
 
-  validates :key, presence: true, uniqueness: true
-  validates :name, presence: true
-  validates :url, presence: true
-  validates :login_user, presence: true
-  validates :login_password, presence: true
+      def update_if_blank(resource, params, key)
+        resource.send("#{key}=", params[key]) if resource.send(key).blank?
+        params.delete(key)
+        params
+      end
+    end
+  end
 end
