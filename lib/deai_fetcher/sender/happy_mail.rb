@@ -29,21 +29,24 @@ module DeaiFetcher
         set_cookie
         session.visit(url)
 
-        login_pc
+        login_mobile
       end
 
       def delete_past_post
         session.visit("https://happymail.co.jp/sp/app/html/keijiban_write_log.php")
+
         session.first(".ds_link_tab_text_bg_otherbbs").click
         session.first(".icon-header_trush").click
 
-        session.find("billboard_id[]").each(&:click)
+        session.all(".ds_js_check_box_input", visible: false).each(&:click)
 
-        session.first(".ds_check_box_submit_delete").click
-        sleep 15
+        page.evaluate_script('$(".fade").removeClass("fade")')
+
+        session.within(".ds_js_check_box_submit_delete") do
+          find_button("delete-button").click
+        end
       end
 
-      # モバイルだとログインできない。ガードされてる？
       def login_mobile
         session.fill_in "TelNo", with: login_user
         session.fill_in "Pass", with: login_password

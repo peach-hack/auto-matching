@@ -50,12 +50,12 @@ module DeaiFetcher
         if ENV["DEBUG"]
           {
             args: %w[disable-gpu window-size=375,667],
-            # mobileEmulation: mobile_emulation
+            mobileEmulation: mobile_emulation
           }
         else
           {
             args: %w[headless disable-gpu window-size=375,667],
-            # mobileEmulation: mobile_emulation
+            mobileEmulation: mobile_emulation
           }
         end
       end
