@@ -69,8 +69,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-remote'
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
+  gem "rspec-rails"
   gem 'rspec_junit_formatter', '0.2.2' # for circleci
+  gem 'touch_action'
+
   gem 'rubocop'
   gem 'rails_best_practices'
   gem 'reek'

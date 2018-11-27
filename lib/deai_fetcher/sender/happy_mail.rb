@@ -34,13 +34,18 @@ module DeaiFetcher
 
       def delete_past_post
         session.visit("https://happymail.co.jp/sp/app/html/keijiban_write_log.php")
-
-        session.first(".ds_link_tab_text_bg_otherbbs").click
-        session.first(".icon-header_trush").click
-        session.all(".ds_js_check_box_input", visible: false).each(&:click)
-
-        session.first("#delete-button").click
-      end
+        sleep 0.5
+        session.execute_script "$('.ds_link_tab_item').not('ds_link_tab_item_is_active').trigger('click')"
+        sleep 0.5
+        session.execute_script "$('.icon-header_trush').trigger('click')"
+        sleep 0.5
+        session.execute_script "$('.ds_js_check_box_input').trigger('click')"
+        sleep 0.5
+        session.execute_script "$('#button-delete').trigger('click')"
+        sleep 0.5
+        session.execute_script "$('.modal-confirm').trigger('click', '[data-remodal-action=\"confirm\"]')"
+        sleep 3
+     end
 
       def login_mobile
         session.fill_in "TelNo", with: login_user

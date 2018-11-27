@@ -327,6 +327,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    touch_action (1.3.3)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -403,6 +404,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
+  touch_action
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
