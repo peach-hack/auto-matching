@@ -13,7 +13,7 @@ module DeaiFetcher
 
       private
 
-      def dirver_name
+      def driver_name
         :headless_chrome
       end
 
@@ -45,8 +45,12 @@ module DeaiFetcher
         driver
       end
 
+      def device_name
+        "iPhone 6/7/8".freeze
+      end
+
       def chrome_options
-        mobile_emulation = { deviceName: "iPhone 6/7/8" }
+        mobile_emulation = { deviceName: device_name }
         if ENV["DEBUG"]
           {
             args: %w[disable-gpu window-size=375,667],
@@ -65,7 +69,7 @@ module DeaiFetcher
       end
 
       def session
-        @session ||= Capybara::Session.new(dirver_name)
+        @session ||= Capybara::Session.new(driver_name)
       end
 
       def download_dir

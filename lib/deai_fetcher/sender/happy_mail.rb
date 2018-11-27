@@ -37,20 +37,16 @@ module DeaiFetcher
 
         session.first(".ds_link_tab_text_bg_otherbbs").click
         session.first(".icon-header_trush").click
-
         session.all(".ds_js_check_box_input", visible: false).each(&:click)
 
-        page.evaluate_script('$(".fade").removeClass("fade")')
-
-        session.within(".ds_js_check_box_submit_delete") do
-          find_button("delete-button").click
-        end
+        session.first("#delete-button").click
       end
 
       def login_mobile
         session.fill_in "TelNo", with: login_user
         session.fill_in "Pass", with: login_password
-        session.find_link("login_btn").click
+
+        session.first("#login_btn").native.send_keys(:return)
       end
 
       def login_pc
