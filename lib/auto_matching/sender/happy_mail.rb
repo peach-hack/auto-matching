@@ -8,7 +8,7 @@ module AutoMatching
         try_login
 
         # 掲示板過去の記事の削除
-        delete_past_post
+        # delete_past_post
 
         # 記事の投稿
         send_new_post
