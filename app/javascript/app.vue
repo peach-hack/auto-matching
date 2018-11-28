@@ -1,4 +1,4 @@
-<template>
+t<template>
   <div id="app">
     <p>{{ message }}</p>
   </div>
