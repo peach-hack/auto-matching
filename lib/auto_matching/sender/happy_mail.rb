@@ -13,7 +13,7 @@ module AutoMatching
         # 記事の投稿
         # send_new_post
       end
-n
+
       class << self
         def source_site_key
           SourceSite::KEY_HAPPY_MAIL
