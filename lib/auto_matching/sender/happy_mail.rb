@@ -8,7 +8,7 @@ module AutoMatching
         try_login
 
         # 掲示板過去の記事の削除
-        # delete_past_post
+        delete_past_post
 
         # 記事の投稿
         send_new_post
@@ -54,7 +54,7 @@ module AutoMatching
           session.fill_in "Body", with: post[:body]
 
           sleep 0.5
-          
+
           unless ENV["DEBUG"]
             session.execute_script "$('.input__form__action__button__send').trigger('click', '[data-remodal-target]')"
           end
