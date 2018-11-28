@@ -11,7 +11,7 @@ module AutoMatching
         delete_past_post
 
         # 記事の投稿
-        # send_new_post
+        send_new_post
       end
 
       class << self
@@ -42,7 +42,23 @@ module AutoMatching
           sleep 0.5
           session.execute_script "$('.modal-confirm').trigger('click', '[data-remodal-action=\"confirm\"]')"
           sleep 3
-       end
+        end
+
+        def send_new_post
+          session.visit("https://happymail.co.jp/app/html/keijiban_write.php")
+          sleep 0.5
+          session.execute_script "$('.ds_link_tab_item').not('ds_link_tab_item_is_active').trigger('click')"
+          sleep 0.5
+
+          session.fill_in "Subj", with: post[:title]
+          session.fill_in "Body", with: post[:body]
+
+          sleep 0.5
+
+          unless ENV["DEBUG"]
+            session.execute_script "$('.input__form__action__button__send').trigger('click', '[data-remodal-target]')"
+          end
+        end
 
         def login_mobile
           session.fill_in "TelNo", with: login_user
