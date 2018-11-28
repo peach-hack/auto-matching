@@ -15,10 +15,8 @@ ActiveRecord::Schema.define(version: 2018_11_25_134219) do
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "掲示板投稿データ", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
-    t.datetime "published_at", comment: "投稿日時"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["published_at"], name: "index_posts_on_published_at"
   end
 
   create_table "source_sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "出会い系サイトの情報", force: :cascade do |t|

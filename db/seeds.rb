@@ -1,6 +1,7 @@
 seed_files = []
 seed_files << 'reset.rb'
 seed_files << 'source_site.rb'
+seed_files << 'post.rb'
 
 Dir.glob(File.join(Rails.root, "db", "seeds", "*.rb")) do |file|
   basename = File.basename(file)

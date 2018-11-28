@@ -13,12 +13,17 @@ module DailyPost
     def send_post(sender_class)
       start_time = Time.now
 
-      # post = Post.sample.first
-      post = { title: "test", body: "テストです。" }
+      post = sample_first_post
       sender_class.new(post: post).run
       end_time = Time.now
 
       pp "end.(#{end_time - start_time}s)"
     end
+
+    private
+
+      def sample_first_post
+        Post.offset(rand(Post.count)).first
+      end
   end
 end
