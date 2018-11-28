@@ -1,5 +1,5 @@
 {
-  "name": "deai-fetcher",
+  "name": "auto-matching",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",

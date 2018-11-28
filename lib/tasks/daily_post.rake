@@ -7,7 +7,7 @@ module DailyPost
   namespace :daily_post do
     desc "個別投稿(ハッピーメール)"
     task happymail: :environment do
-      send_post(DeaiFetcher::Sender::HappyMail)
+      send_post(AutoMatching::Sender::HappyMail)
     end
 
     def send_post(sender_class)

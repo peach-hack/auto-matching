@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DeaiFetcher
+module AutoMatching
   module Sender
     class HappyMail < PostSenderBase
       def run_process

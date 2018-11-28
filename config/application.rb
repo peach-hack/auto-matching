@@ -19,7 +19,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module DeaiFetcher
+module AutoMatching
   class Application < Rails::Application
     config.active_record.default_timezone = :local
     config.time_zone = "Tokyo"
