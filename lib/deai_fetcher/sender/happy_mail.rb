@@ -13,7 +13,7 @@ module DeaiFetcher
         # 記事の投稿
         # send_new_post
       end
-
+n
       class << self
         def source_site_key
           SourceSite::KEY_HAPPY_MAIL
@@ -21,11 +21,6 @@ module DeaiFetcher
       end
 
       private
-
-        def logged_in?
-          # 謎
-          # session.first(".funcBtn_login").blank?
-        end
 
         def try_login
           set_cookie
