@@ -33,3 +33,4 @@ yarn-debug.log*
 .idea
 *~
 .env
+/db/templates
