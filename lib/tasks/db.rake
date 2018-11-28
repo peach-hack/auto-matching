@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Db
   extend Rake::DSL
   extend self

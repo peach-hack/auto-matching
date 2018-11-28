@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TestDatas
   extend Rake::DSL
   extend self

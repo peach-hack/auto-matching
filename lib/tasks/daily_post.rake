@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 module DailyPost
   extend Rake::DSL
   extend self
 
   namespace :daily_post do
-
     # desc "日次投稿"
     # task run: :environment do
     #   start_time = Time.now
@@ -24,7 +25,7 @@ module DailyPost
       start_time = Time.now
 
       # post = Post.sample.first
-      post = {title: "test", body: "テストです。"}
+      post = { title: "test", body: "テストです。" }
       # source_site = SourceSite.find_by(key: sender_class.source_site_key)
 
       # post_history = PostHistory::ForDailyPost.create(
@@ -35,8 +36,8 @@ module DailyPost
 
       begin
         sender_class.new(
-            post: post,
-            # post_history: post_history
+          post: post,
+          # post_history: post_history
         ).run
         # post_history.update_post_history_with_successful!
       rescue StandardError => e

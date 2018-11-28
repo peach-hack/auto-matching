@@ -1,4 +1,6 @@
-require_relative 'boot'
+# frozen_string_literal: true
+
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -20,9 +22,9 @@ Bundler.require(*Rails.groups)
 module DeaiFetcher
   class Application < Rails::Application
     config.active_record.default_timezone = :local
-    config.time_zone = 'Tokyo'
+    config.time_zone = "Tokyo"
     I18n.enforce_available_locales = true
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
     config.i18n.default_locale = :ja
     config.beginning_of_week = :sunday
 
@@ -37,7 +39,7 @@ module DeaiFetcher
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    config.paths.add 'lib', eager_load: true
-    config.eager_load_paths += Dir[Rails.root.join('app', 'decorators', 'concerns')]
+    config.paths.add "lib", eager_load: true
+    config.eager_load_paths += Dir[Rails.root.join("app", "decorators", "concerns")]
   end
 end
