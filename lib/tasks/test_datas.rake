@@ -5,7 +5,6 @@ module TestDatas
   extend self
 
   namespace :test_datas do
-    desc "テストデータ全てを作成"
     task all: :environment do |_task, _args|
       [
           "rails test_datas:reset_all",
@@ -15,13 +14,11 @@ module TestDatas
       end
     end
 
-    desc "テストデータをリセット"
     task reset_all: :environment do |_task, _args|
       return if disable_env?
       reset_all
     end
 
-    desc "ソースサイト"
     task create_source_sites: :environment do |_task, _args|
       return if disable_env?
       10.times do |t|

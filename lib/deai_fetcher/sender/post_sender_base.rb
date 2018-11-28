@@ -3,11 +3,10 @@
 module DeaiFetcher
   module Sender
     class PostSenderBase < Base
-      attr_reader :post, :post_history
+      attr_reader :post
 
-      def initialize(post: nil, post_history: nil)
+      def initialize(post: nil)
         @post = post if post.present?
-        @post_history = post_history if post_history.present?
         super
       end
 
@@ -18,7 +17,7 @@ module DeaiFetcher
       end
 
       def run_process
-        raise NotImprementedError, "継承先で定義すること"
+        raise NotImprementedError
       end
 
       private
@@ -28,7 +27,7 @@ module DeaiFetcher
         end
 
         def source_site_key
-          raise NotImprementedError, "継承先で定義すること"
+          raise NotImprementedError
         end
 
         def login_user

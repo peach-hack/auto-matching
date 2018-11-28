@@ -10,7 +10,7 @@ module DeaiFetcher
       end
 
       def run
-        raise NotImprementedError, "継承先で定義すること"
+        raise NotImprementedError
       end
 
       private
