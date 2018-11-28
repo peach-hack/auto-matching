@@ -81,6 +81,8 @@ group :development, :test do
   gem "factory_bot_rails"
 
   gem "rails-i18n"
+
+  gem "seed-fu"
 end
 
 group :development do
