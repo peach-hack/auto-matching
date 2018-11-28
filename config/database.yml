@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: deai-fetcher_development
+  database: auto-matching_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: deai-fetcher_test
+  database: auto-matching_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: deai-fetcher_production
-  username: deai-fetcher
-  password: <%= ENV['DEAI-FETCHER_DATABASE_PASSWORD'] %>
+  database: auto-matching_production
+  username: auto-matching
+  password: <%= ENV['AUTO-MATCHING_DATABASE_PASSWORD'] %>
