@@ -57,7 +57,9 @@ gem 'chromedriver-helper'
 gem 'poltergeist'
 gem 'phantomjs', require: 'phantomjs/poltergeist'
 
+gem 'active_type'
 
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,13 +69,17 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-remote'
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
+  gem "rspec-rails"
   gem 'rspec_junit_formatter', '0.2.2' # for circleci
+  gem 'touch_action'
+
   gem 'rubocop'
   gem 'rails_best_practices'
   gem 'reek'
 
   gem 'factory_bot_rails'
+
+  gem 'rails-i18n'
 end
 
 group :development do

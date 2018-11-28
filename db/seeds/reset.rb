@@ -1,0 +1,1 @@
+SourceSite.delete_all
