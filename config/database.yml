@@ -17,5 +17,3 @@ test:
 production:
   database: auto-matching_production
   adapter: postgresql
-  host: localhost
-  password:
