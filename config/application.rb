@@ -32,6 +32,7 @@ module AutoMatching
     config.load_defaults 5.2
 
     config.assets.precompile += %w( *.eot *.woff *.ttf *.svg *.otf *.png *.jpg *.jpeg *.gif pdf/pdf.css )
+    config.assets.initialize_on_precompile = false
 
     config.active_record.time_zone_aware_types = [:datetime, :time]
 
