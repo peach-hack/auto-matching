@@ -16,5 +16,9 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: auto-matching_production
   url: <%= ENV['DATABASE_URL'] %>
+  username: 
+  password:
