@@ -22,3 +22,5 @@ production:
   encoding: unicode
   database: auto-matching_production
   url: <%= ENV['DATABASE_URL'] %>
+  pool: 5
+
