@@ -3,16 +3,18 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: <%= ENV.fetch("DB_HOST", "localhost") %>
-  username: root
-  password:
 
 development:
   <<: *default
   database: auto-matching_development
+  username: root
+  password:
 
 test:
   <<: *default
   database: auto-matching_test
+  username: root
+  password:
 
 production:
   <<: *default
@@ -20,5 +22,3 @@ production:
   encoding: unicode
   database: auto-matching_production
   url: <%= ENV['DATABASE_URL'] %>
-  username: 
-  password:
