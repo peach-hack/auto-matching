@@ -49,6 +49,9 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: auto-matching_production
   username: auto-matching
   password: <%= ENV['AUTO-MATCHING_DATABASE_PASSWORD'] %>
