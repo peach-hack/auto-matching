@@ -13,7 +13,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV.fetch("DB_HOST", "localhost") %> # <- Modify here.
+  host: <%= ENV.fetch("DB_HOST", "localhost") %>
   username: root
   password:
 
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
+  host: <%= ENV.fetch("DB_HOST") %>
   adapter: postgresql
   encoding: unicode
-
