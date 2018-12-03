@@ -35,3 +35,4 @@ yarn-debug.log*
 .env
 /db/templates
 !/db/templates/.keep
+/db/templates/post.yml
