@@ -11,7 +11,7 @@ end
 
 seed_files.each do |basename|
   file = File.join(Rails.root, "db", "seeds", basename)
-  # puts "#{basename} seed creating ..."
+
   print "."
   begin
     load(file)
