@@ -50,6 +50,8 @@ gem "default_value_for"
 gem "enumerize", github: "brainspec/enumerize"
 gem "meta-tags"
 
+gem 'rollbar'
+
 # bulk insert
 gem "activerecord-import"
 
