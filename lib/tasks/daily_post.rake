@@ -14,7 +14,7 @@ module DailyPost
     end
 
     desc "個別投稿(ハッピーメール)"
-    task all: :environment do
+    task happymail: :environment do
       AutoMatching::Sender::Executor.new.run(AutoMatching::Sender::HappyMail)
     end
   end
