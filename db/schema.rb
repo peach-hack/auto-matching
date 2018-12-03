@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2018_11_25_134219) do
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "掲示板投稿データ", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "posts", comment: "掲示板投稿データ", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "source_sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "出会い系サイトの情報", force: :cascade do |t|
+  create_table "source_sites", comment: "出会い系サイトの情報", force: :cascade do |t|
     t.string "key", null: false, comment: "ユニークキー"
     t.string "name", null: false, comment: "サイト名"
     t.string "url", null: false, comment: "サイトURL"
