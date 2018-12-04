@@ -19,3 +19,13 @@ SourceSite.seed do |p|
   p.login_user = ENV["WAKUWAKU_LOGIN_USER"]
   p.login_password = ENV["WAKUWAKU_LOGIN_PASSWORD"]
 end
+
+# PCMAX
+SourceSite.seed do |p|
+  p.id = 3
+  p.key = SourceSite::KEY_PCMAX
+  p.name = "PCMAX"
+  p.url = "https://pcmax.jp/pcm/index.php"
+  p.login_user = ENV["PCMAX_LOGIN_USER"]
+  p.login_password = ENV["PCMAX_LOGIN_PASSWORD"]
+end

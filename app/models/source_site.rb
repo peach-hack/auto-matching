@@ -22,6 +22,7 @@
 class SourceSite < ApplicationRecord
   KEY_HAPPY_MAIL = "happy_mail".freeze
   KEY_WAKUWAKU = "wakuwaku".freeze
+  KEY_PCMAX = "pcmax".freeze
 
   validates :key, presence: true, uniqueness: true
   validates :name, presence: true
