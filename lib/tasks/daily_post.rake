@@ -5,25 +5,23 @@ module DailyPost
   extend self
 
   namespace :daily_post do
+    desc "一括投稿(All)"
+    task all: :environment do
+      sender_classes = [
+          AutoMatching::Sender::HappyMail,
+          AutoMatching::Sender::Wakuwaku
+      ]
+      sender_classes.each { | sender_class| AutoMatching::Sender::Executor.new.run(sender_class) }
+    end
+
     desc "個別投稿(ハッピーメール)"
     task happymail: :environment do
-      send_post(AutoMatching::Sender::HappyMail)
+      AutoMatching::Sender::Executor.new.run(AutoMatching::Sender::HappyMail)
     end
 
-    def send_post(sender_class)
-      start_time = Time.now
-
-      post = sample_first_post
-      sender_class.new(post: post).run
-      end_time = Time.now
-
-      pp "end.(#{end_time - start_time}s)"
+    desc "個別投稿(枠悪メール)"
+    task wakuwaku: :environment do
+      AutoMatching::Sender::Executor.new.run(AutoMatching::Sender::Wakuwaku)
     end
-
-    private
-
-      def sample_first_post
-        Post.offset(rand(Post.count)).first
-      end
   end
 end

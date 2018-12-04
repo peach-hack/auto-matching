@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 
 
@@ -13,7 +14,7 @@ ruby "2.5.1"
 gem "rails", "~> 5.2.1"
 
 # User PostgreSQL
-gem 'pg'
+gem "pg"
 
 # Use Puma as the app server
 gem "puma", "~> 3.11"
@@ -50,7 +51,7 @@ gem "default_value_for"
 gem "enumerize", github: "brainspec/enumerize"
 gem "meta-tags"
 
-gem 'rollbar'
+gem "rollbar"
 
 # bulk insert
 gem "activerecord-import"

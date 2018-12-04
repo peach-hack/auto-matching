@@ -3,17 +3,6 @@
 module AutoMatching
   module Sender
     class HappyMail < PostSenderBase
-      def run_process
-        # ログイン
-        try_login
-
-        # 掲示板過去の記事の削除
-        # delete_past_post
-
-        # 記事の投稿
-        send_new_post
-      end
-
       class << self
         def source_site_key
           SourceSite::KEY_HAPPY_MAIL
@@ -23,9 +12,6 @@ module AutoMatching
       private
 
         def try_login
-          set_cookie
-          session.visit(url)
-
           login_mobile
         end
 
