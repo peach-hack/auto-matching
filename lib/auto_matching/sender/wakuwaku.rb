@@ -19,6 +19,9 @@ module AutoMatching
         end
 
         def delete_past_post
+          session.visit("http://550909.com/m/bbs/history")
+          session.execute_script "document.post.all.value=1;document.post.submit();return false;"
+          session.execute_script "document.post.submit();return false;"
         end
 
         def send_new_post
