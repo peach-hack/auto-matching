@@ -3,7 +3,6 @@
 module AutoMatching
   module Sender
     class Pcmax < PostSenderBase
-
       class << self
         def source_site_key
           SourceSite::KEY_PCMAX
