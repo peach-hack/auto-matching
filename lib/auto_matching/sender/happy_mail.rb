@@ -12,9 +12,6 @@ module AutoMatching
       private
 
         def try_login
-          set_cookie
-          session.visit(url)
-
           login_mobile
         end
 

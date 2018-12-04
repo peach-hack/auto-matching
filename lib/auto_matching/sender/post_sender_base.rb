@@ -33,7 +33,7 @@ module AutoMatching
         end
 
         def source_site
-          SourceSite.find_by(key: self.class.source_site_key)
+          @source_site ||= SourceSite.find_by(key: self.class.source_site_key)
         end
 
         def source_site_key
