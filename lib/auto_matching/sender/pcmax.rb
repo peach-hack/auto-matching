@@ -20,6 +20,21 @@ module AutoMatching
         end
 
         def delete_past_post
+          session.visit("https://pcmax.jp/mobile/bbs_write.php")
+          session.click_link "過去の投稿を確認"
+
+          select_latest_post
+
+          session.click_link "削除する"
+        end
+
+        def select_latest_post
+          session.evaluate_script("
+          document.getElementByXPath = function(sValue) {
+             var a = this.evaluate(sValue, this, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+          if (a.snapshotLength > 0) { return a.snapshotItem(0); } }")
+          target_script = session.evaluate_script("document.getElementByXPath('/html/body/table/tbody/tr[2]/td[3]/a').href")
+          session.evaluate_script(target_script.split(":")[1])
         end
 
         def send_new_post
