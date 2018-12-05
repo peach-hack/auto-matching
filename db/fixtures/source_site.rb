@@ -29,3 +29,13 @@ SourceSite.seed do |p|
   p.login_user = ENV["PCMAX_LOGIN_USER"]
   p.login_password = ENV["PCMAX_LOGIN_PASSWORD"]
 end
+
+# イクヨクルヨ
+SourceSite.seed do |p|
+  p.id = 4
+  p.key = SourceSite::KEY_IKUKURU
+  p.name = "イクヨクルヨ"
+  p.url = "https://www.194964.com/registration/login/show_login_tel.html"
+  p.login_user = ENV["IKUKURU_LOGIN_USER"]
+  p.login_password = ENV["IKUKURU_LOGIN_PASSWORD"]
+end
