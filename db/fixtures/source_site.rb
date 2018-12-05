@@ -39,3 +39,13 @@ SourceSite.seed do |p|
   p.login_user = ENV["IKUKURU_LOGIN_USER"]
   p.login_password = ENV["IKUKURU_LOGIN_PASSWORD"]
 end
+
+# イクヨクルヨ
+SourceSite.seed do |p|
+  p.id = 5
+  p.key = SourceSite::KEY_MINT
+  p.name = "ミントC!Jメール"
+  p.url = "https://mintj.com/msm/login"
+  p.login_user = ENV["MINT_LOGIN_USER"]
+  p.login_password = ENV["MINT_LOGIN_PASSWORD"]
+end
