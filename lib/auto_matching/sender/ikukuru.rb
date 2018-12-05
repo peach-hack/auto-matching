@@ -12,9 +12,13 @@ module AutoMatching
       private
 
         def try_login
+          login
+        end
+
+        def login
           session.fill_in "tel", with: login_user
           session.fill_in "password", with: login_password
-          session.click_button "ログイン"
+          session.execute_script("$('form#form1').submit()")
         end
 
         def delete_past_post
@@ -27,14 +31,15 @@ module AutoMatching
         end
 
         def send_new_post
-          # session.visit("http://550909.com/m/bbs/post/?menu=adult&genre=3")
-          #
-          # session.fill_in "title", with: post[:title]
-          # session.fill_in "body", with: post[:body]
-          #
-          # unless ENV["DEBUG"]
-          #   session.execute_script "$('.js-btn--post').trigger('click')"
-          # end
+          # session.visit("https://sp.194964.com/menu.html")
+          session.visit("https://sp.194964.com/bbs/show_write.html?q=RFIvRUgrRFVpSmV6N2NPSitVSWM5MVlhZ1FqT1JtNDBFQ2ZCTGx5VUpSZjNKTWNoUm5Tdk4ydlJ1ekhidnVGRQ%3D%3D")
+
+          session.fill_in "title", with: post[:title]
+          session.fill_in "body", with: post[:body]
+
+          unless ENV["DEBUG"]
+            session.find(".greenButton.width60").native.send_keys :enter
+          end
         end
     end
   end
