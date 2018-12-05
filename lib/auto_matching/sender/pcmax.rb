@@ -12,11 +12,11 @@ module AutoMatching
       private
 
         def try_login
-          # session.first(".register-header > .register-h2#login-tab").click
-          #
-          # session.fill_in "login_id", with: login_user
-          # session.fill_in "login_pw", with: login_password
-          # session.click_on "会員ログイン"
+          session.first(".register-header > .register-h2#login-tab").click
+
+          session.fill_in "login_id", with: login_user
+          session.fill_in "login_pw", with: login_password
+          session.click_button "会員ログイン"
         end
 
         def delete_past_post
