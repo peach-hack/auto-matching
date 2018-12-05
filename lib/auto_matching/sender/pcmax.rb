@@ -23,9 +23,10 @@ module AutoMatching
           session.visit("https://pcmax.jp/mobile/bbs_write.php")
           session.click_link "過去の投稿を確認"
 
-          select_latest_post
-
-          session.click_link "削除する"
+          unless session.find(".write_text").text == "まだ掲示板への投稿はありません。"
+            select_latest_post
+            session.click_link "削除する"
+          end
         end
 
         def select_latest_post
@@ -38,6 +39,16 @@ module AutoMatching
         end
 
         def send_new_post
+          session.visit("https://pcmax.jp/mobile/bbs_write.php")
+
+          session.click_link "スグ会いたい"
+
+          session.fill_in "bbs_title", with: post[:title]
+          session.fill_in "bbs_comment", with: post[:body]
+
+          unless ENV["DEBUG"]
+            session.find("#wri").native.send_keys :enter
+          end
         end
     end
   end
