@@ -18,13 +18,12 @@ module AutoMatching
         end
 
         def delete_past_post
-          # session.visit("http://550909.com/m/bbs/history")
-          #
-          # # すでに投稿がある場合は投稿を削除
-          # unless session.has_css?(".BtnToPureBBS")
-          #   session.execute_script "document.post.all.value=1;document.post.submit();return false;"
-          #   session.execute_script "document.post.submit();return false;"
-          # end
+          session.visit("https://sp.194964.com/bbs/show_bbs_write_list.html")
+
+          unless session.find(".mb10").text == " 書込みをしてアピールしよ"
+            session.click_button "すべて削除する"
+            session.click_button "削除する"
+          end
         end
 
         def send_new_post
