@@ -12,6 +12,7 @@ module DailyPost
           AutoMatching::Sender::Wakuwaku,
           AutoMatching::Sender::Pcmax,
           AutoMatching::Sender::Ikukuru,
+          AutoMatching::Sender::Mint,
       ]
       sender_classes.each { | sender_class| AutoMatching::Sender::Executor.new.run(sender_class) }
     end
@@ -34,6 +35,11 @@ module DailyPost
     desc "個別投稿(イクヨクルヨ)"
     task ikukuru: :environment do
       AutoMatching::Sender::Executor.new.run(AutoMatching::Sender::Ikukuru)
+    end
+
+    desc "個別投稿(ミントC!Jメール)"
+    task mint: :environment do
+      AutoMatching::Sender::Executor.new.run(AutoMatching::Sender::Mint)
     end
   end
 end
