@@ -2,7 +2,7 @@
 
 module AutoMatching
   module Sender
-    class Mint < PostSenderBase
+    class Merupara < PostSenderBase
       class << self
         def source_site_key
           SourceSite::KEY_MERUPARA
@@ -25,7 +25,7 @@ module AutoMatching
         end
 
         def send_new_post
-          # session.visit("https://mintj.com/ms/mb/Wr.aspx?sid=&cgid=1&m=ad1")
+          session.visit("https://meru-para.com/ms/mb/Wr.aspx?sid=&cgid=1&m=ad1")
 
           session.fill_in "TBt", with: post[:title]
           session.fill_in "TBm", with: post[:body]
