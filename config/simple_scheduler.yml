@@ -3,14 +3,7 @@ queue_name: "default"
 tz: "Asia/Tokyo"
 
 simple_task:
-  class: "ActiveJob"
+  class: "AutoPostingJob"
   every: "1.day"
   at: "11:00"
   expires_after: "23.hours"
-  : "2.minutes"
-
-overnight_task:
-  class: "SomeSidekiqWorker"
-  every: "1.day"
-  at: "4:00"
-  expires_after: "1.hours"
