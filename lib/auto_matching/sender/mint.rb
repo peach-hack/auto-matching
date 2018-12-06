@@ -12,6 +12,11 @@ module AutoMatching
       private
 
         def try_login
+          session.fill_in "loginid", with: login_user
+          session.fill_in "pwd", with: login_password
+          session.find("#B1login").click
+
+          sleep 3
         end
 
         def delete_past_post
