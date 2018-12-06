@@ -1,24 +1,32 @@
-# README
+Auto Matching
+===
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Ruby version 2.5.1
+- Rails 5.2.1
+- PostgresSQL  10.6
 
-Things you may want to cover:
+## 初期設定
 
-* Ruby version
+### .env作成
 
-* System dependencies
+.env.sample をコピーして、.envを作成する
 
-* Configuration
+### データベース作成
 
-* Database creation
+このコマンドで、 db:drop, db:create, db:migrate, db:seed を順番に実行する。
 
-* Database initialization
+```
+rails db:recovery
+```
 
-* How to run the test suite
+## サービス
 
-* Services (job queues, cache servers, search engines, etc.)
+T.B.D.
 
-* Deployment instructions
+docker-composeか k8sでまるっとまとめる予定。
 
-* ...
+## デプロイ手順
+
+T.B.D. 
+
+全部自動化したい。
