@@ -102,6 +102,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.3)
+    connection_pool (2.2.2)
     crass (1.0.4)
     default_value_for (3.1.0)
       activerecord (>= 3.2.0, < 6.0)
@@ -177,6 +178,8 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
+    rack-protection (2.0.4)
+      rack
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -217,6 +220,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redis (4.0.3)
     regexp_parser (1.3.0)
     rollbar (2.18.0)
       multi_json
@@ -271,9 +275,16 @@ GEM
     selenium-webdriver (3.4.4)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    sidekiq (5.2.3)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    simple_scheduler (1.0.0)
+      rails (>= 4.2)
+      sidekiq (>= 4.2)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -368,6 +379,7 @@ DEPENDENCIES
   seed-fu
   selenium-webdriver (~> 3.4.1)
   simple_form
+  simple_scheduler
   slim-rails
   spring
   spring-commands-rspec
