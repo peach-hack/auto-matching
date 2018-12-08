@@ -30,6 +30,6 @@ class SourceSite < ApplicationRecord
   validates :key, presence: true, uniqueness: true
   validates :name, presence: true
   validates :url, presence: true
-  validates :login_user, presence: true
-  validates :login_password, presence: true
+  validates :login_user, presense: false
+  validates :login_password, presense: false
 end

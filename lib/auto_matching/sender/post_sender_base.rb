@@ -19,6 +19,9 @@ module AutoMatching
       private
 
         def run_process
+          # 実行条件のチェック
+          return if !login_user.present? || !login_password.present?
+
           # サイトオープン
           session.visit(url)
 

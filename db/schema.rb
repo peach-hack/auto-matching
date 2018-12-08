@@ -26,9 +26,8 @@ ActiveRecord::Schema.define(version: 2018_11_25_134219) do
     t.string "key", null: false, comment: "ユニークキー"
     t.string "name", null: false, comment: "サイト名"
     t.string "url", null: false, comment: "サイトURL"
-    t.string "login_user", null: false, comment: "ログインユーザー情報"
-    t.string "login_password", null: false, comment: "ログインパスワード情報"
-    t.boolean "is_crawl", default: true, null: false, comment: "クロール対象かどうか"
+    t.string "login_user", comment: "ログインユーザー情報"
+    t.string "login_password", comment: "ログインパスワード情報"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["key"], name: "index_source_sites_on_key", unique: true
