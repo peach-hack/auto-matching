@@ -272,9 +272,9 @@ GEM
     seed-fu (2.3.9)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
-    selenium-webdriver (3.4.4)
+    selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
-      rubyzip (~> 1.0)
+      rubyzip (~> 1.2, >= 1.2.2)
     sidekiq (5.2.3)
       connection_pool (~> 2.2, >= 2.2.2)
       rack-protection (>= 1.5.0)
@@ -377,7 +377,7 @@ DEPENDENCIES
   rubocop-rails_config
   sass-rails (~> 5.0)
   seed-fu
-  selenium-webdriver (~> 3.4.1)
+  selenium-webdriver
   simple_form
   simple_scheduler
   slim-rails

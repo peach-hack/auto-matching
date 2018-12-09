@@ -63,7 +63,7 @@ gem "whenever", require: false
 # gem 'bootsnap', require: false
 
 gem "capybara"
-gem "selenium-webdriver", "~> 3.4.1"
+gem "selenium-webdriver"
 gem "chromedriver-helper"
 gem "poltergeist"
 gem "phantomjs", require: "phantomjs/poltergeist"
