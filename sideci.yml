@@ -1,0 +1,10 @@
+rubocop:
+  options:
+    config: '.rubocop.yml'
+
+linter:
+  eslint:
+    npm_install: true
+    options:
+      config: '.eslintrc.js'
+      ext: 'js, vue'
