@@ -1,10 +1,10 @@
 rubocop:
   options:
-    config: '.rubocop.yml'
+    config: 'auto-matching-api-rails/.rubocop.yml'
 
 linter:
   eslint:
     npm_install: true
     options:
-      config: '.eslintrc.js'
+      config: 'auto-matching-nuxt/.eslintrc.js'
       ext: 'js, vue'
