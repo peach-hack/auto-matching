@@ -4,11 +4,11 @@ services:
   postgres:
     image: postgres:10.6-alpine
     volumes:
-      - postgres-store:/var/lib/postgresql/data
+    - postgres-store:/var/lib/postgresql/data
   redis:
     image: redis
     volumes:
-      - redis-store:/data
+    - redis-store:/data
   rails:
     build: ./auto-matching-api-rails/
     command: /bin/sh -c "rm -rf /app/tmp/pids/server.pid && bin/rails server -b 0.0.0.0 -p 3000"
@@ -23,8 +23,8 @@ services:
       - '5000:3000'
     tty: true
     volumes:
-      - ./auto-matching-api-rails:/app
-      - bundler-store:/usr/local/bundle
+    - ./auto-matching-api-rails:/app
+    - bundler-store:/usr/local/bundle
   nuxt:
     command: /bin/sh -c 'API_URL=http://rails:3000 yarn nuxt'
     environment:
@@ -34,8 +34,8 @@ services:
       - '3000:3000'
     tty: true
     volumes:
-      - "./auto-matching-nuxt:/app"
-      - node-modules-store:/app/node_modules
+    - "./auto-matching-nuxt:/app"
+    - node-modules-store:/app/node_modules
     working_dir: /app
   nuxt-test:
     command: /bin/sh -c 'API_URL=http://rails:5001 yarn nuxt'
@@ -46,8 +46,8 @@ services:
       - '3001:3000'
     tty: true
     volumes:
-      - "./auto-matching-nuxt:/app"
-      - node-modules-store:/app/node_modules
+    - "./auto-matching-nuxt:/app"
+    - node-modules-store:/app/node_modules
     working_dir: /app
   selenium-server:
     image: selenium/standalone-chrome-debug:3.11.0-bismuth
@@ -55,10 +55,10 @@ services:
       - 4444:4444
       - 5900:5900
     volumes:
-      - /dev/shm:/dev/shm
+    - /dev/shm:/dev/shm
 
 volumes:
-  posrgres-store:
+  postgres-store:
   redis-store:
   bundler-store:
   node-modules-store:
