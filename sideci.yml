@@ -1,4 +1,5 @@
-rubocop:
-  root_dir: 'auto-matching-api-rails'
-  options:
-    config: 'auto-matching-api-rails/.rubocop.yml'
+linter:
+  rubocop:
+    root_dir: 'auto-matching-api-rails'
+    options:
+      config: 'auto-matching-api-rails/.rubocop.yml'
