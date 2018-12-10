@@ -34,7 +34,7 @@ services:
       - '3000:3000'
     tty: true
     volumes:
-    - "./auto-matching-nuxt:/app"
+    - ./auto-matching-nuxt:/app
     - node-modules-store:/app/node_modules
     working_dir: /app
   nuxt-test:
@@ -46,7 +46,7 @@ services:
       - '3001:3000'
     tty: true
     volumes:
-    - "./auto-matching-nuxt:/app"
+    - ./auto-matching-nuxt:/app
     - node-modules-store:/app/node_modules
     working_dir: /app
   selenium-server:
