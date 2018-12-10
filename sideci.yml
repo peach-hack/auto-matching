@@ -2,4 +2,4 @@ linter:
   rubocop:
     root_dir: 'auto-matching-api-rails'
     options:
-      config: 'auto-matching-api-rails/.rubocop.yml'
+      config: '.rubocop.yml'
