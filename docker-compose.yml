@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:10.6-alpine
+    volumes:
+      - postgres-store:/var/lib/postgresql/data
+  redis:
+    image: redis
+    volumes:
+      - redis-store:/data
+  rails:
+    build: ./auto-matching-api-rails/
+    command: /bin/sh -c "rm -rf /app/tmp/pids/server.pid && bin/rails server -b 0.0.0.0 -p 3000"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      CC_TEST_REPORTER_ID:
+      DATABASE_HOST: postgres
+      SELENIUM_URL: http://selenium-server:4444/wd/hub
+    ports:
+      - '5000:3000'
+    tty: true
+    volumes:
+      - ./auto-matching-api-rails:/app
+      - bundler-store:/usr/local/bundle
+  nuxt:
+    command: /bin/sh -c 'API_URL=http://rails:3000 yarn nuxt'
+    environment:
+      HOST: 0.0.0.0
+    image: node:11.3-alpine
+    ports:
+      - '3000:3000'
+    tty: true
+    volumes:
+      - "./auto-matching-nuxt:/app"
+      - node-modules-store:/app/node_modules
+    working_dir: /app
+  nuxt-test:
+    command: /bin/sh -c 'API_URL=http://rails:5001 yarn nuxt'
+    environment:
+      HOST: 0.0.0.0
+    image: node:11.3-alpine
+    ports:
+      - '3001:3000'
+    tty: true
+    volumes:
+      - "./auto-matching-nuxt:/app"
+      - node-modules-store:/app/node_modules
+    working_dir: /app
+  selenium-server:
+    image: selenium/standalone-chrome-debug:3.11.0-bismuth
+    ports:
+      - 4444:4444
+      - 5900:5900
+    volumes:
+      - /dev/shm:/dev/shm
+
+volumes:
+  posrgres-store:
+  redis-store:
+  bundler-store:
+  node-modules-store:
