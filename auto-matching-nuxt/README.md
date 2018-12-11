@@ -1,4 +1,4 @@
-# auto-matching-nuxt
+# Nuxt.js Server for Auto Matching
 
 > Nuxt.js TypeScript project
 
