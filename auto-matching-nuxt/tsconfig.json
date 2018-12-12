@@ -13,8 +13,10 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["~/auto-matching-nuxt/*"],
-      "@/*": ["~/auto-matching-nuxt/*"]
+      "~/*": ["./*"],
+      "@/*": ["./*"]
     }
-  }
+  },
+  "include": ["**/*"],
+  "exclude": ["node_modules"]
 }

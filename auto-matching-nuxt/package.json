@@ -36,10 +36,14 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js"
+      "js",
+      "jsx",
+      "vue"
     ],
     "transform": {
-      "\\.(ts|tsx)$": "ts-jest"
+      "^.+\\.vue$": "vue-jest",
+      "^.+\\.(ts|tsx)$": "ts-jest",
+      "^.+\\.(js|jsx)$": "babel-jest"
     },
     "testMatch": [
       "**/spec/**/*.ts?(x)"

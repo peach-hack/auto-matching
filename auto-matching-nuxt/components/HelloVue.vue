@@ -20,7 +20,6 @@ import { Component, Prop, Emit, Watch, Vue } from "nuxt-property-decorator";
     }
   }
 })
-
 export default class HelloVue extends Vue {
   /** props */
   @Prop()
@@ -43,10 +42,6 @@ export default class HelloVue extends Vue {
   /** computed */
   get isDisabled(): boolean {
     return this.inputValue === "";
-  }
-  /** lifecycle hook */
-  mounted(): void {
-    console.log("mounted");
   }
   /** methods */
   handleInput($event: Event): void {

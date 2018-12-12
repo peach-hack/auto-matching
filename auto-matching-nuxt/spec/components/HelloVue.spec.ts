@@ -1,5 +1,5 @@
 import { Wrapper, shallowMount } from "@vue/test-utils";
-import Hello from "@/components/HelloVue.vue"
+import Hello from "../../components/HelloVue.vue"
 
 describe("HelloVue.vue", () => {
   /** ラッパー変数の宣言 */
@@ -95,21 +95,6 @@ describe("HelloVue.vue", () => {
       // 検証
       expect(wrapper.vm.value).toBe("BBB");
       expect(spy).toHaveBeenCalledWith("watch: BBB, AAA");
-
-      spy.mockClear();
-    });
-  });
-
-  describe("Lifecycle Hookのテスト", () => {
-    it("マウント時に mountedが機能するかテスト", () => {
-      // 準備
-      const spy = jest.spyOn(console, "log");
-
-      // 実行
-      shallowMount(Hello);
-
-      // 検証
-      expect(spy).toHaveBeenCalled();
 
       spy.mockClear();
     });
