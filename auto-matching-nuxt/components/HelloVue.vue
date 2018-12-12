@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>Hello {{ value | convertUpperCase }}</h1>
-    <input type="text" v-bind:value="inputValue" v-on:input="handleInput($event)">
-    <button v-on:click="handleClick()" v-bind:disabled="isDisabled">button</button>
+    <input type="text" :value="inputValue" @input="handleInput($event)">
+    <button @click="handleClick()" :disabled="isDisabled">button</button>
   </div>
 </template>
 
