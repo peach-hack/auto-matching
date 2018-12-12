@@ -3,7 +3,7 @@ module.exports = function () {
   this.nuxt.options.extensions.push('ts', 'tsx')
 
   // Extend webpack build
-  this.extendBuild(config => {
+  this.extendBuild((config) => {
     // Add TypeScript
     config.module.rules.push({
       test: /\.tsx?$/,
@@ -12,12 +12,12 @@ module.exports = function () {
     })
 
     // Add .ts extension in webpack resolve
-    if (! config.resolve.extensions.includes('.ts')) {
+    if (!config.resolve.extensions.includes('.ts')) {
       config.resolve.extensions.push('.ts')
     }
 
     // Add .tsx extension in webpack resolve
-    if (! config.resolve.extensions.includes('.tsx')) {
+    if (!config.resolve.extensions.includes('.tsx')) {
       config.resolve.extensions.push('.tsx')
     }
   })

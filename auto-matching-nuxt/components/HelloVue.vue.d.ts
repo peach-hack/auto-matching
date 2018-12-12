@@ -1,4 +1,4 @@
-import { Vue } from "nuxt-property-decorator";
+import { Vue } from 'nuxt-property-decorator';
 export default class HelloVue extends Vue {
     val: string;
     value: string;

@@ -1,185 +1,185 @@
-import { Wrapper, shallowMount } from "@vue/test-utils";
-import Hello from "../../components/HelloVue.vue"
+import { shallowMount, Wrapper } from '@vue/test-utils';
+import Hello from '../../components/HelloVue.vue';
 
-describe("HelloVue.vue", () => {
+describe('HelloVue.vue', () => {
   /** ラッパー変数の宣言 */
-  let wrapper: Wrapper<Hello>;
+  let wrapper: Wrapper<Hello>
 
-  it("propsで受け取る値のテスト", () => {
+  it('propsで受け取る値のテスト', () => {
     // 準備
-    const val = "Vue";
+    const val = 'Vue'
     wrapper = shallowMount(Hello, {
       propsData: { val }
-    });
+    })
 
     // 検証
-    expect(wrapper.props().val).toBe(val);
-    expect(wrapper.text()).toMatch(`Hello VUE`);
-  });
+    wrapper.props().val.toBe(val)
+    expect(wrapper.text()).toMatch('Hello VUE')
+  })
 
-  it("描画されるDOMのテスト", () => {
+  it('描画されるDOMのテスト', () => {
     // 準備
-    wrapper = shallowMount(Hello);
+    wrapper = shallowMount(Hello)
 
     // 検証
-    expect(wrapper.contains("h1")).toBeTruthy();
-    expect(wrapper.contains("input")).toBeTruthy();
-    expect(wrapper.contains("button")).toBeTruthy();
-  });
+    expect(wrapper.contains('h1')).toBeTruthy()
+    expect(wrapper.contains('input')).toBeTruthy()
+    expect(wrapper.contains('button')).toBeTruthy()
+  })
 
-  it("ボタンの非活性のテスト", () => {
+  it('ボタンの非活性のテスト', () => {
     // 準備
-    wrapper = shallowMount(Hello);
-    const button = wrapper.find("button");
+    wrapper = shallowMount(Hello)
+    const button = wrapper.find('button')
 
     // 実行
-    wrapper.setData({ inputValue: "" });
+    wrapper.setData({ inputValue: '' })
 
     // 検証
-    expect(button.element.getAttribute("disabled")).toBeTruthy();
-  });
+    expect(button.element.getAttribute('disabled')).toBeTruthy()
+  })
 
-  describe("イベントのテスト", () => {
+  describe('イベントのテスト', () => {
     beforeEach(() => {
-      wrapper = shallowMount(Hello);
-    });
+      wrapper = shallowMount(Hello)
+    })
 
-    it("テキスト入力時にhandleInputが呼ばれるかテスト", () => {
+    it('テキスト入力時にhandleInputが呼ばれるかテスト', () => {
       // 準備
-      const spy = jest.spyOn(wrapper.vm, "handleInput");
+      const spy = jest.spyOn(wrapper.vm, 'handleInput')
 
       // 実行
-      wrapper.find("input").trigger("input");
+      wrapper.find('input').trigger('input')
 
       // 検証
-      expect(spy).toHaveBeenCalled();
-    });
+      expect(spy).toHaveBeenCalled()
+    })
 
-    it("ボタン押下時にhandleClickが呼ばれるかテスト", () => {
+    it('ボタン押下時にhandleClickが呼ばれるかテスト', () => {
       // 準備
-      const spy = jest.spyOn(wrapper.vm, "handleClick");
-      wrapper.setData({ inputValue: "AAA" });
+      const spy = jest.spyOn(wrapper.vm, 'handleClick')
+      wrapper.setData({ inputValue: 'AAA' })
 
       // 実行
-      wrapper.find("button").trigger("click");
+      wrapper.find('button').trigger('click')
 
       // 検証
-      expect(spy).toHaveBeenCalled();
-    });
+      expect(spy).toHaveBeenCalled()
+    })
 
-    it("入力なしの状態でhandleClickが呼ばれないかテスト", () => {
+    it('入力なしの状態でhandleClickが呼ばれないかテスト', () => {
       // 準備
-      wrapper = shallowMount(Hello);
-      const spy = jest.spyOn(wrapper.vm, "handleClick");
-      wrapper.setData({ inputValue: "" });
+      wrapper = shallowMount(Hello)
+      const spy = jest.spyOn(wrapper.vm, 'handleClick')
+      wrapper.setData({ inputValue: '' })
 
       // 実行
-      wrapper.find("button").trigger("click");
+      wrapper.find('button').trigger('click')
 
       // 検証
-      expect(spy).not.toHaveBeenCalled();
-    });
-  });
+      expect(spy).not.toHaveBeenCalled()
+    })
+  })
 
-  describe("watcherのテスト", () => {
-    it("valueの値が変更された時にwatchが機能するかテスト", () => {
+  describe('watcherのテスト', () => {
+    it('valueの値が変更された時にwatchが機能するかテスト', () => {
       // 準備
       wrapper = shallowMount(Hello, {
-        propsData: { val: "AAA" }
-      });
-      const spy = jest.spyOn(console, "log");
+        propsData: { val: 'AAA' }
+      })
+      const spy = jest.spyOn(console, 'log')
 
       // 実行
-      wrapper.setData({ value: "BBB" });
+      wrapper.setData({ value: 'BBB' })
 
       // 検証
-      expect(wrapper.vm.value).toBe("BBB");
-      expect(spy).toHaveBeenCalledWith("watch: BBB, AAA");
+      expect(wrapper.vm.value).toBe('BBB')
+      expect(spy).toHaveBeenCalledWith('watch: BBB, AAA')
 
-      spy.mockClear();
-    });
-  });
+      spy.mockClear()
+    })
+  })
 
-  describe("computedのテスト", () => {
+  describe('computedのテスト', () => {
     beforeEach(() => {
-      wrapper = shallowMount(Hello);
-    });
+      wrapper = shallowMount(Hello)
+    })
 
-    it("isDisabledがtrueを返すかテスト", () => {
+    it('isDisabledがtrueを返すかテスト', () => {
       // 実行
-      wrapper.setData({ inputValue: "" });
-      const disabled = wrapper.vm.isDisabled;
+      wrapper.setData({ inputValue: '' })
+      const disabled = wrapper.vm.isDisabled
 
       // 検証
-      expect(disabled).toBeTruthy();
-    });
+      expect(disabled).toBeTruthy()
+    })
 
-    it("isDisabledがfalseを返すかテスト", () => {
+    it('isDisabledがfalseを返すかテスト', () => {
       // 実行
-      wrapper.setData({ inputValue: "AAA" });
-      const disabled = wrapper.vm.isDisabled;
+      wrapper.setData({ inputValue: 'AAA' })
+      const disabled = wrapper.vm.isDisabled
 
       // 検証
-      expect(disabled).toBeFalsy();
-    });
-  });
+      expect(disabled).toBeFalsy()
+    })
+  })
 
-  describe("methodのテスト", () => {
+  describe('methodのテスト', () => {
     beforeEach(() => {
-      wrapper = shallowMount(Hello);
-    });
+      wrapper = shallowMount(Hello)
+    })
 
-    it("handleInputメソッドのテスト", () => {
+    it('handleInputメソッドのテスト', () => {
       // 準備
       const event = {
-        target: { value: "AAA" }
-      } as any;
+        target: { value: 'AAA' }
+      } as any
 
       // 実行
-      wrapper.vm.handleInput(event);
+      wrapper.vm.handleInput(event)
 
       // 検証
-      expect(wrapper.vm.inputValue).toBe("AAA");
-    });
+      expect(wrapper.vm.inputValue).toBe('AAA')
+    })
 
-    it("handleClickメソッドのテスト", () => {
+    it('handleClickメソッドのテスト', () => {
       // 準備
-      wrapper.setData({ inputValue: "AAA" });
-      const spy = jest.spyOn(wrapper.vm, "$emit");
+      wrapper.setData({ inputValue: 'AAA' })
+      const spy = jest.spyOn(wrapper.vm, '$emit')
 
       // 実行
-      wrapper.vm.handleClick();
+      wrapper.vm.handleClick()
 
       // 検証
-      expect(wrapper.vm.value).toBe("AAA");
-      expect(wrapper.vm.inputValue).toBe("");
-      expect(spy).toHaveBeenCalledWith("handle-click", "AAA");
-    });
-  });
+      expect(wrapper.vm.value).toBe('AAA')
+      expect(wrapper.vm.inputValue).toBe('')
+      expect(spy).toHaveBeenCalledWith('handle-click', 'AAA')
+    })
+  })
 
-  describe("filtersのテスト", () => {
-    it("アッパーケースに変換されるかテスト", () => {
+  describe('filtersのテスト', () => {
+    it('アッパーケースに変換されるかテスト', () => {
       // 準備
       wrapper = shallowMount(Hello, {
-        propsData: { val: "" }
-      });
-      wrapper.setData({ value: "Bbb" });
+        propsData: { val: '' }
+      })
+      wrapper.setData({ value: 'Bbb' })
 
       // 実行
-      const received = wrapper.find("h1").text();
+      const received = wrapper.find('h1').text()
 
       // 検証
-      expect(received).toBe("Hello BBB");
-    });
-  });
+      expect(received).toBe('Hello BBB')
+    })
+  })
 
-  describe("スナップショットテスト", () => {
-    it("HelloVueテンプレートのスナップショット", () => {
+  describe('スナップショットテスト', () => {
+    it('HelloVueテンプレートのスナップショット', () => {
       // 準備
-      wrapper = shallowMount(Hello);
+      wrapper = shallowMount(Hello)
 
       // 検証
-      expect(wrapper.html()).toMatchSnapshot();
-    });
-  });
-});
+      expect(wrapper.html()).toMatchSnapshot()
+    })
+  })
+})
