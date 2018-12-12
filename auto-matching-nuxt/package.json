@@ -4,20 +4,50 @@
   "private": true,
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
+    "@types/jest": "^23.3.10",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0",
     "nuxt": "^2.3.4",
     "nuxt-property-decorator": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.16",
+    "ts-jest": "^23.10.5",
+    "vue-class-component": "^6.3.2",
+    "vue-jest": "^3.0.1",
+    "vue-property-decorator": "^7.2.0",
+    "vuetype": "^0.3.2",
     "vuex-class": "^0.3.0"
   },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "vuetype": "vuetype components",
+    "vuetype:w": "vuetype -w components",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
     "@types/node": "^10.12.10",
-    "ts-loader": "^5.3.0",
-    "typescript": "^3.1.6"
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.2.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      "^.+\\.(ts|tsx)$": "ts-jest",
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "testMatch": [
+      "**/spec/**/*.ts?(x)"
+    ]
   }
 }
