@@ -1,14 +1,8 @@
 <template>
   <div>
     <h1>Hello {{ value | convertUpperCase }}</h1>
-    <input type="text"
-:value="inputValue" @input="handleInput($event)"
-/>
-    <button :disabled="isDisabled"
-@click="handleClick()"
->
-button
-</button>
+    <input type="text" :value="inputValue" @input="handleInput($event)" />
+    <button :disabled="isDisabled" @click="handleClick()">button</button>
   </div>
 </template>
 
