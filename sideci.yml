@@ -3,3 +3,9 @@ linter:
     root_dir: 'auto-matching-api-rails'
     options:
       config: '.rubocop.yml'
+  eslint:
+    root_dir: 'auto-matching-nuxt'
+    npm_install: true
+    options:
+      config: '.eslintrc.js'
+      ext: 'js, vue, ts'
