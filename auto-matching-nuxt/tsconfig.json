@@ -16,7 +16,7 @@
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"]
-    },
+    }
   },
   "include": ["**/*"],
   "exclude": ["node_modules", "spec"]
