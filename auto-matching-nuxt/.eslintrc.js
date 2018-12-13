@@ -2,8 +2,8 @@ module.exports = {
   env: {
     "jest/globals": true
   },
-  plugins: ["jest", "vue", "import"],
-  extends: ["airbnb-base", "plugin:vue/recommended"],
+  plugins: ["jest", "vue", "import", "prettier"],
+  extends: ["airbnb-base", "plugin:vue/recommended", "plugin:prettier/recommended"],
   settings: {
     "import/resolver": {
       node: {
