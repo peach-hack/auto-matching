@@ -1,0 +1,84 @@
+version: 2
+jobs:
+  build:
+    machine:
+      image: circleci/classic:edge
+    environment:
+      RAILS_ENV: test
+      NODE_ENV: test
+    steps:
+      - checkout
+      - restore_cache:
+          key: docker-{{ .Branch }}-{{ checksum "auto-matching-api-rails/Gemfile.lock" }}-{{ checksum "auto-matching-nuxt/yarn.lock" }}
+          paths: ~/caches/images.tar
+      - run:
+          command: |
+            set +o pipefail
+            docker load -i ~/caches/images.tar | true
+      - run:
+          name: update docker-compose
+          command: pip install docker-compose==1.22.0
+      - run:
+          name: check docker-compose version
+          command: docker-compose --version
+      - run:
+          name: docker-compose build
+          command: docker-compose -p nuxt_on_rails_on_docker build
+      - run:
+          name: docker-compose -p nuxt_on_rails_on_docker run --rm rails bundle install --jobs=4
+          command: docker-compose -p nuxt_on_rails_on_docker run --rm rails bundle install --jobs=4
+      - run:
+          name: docker-compose -p nuxt_on_rails_on_docker run --rm nuxt yarn install
+          command: docker-compose -p nuxt_on_rails_on_docker run --rm nuxt yarn install
+      - run:
+          name: docker-compose up
+          command: docker-compose -p nuxt_on_rails_on_docker up -d
+      - run:
+          name: docker exec nuxt_on_rails_on_docker_rails_1 bin/setup
+          command: docker exec nuxt_on_rails_on_docker_rails_1 bin/setup
+      # - run:
+      #     name: Setup Code Climate test-reporter
+      #     command: |
+      #       curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./rails/cc-test-reporter
+      #       chmod +x ./rails/cc-test-reporter
+      #       ./rails/cc-test-reporter before-build
+      - run:
+          name: bundle exec rspec spec
+          command: docker exec nuxt_on_rails_on_docker_rails_1 bash -c 'bundle exec rspec spec && mkdir -p /app/tmp/capybara && mkdir -p /app/coverage'
+      - run:
+          name: yarn test
+          command: docker-compose -p nuxt_on_rails_on_docker run --rm nuxt yarn test
+      # - run:
+      #     name: Send results to Code Climate
+      #     command: |
+      #       cp -r ./rails/coverage .
+      #       mv ./rails/cc-test-reporter .
+      #       mkdir -p /app/spec/
+      #       cp ./rails/spec/rails_helper.rb /app/spec/
+      #       ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $?
+      - run:
+          name: Copy artifacts
+          command: |
+            mkdir -p /tmp/artifacts/capybara
+            docker cp nuxt_on_rails_on_docker_rails_1:/app/tmp/capybara "/tmp/artifacts/"
+            mkdir -p /tmp/artifacts/coverage
+            docker cp nuxt_on_rails_on_docker_rails_1:/app/coverage "/tmp/artifacts/"
+          when: always
+      - store_artifacts:
+          path: /tmp/artifacts
+          when: always
+      - run:
+          name: docker-compose down
+          command: docker-compose down
+      - run:
+          command: |
+            mkdir -p ~/caches
+            docker save $(docker images -q) -o ~/caches/images.tar
+      - save_cache:
+          key: docker-{{ .Branch }}-{{ checksum "auto-matching-api-rails/Gemfile.lock" }}-{{ checksum "auto-matching-nuxt/yarn.lock" }}
+          paths: ~/caches/images.tar
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
