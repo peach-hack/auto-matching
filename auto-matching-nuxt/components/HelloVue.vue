@@ -15,59 +15,43 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Emit, Watch, Vue } from "nuxt-property-decorator";
-
-@Component({
-  /** filters */
+<script lang="js">
+module.exports = {
+  name: "HelloApp",
+  props: {
+    val: String
+  },
+  data() {
+    return {
+      value: this.val,
+      inputValue: ''
+    }
+  },
   filters: {
-    convertUpperCase(value: string): string | null {
+    convertUpperCase(value) {
       if (!value) {
-        return null;
+        return null
       }
-      return value.toUpperCase();
+      return value.toUpperCase()
     }
-  }
-})
-export default class HelloVue extends Vue {
-  /** props */
-  @Prop()
-  val!: string;
-
-  /** data */
-  value: string = this.val;
-
-  inputValue: string = "";
-
-  /** emit */
-  @Emit("handle-click")
-  clickButton(val: string): void {
-    //
-  }
-
-  /** watch */
-  @Watch("value")
-  onValueChange(newValue: string, oldValue: string): void {
-    console.log(`watch: ${newValue}, ${oldValue}`);
-  }
-
-  /** computed */
-  get isDisabled(): boolean {
-    return this.inputValue === "";
-  }
-
-  /** methods */
-  handleInput($event: Event): void {
-    this.inputValue = (($event.target as any) as HTMLInputElement).value;
-  }
-
-  handleClick(): void {
-    if (this.inputValue === "") {
-      return;
+  },
+  computed: {
+    isDisabled() {
+      return this.inputValue === ''
     }
-    this.value = this.inputValue;
-    this.inputValue = "";
-    this.clickButton(this.value);
+  },
+  methods: {
+    handleInput($event) {
+      this.inputValue = ($event.target).value
+    },
+    handleClick() {
+      if (this.inputValue === '') {
+        return
+      }
+      this.value = this.inputValue
+      this.inputValue = ''
+      this.$emit('handle-click', this.value)
+    }
   }
 }
 </script>

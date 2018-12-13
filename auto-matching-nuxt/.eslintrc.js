@@ -7,18 +7,27 @@ module.exports = {
   },
   root: true,
   parserOptions: {
-    parser: ['typescript-eslint-parser', 'babel-eslint', 'jest', 'es6', 'nuxt'],
-    sourceType: 'module'
+    parser: ["typescript-eslint-parser", "babel-eslint", "jest", "es6", "nuxt"],
+    sourceType: "module"
   },
-  plugins: ['vue', 'import', 'typescript', 'jest', 'nuxt'],
+  plugins: ["vue", "import", "typescript", "jest", "nuxt"],
   settings: {
-    'import/resolver': {
+    "import/resolver": {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue']
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".vue"]
       },
-      alias: [['~', __dirname], ['@', __dirname]]
+      alias: [["~", __dirname], ["@", __dirname]]
     },
-    'import/core-modules': ['vue']
+    "import/core-modules": ["vue"]
   },
-  extends: ['eslint:recommended', 'typescript', 'airbnb-base', 'plugin:vue/recommended', '@nuxtjs']
-}
+  extends: [
+    "eslint:recommended",
+    "typescript",
+    "airbnb-base",
+    "plugin:vue/recommended",
+    "@nuxtjs"
+  ],
+  rules: {
+    "no-console": 0
+  }
+};

@@ -1,23 +1,24 @@
 <template>
   <div id="app">
-    <HelloVue
+    <hello-vue
       val="Vue"
       @handle-click="handleClickButton($event)"
     />
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloVue from '../components/HelloVue.vue';
-@Component({
+<script lang="js">
+import HelloVue from '../components/HelloVue.vue'
+
+export default {
+  name: "app",
   components: {
-    HelloVue,
+    HelloVue
   },
-})
-export default class App extends Vue {
-  handleClickButton($event: string) {
-    console.log($event);
+  methods: {
+    handleClickButton($event) {
+      console.log($event)
+    }
   }
 }
 </script>
