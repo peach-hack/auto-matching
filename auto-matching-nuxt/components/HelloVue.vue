@@ -18,7 +18,7 @@
 <script lang="js">
 import Vue from 'vue'
 
-export default Vue.extend({
+module.export = {
   name: 'HelloVue',
   filters: {
     convertUpperCase(value) {
@@ -55,5 +55,5 @@ export default Vue.extend({
       this.$emit('handle-click', this.value)
     }
   }
-})
+}
 </script>
