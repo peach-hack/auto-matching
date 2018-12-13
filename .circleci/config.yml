@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
+          key: docker-{{ .Branch }}-{{ checksum "auto-matching-api-rails/Gemfile.lock" }}-{{ checksum "auto-matching-nuxt/yarn.lock" }}
           paths: ~/caches/images.tar
       - run:
           command: |
@@ -75,7 +75,7 @@ jobs:
             mkdir -p ~/caches
             docker save $(docker images -q) -o ~/caches/images.tar
       - save_cache:
-          key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
+          key: docker-{{ .Branch }}-{{ checksum "auto-matching-api-rails/Gemfile.lock" }}-{{ checksum "auto-matching-nuxt/yarn.lock" }}
           paths: ~/caches/images.tar
 workflows:
   version: 2
