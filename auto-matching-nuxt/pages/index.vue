@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <hello-vue
+    <HelloVue
       val="Vue"
       @handle-click="handleClickButton($event)"
     />
@@ -11,7 +11,7 @@
 import HelloVue from '../components/HelloVue.vue'
 
 export default {
-  name: "app",
+  name: 'App',
   components: {
     HelloVue
   },

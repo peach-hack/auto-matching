@@ -16,8 +16,18 @@
 </template>
 
 <script lang="js">
-module.exports = {
-  name: "HelloApp",
+import Vue from 'vue'
+
+export default Vue.extend({
+  name: 'HelloVue',
+  filters: {
+    convertUpperCase(value) {
+      if (!value) {
+        return null
+      }
+      return value.toUpperCase()
+    }
+  },
   props: {
     val: String
   },
@@ -27,14 +37,6 @@ module.exports = {
       inputValue: ''
     }
   },
-  filters: {
-    convertUpperCase(value) {
-      if (!value) {
-        return null
-      }
-      return value.toUpperCase()
-    }
-  },
   computed: {
     isDisabled() {
       return this.inputValue === ''
@@ -42,7 +44,7 @@ module.exports = {
   },
   methods: {
     handleInput($event) {
-      this.inputValue = ($event.target).value
+      this.inputValue = $event.target.value
     },
     handleClick() {
       if (this.inputValue === '') {
@@ -53,5 +55,5 @@ module.exports = {
       this.$emit('handle-click', this.value)
     }
   }
-}
+})
 </script>

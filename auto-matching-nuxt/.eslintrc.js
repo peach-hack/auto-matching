@@ -28,6 +28,8 @@ module.exports = {
     "@nuxtjs"
   ],
   rules: {
-    "no-console": 0
+    "no-console": 0,
+    "func-names": 0,
+    "vue/require-default-prop": 0
   }
 };

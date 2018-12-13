@@ -1,5 +1,6 @@
-import { shallowMount, Wrapper } from '@vue/test-utils';
-import Hello from '../../components/HelloVue.vue';
+import 'jest'
+import { shallowMount, Wrapper } from '@vue/test-utils'
+import Hello from '../HelloVue.vue'
 
 describe('HelloVue.vue', () => {
   /** ラッパー変数の宣言 */
