@@ -8,6 +8,17 @@ jobs:
       NODE_ENV: test
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/caches/images.tar
+      - run:
+          command: |
+            if [[ -e ~/caches/images.tar ]]; then
+              docker load -i ~/caches/images.tar
+            fi
+          name: docker load
       - run:
           name: update docker-compose
           command: pip install docker-compose==1.22.0
@@ -40,7 +51,7 @@ jobs:
           command: docker exec nuxt_on_rails_on_docker_rails_1 bash -c 'bundle exec rspec spec && mkdir -p /app/tmp/capybara && mkdir -p /app/coverage'
       - run:
           name: yarn test
-          command: docker exec nuxt_on_rails_on_docker_nuxt_1 bash -c 'yarn test'
+          command: docker-compose -p nuxt_on_rails_on_docker run --rm nuxt yarn test
       # - run:
       #     name: Send results to Code Climate
       #     command: |
@@ -63,6 +74,19 @@ jobs:
       - run:
           name: docker-compose down
           command: docker-compose down
+      - run:
+          command: mkdir -p ~/caches
+          name: mkdir -p ~/caches
+      - run:
+          command: |
+            if [[ ! -e ~/caches/images.tar ]]; then
+              docker save -o ~/caches/images.tar $(docker images --filter "dangling=false" --format "{{.Repository}}:{{.Tag}}")
+            fi
+          name: docker save
+      - save_cache:
+          key: v1-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/caches/images.tar
 workflows:
   version: 2
   build:
