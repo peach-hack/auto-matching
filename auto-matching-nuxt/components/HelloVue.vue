@@ -16,7 +16,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "nuxt-property-decorator";
+import {
+  Component, Prop, Watch, Vue,
+} from 'nuxt-property-decorator';
 
 @Component({
   /** filters */
@@ -26,28 +28,28 @@ import { Component, Prop, Watch, Vue } from "nuxt-property-decorator";
         return null;
       }
       return value.toUpperCase();
-    }
-  }
+    },
+  },
 })
 export default class HelloVue extends Vue {
   /** props */
   @Prop()
-  val: string = "";
+  val: string = '';
 
   /** data */
   value: string = this.val;
 
-  inputValue: string = "";
+  inputValue: string = '';
 
   /** watch */
-  @Watch("value")
+  @Watch('value')
   onValueChange(newValue: string, oldValue: string): void {
     console.log(`watch: ${newValue}, ${oldValue}`);
   }
 
   /** computed */
   get isDisabled(): boolean {
-    return this.inputValue === "";
+    return this.inputValue === '';
   }
 
   /** methods */
@@ -56,12 +58,12 @@ export default class HelloVue extends Vue {
   }
 
   handleClick(): void {
-    if (this.inputValue === "") {
+    if (this.inputValue === '') {
       return;
     }
     this.value = this.inputValue;
-    this.inputValue = "";
-    this.$emit("handle-click", this.value);
+    this.inputValue = '';
+    this.$emit('handle-click', this.value);
   }
 }
 </script>
