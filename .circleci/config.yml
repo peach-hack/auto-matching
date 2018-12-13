@@ -9,16 +9,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - v1-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/caches/images.tar
+          key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
+          paths: ~/caches/images.tar
       - run:
           command: |
-            if [[ -e ~/caches/images.tar ]]; then
-              docker load -i ~/caches/images.tar
-            fi
-          name: docker load
+            set +o pipefail
+            docker load -i ~/caches/images.tar | true
       - run:
           name: update docker-compose
           command: pip install docker-compose==1.22.0
@@ -75,18 +71,12 @@ jobs:
           name: docker-compose down
           command: docker-compose down
       - run:
-          command: mkdir -p ~/caches
-          name: mkdir -p ~/caches
-      - run:
           command: |
-            if [[ ! -e ~/caches/images.tar ]]; then
-              docker save -o ~/caches/images.tar $(docker images --filter "dangling=false" --format "{{.Repository}}:{{.Tag}}")
-            fi
-          name: docker save
+            mkdir -p ~/caches
+            docker save $(docker images -q) -o ~/caches/images.tar
       - save_cache:
-          key: v1-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/caches/images.tar
+          key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
+          paths: ~/caches/images.tar
 workflows:
   version: 2
   build:
