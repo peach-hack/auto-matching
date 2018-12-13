@@ -5,15 +5,22 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
     "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.14",
     "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "eslint-plugin-jest": "^22.1.2",
+    "eslint-plugin-vue": "^5.0.0",
     "jest": "^23.6.0",
+    "minimist": "^1.2.0",
     "nuxt": "^2.3.4",
     "nuxt-property-decorator": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.16",
     "ts-jest": "^23.10.5",
+    "typescript-eslint-parser": "^21.0.2",
     "vue-class-component": "^6.3.2",
-    "vue-jest": "^3.0.1",
+    "vue-eslint-parser": "^4.0.3",
+    "vue-jest": "^3.0.2",
     "vue-property-decorator": "^7.2.0",
     "vuetype": "^0.3.2",
     "vuex-class": "^0.3.0"
@@ -26,12 +33,16 @@
     "vuetype": "vuetype components",
     "vuetype:w": "vuetype -w components",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "eslint": "node_modules/.bin/eslint . --ext .vue,.js,.ts",
+    "eslint:fix": "node_modules/.bin/eslint . --fix --ext .vue,.js,.ts"
   },
   "devDependencies": {
-    "@types/node": "^10.12.10",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "ts-loader": "^5.3.1",
-    "typescript": "^3.2.2"
+    "typescript": "3.1.1"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -43,11 +54,9 @@
     ],
     "transform": {
       "^.+\\.vue$": "vue-jest",
-      "^.+\\.(ts|tsx)$": "ts-jest",
+      "^.+\\.tsx?$": "ts-jest",
       "^.+\\.(js|jsx)$": "babel-jest"
     },
-    "testMatch": [
-      "**/spec/**/*.ts?(x)"
-    ]
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$"
   }
 }
