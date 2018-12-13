@@ -38,6 +38,9 @@ jobs:
       - run:
           name: bundle exec rspec spec
           command: docker exec nuxt_on_rails_on_docker_rails_1 bash -c 'bundle exec rspec spec && mkdir -p /app/tmp/capybara && mkdir -p /app/coverage'
+      - run:
+          name: yarn test
+          command: docker exec nuxt_on_rails_on_docker_nuxt_1 bash -c 'yarn test'
       # - run:
       #     name: Send results to Code Climate
       #     command: |
