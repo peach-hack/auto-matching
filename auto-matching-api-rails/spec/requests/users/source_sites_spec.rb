@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Users::SourceSitesController, type: :request do
   let!(:source_sites) { 6.times { create(:source_site) } }
