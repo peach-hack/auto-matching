@@ -56,15 +56,16 @@ services:
       - 5900:5900
     volumes:
     - /dev/shm:/dev/shm
+
   swagger-editor:
     image: swaggerapi/swagger-editor
     ports:
-      - "8001:8000"
+      - 8001:8000
 
   swagger-ui:
     image: swaggerapi/swagger-ui
     ports:
-      - "8002:8000"
+      - 8002:8000
     volumes:
       - ./swagger.yaml:/swagger.yaml
     environment:
@@ -74,10 +75,11 @@ services:
   swagger-api:
     image: danielgtaylor/apisprout
     ports:
-      - "8003:8000"
+      - 8003:8000
     volumes:
       - ./swagger.yaml:/swagger.yaml
     command: /swagger.yaml
+
 volumes:
   postgres-store:
   redis-store:
