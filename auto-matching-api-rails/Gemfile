@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -89,7 +91,7 @@ group :development, :test do
 
   gem "seed-fu"
 
-  gem 'rspec-rails-swagger'
+  gem "rspec-rails-swagger"
 end
 
 group :development do
