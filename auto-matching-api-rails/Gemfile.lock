@@ -240,6 +240,9 @@ GEM
       rspec-expectations (~> 3.8.0)
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
+    rspec-rails-swagger (0.1.5)
+      rails (>= 3.1)
+      rspec-rails (~> 3.0)
     rspec-support (3.8.0)
     rspec_junit_formatter (0.2.2)
       builder (< 4)
@@ -372,6 +375,7 @@ DEPENDENCIES
   rails-i18n
   rollbar
   rspec-rails
+  rspec-rails-swagger
   rspec_junit_formatter (= 0.2.2)
   rubocop
   rubocop-rails_config

@@ -36,3 +36,4 @@ yarn-debug.log*
 /db/templates
 !/db/templates/.keep
 /db/templates/post.yml
+.generators
