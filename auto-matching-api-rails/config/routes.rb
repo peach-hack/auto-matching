@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  defaults format: :json do
+    namespace :users do
+      resources :source_sites, only: %i[index], path: "source-sites"
+    end
+  end
 end
