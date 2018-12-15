@@ -1,16 +1,14 @@
 ---
 swagger: "2.0"
 info:
-  description: "This is a sample Petstore server.  You can find \nout more about Swagger\
-    \ at \n[http://swagger.io](http://swagger.io) or on \n[irc.freenode.net, #swagger](http://swagger.io/irc/).\n"
+  description: (EroTech) Dating App x Technology
   version: 1.0.0
-  title: Swagger Petstore
-  termsOfService: http://swagger.io/terms/
+  title: Auto Matching
   contact:
-    email: apiteam@swagger.io
+    email: fox10225fox@gmail.com
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    name: MIT
+    url: https://github.com/tsu-nera/auto-matching/blob/master/LICENSE
 host: virtserver.swaggerhub.com
 basePath: /tsu-nera/auto-matching/1.0.0
 tags:
@@ -687,5 +685,5 @@ definitions:
       message:
         type: string
 externalDocs:
-  description: Find out more about Swagger
-  url: http://swagger.io
+  description: GitHub
+  url: https://github.com/tsu-nera/auto-matching
