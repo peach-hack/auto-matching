@@ -61,28 +61,28 @@ services:
     volumes:
     - /dev/shm:/dev/shm
 
-#  swagger-editor:
-#    image: swaggerapi/swagger-editor
-#    ports:
-#      - 8081:8000
-#
-#  swagger-ui:
-#    image: swaggerapi/swagger-ui
-#    ports:
-#      - 8082:8000
-#    volumes:
-#      - ./swagger.yaml:/swagger.yaml
-#    environment:
-#      SWAGGER_JSON: /swagger.yaml
-#      # API_URL: ""
-#
-#  swagger-api:
-#    image: danielgtaylor/apisprout
-#    ports:
-#      - 8083:8000
-#    volumes:
-#      - ./swagger.yaml:/swagger.yaml
-#    command: /swagger.yaml
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - 8081:8080
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8082:8080
+    volumes:
+      - ./swagger.yaml:/swagger.yaml
+    environment:
+      SWAGGER_JSON: /swagger.yaml
+      # API_URL: ""
+
+  swagger-api:
+    image: danielgtaylor/apisprout
+    ports:
+      - 8083:8080
+    volumes:
+      - ./swagger.yaml:/swagger.yaml
+    command: /swagger.yaml
 
 volumes:
   postgres-store:
