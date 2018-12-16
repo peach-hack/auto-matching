@@ -5,7 +5,7 @@ describe("HelloVue.vue", () => {
   /** ラッパー変数の宣言 */
   let wrapper: Wrapper<Hello>;
 
-  it("propsで受け取る値のテスト", () => {
+  xit("propsで受け取る値のテスト", () => {
     // 準備
     const val = "Vue";
     wrapper = shallowMount(Hello, {
@@ -82,7 +82,7 @@ describe("HelloVue.vue", () => {
   });
 
   describe("watcherのテスト", () => {
-    it("valueの値が変更された時にwatchが機能するかテスト", () => {
+    xit("valueの値が変更された時にwatchが機能するかテスト", () => {
       // 準備
       wrapper = shallowMount(Hello, {
         propsData: { val: "AAA" }

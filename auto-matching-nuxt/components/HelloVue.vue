@@ -22,7 +22,7 @@ import { Component, Prop, Watch, Vue } from "nuxt-property-decorator";
 })
 export default class HelloVue extends Vue {
   /** props */
-  @Prop()
+  // @Prop()
   val: string = "";
 
   /** data */
