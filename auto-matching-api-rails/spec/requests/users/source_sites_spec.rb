@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.describe Users::SourceSitesController, type: :request do
+RSpec.describe Api::Users::SourceSitesController, type: :request do
   let!(:source_sites) { 6.times { create(:source_site) } }
 
   describe "#index" do
-    subject { get users_source_sites_path }
+    subject { get api_users_source_sites_path }
 
     before do
       subject

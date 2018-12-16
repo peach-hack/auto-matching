@@ -5,10 +5,12 @@ services:
     image: postgres:10.6-alpine
     volumes:
     - postgres-store:/var/lib/postgresql/data
+
   redis:
     image: redis
     volumes:
     - redis-store:/data
+
   rails:
     build: ./auto-matching-api-rails/
     command: /bin/sh -c "rm -rf /app/tmp/pids/server.pid && bin/rails server -b 0.0.0.0 -p 3000"
@@ -25,6 +27,7 @@ services:
     volumes:
     - ./auto-matching-api-rails:/app
     - bundler-store:/usr/local/bundle
+
   nuxt:
     command: /bin/sh -c 'API_URL=http://rails:3000 yarn nuxt'
     environment:
@@ -37,6 +40,7 @@ services:
     - ./auto-matching-nuxt:/app
     - node-modules-store:/app/node_modules
     working_dir: /app
+
   nuxt-test:
     command: /bin/sh -c 'API_URL=http://rails:5001 yarn nuxt'
     environment:
@@ -49,13 +53,36 @@ services:
     - ./auto-matching-nuxt:/app
     - node-modules-store:/app/node_modules
     working_dir: /app
+
   selenium-server:
     image: selenium/standalone-chrome-debug:3.11.0-bismuth
     ports:
       - 4444:4444
-      - 5900:5900
     volumes:
     - /dev/shm:/dev/shm
+
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - 8081:8080
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8082:8080
+    volumes:
+      - ./swagger.yaml:/swagger.yaml
+    environment:
+      SWAGGER_JSON: /swagger.yaml
+      # API_URL: ""
+
+  swagger-api:
+    image: danielgtaylor/apisprout
+    ports:
+      - 8083:8080
+    volumes:
+      - ./swagger.yaml:/swagger.yaml
+    command: /swagger.yaml
 
 volumes:
   postgres-store:
