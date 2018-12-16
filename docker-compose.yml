@@ -53,7 +53,6 @@ services:
     image: selenium/standalone-chrome-debug:3.11.0-bismuth
     ports:
       - 4444:4444
-      - 5900:5900
     volumes:
     - /dev/shm:/dev/shm
 
