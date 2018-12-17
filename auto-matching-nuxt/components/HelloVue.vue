@@ -7,52 +7,52 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Watch, Vue } from 'nuxt-property-decorator'
 
 @Component({
   /** filters */
   filters: {
     convertUpperCase(value: string): string | null {
       if (!value) {
-        return null;
+        return null
       }
-      return value.toUpperCase();
+      return value.toUpperCase()
     }
   }
 })
 export default class HelloVue extends Vue {
   /** props */
   // @Prop()
-  val: string = "";
+  val: string = ''
 
   /** data */
-  value: string = this.val;
+  value: string = this.val
 
-  inputValue: string = "";
+  inputValue: string = ''
 
   /** watch */
-  @Watch("value")
+  @Watch('value')
   onValueChange(newValue: string, oldValue: string): void {
-    console.log(`watch: ${newValue}, ${oldValue}`);
+    console.log(`watch: ${newValue}, ${oldValue}`)
   }
 
   /** computed */
   get isDisabled(): boolean {
-    return this.inputValue === "";
+    return this.inputValue === ''
   }
 
   /** methods */
   handleInput($event: Event): void {
-    this.inputValue = (($event.target as any) as HTMLInputElement).value;
+    this.inputValue = (($event.target as any) as HTMLInputElement).value
   }
 
   handleClick(): void {
-    if (this.inputValue === "") {
-      return;
+    if (this.inputValue === '') {
+      return
     }
-    this.value = this.inputValue;
-    this.inputValue = "";
-    this.$emit("handle-click", this.value);
+    this.value = this.inputValue
+    this.inputValue = ''
+    this.$emit('handle-click', this.value)
   }
 }
 </script>
