@@ -23,10 +23,10 @@ export default class Reviews extends Vue {
   async mounted(): Promise<void> {
     axios.defaults.baseURL = "http://localhost:5000";
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-    await this.fetchAquariumReviews();
+    await this.getApiUsersSourceSites();
   }
 
-  async fetchAquariumReviews(): Promise<void> {
+  async getApiUsersSourceSites(): Promise<void> {
     await axios.get(`api/users/source-sites`).then(response => {
       response.data.map((site: any) => this.sites.push(site));
     });
