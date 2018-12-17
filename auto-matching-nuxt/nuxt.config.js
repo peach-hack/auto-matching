@@ -54,6 +54,8 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config) {
+      'use strict'
+
       extendConfig(config)
     }
   },

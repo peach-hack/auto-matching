@@ -1,17 +1,17 @@
-import { Vue } from "nuxt-property-decorator";
+import { Vue } from 'nuxt-property-decorator'
 
 export default class HelloVue extends Vue {
-  val: string;
+  val: string
 
-  value: string;
+  value: string
 
-  inputValue: string;
+  inputValue: string
 
-  onValueChange(newValue: string, oldValue: string): void;
+  onValueChange(newValue: string, oldValue: string): void
 
-  readonly isDisabled: boolean;
+  readonly isDisabled: boolean
 
-  handleInput($event: Event): void;
+  handleInput($event: Event): void
 
-  handleClick(): void;
+  handleClick(): void
 }

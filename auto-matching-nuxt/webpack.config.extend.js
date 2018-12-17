@@ -2,6 +2,8 @@
 const path = require('path')
 
 module.exports = config => {
+  'use strict'
+
   config.resolve.extensions.push('.ts', '.js', '.vue', '.css', '.html')
 
   const tsLoader = {
@@ -35,8 +37,8 @@ module.exports = config => {
   }
 
   // Add alias
-  config.resolve.alias['@'] = path.resolve(__dirname, '.')
-  config.resolve.alias['~'] = path.resolve(__dirname, '.')
+  config.resolve.alias['@'].push(path.resolve(__dirname, '.'))
+  config.resolve.alias['~'].push(path.resolve(__dirname, '.'))
 
   return config
 }
