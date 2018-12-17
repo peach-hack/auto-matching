@@ -1,61 +1,65 @@
-// import parseArgs from "minimist";
-const parseArgs = require("minimist");
-
-const argv = parseArgs(process.argv.slice(2), {
-  alias: {
-    H: "hostname",
-    p: "port"
-  },
-  string: ["H"]
-});
-
-const port =
-  argv.port ||
-  process.env.PORT ||
-  process.env.npm_package_config_nuxt_port ||
-  "3000";
-const host =
-  argv.hostname ||
-  process.env.HOST ||
-  process.env.npm_package_config_nuxt_host ||
-  "localhost";
+const pkg = require('./package.json')
+const extendConfig = require('./webpack.config.extend')
 
 module.exports = {
-  env: {
-    baseUrl: process.env.BASE_URL || `http://${host}:${port}`
-  },
+  mode: 'spa',
+
+  /*
+   ** Headers of the page
+   */
   head: {
-    title: "Auto Matching",
+    title: pkg.name,
     meta: [
-      { charset: "utf-8" },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1"
-      },
-      {
-        hid: "description",
-        name: "description",
-        content: "Nuxt.js project"
-      }
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [
-      {
-        rel: "icon",
-        type: "image/x-icon",
-        href: "/favicon.ico"
-      }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#3B8070" },
+  loading: { color: '#fff' },
+
+  /*
+   ** Global CSS
+   */
+  css: [],
+
+  /*
+   ** Plugins to load before mounting the App
+   */
+  plugins: [],
+
+  /*
+   ** Nuxt.js modules
+   */
+  modules: [
+    // Doc: https://github.com/nuxt-community/axios-module#usage
+    '@nuxtjs/axios'
+  ],
+  /*
+   ** Axios module configuration
+   */
+  axios: {
+    // See https://github.com/nuxt-community/axios-module#options
+  },
+
   /*
    ** Build configuration
    */
-  css: ["~/assets/css/main.css"],
-  build: {},
-  modules: ["@nuxtjs/axios", "~/modules/typescript.js"],
-  axios: {},
-  ignore: ["**/*.spec.*"]
-};
+  build: {
+    /*
+     ** You can extend webpack config here
+     */
+    extend(config) {
+      extendConfig(config)
+    }
+  },
+
+  /*
+   ** Extensions
+   */
+  extensions: ['ts', 'js']
+}
