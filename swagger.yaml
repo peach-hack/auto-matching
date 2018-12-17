@@ -7,7 +7,7 @@ host: 'localhost:5000'
 schemes:
   - http
 paths:
-  /users/source-sites:
+  /api/users/source-sites:
     get:
       summary: サイト一覧
       produces:
