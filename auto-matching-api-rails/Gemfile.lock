@@ -40,11 +40,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_model_serializers (0.10.8)
-      actionpack (>= 4.1, < 6)
-      activemodel (>= 4.1, < 6)
-      case_transform (>= 0.2)
-      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     active_type (0.7.5)
       activerecord (>= 3.2)
     activejob (5.2.1)
@@ -91,8 +86,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
-    case_transform (0.2)
-      activesupport
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.0)
@@ -125,6 +118,8 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.9.25)
     ffi (1.9.25-java)
     ffi (1.9.25-x64-mingw32)
@@ -141,7 +136,6 @@ GEM
       multi_json (>= 1.2)
     join_dependency (0.1.4)
       activerecord (>= 4.2.0)
-    jsonapi-renderer (0.2.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -235,6 +229,8 @@ GEM
     rails-i18n (5.1.2)
       i18n (>= 0.7, < 2)
       railties (>= 5.0, < 6)
+    rails_pretty_json_rednerer (0.1.0)
+      rails (>= 3.2)
     railties (5.2.1)
       actionpack (= 5.2.1)
       activesupport (= 5.2.1)
@@ -380,7 +376,6 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
-  active_model_serializers (~> 0.10.0)
   active_type
   activerecord-import
   annotate
@@ -394,6 +389,7 @@ DEPENDENCIES
   dotenv-rails
   enumerize!
   factory_bot_rails
+  fast_jsonapi
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   meta-tags
@@ -409,6 +405,7 @@ DEPENDENCIES
   rails (~> 5.2.1)
   rails-controller-testing
   rails-i18n
+  rails_pretty_json_rednerer
   rollbar
   rspec-rails
   rspec_junit_formatter (= 0.2.2)

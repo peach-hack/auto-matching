@@ -3,10 +3,10 @@
     <h2>サイト一覧</h2>
     <div v-for="site in sites" :key="site.id">
       <div slot="header">
-        <span>{{ site.name }}</span>
+        <span>{{ site.attributes.name }}</span>
       </div>
       <div>
-        <p>{{ site.url }}</p>
+        <p>{{ site.attributes.url }}</p>
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@ export default class Reviews extends Vue {
 
   async getApiUsersSourceSites(): Promise<void> {
     await axios.get(`api/users/source-sites`).then(response => {
-      response.data.map((site: any) => this.sites.push(site))
+      response.data.data.map((site: any) => this.sites.push(site))
     })
   }
 }

@@ -57,6 +57,19 @@ module.exports = {
       'use strict'
 
       extendConfig(config)
+    },
+    babel: {
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            targets: {
+              node: 'current'
+            }
+          }
+        ]
+      ],
+      plugins: ['@babel/plugin-syntax-dynamic-import']
     }
   },
 

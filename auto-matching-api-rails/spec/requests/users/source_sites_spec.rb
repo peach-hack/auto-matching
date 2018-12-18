@@ -13,7 +13,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
     context "正常系" do
       it "レスポンスステータスが200であること" do
         expect(response).to have_http_status(200)
-        expect(json.length).to eq(SourceSite.count)
+        expect(json["data"].length).to eq(SourceSite.count)
       end
     end
   end
