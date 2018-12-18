@@ -1,8 +1,17 @@
 <template>
   <div class="app">
-    <app-header />
+    <app-header fixed>
+      <sidebar-toggler class="d-lg-none" display="md" mobile />
+      <sidebar-toggler class="d-md-down-none" display="lg" />
+    </app-header>
     <div class="app-body">
-      <app-sidebar />
+      <app-sidebar fixed>
+        <sidebar-header />
+        <sidebar-form />
+        <sidebar-nav :navItems="nav"/>
+        <sidebar-footer />
+        <sidebar-minimizer />
+      </app-sidebar>
       <main class="main">
         <div class="container-fluid"><nuxt /></div>
       </main>
@@ -12,6 +21,8 @@
 </template>
 
 <script>
+import nav from "../components/_nav"
+import { SidebarToggler, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav } from '@coreui/vue'
 import { Header as AppHeader, Sidebar as AppSidebar } from '@coreui/vue'
 import { Footer as AppFooter } from '../components'
 
@@ -20,7 +31,18 @@ export default {
   components: {
     AppHeader,
     AppSidebar,
+    SidebarHeader,
+    SidebarForm,
+    SidebarNav,
+    SidebarFooter,
+    SidebarMinimizer,
+    SidebarToggler,
     AppFooter
-  }
+  },
+  data () {
+    return {
+      nav: nav.items
+    }
+  },
 }
 </script>
