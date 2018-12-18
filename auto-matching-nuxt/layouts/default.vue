@@ -1,25 +1,25 @@
 <template>
   <div class="app">
-    <Header />
+    <app-header />
     <div class="app-body">
-      <Sidebar />
+      <app-sidebar />
       <main class="main">
         <div class="container-fluid"><nuxt /></div>
       </main>
     </div>
-    <Footer />
+    <app-footer />
   </div>
 </template>
 
 <script>
-import { Header, Sidebar, Footer } from '@coreui/vue'
+  import { Header as AppHeader, Sidebar as AppSidebar, Footer as AppFooter} from '@coreui/vue'
 
 export default {
   name: 'Default',
   components: {
-    Header,
-    Sidebar,
-    Footer
+    AppHeader,
+    AppSidebar,
+    AppFooter
   }
 }
 </script>

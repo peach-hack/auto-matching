@@ -78,6 +78,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "pry-remote"
+  gem "awesome_rails_console"
   gem "rails-controller-testing"
   gem "rspec-rails"
   gem "rspec_junit_formatter", "0.2.2" # for circleci
