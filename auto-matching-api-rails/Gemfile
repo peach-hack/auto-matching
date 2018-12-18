@@ -67,7 +67,8 @@ gem "dotenv-rails"
 
 gem "simple_scheduler"
 
-gem "active_model_serializers", "~> 0.10.0"
+gem "fast_jsonapi"
+gem "rails_pretty_json_rednerer"
 gem "rack-cors", require: "rack/cors"
 
 group :development, :test do
