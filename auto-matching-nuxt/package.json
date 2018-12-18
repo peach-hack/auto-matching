@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@coreui/vue": "^2.1.0",
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/babel-preset-app": "^0.8.0",
     "@types/jest": "^23.3.10",
