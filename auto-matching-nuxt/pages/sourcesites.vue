@@ -2,12 +2,13 @@
   <div>
     <h2>サイト一覧</h2>
     <div v-for="site in sites" :key="site.id">
-      <div slot="header">
-        <span>{{ site.attributes.name }}</span>
-      </div>
-      <div>
-        <p>{{ site.attributes.url }}</p>
-      </div>
+
+      <!--<div slot="header">-->
+      <!--<span>{{ site.attributes.name }}</span>-->
+      <!--</div>-->
+      <!--<div>-->
+      <!--<p>{{ site.attributes.url }}</p>-->
+      <!--</div>-->
     </div>
   </div>
 </template>
@@ -17,7 +18,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import axios from 'axios'
 
 @Component
-export default class Reviews extends Vue {
+export default class Sites extends Vue {
   sites: string[] = []
 
   async mounted(): Promise<void> {
