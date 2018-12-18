@@ -12,10 +12,11 @@
 </template>
 
 <script>
-  import { Header as AppHeader, Sidebar as AppSidebar, Footer as AppFooter} from '@coreui/vue'
+import { Header as AppHeader, Sidebar as AppSidebar } from '@coreui/vue'
+import { Footer as AppFooter } from '../components'
 
 export default {
-  name: 'Default',
+  name: 'Full',
   components: {
     AppHeader,
     AppSidebar,
