@@ -2,7 +2,6 @@
   <div>
     <h2>サイト一覧</h2>
     <div v-for="site in sites" :key="site.id">
-
       <!--<div slot="header">-->
       <!--<span>{{ site.attributes.name }}</span>-->
       <!--</div>-->

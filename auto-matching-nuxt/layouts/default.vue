@@ -1,15 +1,13 @@
 <template>
   <div class="app">
-    <Header/>
+    <Header />
     <div class="app-body">
-      <Sidebar/>
+      <Sidebar />
       <main class="main">
-        <div class="container-fluid">
-          <nuxt />
-        </div>
+        <div class="container-fluid"><nuxt /></div>
       </main>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -17,11 +15,11 @@
 import { Header, Sidebar, Footer } from '@coreui/vue'
 
 export default {
-  name: 'default',
+  name: 'Default',
   components: {
     Header,
     Sidebar,
-    Footer,
-  },
+    Footer
+  }
 }
 </script>
