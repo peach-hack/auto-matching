@@ -37,8 +37,8 @@ module.exports = config => {
   }
 
   // Add alias
-  config.resolve.alias['@'].push(path.resolve(__dirname, '.'))
-  config.resolve.alias['~'].push(path.resolve(__dirname, '.'))
+  config.resolve.alias['@'] = path.resolve(__dirname, '.')
+  config.resolve.alias['~'] = path.resolve(__dirname, '.')
 
   return config
 }

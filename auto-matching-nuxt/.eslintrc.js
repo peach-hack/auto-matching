@@ -30,6 +30,7 @@ module.exports = {
     "vue/html-self-closing": 0,
     "vue/singleline-html-element-content-newline": 0,
     "vue/component-name-in-template-casing": 0,
-    "no-restricted-syntax": 0
+    "no-restricted-syntax": 0,
+    "no-param-reassign": 0,
   }
 };
