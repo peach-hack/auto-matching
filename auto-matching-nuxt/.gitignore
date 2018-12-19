@@ -80,3 +80,6 @@ __snapshots__
 
 # IDE
 .idea
+
+# storybook
+storybook-static
