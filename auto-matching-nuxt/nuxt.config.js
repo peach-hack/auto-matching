@@ -1,6 +1,5 @@
-const pkg = require('./package.json')
 const extendConfig = require('./webpack.config.extend')
-const { VueLoaderPlugin } = require('vue-loader')
+const pkg = require('./package.json')
 
 module.exports = {
   mode: 'spa',
@@ -42,7 +41,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [new VueLoaderPlugin()],
+  plugins: [],
 
   /*
    ** Nuxt.js modules
