@@ -1,9 +1,6 @@
 <template>
   <div class="app">
-    <app-header fixed>
-      <sidebar-toggler class="d-lg-none" display="md" mobile />
-      <sidebar-toggler class="d-md-down-none" display="lg" />
-    </app-header>
+    <app-header fixed>Auto Matching</app-header>
     <div class="app-body">
       <app-sidebar fixed>
         <sidebar-header />
@@ -22,7 +19,7 @@
 
 <script>
 import nav from "../components/_nav"
-import { SidebarToggler, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav } from '@coreui/vue'
+import { SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav } from '@coreui/vue'
 import { Header as AppHeader, Sidebar as AppSidebar } from '@coreui/vue'
 import { Footer as AppFooter } from '../components'
 
@@ -36,7 +33,6 @@ export default {
     SidebarNav,
     SidebarFooter,
     SidebarMinimizer,
-    SidebarToggler,
     AppFooter
   },
   data () {
