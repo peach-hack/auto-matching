@@ -1,6 +1,8 @@
 <template>
   <div class="app">
-    <app-header fixed>Auto Matching</app-header>
+    <app-header fixed>
+      <b-link class="navbar-brand" :to="{ name: 'index' }" />
+    </app-header>
     <div class="app-body">
       <app-sidebar fixed>
         <sidebar-header />

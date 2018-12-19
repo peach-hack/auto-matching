@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>サイト一覧</h2>
+    <h1>サイト管理</h1>
     <div v-for="site in sites" :key="site.id">
       <!--<div slot="header">-->
       <!--<span>{{ site.attributes.name }}</span>-->
