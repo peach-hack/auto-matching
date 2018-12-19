@@ -27,7 +27,7 @@ export default class Sites extends Vue {
   }
 
   async getApiUsersSourceSites(): Promise<void> {
-    await axios.get(`api/users/source-sites`).then(response => {
+    await axios.get('api/users/source-sites').then(response => {
       response.data.data.map((site: any) => this.sites.push(site))
     })
   }

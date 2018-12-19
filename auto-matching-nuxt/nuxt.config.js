@@ -1,5 +1,5 @@
-const pkg = require('./package.json')
 const extendConfig = require('./webpack.config.extend')
+const pkg = require('./package.json')
 
 module.exports = {
   mode: 'spa',
