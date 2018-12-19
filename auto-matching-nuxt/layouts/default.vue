@@ -5,7 +5,7 @@
       <app-sidebar fixed>
         <sidebar-header />
         <sidebar-form />
-        <sidebar-nav :navItems="nav"/>
+        <sidebar-nav :nav-items="nav" />
         <sidebar-footer />
         <sidebar-minimizer />
       </app-sidebar>
@@ -18,9 +18,16 @@
 </template>
 
 <script>
-import nav from "../components/_nav"
-import { SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav } from '@coreui/vue'
-import { Header as AppHeader, Sidebar as AppSidebar } from '@coreui/vue'
+import {
+  SidebarFooter,
+  SidebarForm,
+  SidebarHeader,
+  SidebarMinimizer,
+  SidebarNav,
+  Header as AppHeader,
+  Sidebar as AppSidebar
+} from '@coreui/vue'
+import nav from '../components/_nav'
 import { Footer as AppFooter } from '../components'
 
 export default {
@@ -35,10 +42,10 @@ export default {
     SidebarMinimizer,
     AppFooter
   },
-  data () {
+  data() {
     return {
       nav: nav.items
     }
-  },
+  }
 }
 </script>

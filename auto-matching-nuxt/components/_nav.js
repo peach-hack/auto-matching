@@ -5,7 +5,7 @@ export default {
     {
       name: 'Dashboard',
       url: '/dashboard',
-      icon: 'icon-speedometer',
+      icon: 'icon-speedometer'
     },
     {
       title: true,
@@ -19,17 +19,17 @@ export default {
     {
       name: 'テンプレート管理',
       url: '',
-      icon: 'icon-star',
+      icon: 'icon-star'
     },
     {
       name: '定期実行設定',
       url: '',
-      icon: 'icon-star',
+      icon: 'icon-star'
     },
     {
       name: 'マニュアル投稿',
       url: '',
-      icon: 'icon-star',
+      icon: 'icon-star'
     },
     {
       title: true,
@@ -52,7 +52,7 @@ export default {
     {
       name: 'サイト管理',
       url: '/sourcesites',
-      icon: 'icon-star',
+      icon: 'icon-star'
     }
   ]
 }
