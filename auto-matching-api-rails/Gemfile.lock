@@ -71,6 +71,11 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
+    awesome_print (1.8.0)
+    awesome_rails_console (0.4.3)
+      awesome_print
+      pry-rails
+      railties
     better_errors (2.5.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -379,6 +384,7 @@ DEPENDENCIES
   active_type
   activerecord-import
   annotate
+  awesome_rails_console
   baby_squeel!
   better_errors
   byebug

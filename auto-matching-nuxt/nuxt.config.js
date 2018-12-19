@@ -18,14 +18,25 @@ module.exports = {
   },
 
   /*
-   ** Customize the progress-bar color
+   ** Customize the progress bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#42A5CC' },
 
-  /*
-   ** Global CSS
+  /**
+   * Import CSS
    */
-  css: [],
+  css: [
+    /* Import Font Awesome Icons Set */
+    '~/node_modules/flag-icon-css/css/flag-icon.min.css',
+    /* Import Font Awesome Icons Set */
+    '~/node_modules/font-awesome/css/font-awesome.min.css',
+    /* Import Simple Line Icons Set */
+    '~/node_modules/simple-line-icons/css/simple-line-icons.css',
+    /* Import Bootstrap Vue Styles */
+    '~/node_modules/bootstrap-vue/dist/bootstrap-vue.css',
+    /* Import Core SCSS */
+    { src: '~/assets/scss/style.scss', lang: 'scss' }
+  ],
 
   /*
    ** Plugins to load before mounting the App
@@ -37,7 +48,9 @@ module.exports = {
    */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    // Doc: https://github.com/bootstrap-vue/bootstrap-vue
+    ['bootstrap-vue/nuxt', { css: false }]
   ],
   /*
    ** Axios module configuration
