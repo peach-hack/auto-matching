@@ -51,8 +51,5 @@ export default {
       nav: nav.items
     }
   },
-  mounted() {
-    this.i18n.locale = 'ja'
-  }
 }
 </script>

@@ -1,7 +1,9 @@
 export default {
-  main: {
-    route: {
-      sourcesites: 'サイト管理'
+  ja: {
+    main: {
+      route: {
+        sourcesites: 'サイト管理'
+      }
     }
   }
 }
