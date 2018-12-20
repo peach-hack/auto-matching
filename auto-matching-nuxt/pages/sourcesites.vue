@@ -1,15 +1,24 @@
 <template>
-  <div>
-    <h2>サイト一覧</h2>
-    <div v-for="site in sites" :key="site.id">
-      <!--<div slot="header">-->
-      <!--<span>{{ site.attributes.name }}</span>-->
-      <!--</div>-->
-      <!--<div>-->
-      <!--<p>{{ site.attributes.url }}</p>-->
-      <!--</div>-->
-    </div>
-  </div>
+  <b-card>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">サイト名</th>
+          <th scope="col">LoginID</th>
+          <th scope="col">Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="site in sites" :key="site.id">
+          <th scope="row">{{ site.attributes.id }}</th>
+          <td>{{ site.attributes.name }}</td>
+          <td>{{ site.attributes.login_user }}</td>
+          <td>{{ site.attributes.login_password }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </b-card>
 </template>
 
 <script lang="ts">

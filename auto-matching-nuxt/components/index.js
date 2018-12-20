@@ -1,3 +1,4 @@
-import Footer from './Footer.vue'
+import Footer from './organisms/Footer'
+import Breadcrumb from './organisms/Breadcrumb'
 
-export { Footer }
+export { Footer, Breadcrumb }

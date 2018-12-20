@@ -1,6 +1,8 @@
 <template>
   <div class="app">
-    <app-header fixed>Auto Matching</app-header>
+    <app-header fixed>
+      <b-link class="navbar-brand" :to="{ name: 'index' }" />
+    </app-header>
     <div class="app-body">
       <app-sidebar fixed>
         <sidebar-header />
@@ -10,6 +12,7 @@
         <sidebar-minimizer />
       </app-sidebar>
       <main class="main">
+        <breadcrumb :list="[]" />
         <div class="container-fluid"><nuxt /></div>
       </main>
     </div>
@@ -28,7 +31,7 @@ import {
   Sidebar as AppSidebar
 } from '@coreui/vue'
 import nav from '../components/_nav'
-import { Footer as AppFooter } from '../components'
+import { Breadcrumb, Footer as AppFooter } from '../components'
 
 export default {
   name: 'Full',
@@ -40,7 +43,8 @@ export default {
     SidebarNav,
     SidebarFooter,
     SidebarMinimizer,
-    AppFooter
+    AppFooter,
+    Breadcrumb
   },
   data() {
     return {
