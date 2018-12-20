@@ -50,6 +50,6 @@ export default {
     return {
       nav: nav.items
     }
-  },
+  }
 }
 </script>
