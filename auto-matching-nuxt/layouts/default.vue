@@ -12,6 +12,7 @@
         <sidebar-minimizer />
       </app-sidebar>
       <main class="main">
+        <breadcrumb :list="[]" />
         <div class="container-fluid"><nuxt /></div>
       </main>
     </div>
@@ -30,7 +31,7 @@ import {
   Sidebar as AppSidebar
 } from '@coreui/vue'
 import nav from '../components/_nav'
-import { Footer as AppFooter } from '../components'
+import { Breadcrumb, Footer as AppFooter } from '../components'
 
 export default {
   name: 'Full',
@@ -42,12 +43,16 @@ export default {
     SidebarNav,
     SidebarFooter,
     SidebarMinimizer,
-    AppFooter
+    AppFooter,
+    Breadcrumb
   },
   data() {
     return {
       nav: nav.items
     }
+  },
+  mounted() {
+    this.i18n.locale = 'ja'
   }
 }
 </script>

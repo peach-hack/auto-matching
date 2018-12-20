@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>サイト管理</h1>
+  <b-card>
     <div v-for="site in sites" :key="site.id">
       <!--<div slot="header">-->
       <!--<span>{{ site.attributes.name }}</span>-->
@@ -9,7 +8,7 @@
       <!--<p>{{ site.attributes.url }}</p>-->
       <!--</div>-->
     </div>
-  </div>
+  </b-card>
 </template>
 
 <script lang="ts">
