@@ -68,6 +68,7 @@
     "vue-loader": "^15.4.2",
     "vue-perfect-scrollbar": "^0.1.0",
     "vue-property-decorator": "^7.2.0",
+    "vue-styled-components": "^1.4.2",
     "webpack": "^4.27.1",
     "webpack-merge": "^4.1.5"
   },
