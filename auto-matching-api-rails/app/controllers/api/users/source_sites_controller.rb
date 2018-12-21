@@ -9,9 +9,9 @@ module Api
       def update
         source_site = SourceSite.find(params[:id])
         source_site.update_attributes(
-            login_user: params[:login_user],
-            login_password: params[:login_password],
-            activate_flag: params[:activate_flag])
+          login_user: params[:login_user],
+          login_password: params[:login_password],
+          activate_flag: params[:activate_flag])
 
         if source_site.save
           response_success(:source_site, :update)

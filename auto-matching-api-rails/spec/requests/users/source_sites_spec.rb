@@ -20,7 +20,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
   end
 
   describe "#update" do
-    let(:params) { {login_user: "", login_password: "", activate_flag: true} }
+    let(:params) { { login_user: "", login_password: "", activate_flag: true } }
     subject { put api_users_source_site_path(target), params: params }
 
     before do
