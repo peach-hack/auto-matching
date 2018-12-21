@@ -20,7 +20,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
   end
 
   describe "#update" do
-    let(:params) { {} }
+    let(:params) { {login_user: "", login_password: "", activate_flag: true} }
     subject { put api_users_source_site_path(target), params: params }
 
     before do
@@ -41,7 +41,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
       end
 
       context "パラメータありの場合(email)" do
-        let(:params) { { login_user: "tsu-nera@gmail.com", login_password: "tsu-nera" } }
+        let(:params) { { login_user: "tsu-nera@gmail.com", login_password: "tsu-nera", activate_flag: true } }
 
         it "レスポンスコードが200であること" do
           expect(response).to have_http_status(200)
@@ -55,7 +55,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
       end
 
       context "パラメータありの場合(phone)" do
-        let(:params) { { login_user: "08012345678", login_password: "tsu-nera" } }
+        let(:params) { { login_user: "08012345678", login_password: "tsu-nera", activate_flag: true } }
 
         it "レスポンスコードが200であること" do
           expect(response).to have_http_status(200)
@@ -71,7 +71,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
 
     context "異常系" do
       context "ユーザ名が不正な場合" do
-        let(:params) { { login_user: "tsu-nera", login_password: "tsu-nera" } }
+        let(:params) { { login_user: "tsu-nera", login_password: "tsu-nera", activate_flag: true } }
 
         it "レスポンスコードが400であること" do
           expect(response).to have_http_status(400)
