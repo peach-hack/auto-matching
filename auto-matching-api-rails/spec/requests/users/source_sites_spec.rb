@@ -29,7 +29,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
 
     context "正常系" do
       context "空パラメータの場合" do
-        it "レスポンスステータスが200であること" do
+        it "レスポンスコードが200であること" do
           expect(response).to have_http_status(200)
         end
 
@@ -40,17 +40,41 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
         end
       end
 
-      context "パラメータありの場合" do
-        let(:params) { { login_user: "tsu-nera", login_password: "tsu-nera" } }
+      context "パラメータありの場合(email)" do
+        let(:params) { { login_user: "tsu-nera@gmail.com", login_password: "tsu-nera" } }
 
-        it "レスポンスステータスが200であること" do
+        it "レスポンスコードが200であること" do
           expect(response).to have_http_status(200)
         end
 
-        it "空パラメータでクリアされていること" do
+        it "パラメータが設定されていること" do
           source_site = SourceSite.find(target.id)
           expect(source_site.login_user).to eq(params[:login_user])
           expect(source_site.login_password).to eq(params[:login_password])
+        end
+      end
+
+      context "パラメータありの場合(phone)" do
+        let(:params) { { login_user: "08012345678", login_password: "tsu-nera" } }
+
+        it "レスポンスコードが200であること" do
+          expect(response).to have_http_status(200)
+        end
+
+        it "パラメータが設定されていること" do
+          source_site = SourceSite.find(target.id)
+          expect(source_site.login_user).to eq(params[:login_user])
+          expect(source_site.login_password).to eq(params[:login_password])
+        end
+      end
+    end
+
+    context "異常系" do
+      context "ユーザ名が不正な場合" do
+        let(:params) { { login_user: "tsu-nera", login_password: "tsu-nera" } }
+
+        it "レスポンスコードが400であること" do
+          expect(response).to have_http_status(400)
         end
       end
     end

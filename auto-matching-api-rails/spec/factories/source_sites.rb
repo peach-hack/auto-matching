@@ -25,7 +25,7 @@ FactoryBot.define do
       "key#{SourceSite.count}"
     end
     login_user do
-      "login_user#{SourceSite.count}"
+      "login_user#{SourceSite.count}@gmail.com"
     end
     login_password do
       "login_password#{SourceSite.count}"
