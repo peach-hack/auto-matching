@@ -9,6 +9,7 @@
           <th scope="col">ログインID</th>
           <th scope="col">ログインパスワード</th>
           <th scope="col">操作対象</th>
+          <th scope="col">編集</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,7 @@
           <td>{{ site.attributes.login_user }}</td>
           <td>{{ site.attributes.login_password }}</td>
           <td>{{ site.attributes.activate_flag }}</td>
+          <td><nuxt-link to="/sites/1">編集</nuxt-link></td>
         </tr>
       </tbody>
     </table>
