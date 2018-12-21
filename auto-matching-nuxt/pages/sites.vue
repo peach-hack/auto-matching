@@ -1,30 +1,25 @@
-<template>
-  <b-card>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">サイト名</th>
-          <th scope="col">サイトURL</th>
-          <th scope="col">ログインID</th>
-          <th scope="col">ログインパスワード</th>
-          <th scope="col">操作対象</th>
-          <th scope="col">編集</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="site in sites" :key="site.id">
-          <th scope="row">{{ site.attributes.id }}</th>
-          <td>{{ site.attributes.name }}</td>
-          <td>{{ site.attributes.url }}</td>
-          <td>{{ site.attributes.login_user }}</td>
-          <td>{{ site.attributes.login_password }}</td>
-          <td>{{ site.attributes.activate_flag }}</td>
-          <td><nuxt-link to="/sites/1">編集</nuxt-link></td>
-        </tr>
-      </tbody>
-    </table>
-  </b-card>
+<template lang="pug">
+b-card
+  table.table
+    thead
+      tr
+        th #
+        th サイト名
+        th サイトURL
+        th ログインID
+        th ログインパスワード
+        th 操作対象
+        th 編集
+    tbody
+      tr(v-for="site in sites" :key="site.id")
+        th {{ site.attributes.id }}
+        td {{ site.attributes.name }}
+        td {{ site.attributes.url }}
+        td {{ site.attributes.login_user }}
+        td {{ site.attributes.login_password }}
+        td {{ site.attributes.activate_flag }}
+        td
+          nuxt-link(to="/sites/1") 編集
 </template>
 
 <script lang="ts">
