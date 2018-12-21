@@ -1,15 +1,15 @@
-<template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">Auto Matching</h1>
-      <h2 class="subtitle">Dating meets Technology</h2>
-    </div>
-  </section>
+<template lang="pug">
+section.container
+  div
+    logo
+    h1.title
+      | Auto Matching
+    h2.subtitle
+      | Dating meets Tech
 </template>
 
 <script>
-import Logo from '../components/Logo.vue'
+import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
@@ -43,9 +43,5 @@ export default {
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>
