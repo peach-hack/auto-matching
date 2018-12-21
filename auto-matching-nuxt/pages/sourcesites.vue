@@ -5,16 +5,20 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">サイト名</th>
-          <th scope="col">LoginID</th>
-          <th scope="col">Password</th>
+          <th scope="col">サイトURL</th>
+          <th scope="col">ログインID</th>
+          <th scope="col">ログインパスワード</th>
+          <th scope="col">操作対象</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="site in sites" :key="site.id">
           <th scope="row">{{ site.attributes.id }}</th>
           <td>{{ site.attributes.name }}</td>
+          <td>{{ site.attributes.url }}</td>
           <td>{{ site.attributes.login_user }}</td>
           <td>{{ site.attributes.login_password }}</td>
+          <td>{{ site.attributes.activate_flag }}</td>
         </tr>
       </tbody>
     </table>

@@ -27,6 +27,9 @@ paths:
               url:
                 type: string
                 example: 'https://example.com'
+              activate_flag:
+                type: strung
+                example: '有効'
               login_user:
                 type: string
                 format: uuid

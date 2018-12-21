@@ -38,9 +38,6 @@ gem "jbuilder", "~> 2.5"
 # gem 'capistrano-rails', group: :development
 
 gem "baby_squeel", github: "rzane/baby_squeel"
-gem "simple_form"
-gem "slim-rails"
-gem "default_value_for"
 gem "enumerize", github: "brainspec/enumerize"
 gem "meta-tags"
 

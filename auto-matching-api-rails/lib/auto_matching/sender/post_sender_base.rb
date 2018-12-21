@@ -64,7 +64,7 @@ module AutoMatching
         end
 
         def url
-          source_site.url
+          source_site.login_url
         end
 
         def host

@@ -33,8 +33,12 @@ FactoryBot.define do
     name do
       "name#{SourceSite.count}"
     end
+    login_url do
+      "http://example#{SourceSite.count}.com"
+    end
     url do
       "http://example#{SourceSite.count}.com"
     end
+    activate_flag { true }
   end
 end
