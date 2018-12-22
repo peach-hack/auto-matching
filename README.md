@@ -31,3 +31,8 @@ T.B.D.
 プロジェクトの達成が目的ではなくて、取り組みによる自己の成長が目的。
 
 予定通りに予定通りに進まなくて回り道しても、学びがあればまったく順調である。
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/tsu-nera/auto-matching/badge.svg?style=beer-square)](https://beerpay.io/tsu-nera/auto-matching)  [![Beerpay](https://beerpay.io/tsu-nera/auto-matching/make-wish.svg?style=flat-square)](https://beerpay.io/tsu-nera/auto-matching?focus=wish)
