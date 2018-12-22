@@ -15,4 +15,24 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "posts", comment: "掲示板投稿データ", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "source_sites", comment: "出会い系サイトの情報", force: :cascade do |t|
+    t.string "key", null: false, comment: "ユニークキー"
+    t.string "name", null: false, comment: "サイト名"
+    t.string "url", null: false, comment: "サイトURL"
+    t.string "login_user", comment: "ログインユーザー情報"
+    t.string "login_password", comment: "ログインパスワード情報"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "login_url", null: false, comment: "クロール開始URL"
+    t.boolean "activate_flag", null: false, comment: "操作対象"
+    t.index ["key"], name: "index_source_sites_on_key", unique: true
+  end
+
 end
