@@ -32,7 +32,7 @@ export default Vue.extend({
       sites: [] as any
     }
   },
-  mounted: function () {
+  mounted() {
     axios.defaults.baseURL = 'http://localhost:5000'
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
     axios.get('api/users/source-sites').then(response => {
