@@ -2,6 +2,9 @@ Auto Matching
 ===
 
 ![](https://img.shields.io/github/issues/tsu-nera/auto-matching.svg)
+![](https://img.shields.io/github/license/tsu-nera/auto-matching.svg)
+![](https://img.shields.io/circleci/project/github/tsu-nera/auto-matching.svg)
+[![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/tsu-nera/auto-matching/)
 
 - Ruby version 2.5.1
 - Rails 5.2.1
