@@ -3,7 +3,8 @@ export default {
     main: {
       route: {
         index: '',
-        sourcesites: 'サイト管理'
+        sites: 'サイト管理',
+        'sites-id': 'サイト設定'
       }
     }
   }

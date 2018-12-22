@@ -18,18 +18,26 @@ paths:
           schema:
             type: object
             properties:
-              id:
-                type: integer
-                format: int64
-              name:
-                type: string
-                example: ハッピーメール
-              url:
-                type: string
-                example: 'https://example.com'
-              login_user:
-                type: string
-                format: uuid
-              login_password:
-                type: string
-                example: huga
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                    name:
+                      type: string
+                      example: ハッピーメール
+                    url:
+                      type: string
+                      example: 'https://example.com'
+                    activate_flag: 
+                      type: string
+                      example: 有効
+                    login_user:
+                      type: string
+                      example: tsu-nera@gmail.com
+                    login_password:
+                      type: string
+                      example: 1234

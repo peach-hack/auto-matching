@@ -26,9 +26,14 @@ class SourceSite < ApplicationRecord
   KEY_MINT = "mint".freeze
   KEY_MERUPARA = "merupara".freeze
 
+  VALID_PHONE_OR_EMAIL_REGEX = /\A(\d{10}$|^\d{11})|([^@\s]+@([^@\s]+\.)+[^@\s]+)\z/
+
   validates :key, presence: true, uniqueness: true
   validates :name, presence: true
+  validates :login_url, presence: true
   validates :url, presence: true
-  validates :login_user, presense: false
-  validates :login_password, presense: false
+  validates :login_user, presense: false, allow_blank: true, format: { with: VALID_PHONE_OR_EMAIL_REGEX }
+  validates :login_password, presense: false, allow_blank: true
+
+  attribute :activate_flag, :boolean, default: -> { true }
 end

@@ -25,7 +25,7 @@ FactoryBot.define do
       "key#{SourceSite.count}"
     end
     login_user do
-      "login_user#{SourceSite.count}"
+      "login_user#{SourceSite.count}@gmail.com"
     end
     login_password do
       "login_password#{SourceSite.count}"
@@ -33,8 +33,12 @@ FactoryBot.define do
     name do
       "name#{SourceSite.count}"
     end
+    login_url do
+      "http://example#{SourceSite.count}.com"
+    end
     url do
       "http://example#{SourceSite.count}.com"
     end
+    activate_flag { true }
   end
 end

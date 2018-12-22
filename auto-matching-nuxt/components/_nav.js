@@ -51,7 +51,7 @@ export default {
     },
     {
       name: 'サイト管理',
-      url: '/sourcesites',
+      url: '/sites',
       icon: 'icon-star'
     }
   ]

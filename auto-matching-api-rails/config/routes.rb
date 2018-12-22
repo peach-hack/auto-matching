@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   defaults format: :json do
     namespace :api do
       namespace :users do
-        resources :source_sites, only: %i[index], path: "source-sites"
+        resources :source_sites, only: %i[index update], path: "source-sites"
       end
     end
   end

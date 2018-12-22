@@ -12,8 +12,15 @@ module.exports = {
     "import/resolver": {
       node: {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".vue"]
-      }
-    }
+      },
+      alias: [
+        ['~', __dirname], // ルートディレクトリのエイリアス
+        ['@', __dirname], // ルートディレクトリのエイリアス
+      ],
+    },
+    "import/core-modules": [
+      'vue', // vueはnuxtが抱えているため明記する必要がある
+    ],
   },
   root: true,
   parser: "vue-eslint-parser",
