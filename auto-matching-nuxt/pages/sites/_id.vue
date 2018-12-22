@@ -18,6 +18,9 @@ b-card
           .form-check
             input.form-check-input(type="radio" name="deactivate" value="option1")
             | 無効
-    button(type="submit").btn.btn-primary.mb-2
+    button(type="button submit").btn.btn-primary
       | Submit
+    nuxt-link(to="/sites")
+      button(type="button").btn.btn-light
+        | Cancel
 </template>
