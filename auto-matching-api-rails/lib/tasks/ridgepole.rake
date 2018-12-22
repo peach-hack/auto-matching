@@ -6,15 +6,29 @@ module RidgePole
     desc "Apply database schema"
     task apply: :environment do
       ridgepole("--apply", "--file #{schema_file}")
-      Rake::Task["db:schema:dump"].invoke
     end
 
     desc "Export database schema"
     task export: :environment do
       ridgepole("--export", "--split", "--output #{schema_file}")
+      write_top_of_file("Encoding.default_external = 'UTF-8'", schema_file)
     end
 
     private
+
+      def write_top_of_file(data, filename)
+        lines = []
+        File.foreach(filename) do |line|
+          lines << line.chomp
+        end
+        lines.unshift(data)
+        lines.flatten!
+        File.open(filename, "r+") do |f|
+          lines.each do |url|
+            f.puts url
+          end
+        end
+      end
 
       def schema_file
         Rails.root.join("db/schemas/Schemafile")

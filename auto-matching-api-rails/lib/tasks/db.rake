@@ -11,6 +11,7 @@ module Db
       sh "RAILS_ENV=#{Rails.env} bundle exec rails db:create"
       sh "RAILS_ENV=#{Rails.env} bundle exec rails ridgepole:apply"
       sh "RAILS_ENV=#{Rails.env} bundle exec rails db:seed_fu"
+      sh "RAILS_ENV=#{Rails.env} bundle exec rails db:schema:dump"
     end
   end
 end
