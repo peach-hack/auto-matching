@@ -1,0 +1,4 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+require 'posts.schema'
+require 'source_sites.schema'
