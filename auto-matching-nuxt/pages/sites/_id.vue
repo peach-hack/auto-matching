@@ -13,11 +13,13 @@ b-card
           | 操作対象
         .col-sm-10
           .form-check
-            input.form-check-input(type="radio" name="activate" value="option1" checked)
-            | 有効
+            input.form-check-input(type="radio" name="activation" checked)#activate
+            label.form-check-label(for="activate")
+              | 有効
           .form-check
-            input.form-check-input(type="radio" name="deactivate" value="option1")
-            | 無効
+            input.form-check-input(type="radio" name="activation")#deactivate
+            label.form-check-label(for="deactivate")
+              | 無効
     button(type="button submit").btn.btn-primary
       | Submit
     nuxt-link(to="/sites")
