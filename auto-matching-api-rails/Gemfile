@@ -105,7 +105,7 @@ group :development do
   gem "annotate"
   gem "spring-commands-rspec"
   gem "view_source_map"
-  gem 'rails_db'
+  gem "rails_db"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
