@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - 8081:8080
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8082:8080
+    # ymlは認識してくれない、yamlでないといけない。
+    volumes:
+      - ./swagger.yaml:/swagger.yaml
+    environment:
+      SWAGGER_JSON: /swagger.yaml
+      # API_URL: ""
+
+# 動いていないので一旦マスク
+#  swagger-api:
+#    image: danielgtaylor/apisprout
+#    ports:
+#      - 8083:8080
+#    volumes:
+#      - ./swagger.yaml:/swagger.yaml
+#    command: /swagger.yaml
