@@ -1,6 +1,8 @@
 Auto Matching
 ===
 
+![](https://img.shields.io/github/issues/tsu-nera/auto-matching.svg)
+
 - Ruby version 2.5.1
 - Rails 5.2.1
 - PostgresSQL  10.6
