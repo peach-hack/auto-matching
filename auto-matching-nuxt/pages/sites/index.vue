@@ -23,22 +23,21 @@ b-card
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import Vue from 'vue'
 import axios from 'axios'
-@Component
-export default class Sites extends Vue {
-  sites: string[] = []
 
-  async mounted(): Promise<void> {
+export default Vue.extend({
+  data() {
+    return {
+      sites: [] as any
+    }
+  },
+  mounted: function () {
     axios.defaults.baseURL = 'http://localhost:5000'
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-    await this.getApiUsersSourceSites()
-  }
-
-  async getApiUsersSourceSites(): Promise<void> {
-    await axios.get('api/users/source-sites').then(response => {
+    axios.get('api/users/source-sites').then(response => {
       response.data.data.map((site: any) => this.sites.push(site))
     })
   }
-}
+})
 </script>
