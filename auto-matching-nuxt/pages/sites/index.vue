@@ -19,7 +19,7 @@ b-card
         td {{ site.attributes.login_password }}
         td {{ site.attributes.activate_flag }}
         td
-          nuxt-link(to="/sites/1") 編集
+          nuxt-link(:to="{ path: '/sites/' + site.id }") 編集
 </template>
 
 <script lang="ts">
