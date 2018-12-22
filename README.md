@@ -1,6 +1,8 @@
 Auto Matching
 ===
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cddd13bc58c342d284af94e2955bf167)](https://app.codacy.com/app/tsu-nera/auto-matching?utm_source=github.com&utm_medium=referral&utm_content=tsu-nera/auto-matching&utm_campaign=Badge_Grade_Settings)
+
 - Ruby version 2.5.1
 - Rails 5.2.1
 - PostgresSQL  10.6
