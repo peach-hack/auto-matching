@@ -24,7 +24,7 @@ b-card
 
 <script lang="ts">
 import Vue from 'vue'
-import { getApiUsersSourceSites } from "~/plugins/api";
+import { getApiUsersSourceSites } from '~/plugins/api'
 
 export default Vue.extend({
   data() {
@@ -33,8 +33,6 @@ export default Vue.extend({
     }
   },
   mounted() {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-
     getApiUsersSourceSites().then((response: any) => {
       response.data.data.map((site: any) => this.sites.push(site))
     })

@@ -1,9 +1,9 @@
 const swaggerGen = require('swagger-vue')
-const jsonData = require('../swagger.json')
 const fs = require('fs')
 const path = require('path')
+const jsonData = require('../swagger.json')
 
-let opt = {
+const opt = {
   swagger: jsonData,
   moduleName: 'api',
   className: 'api'
