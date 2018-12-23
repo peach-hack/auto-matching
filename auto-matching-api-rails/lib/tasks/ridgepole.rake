@@ -58,4 +58,3 @@ module RidgePole
       end
   end
 end
-n
