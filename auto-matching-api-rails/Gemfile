@@ -69,6 +69,7 @@ gem "rails_pretty_json_rednerer"
 gem "rack-cors", require: "rack/cors"
 
 gem "ridgepole"
+gem "seed-fu"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -90,7 +91,6 @@ group :development, :test do
 
   gem "rails-i18n"
 
-  gem "seed-fu"
 end
 
 group :development do
