@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "heroku-postbuild": "cd ../auto-matching-nuxt && yarn build"
+    "heroku-postbuild": "cd auto-matching-nuxt && yarn build"
   }
 }
