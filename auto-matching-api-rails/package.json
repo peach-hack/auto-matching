@@ -1,6 +1,6 @@
 {
   "scripts": {
     "build": "nuxt build",
-    "heroku-postbuild": "yarn build --prefix auto-matching-nuxt"
+    "heroku-postbuild": "npm run build --prefix auto-matching-nuxt"
   }
 }
