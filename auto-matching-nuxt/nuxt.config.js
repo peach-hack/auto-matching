@@ -1,6 +1,14 @@
 const extendConfig = require('./webpack.config.extend')
 const pkg = require('./package.json')
 
+const env = process.env.NODE_ENV || 'development'
+let API_URL
+if (env === 'development' || env === 'test') {
+  API_URL = 'http://localhost:5000'
+} else {
+  API_URL = process.env.API_URL
+}
+
 module.exports = {
   mode: 'spa',
 
@@ -57,6 +65,7 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: API_URL
   },
 
   /*
