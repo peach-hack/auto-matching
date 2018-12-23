@@ -19,5 +19,4 @@ production:
   adapter: postgresql
   database: auto-matching_production
   url: <%= ENV['DATABASE_URL'] %>
-  username: <%= ENV.fetch('DATABASE_USER') { 'postgres' } %>
-  password: <%= ENV.fetch('DATABASE_PASSWORD') { '' } %>
+  
