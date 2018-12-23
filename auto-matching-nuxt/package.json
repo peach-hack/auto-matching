@@ -1,8 +1,8 @@
 {
-  "name": "auto-matching",
+  "name": "auto-matching-nuxt",
   "version": "1.0.0",
   "private": true,
-  "description": "Dating meets Technology",
+  "description": "Dating meets Tech",
   "author": "tsu-nera",
   "scripts": {
     "build": "nuxt build",

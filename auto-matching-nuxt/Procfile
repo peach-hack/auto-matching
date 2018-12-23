@@ -1,1 +1,1 @@
-web: yarn build --prefix auto-matching-nuxt
+web: yarn start
