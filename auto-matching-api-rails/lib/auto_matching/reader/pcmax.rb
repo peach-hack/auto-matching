@@ -3,8 +3,10 @@ module AutoMatching
     class Pcmax < CheckerBase
       include Common::Pcmax
     end
-    def read_board
-      # TODO
-    end
+
+    private
+      def read_board
+        # TODO
+      end
   end
 end

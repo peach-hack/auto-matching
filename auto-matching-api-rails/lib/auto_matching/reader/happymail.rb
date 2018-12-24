@@ -3,6 +3,7 @@ module AutoMatching
     class Happymail < ReaderBase
       include Common::Happymail
 
+      private
       def read_board
         # TODO
       end

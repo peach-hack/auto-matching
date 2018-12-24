@@ -1,7 +1,9 @@
 module AutoMatching
-  module Checker
-    class Mint < CheckerBase
-      include Common::Mint
+  module Common
+    module Mint
+      def source_site_key
+        SourceSite::KEY_MINT
+      end
 
       def try_login
         session.fill_in "loginid", with: login_user

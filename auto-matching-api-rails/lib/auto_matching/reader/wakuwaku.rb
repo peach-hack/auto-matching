@@ -3,9 +3,10 @@ module AutoMatching
     class Wakuwaku < ReaderBase
       include Common::Wakuwaku
 
-      def read_board
-        # TODO
-      end
+      private
+        def read_board
+          # TODO
+        end
     end
   end
 end

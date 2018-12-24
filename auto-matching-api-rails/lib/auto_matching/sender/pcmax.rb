@@ -1,22 +1,9 @@
 module AutoMatching
   module Sender
     class Pcmax < SenderBase
-      class << self
-        def source_site_key
-          SourceSite::KEY_PCMAX
-        end
-      end
+      include Common::Pcmax
 
       private
-
-        def try_login
-          session.first(".register-header > .register-h2#login-tab").click
-
-          session.fill_in "login_id", with: login_user
-          session.fill_in "login_pw", with: login_password
-          session.click_button "会員ログイン"
-        end
-
         def delete_past_post
           session.visit("https://pcmax.jp/mobile/bbs_write.php")
           session.click_link "過去の投稿を確認"

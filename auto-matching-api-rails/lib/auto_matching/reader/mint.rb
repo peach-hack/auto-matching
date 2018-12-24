@@ -4,8 +4,9 @@ module AutoMatching
       include Common::Mint
     end
 
-    def read_board
-      # TODO
-    end
+    private
+      def read_board
+        # TODO
+      end
   end
 end

@@ -1,24 +1,7 @@
 module AutoMatching
   module Sender
     class Ikukuru < SenderBase
-      class << self
-        def source_site_key
-          SourceSite::KEY_IKUKURU
-        end
-      end
-
       private
-
-        def try_login
-          login
-        end
-
-        def login
-          session.fill_in "tel", with: login_user
-          session.fill_in "password", with: login_password
-          session.execute_script("$('form#form1').submit()")
-        end
-
         def delete_past_post
           session.visit("https://sp.194964.com/bbs/show_bbs_write_list.html")
 

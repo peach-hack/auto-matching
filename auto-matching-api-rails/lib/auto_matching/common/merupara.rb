@@ -1,7 +1,9 @@
 module AutoMatching
-  module Checker
-    class Merupara < CheckerBase
-      include Common::Merupara
+  module Common
+    module Merupara
+      def source_site_key
+        SourceSite::KEY_MERUPARA
+      end
 
       def try_login
         session.fill_in "loginid", with: login_user

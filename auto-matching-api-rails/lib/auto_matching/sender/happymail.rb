@@ -1,18 +1,9 @@
 module AutoMatching
   module Sender
     class Happymail < SenderBase
-      class << self
-        def source_site_key
-          SourceSite::KEY_HAPPY_MAIL
-        end
-      end
+      include Common::Happymail
 
       private
-
-        def try_login
-          login_mobile
-        end
-
         def delete_past_post
           session.visit("https://happymail.co.jp/sp/app/html/keijiban_write_log.php")
           sleep 0.5
@@ -42,19 +33,6 @@ module AutoMatching
           unless ENV["DEBUG"]
             session.execute_script "$('.input__form__action__button__send').trigger('click', '[data-remodal-target]')"
           end
-        end
-
-        def login_mobile
-          session.fill_in "TelNo", with: login_user
-          session.fill_in "Pass", with: login_password
-
-          session.first("#login_btn").native.send_keys(:return)
-        end
-
-        def login_pc
-          session.fill_in "TelNo", with: login_user
-          session.fill_in "Pass_x", with: login_password
-          session.first("#telLoginLink").click
         end
     end
   end

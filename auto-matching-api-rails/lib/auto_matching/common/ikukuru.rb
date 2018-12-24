@@ -1,7 +1,9 @@
 module AutoMatching
-  module Checker
-    class Ikukuru < CheckerBase
-      include Common::Ikukuru
+  module Common
+    module Ikukuru
+      def source_site_key
+        SourceSite::KEY_IKUKURU
+      end
 
       def try_login
         session.fill_in "tel", with: login_user
