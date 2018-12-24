@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "heroku-postbuild": "npm install --prefix auto-matching-nuxt"
+  }
+}

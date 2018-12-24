@@ -16,6 +16,7 @@ test:
   database: auto-matching_test
 
 production:
-  <<: *default
+  adapter: postgresql
   database: auto-matching_production
   url: <%= ENV['DATABASE_URL'] %>
+

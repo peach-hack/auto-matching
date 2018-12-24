@@ -39,7 +39,7 @@ module RidgePole
       end
 
       def ridgepole(*options)
-        command = ["bundle exec ridgepole", "--config #{config_file}"]
+        command = ["bundle exec ridgepole", "--config #{config_file}", "-E #{Rails.env}"]
         system [command + options].join(" ")
       end
   end
