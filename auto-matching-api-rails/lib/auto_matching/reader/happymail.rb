@@ -1,7 +1,7 @@
 module AutoMatching
   module Reader
-    class Wakuwaku < ReaderBase
-      include Common::Wakuwaku
+    class Happymail < ReaderBase
+      include Common::Happymail
 
       def read_board
         # TODO

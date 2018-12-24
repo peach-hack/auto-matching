@@ -1,6 +1,6 @@
 module AutoMatching
   module Sender
-    class HappyMail < SenderBase
+    class Happymail < SenderBase
       class << self
         def source_site_key
           SourceSite::KEY_HAPPY_MAIL

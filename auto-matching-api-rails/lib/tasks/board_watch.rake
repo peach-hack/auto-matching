@@ -6,7 +6,7 @@ module BoardWatch
     desc "掲示板監視(All)"
     task all: :environment do
       classes = [
-          AutoMatching::Reader::HappyMail,
+          AutoMatching::Reader::Happymail,
           AutoMatching::Reader::Wakuwaku,
           AutoMatching::Reader::Pcmax,
           AutoMatching::Reader::Ikukuru,
@@ -18,7 +18,7 @@ module BoardWatch
 
     desc "個別監視(ハッピーメール)"
     task happymail: :environment do
-      AutoMatching::Reader::Executor.new.run(AutoMatching::Reader::HappyMail)
+      AutoMatching::Reader::Executor.new.run(AutoMatching::Reader::Happymail)
     end
 
     desc "個別監視(ワクワクメール)"

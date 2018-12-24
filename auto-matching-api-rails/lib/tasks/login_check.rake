@@ -6,7 +6,7 @@ module LoginCheck
     desc "ログイン確認(All)"
     task all: :environment do
       classes = [
-          AutoMatching::Checker::HappyMail,
+          AutoMatching::Checker::Happymail,
           AutoMatching::Checker::Wakuwaku,
           AutoMatching::Checker::Pcmax,
           AutoMatching::Checker::Ikukuru,
@@ -18,7 +18,7 @@ module LoginCheck
 
     desc "ログイン確認(ハッピーメール)"
     task happymail: :environment do
-      AutoMatching::Checker::Executor.new.run(AutoMatching::Checker::HappyMail)
+      AutoMatching::Checker::Executor.new.run(AutoMatching::Checker::Happymail)
     end
 
     desc "ログイ確認(ワクワクメール)"

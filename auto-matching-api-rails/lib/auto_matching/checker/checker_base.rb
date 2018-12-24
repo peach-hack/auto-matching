@@ -11,23 +11,23 @@ module AutoMatching
 
       private
 
-      def run_process
-        # 実行条件のチェック
-        if !login_user.present?
-          p "ログインIDが設定されていません"
-          raise StandardError
-        end
-        if !login_password.present?
-          p "ログインパスワードが設定されていません"
-          raise StandardError
-        end
+        def run_process
+          # 実行条件のチェック
+          if !login_user.present?
+            p "ログインIDが設定されていません"
+            raise StandardError
+          end
+          if !login_password.present?
+            p "ログインパスワードが設定されていません"
+            raise StandardError
+          end
 
-        # サイトオープン
-        session.visit(url)
+          # サイトオープン
+          session.visit(url)
 
-        # ログイン
-        try_login
-      end
+          # ログイン
+          try_login
+        end
     end
   end
 end

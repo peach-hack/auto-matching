@@ -1,7 +1,7 @@
 module AutoMatching
-  module Reader
-    class Wakuwaku < ReaderBase
-      include Common::Wakuwaku
+  module Checker
+    class Ikukuru < CheckerBase
+      include Common::Ikukuru
 
       def read_board
         # TODO

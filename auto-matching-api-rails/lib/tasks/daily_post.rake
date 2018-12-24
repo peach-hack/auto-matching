@@ -6,7 +6,7 @@ module DailyPost
     desc "一括投稿(All)"
     task all: :environment do
       sender_classes = [
-          AutoMatching::Sender::HappyMail,
+          AutoMatching::Sender::Happymail,
           AutoMatching::Sender::Wakuwaku,
           AutoMatching::Sender::Pcmax,
           AutoMatching::Sender::Ikukuru,
@@ -18,7 +18,7 @@ module DailyPost
 
     desc "個別投稿(ハッピーメール)"
     task happymail: :environment do
-      AutoMatching::Sender::Executor.new.run(AutoMatching::Sender::HappyMail)
+      AutoMatching::Sender::Executor.new.run(AutoMatching::Sender::Happymail)
     end
 
     desc "個別投稿(ワクワクメール)"
