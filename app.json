@@ -26,9 +26,7 @@
   },
   "scripts": {
     "postdeploy": [
-      "bundle exec rails db:create",
-      "bundle exec rails ridgepole:apply",
-      "bundle exec rake db:seed_fu"
+      "bundle exec rails db:prepare"
     ]
   }
 }
