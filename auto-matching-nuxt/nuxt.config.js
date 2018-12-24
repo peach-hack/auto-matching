@@ -1,10 +1,6 @@
 const extendConfig = require('./webpack.config.extend')
 const pkg = require('./package.json')
 
-const environment = process.env.NODE_ENV || 'developmennt'
-const envPath = `./config/environments/env.${environment}.js`
-const envSet = require(envPath)
-
 module.exports = {
   mode: 'spa',
 
@@ -21,7 +17,6 @@ module.exports = {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
-  env: envSet,
   /*
    ** Customize the progress bar color
    */
