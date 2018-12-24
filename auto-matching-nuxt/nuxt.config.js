@@ -1,5 +1,6 @@
 const extendConfig = require('./webpack.config.extend')
 const pkg = require('./package.json')
+require('dotenv').config()
 
 module.exports = {
   mode: 'spa',
