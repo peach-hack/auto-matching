@@ -1,22 +1,9 @@
-# frozen_string_literal: true
-
 module AutoMatching
   module Sender
-    class Mint < PostSenderBase
-      class << self
-        def source_site_key
-          SourceSite::KEY_MINT
-        end
-      end
+    class Mint < SenderBase
+      include Common::Mint
 
       private
-
-        def try_login
-          session.fill_in "loginid", with: login_user
-          session.fill_in "pwd", with: login_password
-          session.find("#B1login").click
-        end
-
         def delete_past_post
           session.visit("https://mintj.com/ms/mb/MB.aspx?sid=&pf=7")
           session.click_link("③投稿一覧")

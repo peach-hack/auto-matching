@@ -4,9 +4,13 @@ require "yaml"
 
 post_file = "db/templates/post.yml"
 
+posts = []
+
 if File.exist?(post_file)
   posts = YAML.load_file(post_file)
-else
+end
+
+unless posts
   posts = []
 end
 

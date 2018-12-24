@@ -1,0 +1,15 @@
+module AutoMatching
+  module Common
+    module Mint
+      def source_site_key
+        SourceSite::KEY_MINT
+      end
+
+      def try_login
+        session.fill_in "loginid", with: login_user
+        session.fill_in "pwd", with: login_password
+        session.find("#B1login").click
+      end
+    end
+  end
+end

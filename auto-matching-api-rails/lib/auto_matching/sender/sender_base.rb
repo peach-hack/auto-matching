@@ -1,8 +1,8 @@
-# frozen_string_literal: true
-
 module AutoMatching
   module Sender
-    class PostSenderBase < Base
+    class SenderBase < Base
+      include Common::DriverBase
+
       attr_reader :post
 
       def initialize(post: nil)
@@ -35,40 +35,12 @@ module AutoMatching
           send_new_post
         end
 
-        def source_site
-          @source_site ||= SourceSite.find_by(key: self.class.source_site_key)
-        end
-
-        def source_site_key
-          raise NotImprementedError
-        end
-
-        def try_login
-          raise NotImprementedError
-        end
-
         def delete_past_post
           raise NotImprementedError
         end
 
         def send_new_post
           raise NotImprementedError
-        end
-
-        def login_user
-          source_site.login_user
-        end
-
-        def login_password
-          source_site.login_password
-        end
-
-        def url
-          source_site.login_url
-        end
-
-        def host
-          url.split(URI.parse(url).path).first.to_s
         end
     end
   end
