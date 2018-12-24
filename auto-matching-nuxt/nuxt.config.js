@@ -56,7 +56,7 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc: https://github.com/bootstrap-vue/bootstrap-vue
     ['bootstrap-vue/nuxt', { css: false }],
-    '@nuxtjs/dotenv'
+    ['@nuxtjs/dotenv', { systemvars: true} ]
   ],
   /*
    ** Axios module configuration
