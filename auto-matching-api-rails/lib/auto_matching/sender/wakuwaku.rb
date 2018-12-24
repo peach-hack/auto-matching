@@ -2,7 +2,7 @@
 
 module AutoMatching
   module Sender
-    class Wakuwaku < PostSenderBase
+    class Wakuwaku < SenderBase
       class << self
         def source_site_key
           SourceSite::KEY_WAKUWAKU

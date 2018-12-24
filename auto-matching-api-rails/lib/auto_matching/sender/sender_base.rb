@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 module AutoMatching
   module Sender
-    class PostSenderBase < Base
+    class SenderBase < Base
       attr_reader :post
 
       def initialize(post: nil)

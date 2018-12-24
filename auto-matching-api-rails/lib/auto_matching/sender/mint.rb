@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 module AutoMatching
   module Sender
-    class Mint < PostSenderBase
+    class Mint < SenderBase
       class << self
         def source_site_key
           SourceSite::KEY_MINT

@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 module AutoMatching
   module Sender
-    class Ikukuru < PostSenderBase
+    class Ikukuru < SenderBase
       class << self
         def source_site_key
           SourceSite::KEY_IKUKURU
