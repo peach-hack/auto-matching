@@ -23,5 +23,12 @@
     "APP_BASE": {
       "value": "auto-matching-api-rails"
     }
+  },
+  "scripts": {
+    "postdeploy": [
+      "bundle exec rails db:create",
+      "bundle exec rails ridgepole:apply",
+      "bundle exec rake db:seed_fu"
+    ]
   }
 }
