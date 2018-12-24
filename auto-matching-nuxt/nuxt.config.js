@@ -1,6 +1,5 @@
 const extendConfig = require('./webpack.config.extend')
 const pkg = require('./package.json')
-require('dotenv').config()
 
 module.exports = {
   mode: 'spa',
@@ -22,6 +21,10 @@ module.exports = {
    ** Customize the progress bar color
    */
   loading: { color: '#42A5CC' },
+
+  env: {
+    apiUrl: process.env.API_URL || 'http://localhost:5000'
+  },
 
   /**
    * Import CSS
@@ -51,8 +54,7 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // Doc: https://github.com/bootstrap-vue/bootstrap-vue
-    ['bootstrap-vue/nuxt', { css: false }],
-    ['@nuxtjs/dotenv', { systemvars: true} ]
+    ['bootstrap-vue/nuxt', { css: false }]
   ],
   /*
    ** Axios module configuration
