@@ -1,3 +1,3 @@
 module.exports = {
-  apiBaseUrl: 'https://auto-matching-api-rails.herokuapp.com'
+  apiBaseUrl: 'http://localhost:5000'
 }
