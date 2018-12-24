@@ -20,9 +20,10 @@ Auto Matching
 - https://auto-matching.netlify.com/ (Nuxt.js FrontEnd)
 - https://auto-matching-api-rails.herokuapp.com/ (Rails BackEnd) 
 
-## デプロイ手順
-
-T.B.D.
+## Deploy
+ 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tsu-nera/auto-matching)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tsu-nera/auto-matching)
 
 ## Docker Composeによる開発環境立ち上げ
 
