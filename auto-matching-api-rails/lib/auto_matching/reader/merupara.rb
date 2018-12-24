@@ -5,8 +5,8 @@ module AutoMatching
     end
 
     private
-    def read_board
-      # TODO
-    end
+      def read_board
+        # TODO
+      end
   end
 end

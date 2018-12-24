@@ -4,9 +4,9 @@ module AutoMatching
       include Common::Happymail
 
       private
-      def read_board
-        # TODO
-      end
+        def read_board
+          # TODO
+        end
     end
   end
 end
