@@ -2,12 +2,7 @@
 import axios from 'axios'
 import qs from 'qs'
 
-const env = process.env.NODE_ENV || 'development'
-let domain = 'http://localhost:5000'
-if (env === 'production') {
-  domain = process.env.API_URL
-}
-
+let domain = process.env.API_URL
 export const getDomain = () => {
   return domain
 }
