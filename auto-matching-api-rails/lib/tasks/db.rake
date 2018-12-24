@@ -16,7 +16,6 @@ module Db
 
     desc "Run RAILS_ENV=#{Rails.env} db:create, ridgepole:apply, db:seed_fu"
     task :prepare do
-      sh "RAILS_ENV=#{Rails.env} bundle exec rails db:create"
       sh "RAILS_ENV=#{Rails.env} bundle exec rails ridgepole:apply"
       sh "RAILS_ENV=#{Rails.env} bundle exec rails db:seed_fu"
     end
