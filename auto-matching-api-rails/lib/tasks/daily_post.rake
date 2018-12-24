@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module DailyPost
   extend Rake::DSL
   extend self
