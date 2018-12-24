@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "profiles", comment: "掲示板投稿データ", force: :cascade do |t|
+  t.string "name", null: false
+  t.integer "age", null: false
+  t.enum "sex", null: false
+  t.integer "from", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
