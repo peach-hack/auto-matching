@@ -9,7 +9,7 @@
       "options": {
         "version": "10.6"
       }
-    },
+    }
   ],
   "buildpacks": [
     {
