@@ -1,0 +1,6 @@
+{
+  "name": "Auto Matching",
+  "description": "Auto Matching Rails API server",
+  "repository": "https://github.com/tsu-nera/auto-matching",
+  "keywords": ["rails", "ruby"]
+}

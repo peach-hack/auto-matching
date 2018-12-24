@@ -40,6 +40,7 @@ module.exports = {
     "no-restricted-syntax": 0,
     "no-param-reassign": 0,
     "import/prefer-default-export": 0,
+    "import/no-dynamic-require": 0,
     "prefer-destructuring": 0
   }
 };
