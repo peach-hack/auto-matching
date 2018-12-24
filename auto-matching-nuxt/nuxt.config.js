@@ -1,7 +1,9 @@
 const extendConfig = require('./webpack.config.extend')
 const pkg = require('./package.json')
-const environment = process.env.NODE_ENV || 'developmennt';
-const envSet = require(`./config/environments/env.${environment}.js`)
+
+const environment = process.env.NODE_ENV || 'developmennt'
+const envPath = `./config/environments/env.${environment}.js`
+const envSet = require(envPath)
 
 module.exports = {
   mode: 'spa',
