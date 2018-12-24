@@ -7,13 +7,13 @@
     {
       "plan": "heroku-postgresql",
       "options": {
-        "version": "10.6"
+        "version": "11"
       }
-    },
+    }
   ],
   "buildpacks": [
     {
-      "url": " https://github.com/heroku/heroku-buildpack-multi"
+      "url": "https://github.com/lstoll/heroku-buildpack-monorepo"
     },
     {
       "url": "heroku/ruby"
@@ -23,5 +23,10 @@
     "APP_BASE": {
       "value": "auto-matching-api-rails"
     }
+  },
+  "scripts": {
+    "postdeploy": [
+      "bundle exec rails db:prepare"
+    ]
   }
 }

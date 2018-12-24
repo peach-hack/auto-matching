@@ -30,7 +30,6 @@ Auto Matching
 ## Docker Composeによるローカル開発環境立ち上げ
 
 ```
-$ cp auto-matching-nuxt/.env.sample auto-matching-nuxt/.env 
 $ docker-compose build
 $ docker-compose up -d
 ```
