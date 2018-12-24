@@ -13,21 +13,24 @@ Auto Matching
 - Nuxt.js 2.3.4
 - TypeScript 3.1.1
 
-## 試験用サーバ
+## Deploy Button
 
-試験用サーバとして以下にホスティングしています。
-
-- https://auto-matching.netlify.com/ (Nuxt.js FrontEnd)
-- https://auto-matching-api-rails.herokuapp.com/ (Rails BackEnd) 
-
-## Deploy
+ひみつのボタン。ポチっとな。
  
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tsu-nera/auto-matching)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tsu-nera/auto-matching)
 
-## Docker Composeによる開発環境立ち上げ
+## お試しサーバ
+
+お試しサーバとして以下にホスティングしています。
+
+- https://auto-matching.netlify.com/ (Nuxt.js FrontEnd)
+- https://auto-matching-api-rails.herokuapp.com/ (Rails BackEnd) 
+
+## Docker Composeによるローカル開発環境立ち上げ
 
 ```
+$ cp auto-matching-nuxt/.env.sample auto-matching-nuxt/.env 
 $ docker-compose build
 $ docker-compose up -d
 ```

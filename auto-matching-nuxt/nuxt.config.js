@@ -22,7 +22,6 @@ module.exports = {
   },
 
   env: envSet,
-
   /*
    ** Customize the progress bar color
    */
@@ -56,7 +55,8 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // Doc: https://github.com/bootstrap-vue/bootstrap-vue
-    ['bootstrap-vue/nuxt', { css: false }]
+    ['bootstrap-vue/nuxt', { css: false }],
+    '@nuxtjs/dotenv'
   ],
   /*
    ** Axios module configuration
