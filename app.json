@@ -2,5 +2,26 @@
   "name": "Auto Matching",
   "description": "Auto Matching Rails API server",
   "repository": "https://github.com/tsu-nera/auto-matching",
-  "keywords": ["rails", "ruby"]
+  "keywords": ["rails", "ruby"],
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "10.6"
+      }
+    },
+  ],
+  "buildpacks": [
+    {
+      "url": " https://github.com/heroku/heroku-buildpack-multi"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "env": {
+    "APP_BASE": {
+      "value": "auto-matching-api-rails"
+    }
+  }
 }
