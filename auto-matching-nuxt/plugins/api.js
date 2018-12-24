@@ -2,7 +2,7 @@
 import axios from 'axios'
 import qs from 'qs'
 
-let domain = process.env.apiUrl
+let domain = process.env.baseUrl
 export const getDomain = () => {
   return domain
 }

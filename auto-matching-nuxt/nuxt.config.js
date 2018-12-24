@@ -23,7 +23,7 @@ module.exports = {
   loading: { color: '#42A5CC' },
 
   env: {
-    apiUrl: process.env.API_URL || 'http://localhost:5000'
+    baseUrl: process.env.BASE_URL || 'http://localhost:5000'
   },
 
   /**
