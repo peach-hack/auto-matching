@@ -13,6 +13,21 @@ Auto Matching
 - Nuxt.js 2.3.4
 - TypeScript 3.1.1
 
+## 概要
+
+出会い系マッチングサイトをIT技術の力によって自動化、効率化する、オープンソースのWebアプリです。誰でも無料で利用することができます。
+
+### 対応サイト
+
+注: 以下はアフィリエイトリンクですが、サイトへの登録をすることで無償提供の対価として開発者に寄付していただけると嬉しいです。
+
+- [ハッピーメール](https://happymail.co.jp/?af14212217)
+- [ワクワクメール](https://550909.com/?f6858637)
+- [PCMAX](https://pcmax.jp/lp/?ad_id=rm181904)
+- [イクヨクルヨ](https://194964.com/AF1213451)
+- [ミントC!Jメール](https://mintj.com/?mdc=991&afguid=1iojxazbuotgo2d2n8pf4xszii)
+- [メルパラ](https://meru-para.com/?mdc=991&afguid=1y803u9dpjvt42admh2jxq7tv6)
+
 ## Deploy Button
 
 ひみつのボタン。ポチっとな。

@@ -5,7 +5,6 @@ b-card
       tr
         th #
         th サイト名
-        th サイトURL
         th ログインID
         th ログインパスワード
         th 操作対象
@@ -13,8 +12,7 @@ b-card
     tbody
       tr(v-for="site in sites" :key="site.id")
         th {{ site.attributes.id }}
-        td {{ site.attributes.name }}
-        td {{ site.attributes.url }}
+        th(v-html="site.attributes.link")
         td {{ site.attributes.login_user }}
         td {{ site.attributes.login_password }}
         td {{ site.attributes.activate_flag }}
