@@ -1,3 +1,4 @@
-<template>
-  <div><nuxt /></div>
+<template lang="pug">
+b-card
+  nuxt
 </template>

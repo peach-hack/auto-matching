@@ -14,8 +14,8 @@ module.exports = {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".vue"]
       },
       alias: [
-        ['~', __dirname], // ルートディレクトリのエイリアス
-        ['@', __dirname], // ルートディレクトリのエイリアス
+        ['~', __dirname],
+        ['@', __dirname],
       ],
     },
     "import/core-modules": [
@@ -41,6 +41,7 @@ module.exports = {
     "no-param-reassign": 0,
     "import/prefer-default-export": 0,
     "import/no-dynamic-require": 0,
-    "prefer-destructuring": 0
+    "prefer-destructuring": 0,
+    "import/no-unresolved": 0,
   }
 };
