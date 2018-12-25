@@ -6,8 +6,8 @@
 #
 #  id                          :bigint(8)        not null, primary key
 #  key(ユニークキー)                 :string(255)      not null
-#  login_password(ログインパスワード情報) :string(255)      not null
-#  login_user(ログインユーザー情報)      :string(255)      not null
+#  password(ログインパスワード情報) :string(255)      not null
+#  user_id(ログインユーザー情報)      :string(255)      not null
 #  name(サイト名)                  :string(255)      not null
 #  url(サイトURL)                 :string(255)      not null
 #  created_at                  :datetime         not null
@@ -19,6 +19,8 @@
 #
 
 class SourceSite < ApplicationRecord
+  has_secure_password
+
   KEY_HAPPY_MAIL = "happy_mail".freeze
   KEY_WAKUWAKU = "wakuwaku".freeze
   KEY_PCMAX = "pcmax".freeze
@@ -32,8 +34,8 @@ class SourceSite < ApplicationRecord
   validates :name, presence: true
   validates :login_url, presence: true
   validates :url, presence: true
-  validates :login_user, presense: false, allow_blank: true, format: { with: VALID_PHONE_OR_EMAIL_REGEX }
-  validates :login_password, presense: false, allow_blank: true
+  validates :user_id, presense: false, allow_blank: true, format: { with: VALID_PHONE_OR_EMAIL_REGEX }
+  validates :password_digest, presense: false, allow_blank: true
 
   attribute :activate_flag, :boolean, default: -> { true }
 end

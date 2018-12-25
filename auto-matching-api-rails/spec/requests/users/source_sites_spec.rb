@@ -20,7 +20,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
   end
 
   describe "#update" do
-    let(:params) { { login_user: "", login_password: "", activate_flag: true } }
+    let(:params) { { user_id: "", password: "", activate_flag: true } }
     subject { put api_users_source_site_path(target), params: params }
 
     before do
@@ -35,13 +35,13 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
 
         it "空パラメータでクリアされていること" do
           source_site = SourceSite.find(target.id)
-          expect(source_site.login_user).to be_blank
-          expect(source_site.login_password).to be_blank
+          expect(source_site.user_id).to be_blank
+          expect(source_site.password).to be_blank
         end
       end
 
       context "パラメータありの場合(email)" do
-        let(:params) { { login_user: "tsu-nera@gmail.com", login_password: "tsu-nera", activate_flag: true } }
+        let(:params) { { user_id: "tsu-nera@gmail.com", password: "tsu-nera", activate_flag: true } }
 
         it "レスポンスコードが200であること" do
           expect(response).to have_http_status(200)
@@ -49,13 +49,13 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
 
         it "パラメータが設定されていること" do
           source_site = SourceSite.find(target.id)
-          expect(source_site.login_user).to eq(params[:login_user])
-          expect(source_site.login_password).to eq(params[:login_password])
+          expect(source_site.user_id).to eq(params[:user_id])
+          expect(source_site.password).to eq(params[:password])
         end
       end
 
       context "パラメータありの場合(phone)" do
-        let(:params) { { login_user: "08012345678", login_password: "tsu-nera", activate_flag: true } }
+        let(:params) { { user_id: "08012345678", password: "tsu-nera", activate_flag: true } }
 
         it "レスポンスコードが200であること" do
           expect(response).to have_http_status(200)
@@ -63,15 +63,15 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
 
         it "パラメータが設定されていること" do
           source_site = SourceSite.find(target.id)
-          expect(source_site.login_user).to eq(params[:login_user])
-          expect(source_site.login_password).to eq(params[:login_password])
+          expect(source_site.user_id).to eq(params[:user_id])
+          expect(source_site.password).to eq(params[:password])
         end
       end
     end
 
     context "異常系" do
       context "ユーザ名が不正な場合" do
-        let(:params) { { login_user: "tsu-nera", login_password: "tsu-nera", activate_flag: true } }
+        let(:params) { { user_id: "tsu-nera", password: "tsu-nera", activate_flag: true } }
 
         it "レスポンスコードが400であること" do
           expect(response).to have_http_status(400)

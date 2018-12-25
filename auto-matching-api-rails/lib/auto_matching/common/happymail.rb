@@ -10,15 +10,15 @@ module AutoMatching
       end
 
       def login_mobile
-        session.fill_in "TelNo", with: login_user
-        session.fill_in "Pass", with: login_password
+        session.fill_in "TelNo", with: user_id
+        session.fill_in "Pass", with: password
 
         session.first("#login_btn").native.send_keys(:return)
       end
 
       def login_pc
-        session.fill_in "TelNo", with: login_user
-        session.fill_in "Pass_x", with: login_password
+        session.fill_in "TelNo", with: user_id
+        session.fill_in "Pass_x", with: password
         session.first("#telLoginLink").click
       end
     end

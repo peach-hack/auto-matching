@@ -8,8 +8,8 @@ module AutoMatching
       def try_login
         session.first(".register-header > .register-h2#login-tab").click
 
-        session.fill_in "login_id", with: login_user
-        session.fill_in "login_pw", with: login_password
+        session.fill_in "login_id", with: user_id
+        session.fill_in "login_pw", with: password
         session.click_button "会員ログイン"
       end
     end

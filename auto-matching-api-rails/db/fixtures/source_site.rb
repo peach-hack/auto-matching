@@ -7,8 +7,8 @@ SourceSite.seed do |p|
   p.name = "ハッピーメール"
   p.login_url = "https://happymail.co.jp/sp/loginform.php?Log=newspi"
   p.url = "https://happymail.co.jp"
-  p.login_user = ENV["HAPPY_MAIL_LOGIN_USER"]
-  p.login_password = ENV["HAPPY_MAIL_LOGIN_PASSWORD"]
+  p.user_id = ENV["HAPPY_MAIL_LOGIN_USER"]
+  p.password = ENV["HAPPY_MAIL_LOGIN_PASSWORD"]
 end
 
 # ワクワクメール
@@ -18,8 +18,8 @@ SourceSite.seed do |p|
   p.name = "ワクワクメール"
   p.login_url = "https://login.550909.com/login"
   p.url = "https://550909.com"
-  p.login_user = ENV["WAKUWAKU_LOGIN_USER"]
-  p.login_password = ENV["WAKUWAKU_LOGIN_PASSWORD"]
+  p.user_id = ENV["WAKUWAKU_LOGIN_USER"]
+  p.password = ENV["WAKUWAKU_LOGIN_PASSWORD"]
 end
 
 # PCMAX
@@ -29,8 +29,8 @@ SourceSite.seed do |p|
   p.name = "PCMAX"
   p.login_url = "https://pcmax.jp/pcm/index.php"
   p.url = "https://pcmax.jp"
-  p.login_user = ENV["PCMAX_LOGIN_USER"]
-  p.login_password = ENV["PCMAX_LOGIN_PASSWORD"]
+  p.user_id = ENV["PCMAX_LOGIN_USER"]
+  p.password = ENV["PCMAX_LOGIN_PASSWORD"]
 end
 
 # イクヨクルヨ
@@ -40,8 +40,8 @@ SourceSite.seed do |p|
   p.name = "イクヨクルヨ"
   p.login_url = "https://www.194964.com/registration/login/show_login_tel.html"
   p.url = "https://194964.com"
-  p.login_user = ENV["IKUKURU_LOGIN_USER"]
-  p.login_password = ENV["IKUKURU_LOGIN_PASSWORD"]
+  p.user_id = ENV["IKUKURU_LOGIN_USER"]
+  p.password = ENV["IKUKURU_LOGIN_PASSWORD"]
 end
 
 # ミントC!Jメール
@@ -51,8 +51,8 @@ SourceSite.seed do |p|
   p.name = "ミントC!Jメール"
   p.login_url = "https://mintj.com/msm/login"
   p.url = "https://mintj.com"
-  p.login_user = ENV["MINT_LOGIN_USER"]
-  p.login_password = ENV["MINT_LOGIN_PASSWORD"]
+  p.user_id = ENV["MINT_LOGIN_USER"]
+  p.password = ENV["MINT_LOGIN_PASSWORD"]
 end
 
 # メルパラ
@@ -62,6 +62,6 @@ SourceSite.seed do |p|
   p.name = "メルパラ"
   p.login_url = "https://meru-para.com/msm/login/"
   p.url = "https://meru-para.com"
-  p.login_user = ENV["MERUPARA_LOGIN_USER"]
-  p.login_password = ENV["MERUPARA_LOGIN_PASSWORD"]
+  p.user_id = ENV["MERUPARA_LOGIN_USER"]
+  p.password = ENV["MERUPARA_LOGIN_PASSWORD"]
 end

@@ -35,9 +35,9 @@ paths:
                     activate_flag: 
                       type: string
                       example: 有効
-                    login_user:
+                    user_id:
                       type: string
                       example: tsu-nera@gmail.com
-                    login_password:
+                    password:
                       type: string
                       example: 1234

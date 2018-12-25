@@ -15,8 +15,8 @@ b-card
         th {{ site.attributes.id }}
         td {{ site.attributes.name }}
         td {{ site.attributes.url }}
-        td {{ site.attributes.login_user }}
-        td {{ site.attributes.login_password }}
+        td {{ site.attributes.user_id }}
+        td {{ site.attributes.password }}
         td {{ site.attributes.activate_flag }}
         td
           nuxt-link(:to="{ path: '/sites/' + site.id }") 編集

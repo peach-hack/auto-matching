@@ -13,11 +13,11 @@ module AutoMatching
 
         def run_process
           # 実行条件のチェック
-          if !login_user.present?
+          if !user_id.present?
             p "ログインIDが設定されていません"
             raise StandardError
           end
-          if !login_password.present?
+          if !password.present?
             p "ログインパスワードが設定されていません"
             raise StandardError
           end

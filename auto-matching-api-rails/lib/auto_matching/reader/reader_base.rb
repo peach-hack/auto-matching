@@ -13,7 +13,7 @@ module AutoMatching
 
         def run_process
           # 実行条件のチェック
-          return if !login_user.present? || !login_password.present?
+          return if !user_id.present? || !password.present?
 
           # サイトオープン
           session.visit(url)

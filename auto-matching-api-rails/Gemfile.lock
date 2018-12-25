@@ -76,6 +76,7 @@ GEM
       awesome_print
       pry-rails
       railties
+    bcrypt (3.1.12)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -374,6 +375,7 @@ DEPENDENCIES
   annotate
   awesome_rails_console
   baby_squeel!
+  bcrypt (~> 3.1.7)
   better_errors
   byebug
   capybara

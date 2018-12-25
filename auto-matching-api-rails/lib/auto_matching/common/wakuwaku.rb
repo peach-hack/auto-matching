@@ -6,8 +6,8 @@ module AutoMatching
       end
 
       def try_login
-        session.fill_in "email", with: login_user
-        session.fill_in "password", with: login_password
+        session.fill_in "email", with: user_id
+        session.fill_in "password", with: password
         session.click_on "ログイン"
       end
     end

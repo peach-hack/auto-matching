@@ -13,12 +13,12 @@ module AutoMatching
         @source_site ||= SourceSite.find_by(key: self.source_site_key)
       end
 
-      def login_user
-        source_site.login_user
+      def user_id
+        source_site.user_id
       end
 
-      def login_password
-        source_site.login_password
+      def password
+        source_site.password
       end
 
       def url
