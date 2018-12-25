@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name", null: false, comment: "サイト名"
     t.string "url", null: false, comment: "サイトURL"
     t.string "user_id", comment: "ログインユーザー情報"
-    t.string "password", comment: "ログインパスワード情報"
+    t.string "password_digest", comment: "ログインパスワード情報(暗号化済)"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "login_url", null: false, comment: "クロール開始URL"
