@@ -2,21 +2,10 @@
 
 module AutoMatching
   module Sender
-    class Wakuwaku < PostSenderBase
-      class << self
-        def source_site_key
-          SourceSite::KEY_WAKUWAKU
-        end
-      end
+    class Wakuwaku < SenderBase
+      include Common::Wakuwaku
 
       private
-
-        def try_login
-          session.fill_in "email", with: login_user
-          session.fill_in "password", with: login_password
-          session.click_on "ログイン"
-        end
-
         def delete_past_post
           session.visit("http://550909.com/m/bbs/history")
 

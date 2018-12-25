@@ -36,7 +36,7 @@ FactoryBot.define do
     login_url do
       "http://example#{SourceSite.count}.com"
     end
-    url do
+    affiliate_url do
       "http://example#{SourceSite.count}.com"
     end
     activate_flag { true }

@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "source_sites", comment: "出会い系サイトの情報", force: :cascade do |t|
     t.string "key", null: false, comment: "ユニークキー"
     t.string "name", null: false, comment: "サイト名"
-    t.string "url", null: false, comment: "サイトURL"
+    t.string "affiliate_url", null: false, comment: "アフィリエイトURL"
     t.string "login_user", comment: "ログインユーザー情報"
     t.string "login_password", comment: "ログインパスワード情報"
     t.datetime "created_at", null: false
