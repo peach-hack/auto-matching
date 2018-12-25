@@ -1,6 +1,5 @@
 <template lang="pug">
-b-card
-  sites-table(:sites="sites")
+sites-table(:sites="sites")
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template lang="pug">
-b-card
+div
   h2 Title
   form
     .form-group

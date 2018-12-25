@@ -1,11 +1,11 @@
-<template>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <h5 class="mb-0">{{ $t('main.route.' + $route.name) }}</h5>
-    </li>
-  </ol>
+<template lang="pug">
+ol.breadcrumb
+  li.breadcrumb-item
+    h5.mb-0 {{ $t('main.route.' + $route.name) }}
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Breadcrumb'
+}
 </script>
