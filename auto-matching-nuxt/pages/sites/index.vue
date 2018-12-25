@@ -7,7 +7,6 @@ b-card
         th サイト名
         th サイトURL
         th ログインID
-        th ログインパスワード
         th 操作対象
         th 編集
     tbody
@@ -16,7 +15,6 @@ b-card
         td {{ site.attributes.name }}
         td {{ site.attributes.url }}
         td {{ site.attributes.user_id }}
-        td {{ site.attributes.password }}
         td {{ site.attributes.activate_flag }}
         td
           nuxt-link(:to="{ path: '/sites/' + site.id }") 編集

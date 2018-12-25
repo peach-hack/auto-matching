@@ -47,10 +47,6 @@
                         "type": "string",
                         "example": "tsu-nera@gmail.com"
                       },
-                      "password": {
-                        "type": "string",
-                        "example": 1234
-                      }
                     }
                   }
                 }

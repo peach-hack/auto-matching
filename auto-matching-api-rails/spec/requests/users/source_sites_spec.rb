@@ -36,7 +36,6 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
         it "空パラメータでクリアされていること" do
           source_site = SourceSite.find(target.id)
           expect(source_site.user_id).to be_blank
-          expect(source_site.password).to be_blank
         end
       end
 
@@ -50,7 +49,6 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
         it "パラメータが設定されていること" do
           source_site = SourceSite.find(target.id)
           expect(source_site.user_id).to eq(params[:user_id])
-          expect(source_site.password).to eq(params[:password])
         end
       end
 
@@ -64,7 +62,6 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
         it "パラメータが設定されていること" do
           source_site = SourceSite.find(target.id)
           expect(source_site.user_id).to eq(params[:user_id])
-          expect(source_site.password).to eq(params[:password])
         end
       end
     end
