@@ -1,5 +1,6 @@
 <template lang="pug">
 b-card
+  h2 Title
   form
     .form-group
       label ログインID
