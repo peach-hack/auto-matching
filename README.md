@@ -6,7 +6,7 @@ Auto Matching
 ![](https://img.shields.io/circleci/project/github/tsu-nera/auto-matching.svg)
 [![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/tsu-nera/auto-matching/)
 
-- Ruby version 2.5.1
+- Ruby version 2.6.0
 - Rails 5.2.1
 - PostgresSQL  10.6
 - Vue.js 2.5.21
