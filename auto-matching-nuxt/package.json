@@ -25,6 +25,7 @@
     "@coreui/vue": "^2.1.0",
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/babel-preset-app": "^0.8.0",
+    "@nuxtjs/pwa": "^2.6.0",
     "@storybook/vue": "^4.1.2",
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.15",
