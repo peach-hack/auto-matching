@@ -54,8 +54,13 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // Doc: https://github.com/bootstrap-vue/bootstrap-vue
-    ['bootstrap-vue/nuxt', { css: false }]
+    ['bootstrap-vue/nuxt', { css: false }],
+    '@nuxtjs/pwa'
   ],
+  manifest: {
+    name: 'Auto Matching',
+    lang: 'ja'
+  },
   /*
    ** Axios module configuration
    */
