@@ -7,7 +7,6 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "noImplicitThis": true,
-    "experimentalDecorators": true,
     "allowJs": true,
     "lib": ["esnext", "dom"],
     "baseUrl": ".",
