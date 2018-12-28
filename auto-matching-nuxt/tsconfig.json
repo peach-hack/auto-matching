@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./build",
     "sourceMap": true,
     "target": "es5",
     "strict": true,
@@ -11,10 +12,9 @@
     "lib": ["esnext", "dom"],
     "baseUrl": "./",
     "paths": {
-      "~/*": ["./*"],
       "@/*": ["./*"]
     },
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "build"],
   "include": ["src/**/*"]
 }

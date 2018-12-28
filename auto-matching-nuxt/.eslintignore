@@ -3,3 +3,4 @@ storybook-static
 *sw.js
 webpack.config.extend.js
 nuxt.config.js
+build
