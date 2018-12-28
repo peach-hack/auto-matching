@@ -1,0 +1,2 @@
+#!/bin/bash
+ruby --jit bin/rails server -b 0.0.0.0
