@@ -14,7 +14,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      sites: [] as any
+      sites: [] as Array<any>
     }
   },
   mounted() {
