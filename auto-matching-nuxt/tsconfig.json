@@ -14,7 +14,8 @@
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"]
-    }
+    },
+    "noEmit": true 
   },
   "include": ["**/*"],
   "exclude": ["node_modules", "spec"]
