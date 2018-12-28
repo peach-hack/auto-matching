@@ -3,9 +3,10 @@ sites-table(:sites="sites")
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import SitesTable from '~/components/organisms/SitesTable'
-import { getApiUsersSourceSites } from '~/plugins/api'
+import Vue, { ComponentOptions } from 'vue'
+import SitesTable from '@/components/organisms/SitesTable.vue'
+
+const Api = require('@/plugins/api')
 
 export default Vue.extend({
   components: {
@@ -17,9 +18,9 @@ export default Vue.extend({
     }
   },
   mounted() {
-    getApiUsersSourceSites().then((response: any) => {
+    Api.getApiUsersSourceSites().then((response: any) => {
       response.data.data.map((site: any) => this.sites.push(site))
     })
   }
-})
+} as ComponentOptions<Vue>)
 </script>

@@ -14,8 +14,7 @@ module.exports = {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".vue"]
       },
       alias: [
-        ['~', __dirname],
-        ['@', __dirname],
+        ['@', "src"],
       ],
     },
     "import/core-modules": [
@@ -43,5 +42,6 @@ module.exports = {
     "import/no-dynamic-require": 0,
     "prefer-destructuring": 0,
     "import/no-unresolved": 0,
+    "no-underscore-dangle": 0,
   }
 };

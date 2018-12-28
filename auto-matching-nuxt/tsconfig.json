@@ -9,12 +9,14 @@
     "noImplicitThis": true,
     "allowJs": true,
     "lib": ["esnext", "dom"],
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "~/*": ["./*"],
-      "@/*": ["./*"]
-    }
+      "@": ["src"],
+      "*": [
+        "src/types/*"
+      ]
+    },
   },
-  "include": ["**/*"],
-  "exclude": ["node_modules", "spec"]
+  "exclude": ["node_modules"],
+  "include": ["src/**/*"]
 }

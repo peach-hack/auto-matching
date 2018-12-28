@@ -1,3 +1,5 @@
 node_modules
 storybook-static
-
+*sw.js
+webpack.config.extend.js
+nuxt.config.js
