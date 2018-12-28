@@ -1,12 +1,16 @@
 module.exports = {
+  root: true,
   env: {
+    "node": true,
     "jest/globals": true
   },
   plugins: ["jest", "vue", "import", "prettier"],
   extends: [
     "airbnb-base",
+    "eslint:recommended",
     "plugin:vue/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier/vue",
   ],
   settings: {
     "import/resolver": {
@@ -21,7 +25,6 @@ module.exports = {
       'vue', // vueはnuxtが抱えているため明記する必要がある
     ],
   },
-  root: true,
   parser: "vue-eslint-parser",
   parserOptions: {
     parser: "typescript-eslint-parser"

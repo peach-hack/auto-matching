@@ -11,10 +11,8 @@
     "lib": ["esnext", "dom"],
     "baseUrl": "./",
     "paths": {
-      "@": ["src"],
-      "*": [
-        "src/types/*"
-      ]
+      "~/*": ["./*"],
+      "@/*": ["./*"]
     },
   },
   "exclude": ["node_modules"],
