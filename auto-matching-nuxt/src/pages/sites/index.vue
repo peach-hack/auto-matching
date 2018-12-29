@@ -6,8 +6,6 @@ sites-table(:sites="sites")
 import Vue from 'vue'
 import SitesTable from '@/components/organisms/SitesTable.vue'
 
-const Api = require('@/plugins/api')
-
 export default Vue.extend({
   components: {
     SitesTable
@@ -18,7 +16,7 @@ export default Vue.extend({
     }
   },
   mounted() {
-    Api.getApiUsersSourceSites().then((response: any) => {
+    this.getApiUsersSourceSites().then((response: any) => {
       response.data.data.map((site: any) => this.sites.push(site))
     })
   }
