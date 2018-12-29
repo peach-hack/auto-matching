@@ -1,6 +1,6 @@
 module AutoMatching
   module Checker
-    class Ikukuru < CheckerBase
+    class Ikukuru < ReaderBase
       include Common::Ikukuru
 
       private
