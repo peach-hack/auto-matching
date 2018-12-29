@@ -12,9 +12,9 @@ export default Vue.extend({
   components: {
     SitesTable
   },
-  data() {
-    return {
-      sites: [] as Array<any>
+  computed: {
+    sites: function(): Array<any> {
+      return (<any>this).$store.state.sites
     }
   },
   mounted() {
