@@ -1,12 +1,16 @@
 module.exports = {
+  root: true,
   env: {
+    "node": true,
     "jest/globals": true
   },
   plugins: ["jest", "vue", "import", "prettier"],
   extends: [
     "airbnb-base",
+    "eslint:recommended",
     "plugin:vue/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier/vue",
   ],
   settings: {
     "import/resolver": {
@@ -14,15 +18,13 @@ module.exports = {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".vue"]
       },
       alias: [
-        ['~', __dirname], // ルートディレクトリのエイリアス
-        ['@', __dirname], // ルートディレクトリのエイリアス
+        ['@', "src"],
       ],
     },
     "import/core-modules": [
       'vue', // vueはnuxtが抱えているため明記する必要がある
     ],
   },
-  root: true,
   parser: "vue-eslint-parser",
   parserOptions: {
     parser: "typescript-eslint-parser"
@@ -41,6 +43,8 @@ module.exports = {
     "no-param-reassign": 0,
     "import/prefer-default-export": 0,
     "import/no-dynamic-require": 0,
-    "prefer-destructuring": 0
+    "prefer-destructuring": 0,
+    "import/no-unresolved": 0,
+    "no-underscore-dangle": 0,
   }
 };

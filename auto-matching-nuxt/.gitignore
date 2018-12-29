@@ -83,3 +83,9 @@ __snapshots__
 
 # storybook
 storybook-static
+
+# service worker
+sw.*
+
+# typescript outdir
+build

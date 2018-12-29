@@ -1,4 +1,4 @@
-FROM ruby:2.5.1
+FROM ruby:2.6.0
 
 RUN apt-get update -qq && \
     apt-get install -y apt-utils build-essential apt-transport-https libxml2-dev libpq-dev postgresql-client

@@ -1,23 +1,20 @@
-<template>
-  <div class="app">
-    <app-header fixed>
-      <b-link class="navbar-brand" :to="{ name: 'index' }" />
-    </app-header>
-    <div class="app-body">
-      <app-sidebar fixed>
-        <sidebar-header />
-        <sidebar-form />
-        <sidebar-nav :nav-items="nav" />
-        <sidebar-footer />
-        <sidebar-minimizer />
-      </app-sidebar>
-      <main class="main">
-        <breadcrumb :list="[]" />
-        <div class="container-fluid"><nuxt /></div>
-      </main>
-    </div>
-    <app-footer />
-  </div>
+<template lang="pug">
+.app
+  app-header(fixed)
+    b-link.navbar-brand(:to="{ name: 'index' }")
+  .app-body
+    app-sidebar(fixed)
+      sidebar-header
+      sidebar-form
+      sidebar-nav(:nav-items="nav")
+      sidebar-footer
+      sidebar-minimizer
+    main.main
+      breadcrumb(:list="[]")
+      .container-fluid
+        b-card
+          nuxt
+  app-footer
 </template>
 
 <script>
