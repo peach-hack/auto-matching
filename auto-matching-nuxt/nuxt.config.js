@@ -59,6 +59,9 @@ module.exports = {
   ],
   manifest: {
     name: 'Auto Matching',
+    short_name: 'auto-matching',
+    tilte: 'Auto Matching',
+    description: 'Dating meets Tech',
     lang: 'ja'
   },
   /*
