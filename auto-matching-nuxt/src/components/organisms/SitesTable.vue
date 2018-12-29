@@ -22,7 +22,7 @@ table.table
 <script lang="ts">
 export default {
   props: {
-    sites: Object
+    sites: Array
   }
 }
 </script>
