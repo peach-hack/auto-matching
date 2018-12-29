@@ -1,5 +1,5 @@
 <template lang="pug">
-sites-table(:sites="sites")
+sites-table
 </template>
 
 <script lang="ts">
@@ -11,16 +11,11 @@ const Api = require('@/plugins/api')
 export default Vue.extend({
   components: {
     SitesTable
-  },
-  computed: {
-    sites: function(): Array<any> {
-      return (<any>this).$store.state.sites
-    }
-  },
-  mounted() {
-    Api.getApiUsersSourceSites().then((response: any) => {
-      response.data.data.map((site: any) => this.sites.push(site))
-    })
   }
+  // mounted() {
+  // Api.getApiUsersSourceSites().then((response: any) => {
+  //    response.data.data.map((site: any) => this.sites.push(site))
+  //})
+  //}
 } as any)
 </script>
