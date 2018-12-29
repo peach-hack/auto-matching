@@ -38,3 +38,4 @@ yarn-debug.log*
 /db/templates/post.yml
 .generators
 .rakeTasks
+/vendor/bundle/
