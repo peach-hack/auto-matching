@@ -10,7 +10,7 @@ styled-container
 
 <script>
 import styled from 'vue-styled-components'
-import Logo from '../components/Logo.vue'
+import Logo from '@/components/Logo.vue'
 
 const StyledContainer = styled.section`
   min-height: 100vh;

@@ -19,7 +19,7 @@ module.exports = config => {
   config.module.rules.push(
     Object.assign(
       {
-        test: /((client|server)\.js)|(\.tsx?)$/,
+        test: /(\.tsx?)$/,
         exclude: /node_modules/
       },
       tsLoader
@@ -37,8 +37,7 @@ module.exports = config => {
   }
 
   // Add alias
-  config.resolve.alias['@'] = path.resolve(__dirname, '.')
-  config.resolve.alias['~'] = path.resolve(__dirname, '.')
+  config.resolve.alias['@'] = path.resolve(__dirname, 'src')
 
   return config
 }

@@ -1,18 +1,18 @@
 const extendConfig = require('./webpack.config.extend')
-const pkg = require('./package.json')
 
 module.exports = {
   mode: 'spa',
+  srcDir: 'src/',
 
   /*
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: 'Auto Matching',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: 'Dating meets Tech' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
@@ -31,21 +31,21 @@ module.exports = {
    */
   css: [
     /* Import Font Awesome Icons Set */
-    '~/node_modules/flag-icon-css/css/flag-icon.min.css',
+    './node_modules/flag-icon-css/css/flag-icon.min.css',
     /* Import Font Awesome Icons Set */
-    '~/node_modules/font-awesome/css/font-awesome.min.css',
+    './node_modules/font-awesome/css/font-awesome.min.css',
     /* Import Simple Line Icons Set */
-    '~/node_modules/simple-line-icons/css/simple-line-icons.css',
+    './node_modules/simple-line-icons/css/simple-line-icons.css',
     /* Import Bootstrap Vue Styles */
-    '~/node_modules/bootstrap-vue/dist/bootstrap-vue.css',
+    './node_modules/bootstrap-vue/dist/bootstrap-vue.css',
     /* Import Core SCSS */
-    { src: '~/assets/scss/style.scss', lang: 'scss' }
+    { src: './src/assets/scss/style.scss', lang: 'scss' }
   ],
 
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/i18n.js' }],
+  plugins: [{ src: '@/plugins/i18n.js' }],
 
   /*
    ** Nuxt.js modules
@@ -59,6 +59,9 @@ module.exports = {
   ],
   manifest: {
     name: 'Auto Matching',
+    short_name: 'auto-matching',
+    tilte: 'Auto Matching',
+    description: 'Dating meets Tech',
     lang: 'ja'
   },
   /*
@@ -98,5 +101,5 @@ module.exports = {
   /*
    ** Extensions
    */
-  extensions: ['ts', 'js']
+  extensions: ['js', 'ts']
 }
