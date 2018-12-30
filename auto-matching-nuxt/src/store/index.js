@@ -16,7 +16,7 @@ const store = () => {
       }
     },
     getters: {
-      getSite: (state, id) => state.sites[id - 1]
+      getSite: state => id => state.sites[id - 1]
     },
     actions: {
       async fetchSites({ commit }) {

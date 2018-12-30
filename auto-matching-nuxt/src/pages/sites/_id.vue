@@ -14,7 +14,7 @@ div
           | 操作対象
         .col-sm-10
           .form-check
-            input.form-check-input(type="radio" name="activation" checked)#activate
+            input.form-check-input(type="radio" name="activation" )#activate
             label.form-check-label(for="activate")
               | 有効
           .form-check
@@ -34,7 +34,7 @@ import Vue from 'vue'
 export default Vue.extend({
   data: function() {
     return {
-      site: this.$store.getSite(this.$route.params.id)
+      site: this.$store.getters.getSite(this.$route.params.id)
     }
   }
 } as any)
