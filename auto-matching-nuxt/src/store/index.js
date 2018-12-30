@@ -11,15 +11,14 @@ const store = () => {
       sites: []
     },
     mutations: {
-      addSites(state, { sites }) {
-        state.sites = sites
+      addSites(state, payload) {
+        state.sites = payload
       }
     },
     actions: {
-      fetchSites({ commit }) {
-        Api.getApiUsersSourceSites().then(response => {
-          commit('addSites', response.data.data)
-        })
+      async fetchSites({ commit }) {
+        const response = await Api.getApiUsersSourceSites()
+        commit('addSites', response.data.data)
       }
     }
   })

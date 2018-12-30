@@ -9,16 +9,24 @@ table.table
       th 操作対象
       th 編集
   tbody
-    sites-list(v-for="site in $store.state.sites" :key="site.id")
+    tr(v-for="site in $store.state.sites" :key="site.id")
+      th {{ site.attributes.id }}
+      th(v-html="site.attributes.link")
+      td {{ site.attributes.login_user }}
+      td {{ site.attributes.login_password }}
+      td {{ site.attributes.activate_flag }}
+      td
+        nuxt-link(:to="{ path: editPath(site.id) }") 編集
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import SitesList from '@/components/molecules/SitesList.vue'
 
 export default Vue.extend({
-  components: {
-    SitesList
+  methods: {
+    editPath(id: Number) {
+      return `/sites/${id}`
+    }
   }
 } as any)
 </script>
