@@ -16,7 +16,7 @@ table.table
       td {{ site.attributes.login_password }}
       td {{ site.attributes.activate_flag }}
       td
-        nuxt-link(:to="{ path: editPath(site.id) }") 編集
+        nuxt-link(:to="{ path: editPath(site.id), params: { id:site.id } }") 編集
 </template>
 
 <script lang="ts">

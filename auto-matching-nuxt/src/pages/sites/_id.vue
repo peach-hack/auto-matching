@@ -1,13 +1,13 @@
 <template lang="pug">
 div
-  h2 Title
+  h2 {{ site.attributes.id }}
   form
     .form-group
       label ログインID
-      input.form-control(type="text" placeholder="LoginId")
+      input.form-control(type="text" placeholder="LoginId" v-model="site.attributes.login_user")
     .form-group
       label ログインパスワード
-      input.form-control(type="text" placeholder="Password")
+      input.form-control(type="text" placeholder="Password" v-model="site.attributes.login_password")
     fieldset.form-group
       .row
         legend.col-form-label.col-sm-2.pt-0
@@ -27,3 +27,15 @@ div
       button(type="button").btn.btn-light
         | Cancel
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  data: function() {
+    return {
+      site: this.$store.getSite(this.$route.params.id)
+    }
+  }
+} as any)
+</script>

@@ -15,6 +15,9 @@ const store = () => {
         state.sites = payload
       }
     },
+    getters: {
+      getSite: (state, id) => state.sites[id - 1]
+    },
     actions: {
       async fetchSites({ commit }) {
         const response = await Api.getApiUsersSourceSites()
