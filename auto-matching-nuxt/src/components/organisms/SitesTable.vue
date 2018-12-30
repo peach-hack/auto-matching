@@ -10,23 +10,26 @@ table.table
       th 編集
   tbody
     tr(v-for="site in $store.state.sites" :key="site.id")
-      th {{ site.attributes.id }}
-      th(v-html="site.attributes.link")
-      td {{ site.attributes.login_user }}
-      td {{ site.attributes.login_password }}
-      td {{ site.attributes.activate_flag }}
+      th {{ site.id }}
+      th(v-html="getLink(site)")
+      td {{ site.loginUser }}
+      td {{ site.loginPassword }}
+      td {{ getActivate(site) }}
       td
-        nuxt-link(:to="{ path: editPath(site.id), params: { id:site.id } }") 編集
+        nuxt-link(:to="{ path: getEditPath(site), params: {id: site.id } }") 編集
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
-  methods: {
-    editPath(id: Number) {
-      return `/sites/${id}`
-    }
+  computed: {
+    ...mapGetters({
+      getLink: 'link',
+      getActivate: 'activate',
+      getEditPath: 'editPath'
+    })
   }
 } as any)
 </script>

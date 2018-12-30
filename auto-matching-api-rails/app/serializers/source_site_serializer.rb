@@ -21,17 +21,5 @@
 class SourceSiteSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :id, :login_user, :login_password
-
-  attribute :link do |object|
-    ActionController::Base.helpers.link_to object.name, object.affiliate_url, target: "_blank"
-  end
-
-  attribute :activate_flag do |object|
-    if object.activate_flag
-      "有効"
-    else
-      "無効"
-    end
-  end
+  attributes :id, :login_user, :login_password, :name, :affiliate_url, :activate_flag
 end
