@@ -7,7 +7,8 @@ module Api
       end
 
       def update
-        source_site = SourceSite.find(params[:id])
+        logger.debug(params)
+        source_site = SourceSite.find_by(key: params[:key])
         source_site.update_attributes(
           login_user: params[:login_user],
           login_password: params[:login_password],

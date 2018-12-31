@@ -22,7 +22,10 @@
 FactoryBot.define do
   factory :source_site do
     key do
-      "key#{SourceSite.count}"
+      SourceSite::KEY_HAPPY_MAIL
+    end
+    name do
+      "ハッピーメール"
     end
     login_user do
       "login_user#{SourceSite.count}@gmail.com"
@@ -30,15 +33,14 @@ FactoryBot.define do
     login_password do
       "login_password#{SourceSite.count}"
     end
-    name do
-      "name#{SourceSite.count}"
-    end
     login_url do
       "http://example#{SourceSite.count}.com"
     end
     affiliate_url do
       "http://example#{SourceSite.count}.com"
     end
-    activate_flag { true }
+    activate_flag do
+      true
+    end
   end
 end
