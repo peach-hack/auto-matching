@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Api::Users::SourceSitesController, type: :request do
-  let(:target) { build(:source_site, {id: 1}) }
+  let(:target) { build(:source_site, id: 1) }
 
   describe "#index" do
     subject { get api_users_source_sites_path }
