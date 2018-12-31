@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import * as Api from '@/plugins/api'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -43,7 +44,8 @@ const store = () => {
         const response = await Api.getApiUsersSourceSites()
         commit('addSites', response.data.data)
       }
-    }
+    },
+    plugins: [createPersistedState()]
   })
 }
 
