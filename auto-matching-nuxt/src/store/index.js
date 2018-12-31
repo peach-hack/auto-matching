@@ -22,10 +22,10 @@ const store = () => {
             state.sites.push({
               id: site.attributes.id,
               name: site.attributes.name,
-              loginUser: site.attributes.login_user,
-              loginPassword: site.attributes.login_password,
-              activateFlag: site.attributes.activate_flag,
-              url: site.attributes.affiliate_url
+              loginUser: site.attributes.loginUser,
+              loginPassword: site.attributes.loginPassword,
+              activateFlag: site.attributes.activateFlag,
+              url: site.attributes.affiliateUrl
             })
           })
         state.sites

@@ -18,8 +18,6 @@
 #  index_source_sites_on_key  (key) UNIQUE
 #
 
-class SourceSiteSerializer
-  include FastJsonapi::ObjectSerializer
-
+class SourceSiteSerializer < ApplicationSerializer
   attributes :id, :login_user, :login_password, :name, :affiliate_url, :activate_flag
 end
