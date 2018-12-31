@@ -26,6 +26,7 @@ paths:
         - name: "id"
           in: "path"
           type: integer
+          required: true
         - in: body
           name: attributes
           description: サイト情報
@@ -41,10 +42,11 @@ paths:
                 description: "ログインパスワード"
                 type: string
               activateFlag:
-                descrition: "有効フラグ"
+                description: "有効フラグ"
                 type: boolean
       responses:
         '200':
           description: 成功時のレスポンス
         '500':
           description: 失敗時のレスポンス
+
