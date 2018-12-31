@@ -12,16 +12,20 @@ const store = () => {
     },
     mutations: {
       addSites(state, payload) {
-        payload.map(site =>
-          state.sites.push({
-            id: site.attributes.id,
-            name: site.attributes.name,
-            loginUser: site.attributes.login_user,
-            loginPassword: site.attributes.login_password,
-            activateFlag: site.attributes.activate_flag,
-            url: site.attributes.affiliate_url
+        payload
+          .sort((x, y) => {
+            return x.id - y.id
           })
-        )
+          .map(site => {
+            state.sites.push({
+              id: site.attributes.id,
+              name: site.attributes.name,
+              loginUser: site.attributes.login_user,
+              loginPassword: site.attributes.login_password,
+              activateFlag: site.attributes.activate_flag,
+              url: site.attributes.affiliate_url
+            })
+          })
         state.sites
       }
     },
