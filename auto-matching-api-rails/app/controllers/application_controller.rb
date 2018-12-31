@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
+  before_action :snakeize_params
 
   # 200 Success
   def response_success(class_name, action_name)
@@ -32,4 +31,11 @@ class ApplicationController < ActionController::Base
   def response_internal_server_error
     render status: 500, json: { status: 500, message: "Internal Server Error" }
   end
+
+  protected
+
+    # Snakeize JSON API request params
+    def snakeize_params
+      params.deep_snakeize!
+    end
 end
