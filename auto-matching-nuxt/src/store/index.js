@@ -12,6 +12,7 @@ const store = () => {
     },
     mutations: {
       addSites(state, payload) {
+        state.sites = []
         payload
           .sort((x, y) => {
             return x.id - y.id

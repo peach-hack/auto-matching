@@ -9,7 +9,7 @@ table.table
       th 操作対象
       th 編集
   tbody
-    tr(v-for="site in $store.state.sites" :key="site.id")
+    tr(v-for="site in $store.state.sites")
       th {{ site.id }}
       th(v-html="getLink(site)")
       td {{ site.loginUser }}
