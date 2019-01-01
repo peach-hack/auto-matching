@@ -42,13 +42,13 @@ export default {
     ): number {
       return parseInt(route.params.id)
     },
-    updateSite({ toast }: { toast: any }, { router }: { router: any }) {
+    updateSite({ toast }: { toast: any }, { route }: { route: any }) {
       Api.putApiUsersSourceSitesById({
         id: this.siteId,
         attributes: this.site
       })
         .then((response: any) => {
-          router.push('/sites')
+          route.push('/sites')
           toast.success('更新しました')
         })
         .catch((error: any) => {
@@ -58,4 +58,3 @@ export default {
   }
 } as any
 </script>
-n
