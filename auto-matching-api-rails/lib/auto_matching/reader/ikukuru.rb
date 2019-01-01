@@ -1,5 +1,5 @@
 module AutoMatching
-  module Checker
+  module Reader
     class Ikukuru < ReaderBase
       include Common::Ikukuru
 
