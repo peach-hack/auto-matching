@@ -21,6 +21,7 @@ const store = () => {
           .map(site => {
             state.sites.push({
               id: site.attributes.id,
+              key: site.attributes.key,
               name: site.attributes.name,
               loginUser: site.attributes.loginUser,
               loginPassword: site.attributes.loginPassword,

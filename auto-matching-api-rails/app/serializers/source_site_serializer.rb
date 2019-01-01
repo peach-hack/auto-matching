@@ -19,5 +19,5 @@
 #
 
 class SourceSiteSerializer < ApplicationSerializer
-  attributes :id, :login_user, :login_password, :name, :affiliate_url, :activate_flag
+  attributes :id, :login_user, :login_password, :name, :affiliate_url, :activate_flag, :key
 end
