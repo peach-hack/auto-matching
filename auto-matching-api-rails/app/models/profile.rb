@@ -12,8 +12,8 @@
 #
 
 class Profile < ApplicationRecord
-    validates :name, presence: true
-    validates :age, presence: true
-    validates :sex, presence: true
-    validates :from, presence: true
+  validates :name, presence: true
+  validates :age, presence: true
+  validates :sex, presence: true
+  validates :from, presence: true
 end
