@@ -1,6 +1,6 @@
 module AutoMatching
-  module Checker
-    class Pcmax < CheckerBase
+  module Reader
+    class Pcmax < ReaderBase
       include Common::Pcmax
     end
 

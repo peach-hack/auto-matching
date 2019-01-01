@@ -1,6 +1,6 @@
 module AutoMatching
-  module Checker
-    class Mint < CheckerBase
+  module Reader
+    class Mint < ReaderBase
       include Common::Mint
     end
 
