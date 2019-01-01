@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   h2 {{ site.name }}
-  form
+  form(@submit.prevent="updateSite")
     .form-group
       label ログインID
       input.form-control(type="text" placeholder="LoginId" v-model="site.loginUser")
@@ -31,14 +31,24 @@ div
 <script lang="ts">
 import Vue from 'vue'
 
+const Api = require('@/plugins/api')
+
 export default Vue.extend({
-  data: function() {
-    return {
-      site: this.$store.getters.site(this.$route.params.id - 1)
+  computed: {
+    site: function(): string {
+      return this.$store.getters.site(this.siteId - 1)
+    },
+    siteId: function(): number {
+      return parseInt(this.$route.params.id)
     }
   },
   methods: {
-    updateSite() {}
+    async updateSite() {
+      const response = await Api.putApiUsersSourceSitesById({
+        id: this.siteId
+      })
+      console.log(response)
+    }
   }
-} as any)
+})
 </script>
