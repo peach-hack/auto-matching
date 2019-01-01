@@ -80,6 +80,3 @@ group :development do
   gem "view_source_map"
   gem "rails_db"
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
