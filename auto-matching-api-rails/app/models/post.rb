@@ -23,5 +23,5 @@ class Post < ApplicationRecord
   validates :category, presence: true
   validates :area, presence: true
   validates :profile_id, presence: true
-  validates :body, presence: true
+  # validates :body, presence: true ##bodyは取得しないため
 end
