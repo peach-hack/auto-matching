@@ -54,7 +54,8 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc: https://github.com/bootstrap-vue/bootstrap-vue
     ['bootstrap-vue/nuxt', { css: false }],
-    ['@nuxtjs/pwa']
+    '@nuxtjs/pwa',
+    '@nuxtjs/toast'
   ],
   manifest: {
     name: 'Auto Matching',
@@ -62,6 +63,10 @@ module.exports = {
     tilte: 'Auto Matching',
     description: 'Dating meets Tech',
     lang: 'ja'
+  },
+  toast: {
+    position: 'top-right',
+    duration: 2000
   },
   /*
    ** Axios module configuration

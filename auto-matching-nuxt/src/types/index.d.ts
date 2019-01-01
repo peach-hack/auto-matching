@@ -35,3 +35,4 @@ declare module 'vue/types/options' {
     head?: () => { [key: string]: any }
   }
 }
+

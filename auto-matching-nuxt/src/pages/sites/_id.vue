@@ -51,9 +51,12 @@ export default Vue.extend({
         .then((response: any) => {
           console.log('success!!')
           this.$router.push('/sites')
+
+          this.$toast.success('更新しました')
         })
         .catch((error: any) => {
           console.log('error...orz')
+          this.$toast.error('エラーが発生しました')
         })
     }
   }
