@@ -1,6 +1,6 @@
 module AutoMatching
-  module Checker
-    class Merupara < CheckerBase
+  module Reader
+    class Merupara < ReaderBase
       include Common::Merupara
     end
 

@@ -17,6 +17,11 @@
 #
 
 class Post < ApplicationRecord
+  validates :source_site_id, presence: true
   validates :title, presence: true
-  validates :body, presence: true
+  validates :post_at, presence: true
+  validates :category, presence: true
+  validates :area, presence: true
+  validates :profile_id, presence: true
+  # validates :body, presence: true ##bodyは取得しないため
 end
