@@ -35,6 +35,8 @@ paths:
             properties:
               id:
                 type: integer
+              key:
+                type: string
               loginId:
                 description: "ログインID"
                 type: string

@@ -38,9 +38,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    isChecked() {
-      return true
-    }
+    updateSite() {}
   }
 } as any)
 </script>
