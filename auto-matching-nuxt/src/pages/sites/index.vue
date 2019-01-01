@@ -3,15 +3,14 @@ sites-table
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import SitesTable from '@/components/organisms/SitesTable.vue'
 
-export default Vue.extend({
+export default {
   components: {
     SitesTable
   },
   async fetch({ store }: { store: any }) {
     await store.dispatch('fetchSites')
   }
-} as any)
+} as any
 </script>
