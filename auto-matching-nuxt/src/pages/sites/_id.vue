@@ -43,11 +43,18 @@ export default Vue.extend({
     }
   },
   methods: {
-    async updateSite() {
-      await Api.putApiUsersSourceSitesById({
+    updateSite() {
+      Api.putApiUsersSourceSitesById({
         id: this.siteId,
         attributes: this.site
       })
+        .then((response: any) => {
+          console.log('success!!')
+          this.$router.push('/sites')
+        })
+        .catch((error: any) => {
+          console.log('error...orz')
+        })
     }
   }
 })
