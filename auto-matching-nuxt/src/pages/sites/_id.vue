@@ -44,10 +44,10 @@ export default Vue.extend({
   },
   methods: {
     async updateSite() {
-      const response = await Api.putApiUsersSourceSitesById({
-        id: this.siteId
+      await Api.putApiUsersSourceSitesById({
+        id: this.siteId,
+        attributes: this.site
       })
-      console.log(response)
     }
   }
 })
