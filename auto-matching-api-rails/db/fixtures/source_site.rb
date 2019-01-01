@@ -9,6 +9,7 @@ SourceSite.seed do |p|
   p.affiliate_url = "https://happymail.co.jp/?af14212217"
   p.login_user = ENV["HAPPY_MAIL_LOGIN_USER"]
   p.login_password = ENV["HAPPY_MAIL_LOGIN_PASSWORD"]
+  p.activate_flag = false
 end
 
 # ワクワクメール
@@ -20,6 +21,7 @@ SourceSite.seed do |p|
   p.affiliate_url = "https://550909.com/?f6858637"
   p.login_user = ENV["WAKUWAKU_LOGIN_USER"]
   p.login_password = ENV["WAKUWAKU_LOGIN_PASSWORD"]
+  p.activate_flag = false
 end
 
 # PCMAX
@@ -31,6 +33,7 @@ SourceSite.seed do |p|
   p.affiliate_url = "https://pcmax.jp/lp/?ad_id=rm181904"
   p.login_user = ENV["PCMAX_LOGIN_USER"]
   p.login_password = ENV["PCMAX_LOGIN_PASSWORD"]
+  p.activate_flag = false
 end
 
 # イクヨクルヨ
@@ -42,6 +45,7 @@ SourceSite.seed do |p|
   p.affiliate_url = "https://194964.com/AF1213451"
   p.login_user = ENV["IKUKURU_LOGIN_USER"]
   p.login_password = ENV["IKUKURU_LOGIN_PASSWORD"]
+  p.activate_flag = false
 end
 
 # ミントC!Jメール
@@ -53,6 +57,7 @@ SourceSite.seed do |p|
   p.affiliate_url = "https://mintj.com/?mdc=991&afguid=1iojxazbuotgo2d2n8pf4xszii"
   p.login_user = ENV["MINT_LOGIN_USER"]
   p.login_password = ENV["MINT_LOGIN_PASSWORD"]
+  p.activate_flag = false
 end
 
 # メルパラ
@@ -64,4 +69,5 @@ SourceSite.seed do |p|
   p.affiliate_url = "https://meru-para.com/?mdc=991&afguid=1y803u9dpjvt42admh2jxq7tv6"
   p.login_user = ENV["MERUPARA_LOGIN_USER"]
   p.login_password = ENV["MERUPARA_LOGIN_PASSWORD"]
+  p.activate_flag = false
 end

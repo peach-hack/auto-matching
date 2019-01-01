@@ -34,6 +34,9 @@ jobs:
           name: docker-compose up
           command: docker-compose -p nuxt_on_rails_on_docker up -d
       - run:
+          name: docker exec nuxt_on_rails_on_docker_rails_1 rails db:create
+          command: docker exec nuxt_on_rails_on_docker_rails_1 rails db:create
+      - run:
           name: docker exec nuxt_on_rails_on_docker_rails_1 bin/setup
           command: docker exec nuxt_on_rails_on_docker_rails_1 bin/setup
       # - run:
