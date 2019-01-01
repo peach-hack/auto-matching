@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  match "*path" => "options_request#preflight", via: :options
+
   defaults format: :json do
     namespace :api do
       namespace :users do
