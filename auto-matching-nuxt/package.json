@@ -30,6 +30,7 @@
     "@storybook/vue": "^4.1.2",
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.15",
+    "@types/vue-router": "^2.0.0",
     "@vue/cli-plugin-eslint": "^3.2.1",
     "@vue/cli-service": "^3.2.0",
     "@vue/test-utils": "^1.0.0-beta.27",

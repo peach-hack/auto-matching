@@ -29,32 +29,34 @@ div
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
+
 const Api = require('@/plugins/api')
 
-export default {
+export default Vue.extend({
+  computed: {
+    site: function(): any {
+      return this.$store.getters.site(this.siteId - 1)
+    },
+    siteId: function(): number {
+      return parseInt(this.$route.params.id)
+    }
+  },
   methods: {
-    site: function({ route }: { route: any }, { store }: { store: any }): any {
-      return store.getters.site[this.siteId(route, store) - 1]
-    },
-    siteId: function(
-      { route }: { route: any },
-      { store }: { store: any }
-    ): number {
-      return parseInt(route.params.id)
-    },
-    updateSite({ toast }: { toast: any }, { route }: { route: any }) {
+    updateSite: function() {
       Api.putApiUsersSourceSitesById({
         id: this.siteId,
         attributes: this.site
       })
         .then((response: any) => {
-          route.push('/sites')
-          toast.success('更新しました')
+          this.$router.push('/sites')
+
+          this.$toasted.success('更新しました')
         })
         .catch((error: any) => {
-          toast.error('エラーが発生しました')
+          this.$toasted.error('エラーが発生しました')
         })
     }
   }
-} as any
+})
 </script>
