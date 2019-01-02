@@ -1,6 +1,7 @@
 Encoding.default_external = 'UTF-8'
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-require 'posts.schema'
-require 'source_sites.schema'
-require 'profiles.schema'
+require "posts.schema"
+require "source_sites.schema"
+require "profiles.schema"
+require "post_templates.schema"
