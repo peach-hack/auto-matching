@@ -26,7 +26,7 @@ module AutoMatching
         end
 
         def read_board
-          raise NotImprementedError
+          raise NotImplementedError
         end
     end
   end

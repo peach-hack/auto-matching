@@ -1,6 +1,8 @@
 module AutoMatching
   module Sender
     class Ikukuru < SenderBase
+      include Common::Ikukuru
+
       private
         def delete_past_post
           session.visit("https://sp.194964.com/bbs/show_bbs_write_list.html")
