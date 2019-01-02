@@ -12,9 +12,9 @@
     "lib": ["esnext", "dom"],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"], 
     },
   },
-  "exclude": ["node_modules", "build", "src/types"],
+  "exclude": ["node_modules", "build", "src/types", "src/store"],
   "include": ["src/**/*"]
 }
