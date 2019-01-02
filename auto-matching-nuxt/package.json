@@ -12,11 +12,8 @@
     "test": "jest",
     "eslint": "eslint . --ext .vue,.js,.ts",
     "eslint:fix": "eslint . --fix --ext .vue,.js,.ts",
-    "precommit": "npm run lint",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "test:coverage": "jest --coverage",
-    "vuetype": "vuetype components",
-    "vuetype:w": "vuetype -w components"
+    "pre": "yarn test && yarn eslint && yarn tsc",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
@@ -102,18 +99,14 @@
     "vuex-class": "^0.3.0"
   },
   "jest": {
+    "preset": "ts-jest/presets/js-with-ts",
     "moduleFileExtensions": [
       "ts",
-      "tsx",
       "js",
-      "jsx",
       "vue"
     ],
     "transform": {
-      "^.+\\.vue$": "vue-jest",
-      "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.(js|jsx)$": "babel-jest"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$"
+      "^.+\\.vue$": "vue-jest"
+    }
   }
 }

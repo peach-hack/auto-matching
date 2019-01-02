@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import * as Api from '@/plugins/api'
+import * as Api from '../plugins/api'
 
 Vue.use(Vuex)
 
@@ -17,6 +17,7 @@ export const mutations = {
         return x.id - y.id
       })
       .map(site => {
+        if (site.attributes === undefined) return
         state.sites.push({
           id: site.attributes.id,
           key: site.attributes.key,
@@ -43,4 +44,12 @@ export const actions = {
     const response = await Api.getApiUsersSourceSites()
     commit('addSites', response.data.data)
   }
+}
+
+export const sites = {
+  namespaced: true,
+  state,
+  mutations,
+  actions,
+  getters
 }
