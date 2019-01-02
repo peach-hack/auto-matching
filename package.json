@@ -12,6 +12,8 @@
     "swagger:down": "docker-compose -f docker-compose-swagger.yaml down",
     "docker:install": "bin/install.sh",
     "db:create": "docker-compose run rails rails db:create",
-    "db:recovery": "docker-compose run rails rails db:recovery"
+    "db:recovery": "docker-compose run rails rails db:recovery",
+    "db:migrate": "docker-compose run rails rails ridgepole:apply",
+    "db:seed": "docker-compose run rails rails db:seed_fu"
   }
 }
