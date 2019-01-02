@@ -1,10 +1,16 @@
 {
   "scripts": {
-    "docker:clean": "docker volume ls -qf dangling=true | xargs -r docker volume rm",
     "lib:install": "bin/install.sh",
     "lint": "bin/lint.sh",
     "lint:fix": "bin/lint-fix.sh",
     "test": "bin/test.sh",
-    "prepush": "bin/prepush.sh"
+    "prepush": "bin/prepush.sh",
+    "docker:clean": "docker volume ls -qf dangling=true | xargs -r docker volume rm",
+    "up": "docker-compose up -d",
+    "down": "docker-compose down",
+    "ps": "docker-compose ps",
+    "swagger:up": "docker-compose -f docker-compose-swagger.yaml up -d",
+    "swagger:down": "docker-compose -f docker-compose-swagger.yaml down",
+    "db:recovery:": "docker-compose run rails rails db:recovery"
   }
 }
