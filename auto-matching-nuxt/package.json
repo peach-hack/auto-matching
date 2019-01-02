@@ -12,11 +12,8 @@
     "test": "jest",
     "eslint": "eslint . --ext .vue,.js,.ts",
     "eslint:fix": "eslint . --fix --ext .vue,.js,.ts",
-    "precommit": "npm run lint",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "test:coverage": "jest --coverage",
-    "vuetype": "vuetype components",
-    "vuetype:w": "vuetype -w components"
+    "pre": "yarn test && yarn eslint && yarn tsc",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
@@ -28,7 +25,7 @@
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/toast": "^3.0.2",
     "@storybook/vue": "^4.1.2",
-    "@types/jest": "^23.3.10",
+    "@types/jest": "^23.3.11",
     "@types/node": "^10.12.15",
     "@types/vue-router": "^2.0.0",
     "@vue/cli-plugin-eslint": "^3.2.1",
@@ -50,6 +47,7 @@
     "flag-icon-css": "^3.2.1",
     "font-awesome": "^4.7.0",
     "jest": "^23.6.0",
+    "js-cookie": "^2.2.0",
     "node-sass": "^4.11.0",
     "nuxt": "^2.3.4",
     "nuxt-babel": "^0.1.2",
@@ -101,18 +99,14 @@
     "vuex-class": "^0.3.0"
   },
   "jest": {
+    "preset": "ts-jest/presets/js-with-ts",
     "moduleFileExtensions": [
       "ts",
-      "tsx",
       "js",
-      "jsx",
       "vue"
     ],
     "transform": {
-      "^.+\\.vue$": "vue-jest",
-      "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.(js|jsx)$": "babel-jest"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$"
+      "^.+\\.vue$": "vue-jest"
+    }
   }
 }

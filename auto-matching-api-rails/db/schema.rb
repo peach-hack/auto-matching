@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "category", null: false
     t.integer "area", null: false
     t.string "profile_id", null: false
-    t.text "body", null: false
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

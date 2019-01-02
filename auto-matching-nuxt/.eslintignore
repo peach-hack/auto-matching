@@ -4,3 +4,4 @@ storybook-static
 webpack.config.extend.js
 nuxt.config.js
 build
+dist
