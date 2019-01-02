@@ -15,7 +15,7 @@ unless posts
 end
 
 posts.each_with_index do |post, i|
-  Post.seed do |p|
+  PostTemplate.seed do |p|
     p.id = i
     p.title = post["title"]
     p.body = post["body"]

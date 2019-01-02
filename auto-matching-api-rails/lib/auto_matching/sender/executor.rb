@@ -19,7 +19,7 @@ module AutoMatching
       end
 
       def sample_first_post
-        Post.offset(rand(Post.count)).first
+        PostTemplate.offset(rand(PostTemplate.count)).first
       end
     end
   end

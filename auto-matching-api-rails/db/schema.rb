@@ -15,6 +15,13 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "post_templates", comment: "掲示板投稿テンプレート", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", comment: "掲示板投稿データ", force: :cascade do |t|
     t.integer "source_site_id", null: false
     t.string "title", null: false
@@ -22,7 +29,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "category", null: false
     t.integer "area", null: false
     t.string "profile_id", null: false
-    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

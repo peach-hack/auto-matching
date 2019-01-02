@@ -1,0 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "post_templates", comment: "掲示板投稿テンプレート", force: :cascade do |t|
+  t.string "title", null: false
+  t.text "body", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
