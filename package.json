@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "docker:clean": "docker volume ls -qf dangling=true | xargs -r docker volume rm",
+    "lib:install": "bin/install.sh",
+    "lint": "bin/lint.sh",
+    "lint:fix": "bin/lint-fix.sh",
+    "test": "bin/test.sh",
+    "prepush": "bin/prepush.sh"
+  }
+}
