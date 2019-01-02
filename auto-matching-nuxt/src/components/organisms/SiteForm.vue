@@ -33,20 +33,15 @@ const Api = require('@/plugins/api')
 
 export default Vue.extend({
   props: {
-    id: {
-      type: Number,
+    site: {
+      type: Object,
       required: true
-    }
-  },
-  computed: {
-    site: function(): any {
-      return this.$store.getters.site(this.id - 1)
     }
   },
   methods: {
     updateSite: function() {
       Api.putApiUsersSourceSitesById({
-        id: this.id,
+        id: this.site.id,
         attributes: this.site
       })
         .then((response: any) => {

@@ -11,7 +11,7 @@ export default Vue.extend({
     SitesTable
   },
   async fetch({ store }: { store: any }) {
-    await store.dispatch('fetchSites')
+    await store.dispatch('sites/fetchSites')
   }
 } as any)
 </script>

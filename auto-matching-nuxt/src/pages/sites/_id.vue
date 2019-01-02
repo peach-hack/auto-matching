@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-  h2 {{ getSite(idx(id)).name }}
-  site-form(:id="id")
+  h2 {{ site.name }}
+  site-form(:site="site")
 </template>
 
 <script lang="ts">
@@ -17,12 +17,9 @@ export default Vue.extend({
     SiteForm
   },
   computed: {
-    ...mapGetters({
-      idx: 'index',
-      getSite: 'site'
-    }),
-    id: function(): number {
-      return parseInt(this.$route.params.id)
+    site: function(): Object {
+      const idx = parseInt(this.$route.params.id) - 1
+      return this.$store.state.sites.sites[idx]
     }
   }
 })

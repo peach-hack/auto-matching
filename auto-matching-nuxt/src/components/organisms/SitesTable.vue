@@ -9,7 +9,7 @@ table.table
       th 操作対象
       th 編集
   tbody
-    tr(v-for="site in $store.state.sites" :key="site.id")
+    tr(v-for="site in $store.state.sites.sites" :key="site.id")
       th {{ site.id }}
       th(v-html="getLink(site)")
       td {{ site.loginUser }}
@@ -26,9 +26,9 @@ import { mapGetters } from 'vuex'
 export default Vue.extend({
   computed: {
     ...mapGetters({
-      getLink: 'link',
-      getActivate: 'activate',
-      getEditPath: 'editPath'
+      getLink: 'sites/link',
+      getActivate: 'sites/activate',
+      getEditPath: 'sites/editPath'
     })
   }
 } as any)
