@@ -3,18 +3,13 @@ module AutoMatching
     class Pcmax < ReaderBase
       include Common::Pcmax
 
-      def read_main
-        read_board
-      end
-
       private
         def read_board
-          # TODO
           # 検索ページに移動
           session.visit 'https://pcmax.jp/mobile/bbs_reference.php'
 
-          # 項目にチェック入れてページ移動（あとで決めれるようにするため要相談）
-          # 一旦項目について：https://github.com/tsu-nera/auto-matching/issues/90#issuecomment-450739742
+          session.execute_script "$('input.location_checkbox:checked').click()"
+          session.execute_script "$('input#bbs_category9').click()"
 
           # 投稿地域
           # select = Selenium::WebDriver::Support::Select.new(session.find_element(:tabindex, '6'))
@@ -54,12 +49,8 @@ module AutoMatching
           #     session.quit
           #   end
           # end
-
+          
           puts element
-
-
-          # ブラウザ閉じる
-          session.quit
         end
     end
   end

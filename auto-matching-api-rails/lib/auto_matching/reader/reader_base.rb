@@ -25,9 +25,9 @@ module AutoMatching
           read_main
         end
 
-        # def read_board
-        #   raise NotImprementedError
-        # end
+        def read_board
+          raise NotImplementedError
+        end
     end
   end
 end
