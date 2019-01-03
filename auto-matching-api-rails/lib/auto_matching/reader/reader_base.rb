@@ -22,7 +22,7 @@ module AutoMatching
           try_login
 
           # 掲示板記事のスクレイピング
-          read_board
+          read_main
         end
 
         def read_board
