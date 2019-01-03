@@ -1,0 +1,7 @@
+{
+  "files.autoSave": "afterDelay",
+  "files.exclude": {
+    "auto-matching-api-rails": true,
+    "auto-matching-nuxt": true
+  }
+}

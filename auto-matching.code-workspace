@@ -1,9 +1,11 @@
 {
   "folders": [
       {
+          "name": "rails",
           "path": "auto-matching-api-rails"
       },
       {
+          "name": "nuxt",
           "path": "auto-matching-nuxt"
       },
       {
@@ -11,5 +13,8 @@
           "path": "."
       }
   ],
-  "settings": {}
+  "settings": {},
+  "extensions": {
+      "recommendations": []
+  }
 }
