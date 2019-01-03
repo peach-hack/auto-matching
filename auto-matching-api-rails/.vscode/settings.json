@@ -1,6 +1,3 @@
 {
-  "files.associations": { 
-    "*.schema": "ruby",
-    "Schemafile": "ruby"
-  }
+
 }

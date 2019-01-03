@@ -1,29 +1,3 @@
 {
-  "javascript.format.enable": false,
-  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
-  "javascript.implicitProjectConfig.checkJs": true,
-  "javascript.implicitProjectConfig.experimentalDecorators": true,
-
-  "vetur.validation.template": false,
-  "vetur.format.defaultFormatter.js": "vscode-typescript",
-  "vetur.format.defaultFormatter.html": "js-beautify-html",
-
-  "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true,
-  "eslint.packageManager": "yarn",
-  "eslint.validate": [
-    {
-      "language": "vue",
-      "autoFix": true
-    },
-    {
-      "language": "html",
-      "autoFix": true
-    },
-    {
-      "language": "javascript",
-      "autoFix": true
-    }
-  ],
-  "typescript.updateImportsOnFileMove.enabled": "always",
+  
 }
