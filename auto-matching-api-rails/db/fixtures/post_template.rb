@@ -2,7 +2,7 @@
 
 require "yaml"
 
-post_file = "db/templates/post.yml"
+post_file = "db/templates/posts.yml"
 
 posts = []
 
