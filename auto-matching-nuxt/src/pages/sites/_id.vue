@@ -7,11 +7,12 @@ div
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
+
+// @ts-ignore
 import SiteForm from '@/components/organisms/SiteForm.vue'
 
 const Api = require('@/plugins/api')
 
-// @ts-ignore
 export default Vue.extend({
   components: {
     SiteForm

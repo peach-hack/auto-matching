@@ -31,10 +31,6 @@
     "solargraph.diagnostics": true,
     "solargraph.useBundler": true,
     // Nuxt Config
-    "javascript.format.enable": false,
-    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
-    "javascript.implicitProjectConfig.checkJs": true,
-    "javascript.implicitProjectConfig.experimentalDecorators": true,
     "vetur.validation.template": false,
     "vetur.format.defaultFormatter.js": "vscode-typescript",
     "vetur.format.defaultFormatter.html": "js-beautify-html",
