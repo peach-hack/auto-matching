@@ -21,6 +21,12 @@
       "*.schema": "ruby",
       "Schemafile": "ruby"
     },
+    "ruby.intellisense": "rubyLocate",
+    "ruby.useLanguageServer": true,
+  
+    "solargraph.definitions": true,
+    "solargraph.diagnostics": true,
+    "solargraph.formatting": true,    
     // Nuxt Config
     "javascript.format.enable": false,
     "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
@@ -51,6 +57,6 @@
     "typescript.updateImportsOnFileMove.enabled": "always",
   },
   "extensions": {
-      "recommendations": [],
-  },
+    "recommendations": ["castwide.solargraph"]
+  }
 }

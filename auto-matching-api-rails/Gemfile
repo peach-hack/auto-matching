@@ -79,4 +79,5 @@ group :development do
   gem "annotate"
   gem "view_source_map"
   gem "rails_db"
+  gem 'solargraph'
 end
