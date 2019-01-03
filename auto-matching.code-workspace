@@ -56,6 +56,7 @@
       }
     ],
     "typescript.updateImportsOnFileMove.enabled": "always",
+    "jest.pathToJest": "",
   },
   "extensions": {
     "recommendations": [
@@ -70,7 +71,6 @@
       "CodeStream.codestream",
       "CoenraadS.bracket-pair-colorizer",
       "dbaeumer.vscode-eslint",
-      "firsttris.vscode-jest-runner",
       "formulahendry.auto-close-tag",
       "formulahendry.auto-rename-tag",
       "GitHub.vscode-pull-request-github",
@@ -90,6 +90,7 @@
       "rebornix.ruby",
       "sporto.rails-go-to-spec",
       "WallabyJs.quokka-vscode",
+      "steoates.autoimport"
     ]
   }
 }
