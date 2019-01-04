@@ -6,20 +6,21 @@ form(@submit.prevent="updateTemplate")
   .form-group
     label 本文
     textarea.form-control(type="text" v-model="template.body")
-  button(type="button submit").btn.btn-primary
-    | Submit
-  nuxt-link(to="/posts/templates")
-    button(type="button").btn.btn-light
-      | Cancel
+  submit-button-group(path="/posts/templates")
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+//@ts-ignore
+import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
 
 //@ts-ignore
 const Api = require('@/plugins/api')
 
 export default Vue.extend({
+  components: {
+    SubmitButtonGroup
+  },
   props: {
     template: {
       type: Object,
