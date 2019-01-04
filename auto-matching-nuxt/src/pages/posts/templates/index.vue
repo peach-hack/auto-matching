@@ -12,8 +12,8 @@ export default Vue.extend({
   components: {
     TemplatesTable
   },
-  async fetch({ store }: { store: any }) {
-    await store.dispatch('posts/fetchTemplates')
+  mounted() {
+    this.$store.dispatch('posts/fetchTemplates')
   }
-} as any)
+})
 </script>

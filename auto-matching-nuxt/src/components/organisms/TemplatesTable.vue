@@ -9,7 +9,7 @@ table.table
       th 編集
       th 削除
   tbody
-    tr(v-for="template in $store.state.posts.templates" :key="template.id")
+    tr(v-for="template in $state.posts.templates" :key="template.id")
       th {{ template.id }}
       th {{ template.title }}
       td {{ template.createdAt }}
