@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 
-
-source bin/common.sh
-
-exec_in_rails rspec
-exec_in_nuxt yarn test
+docker-compose run rails rspec
+docker-compose run nuxt yarn test

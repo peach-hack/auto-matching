@@ -39,7 +39,7 @@ export const mutations: Mutations = {
         updatedAt: template.attributes.updatedAt as Date
       })
     })
-  },
+  }
 }
 
 export const actions: Actions = {

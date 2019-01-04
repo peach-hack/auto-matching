@@ -1,4 +1,4 @@
-import { sites } from '../../src/store/sites'
+import sites from '../../src/store/sites'
 
 describe('sites', () => {
   describe('mutations', () => {

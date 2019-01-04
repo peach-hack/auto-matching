@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import * as Api from '../plugins/api'
 //@ts-ignore
 import Site from '@/types/site'
+
 Vue.use(Vuex)
 
 export interface State {
@@ -42,7 +43,7 @@ export const mutations: Mutations = {
           loginUser: site.attributes.loginUser as string,
           loginPassword: site.attributes.loginPassword as string,
           activateFlag: site.attributes.activateFlag as boolean,
-          url: site.attributes.affiliateUrl as string,
+          url: site.attributes.affiliateUrl as string
         })
       })
   }
@@ -58,5 +59,5 @@ export const actions: Actions = {
 export default {
   state,
   mutations,
-  actions,
+  actions
 }
