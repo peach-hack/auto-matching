@@ -12,8 +12,8 @@ table.table
     tr(v-for="template in $state.posts.templates" :key="template.id")
       th {{ template.id }}
       th {{ template.title }}
-      td {{ template.createdAt }}
-      td {{ template.updatedAt }}
+      td {{ template.createdAt | showDate }}
+      td {{ template.updatedAt | showDate }}
       // td
       //   nuxt-link(:to="{ path: getEditPath(site), params: {id: site.id } }") 編集
       // td
@@ -22,8 +22,14 @@ table.table
 
 <script lang="ts">
 import Vue from 'vue'
+import moment from 'moment'
 
 export default Vue.extend({
-  computed: {}
+  filters: {
+    showDate: function(value: string): string {
+      const date = moment(value)
+      return date.format('YYYY-MM-DD HH:mm')
+    }
+  }
 })
 </script>

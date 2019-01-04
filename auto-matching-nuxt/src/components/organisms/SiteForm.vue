@@ -29,6 +29,7 @@ form(@submit.prevent="updateSite")
 <script lang="ts">
 import Vue from 'vue'
 
+//@ts-ignore
 const Api = require('@/plugins/api')
 
 export default Vue.extend({
