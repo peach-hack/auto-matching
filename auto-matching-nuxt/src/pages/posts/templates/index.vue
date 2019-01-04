@@ -1,19 +1,19 @@
 <template lang="pug">
-sites-table
+templates-table
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 //@ts-ignore
-import SitesTable from '@/components/organisms/SitesTable.vue'
+import TemplatesTable from '@/components/organisms/TemplatesTable.vue'
 
 export default Vue.extend({
   components: {
-    SitesTable
+    TemplatesTable
   },
   async fetch({ store }: { store: any }) {
-    await store.dispatch('sites/fetchSites')
+    await store.dispatch('posts/fetchTemplates')
   }
 } as any)
 </script>
