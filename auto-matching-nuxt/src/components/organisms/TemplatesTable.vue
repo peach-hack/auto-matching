@@ -14,15 +14,17 @@ table.table
       th {{ template.title }}
       td {{ template.createdAt | showDate }}
       td {{ template.updatedAt | showDate }}
+      td
+        nuxt-link(:to="{ path: getEditPath(template), params: {id: template.id } }") 編集
       // td
-      //   nuxt-link(:to="{ path: getEditPath(site), params: {id: site.id } }") 編集
-      // td
-      //   nuxt-link(:to="{ path: getEditPath(site), params: {id: site.id } }") 削除
+      //   nuxt-link(:to="{ path: getDeletePath(template), params: {id: template.id } }") 削除
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import moment from 'moment'
+//@ts-ignore
+import Template from '@types/template'
 
 export default Vue.extend({
   filters: {
@@ -30,6 +32,11 @@ export default Vue.extend({
       const date = moment(value)
       return date.format('YYYY-MM-DD HH:mm')
     }
+  },
+  methods: {
+    getEditPath(template: Template): string {
+      return `/posts/templates/${template.id}`
+    }
   }
-})
+} as any)
 </script>

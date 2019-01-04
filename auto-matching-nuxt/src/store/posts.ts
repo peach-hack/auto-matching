@@ -1,17 +1,11 @@
 import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
+
 //@ts-ignore
 const Api = require('../plugins/api')
+import Template from '../types/template';
 
 Vue.use(Vuex)
-
-interface Template {
-  id: number
-  title: string
-  body: string
-  createdAt: Date
-  updatedAt: Date
-}
 
 export interface State {
   templates: Template[]
