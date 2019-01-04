@@ -13,9 +13,8 @@ form(@submit.prevent="updateTemplate")
 import Vue from 'vue'
 //@ts-ignore
 import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
-
 //@ts-ignore
-const Api = require('@/plugins/api')
+import * as Api from '@/plugins/api'
 
 export default Vue.extend({
   components: {

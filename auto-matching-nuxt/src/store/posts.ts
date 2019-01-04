@@ -2,8 +2,7 @@ import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
 import Template from '../types/template'
 
-//@ts-ignore
-const Api = require('../plugins/api')
+import * as Api from '../plugins/api'
 
 Vue.use(Vuex)
 

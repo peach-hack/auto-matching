@@ -8,10 +8,10 @@ div
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
-// @ts-ignore
+//@ts-ignore
 import SiteForm from '@/components/organisms/SiteForm.vue'
-
-const Api = require('@/plugins/api')
+//@ts-ignore
+import * as Api from '@/plugins/api'
 
 export default Vue.extend({
   components: {

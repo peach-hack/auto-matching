@@ -2,7 +2,7 @@
 .form-group
   button(type="button submit").btn.btn-primary
     | Submit
-  nuxt-link(:to="{ path: path}")
+  nuxt-link(:to="{ path: path }")
     button(type="button").btn.btn-light
       | Cancel
 </template>

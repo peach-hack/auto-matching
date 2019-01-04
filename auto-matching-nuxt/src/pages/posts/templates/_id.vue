@@ -9,8 +9,8 @@ import Vue from 'vue'
 import Template from '@/types/template'
 //@ts-ignore
 import TemplateForm from '@/components/organisms/TemplateForm.vue'
-
-const Api = require('@/plugins/api')
+//@ts-ignore
+import * as Api from '@/plugins/api'
 
 export default Vue.extend({
   components: {
