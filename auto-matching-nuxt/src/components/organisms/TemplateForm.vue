@@ -29,17 +29,17 @@ export default Vue.extend({
   },
   methods: {
     updateTemplate: function() {
-      // Api.putApiUsersPostTemplateById({
-      //   id: this.site.id,
-      //   attributes: this.site
-      // })
-      //   .then((response: any) => {
-      //     this.$router.push('/sites')
-      //     this.$toasted.success('更新しました')
-      //   })
-      //   .catch((error: any) => {
-      //     this.$toasted.error('エラーが発生しました')
-      //   })
+      Api.putApiUsersPostTemplateById({
+        id: this.template.id,
+        attributes: this.template
+      })
+        .then((response: any) => {
+          this.$router.push('/posts/templates')
+          this.$toasted.success('更新しました')
+        })
+        .catch((error: any) => {
+          this.$toasted.error('エラーが発生しました')
+        })
     }
   }
 })

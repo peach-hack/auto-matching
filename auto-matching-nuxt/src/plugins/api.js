@@ -118,7 +118,7 @@ export const putApiUsersSourceSitesByIdURL = function (parameters = {}) {
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
 /**
- * 投稿テンプレート一覧
+ * テンプレート一覧
  * request: getApiUsersPostsTemplates
  * url: getApiUsersPostsTemplatesURL
  * method: getApiUsersPostsTemplates_TYPE
@@ -148,6 +148,149 @@ export const getApiUsersPostsTemplatesURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/posts/templates'
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}
+/**
+ * 投稿テンプレート投稿
+ * request: postApiUsersPostsTemplates
+ * url: postApiUsersPostsTemplatesURL
+ * method: postApiUsersPostsTemplates_TYPE
+ * raw_url: postApiUsersPostsTemplates_RAW_URL
+ * @param id - 
+ * @param attributes - テンプレート
+ */
+export const postApiUsersPostsTemplates = function (parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/posts/templates'
+  let body
+  let queryParameters = {}
+  let form = {}
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters['id'] === undefined) {
+    return Promise.reject(new Error('Missing required  parameter: id'))
+  }
+  if (parameters['attributes'] !== undefined) {
+    body = parameters['attributes']
+  }
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('post', domain + path, body, queryParameters, form, config)
+}
+export const postApiUsersPostsTemplates_RAW_URL = function () {
+  return '/api/users/posts/templates'
+}
+export const postApiUsersPostsTemplates_TYPE = function () {
+  return 'post'
+}
+export const postApiUsersPostsTemplatesURL = function (parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/posts/templates'
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}
+/**
+ * テンプレート更新
+ * request: putApiUsersPostsTemplatesById
+ * url: putApiUsersPostsTemplatesByIdURL
+ * method: putApiUsersPostsTemplatesById_TYPE
+ * raw_url: putApiUsersPostsTemplatesById_RAW_URL
+ * @param id - 
+ * @param attributes - テンプレート
+ */
+export const putApiUsersPostsTemplatesById = function (parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/posts/templates/{id}'
+  let body
+  let queryParameters = {}
+  let form = {}
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters['id'] === undefined) {
+    return Promise.reject(new Error('Missing required  parameter: id'))
+  }
+  if (parameters['attributes'] !== undefined) {
+    body = parameters['attributes']
+  }
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('put', domain + path, body, queryParameters, form, config)
+}
+export const putApiUsersPostsTemplatesById_RAW_URL = function () {
+  return '/api/users/posts/templates/{id}'
+}
+export const putApiUsersPostsTemplatesById_TYPE = function () {
+  return 'put'
+}
+export const putApiUsersPostsTemplatesByIdURL = function (parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/posts/templates/{id}'
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}
+/**
+ * テンプレート削除
+ * request: deleteApiUsersPostsTemplatesById
+ * url: deleteApiUsersPostsTemplatesByIdURL
+ * method: deleteApiUsersPostsTemplatesById_TYPE
+ * raw_url: deleteApiUsersPostsTemplatesById_RAW_URL
+ * @param id - 
+ */
+export const deleteApiUsersPostsTemplatesById = function (parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/posts/templates/{id}'
+  let body
+  let queryParameters = {}
+  let form = {}
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters['id'] === undefined) {
+    return Promise.reject(new Error('Missing required  parameter: id'))
+  }
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('delete', domain + path, body, queryParameters, form, config)
+}
+export const deleteApiUsersPostsTemplatesById_RAW_URL = function () {
+  return '/api/users/posts/templates/{id}'
+}
+export const deleteApiUsersPostsTemplatesById_TYPE = function () {
+  return 'delete'
+}
+export const deleteApiUsersPostsTemplatesByIdURL = function (parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/posts/templates/{id}'
+  path = path.replace('{id}', `${parameters['id']}`)
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]

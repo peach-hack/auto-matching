@@ -53,9 +53,80 @@ paths:
           description: 失敗時のレスポンス
   /api/users/posts/templates:
     get:
-      summary: 投稿テンプレート一覧
+      summary: テンプレート一覧
       produces:
         - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス    
+    post:
+      summary: 投稿テンプレート投稿
+      produces:
+        - application/json
+      parameters:
+        - name: "id"
+          in: "path"
+          type: integer
+          required: true
+        - in: body
+          name: attributes
+          description: テンプレート
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+                description: "タイトル"
+              body:
+                description: "本文"
+                type: string
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/posts/templates/{id}:
+    put:
+      summary: テンプレート更新
+      produces:
+          - application/json
+      parameters:
+        - name: "id"
+          in: "path"
+          type: integer
+          required: true
+        - in: body
+          name: attributes
+          description: テンプレート
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+                description: "タイトル"
+              body:
+                description: "本文"
+                type: string
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+    delete:
+      summary: テンプレート削除
+      produces:
+          - application/json
+      parameters:
+        - name: "id"
+          in: "path"
+          type: integer
+          required: true
       responses:
         '200':
           description: 成功時のレスポンス
