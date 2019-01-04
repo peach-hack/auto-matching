@@ -18,7 +18,7 @@ export default Vue.extend({
   },
   computed: {
     template: function(): Template {
-      const idx = parseInt(this.$route.params.id) - 1
+      const idx = parseInt(this.$route.params.id)
       return this.$store.state.posts.templates[idx]
     }
   }

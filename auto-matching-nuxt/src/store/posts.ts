@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
+import Template from '../types/template'
 
 //@ts-ignore
 const Api = require('../plugins/api')
-import Template from '../types/template';
 
 Vue.use(Vuex)
 
@@ -12,15 +12,15 @@ export interface State {
 }
 
 export interface Context {
-  commit: (name: string, palload?: any) => void;
+  commit: (name: string, palload?: any) => void
 }
 
 export interface Mutations {
-  [key: string]: (state: State, payload?: any) => void;
+  [key: string]: (state: State, payload?: any) => void
 }
 
 export interface Actions {
-  [key: string]: (context: Context, payload?: any) => void;
+  [key: string]: (context: Context, payload?: any) => void
 }
 
 export const state: () => State = () => ({
@@ -53,5 +53,5 @@ export const actions: Actions = {
 export default {
   state,
   mutations,
-  actions,
+  actions
 }
