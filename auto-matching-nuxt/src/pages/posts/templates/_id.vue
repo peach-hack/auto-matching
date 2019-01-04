@@ -9,8 +9,6 @@ import Vue from 'vue'
 import Template from '@/types/template'
 //@ts-ignore
 import TemplateForm from '@/components/organisms/TemplateForm.vue'
-//@ts-ignore
-import * as Api from '@/plugins/api'
 
 export default Vue.extend({
   components: {

@@ -14,7 +14,7 @@ import Vue from 'vue'
 //@ts-ignore
 import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
 //@ts-ignore
-import * as Api from '@/plugins/api'
+import { putApiUsersPostsTemplatesById } from '@/plugins/api'
 
 export default Vue.extend({
   components: {
@@ -28,7 +28,7 @@ export default Vue.extend({
   },
   methods: {
     updateTemplate: function() {
-      Api.putApiUsersPostTemplateById({
+      putApiUsersPostsTemplatesById({
         id: this.template.id,
         attributes: this.template
       })

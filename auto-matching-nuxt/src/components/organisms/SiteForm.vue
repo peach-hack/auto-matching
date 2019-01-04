@@ -26,9 +26,8 @@ form(@submit.prevent="updateSite")
 import Vue from 'vue'
 //@ts-ignore
 import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
-
 //@ts-ignore
-import * as Api from '@/plugins/api'
+import { putApiUsersSourceSitesById } from '@/plugins/api'
 
 export default Vue.extend({
   components: {
@@ -42,7 +41,7 @@ export default Vue.extend({
   },
   methods: {
     updateSite: function() {
-      Api.putApiUsersSourceSitesById({
+      putApiUsersSourceSitesById({
         id: this.site.id,
         attributes: this.site
       })

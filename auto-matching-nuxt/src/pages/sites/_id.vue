@@ -10,8 +10,6 @@ import { mapGetters } from 'vuex'
 
 //@ts-ignore
 import SiteForm from '@/components/organisms/SiteForm.vue'
-//@ts-ignore
-import * as Api from '@/plugins/api'
 
 export default Vue.extend({
   components: {
