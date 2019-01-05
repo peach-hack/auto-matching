@@ -1,42 +1,43 @@
 {
   "folders": [
-      {
-          "name": "rails",
-          "path": "auto-matching-api-rails"
-      },
-      {
-          "name": "nuxt",
-          "path": "auto-matching-nuxt"
-      },
-      {
-          "name": "root",
-          "path": "."
-      }
+    {
+      "name": "rails",
+      "path": "auto-matching-api-rails"
+    },
+    {
+      "name": "nuxt",
+      "path": "auto-matching-nuxt"
+    },
+    {
+      "name": "root",
+      "path": "."
+    }
   ],
   "settings": {
     // General Config
     "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveTimeout": 5000,
     // Rails Config
     "files.associations": {
       "*.schema": "ruby",
       "Schemafile": "ruby"
     },
+    "ruby.format": "rubocop",
     "ruby.intellisense": "rubyLocate",
+    "ruby.useBundler": true,
     "ruby.useLanguageServer": true,
-  
     "solargraph.definitions": true,
     "solargraph.diagnostics": true,
-    "solargraph.formatting": true,    
+    "solargraph.useBundler": true,
     // Nuxt Config
     "javascript.format.enable": false,
     "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
     "javascript.implicitProjectConfig.checkJs": true,
     "javascript.implicitProjectConfig.experimentalDecorators": true,
-  
     "vetur.validation.template": false,
     "vetur.format.defaultFormatter.js": "vscode-typescript",
     "vetur.format.defaultFormatter.html": "js-beautify-html",
-  
     "eslint.alwaysShowStatus": true,
     "eslint.autoFixOnSave": true,
     "eslint.packageManager": "yarn",
@@ -57,6 +58,38 @@
     "typescript.updateImportsOnFileMove.enabled": "always",
   },
   "extensions": {
-    "recommendations": ["castwide.solargraph"]
+    "recommendations": [
+      "castwide.solargraph",
+      "NuclleaR.vscode-extension-auto-import",
+      "Zignd.html-css-class-completion",
+      "abusaidm.html-snippets",
+      "Arjun.swagger-viewer",
+      "bung87.rails",
+      "bung87.vscode-gemfile",
+      "christian-kohler.path-intellisense",
+      "CodeStream.codestream",
+      "CoenraadS.bracket-pair-colorizer",
+      "dbaeumer.vscode-eslint",
+      "firsttris.vscode-jest-runner",
+      "formulahendry.auto-close-tag",
+      "formulahendry.auto-rename-tag",
+      "GitHub.vscode-pull-request-github",
+      "ionutvmi.path-autocomplete",
+      "jpoissonnier.vscode-styled-components",
+      "jsynowiec.vscode-insertdatestring",
+      "kaiwood.endwise",
+      "miguel-savignano.ruby-symbols",
+      "mikestead.dotenv",
+      "misogi.ruby-rubocop",
+      "ms-vsliveshare.vsliveshare",
+      "msjsdiag.debugger-for-chrome",
+      "noku.rails-run-spec-vscode",
+      "octref.vetur",
+      "oderwat.indent-rainbow",
+      "Orta.vscode-jest",
+      "rebornix.ruby",
+      "sporto.rails-go-to-spec",
+      "WallabyJs.quokka-vscode",
+    ]
   }
 }

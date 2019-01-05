@@ -2,11 +2,13 @@
 
 export default {
   items: [
+    /* 
     {
       name: 'Dashboard',
       url: '/dashboard',
       icon: 'icon-speedometer'
     },
+    */
     {
       title: true,
       name: '自動投稿',
@@ -18,17 +20,17 @@ export default {
     },
     {
       name: 'テンプレート管理',
-      url: '',
+      url: '/posts/templates',
       icon: 'icon-star'
     },
     {
       name: '定期実行設定',
-      url: '',
+      url: '/posts/auto',
       icon: 'icon-star'
     },
     {
       name: 'マニュアル投稿',
-      url: '',
+      url: '/posts/manual',
       icon: 'icon-star'
     },
     {
