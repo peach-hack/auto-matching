@@ -4,23 +4,18 @@ module AutoMatching
       include Common::Pcmax
 
       private
-        def read_board
-          # 検索ページに移動
-          session.visit 'https://pcmax.jp/mobile/bbs_reference.php'
+        def search_board
 
-          session.execute_script "$('input.location_checkbox:checked').click()"
-          session.execute_script "$('input#bbs_category9').click()"
+          # 検索ページに移動
+          session.visit "https://pcmax.jp/mobile/bbs_reference.php"
 
           # 投稿地域
-          # select = Selenium::WebDriver::Support::Select.new(session.find_element(:tabindex, '6'))
-          # select = Selenium::WebDriver::Support::Select.new(session.find_element(:name, 'pref_no'))
-          # ele = sssion.find_element(:name, 'pref_no')
-          # select.select_by(:value, '22')
-          session.find_element(:name, 'pref_no').select_by(:value, '22')
+          session.find_field("pref_no").find("option[value='22']").select_option
 
           # 詳細地域
           # ジャンル
-          session.find_element(:name, 'bbs_category[9]').click
+          session.execute_script "$('input.location_checkbox:checked').click()"
+          session.execute_script "$('input#bbs_category9').click()"
 
           # 性別
           # 年齢
@@ -30,10 +25,19 @@ module AutoMatching
           # 以前見た人を探す（必要ないかも）
 
           # 検索結果取得ページに遷移
-          session.find_element(:name, 'search').click
+          # session.find_button("submit").click
+          # session.find(".btn").click
+          # session.find_field("search").click
+          session.execute_script "$('button.btn.moji_bold').click()"
+        end
+
+        def read_board
+          puts "\n\nread_board\n\n"
+          @list = []
+          @data = {}
 
           # 取得する大枠のテーブルを設定
-          element = session.find_element(:class, 'list')
+          # @data = session.find(:class, "item-box")
 
           # # 取得する情報分繰り返す #めんどくさそうなので一旦保留
           # unless element.present?
@@ -49,8 +53,21 @@ module AutoMatching
           #     session.quit
           #   end
           # end
-          
-          puts element
+
+          # puts @data
+
+          # @data[:name] = hoge
+          # @data[:age] = 30
+
+          # @list.add(@data)
+        end
+
+        def save_board
+          # @list.each do | data |
+          #   a = Post.new(name: data[:name], age: data[:age])
+          #   a.save
+          # end
+          puts "\n\nsave_board\n\n"
         end
     end
   end
