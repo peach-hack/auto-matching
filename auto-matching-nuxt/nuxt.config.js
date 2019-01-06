@@ -75,7 +75,8 @@ module.exports = {
   },
   basic: {
     name: process.env.USERNAME || 'admin',
-    pass: process.env.PASSWORD || 'password'
+    pass: process.env.PASSWORD || 'password',
+    enabled: process.env.ENABLE_BASIC_AUTH === 'true'
   },
   /*
    ** Axios module configuration
