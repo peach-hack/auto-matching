@@ -59,7 +59,8 @@ module.exports = {
     // Doc: https://github.com/bootstrap-vue/bootstrap-vue
     ['bootstrap-vue/nuxt', { css: false }],
     '@nuxtjs/pwa',
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
+    'nuxt-basic-auth-module'
   ],
   manifest: {
     name: 'Auto Matching',
@@ -71,6 +72,11 @@ module.exports = {
   toast: {
     position: 'top-right',
     duration: 2000
+  },
+  basic: {
+    name: process.env.USERNAME || 'admin',
+    pass: process.env.PASSWORD || 'password',
+    enabled: process.env.ENABLE_BASIC_AUTH === 'true'
   },
   /*
    ** Axios module configuration

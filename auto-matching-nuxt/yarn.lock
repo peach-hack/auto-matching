@@ -3275,6 +3275,13 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+basic-auth@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-2.0.1.tgz#b998279bf47ce38344b4f3cf916d4679bbf51e3a"
+  integrity sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==
+  dependencies:
+    safe-buffer "5.1.2"
+
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
@@ -9439,6 +9446,13 @@ nuxt-babel@^0.1.2:
   integrity sha512-U34mGI0l8dSU+6qWMS/GAMuE77CpEld13OZEx2qs0FJjFzLxcXPqeAC8e0jMD26NHXAOZXBl0QdQHjdEmcoIuA==
   dependencies:
     find-babel-config "^1.1.0"
+
+nuxt-basic-auth-module@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/nuxt-basic-auth-module/-/nuxt-basic-auth-module-1.0.4.tgz#622d6e58c9c7208916817807a2aa9117e89be448"
+  integrity sha512-7B3rYvKPWTyBM0YfxJMipkmsBj5tjkgZ6Hw4oOv5nTWWFbbnDHO7BbMSQqRQo5uOdBnRQnz1D89M/0z6d8xuhA==
+  dependencies:
+    basic-auth "^2.0.1"
 
 nuxt-property-decorator@^1.2.0:
   version "1.3.1"
