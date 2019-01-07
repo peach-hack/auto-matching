@@ -34,9 +34,14 @@ export default Vue.extend({
   },
   methods: {
     updateTemplate: function() {
+      const data = {
+        id: this.template.id,
+        title: this.newTitle,
+        body: this.newBody
+      }
       putApiUsersPostsTemplatesById({
         id: this.template.id,
-        attributes: this.template
+        attributes: data
       })
         .then((response: any) => {
           this.$router.push('/posts/templates')

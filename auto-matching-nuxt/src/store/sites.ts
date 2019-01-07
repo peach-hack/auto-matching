@@ -46,7 +46,7 @@ export const mutations: Mutations = {
           url: site.attributes.affiliateUrl as string
         })
       })
-  },
+  }
 }
 
 export const actions: Actions = {
