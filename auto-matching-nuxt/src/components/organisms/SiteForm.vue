@@ -19,19 +19,20 @@ form(@submit.prevent="updateSite")
           input.form-check-input(type="radio" name="activation" value="false" v-model="site.activateFlag")#deactivate
           label.form-check-label(for="deactivate")
             | 無効
-  button(type="button submit").btn.btn-primary
-    | Submit
-  nuxt-link(to="/sites")
-    button(type="button").btn.btn-light
-      | Cancel
+  submit-button-group(path="/sites")
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-
-const Api = require('@/plugins/api')
+//@ts-ignore
+import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
+//@ts-ignore
+import { putApiUsersSourceSitesById } from '@/plugins/api'
 
 export default Vue.extend({
+  components: {
+    SubmitButtonGroup
+  },
   props: {
     site: {
       type: Object,
@@ -40,7 +41,7 @@ export default Vue.extend({
   },
   methods: {
     updateSite: function() {
-      Api.putApiUsersSourceSitesById({
+      putApiUsersSourceSitesById({
         id: this.site.id,
         attributes: this.site
       })
