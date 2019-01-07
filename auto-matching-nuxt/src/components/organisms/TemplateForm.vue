@@ -39,10 +39,6 @@ export default Vue.extend({
         attributes: this.template
       })
         .then((response: any) => {
-          this.$store.commit('addTemplate', response.data.data)
-          this.newTitle = ''
-          this.newBody = ''
-
           this.$router.push('/posts/templates')
           this.$toasted.success('更新しました')
         })
