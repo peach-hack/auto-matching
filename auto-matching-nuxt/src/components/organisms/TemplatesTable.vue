@@ -44,6 +44,7 @@ export default Vue.extend({
         id: id
       })
         .then((response: any) => {
+          // this.$router.push('/posts/templates')
           // this.$toasted.success('削除しました')
         })
         .catch((error: any) => {
