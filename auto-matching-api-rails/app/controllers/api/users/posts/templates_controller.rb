@@ -29,6 +29,15 @@ module Api
             response_bad_request
           end
         end
+
+        def destroy
+          template = PostTemplate.find(params[:id])
+          if template.destroy
+            response_success(:template, :destroy)
+          else
+            response_bad_request
+          end
+        end
       end
     end
   end
