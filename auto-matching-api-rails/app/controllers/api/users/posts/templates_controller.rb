@@ -29,12 +29,6 @@ module Api
             response_bad_request
           end
         end
-
-        private
-
-          def template_params(params)
-            params.require(:post_template).permit(:title, :body)
-          end
       end
     end
   end
