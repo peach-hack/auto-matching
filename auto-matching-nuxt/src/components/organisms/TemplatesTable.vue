@@ -44,13 +44,12 @@ export default Vue.extend({
         id: id
       })
         .then((response: any) => {
-          // this.$router.push('/posts/templates')
-          // this.$toasted.success('削除しました')
+          this.$toasted.success('削除しました')
         })
         .catch((error: any) => {
-          // this.$toasted.error('エラーが発生しました')
+          this.$toasted.error('エラーが発生しました')
         })
     }
   }
-} as any)
+})
 </script>
