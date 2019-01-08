@@ -3,15 +3,11 @@ module AutoMatching
     class ReaderBase < Base
       include Common::DriverBase
 
-      def run
-        run_process
-      rescue StandardError => e
-        raise e
-      end
-
       private
 
         def run_process
+          logger.info("READER: #{source_site_key} start")
+
           # 実行条件のチェック
           return if !login_user.present? || !login_password.present?
 
@@ -23,6 +19,8 @@ module AutoMatching
 
           # 掲示板記事のスクレイピング
           read_board
+
+          logger.info("READER: #{source_site_key} end")
         end
 
         def read_board

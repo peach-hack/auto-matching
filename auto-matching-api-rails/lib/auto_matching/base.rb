@@ -3,12 +3,14 @@ module AutoMatching
     attr_reader :token
 
     def initialize(*_args)
-      @token = SecureRandom.hex(16)
       capybara_setting
     end
 
     def run
-      raise NotImprementedError
+      run_process
+    rescue StandardError => e
+      save_current_page
+      logger.error("#{e.message}")
     end
 
     private
@@ -24,7 +26,6 @@ module AutoMatching
             browser: :chrome,
             desired_capabilities: capabilities
           )
-          bridge_setting(driver)
         end
         Capybara.default_selector = :css
         Capybara.configure do |config|
@@ -32,17 +33,6 @@ module AutoMatching
           config.default_driver = :headless_chrome
           config.javascript_driver = :selenium
         end
-      end
-
-      def bridge_setting(driver)
-        bridge = driver.browser.send(:bridge)
-        path = "session/#{bridge.session_id}/chromium/send_command"
-        bridge.http.call(:post, path, cmd: "Page.setDownloadBehavior",
-                                      params: {
-                                        behavior: "allow",
-                                        downloadPath: download_dir
-                                      })
-        driver
       end
 
       def device_name
@@ -53,12 +43,12 @@ module AutoMatching
         mobile_emulation = { deviceName: device_name }
         if ENV["DEBUG"]
           {
-            args: %w[disable-gpu window-size=375,667],
+            args: %w[disable-gpu window-size=375,667 no-sandbox],
             mobileEmulation: mobile_emulation
           }
         else
           {
-            args: %w[headless disable-gpu window-size=375,667],
+            args: %w[headless disable-gpu window-size=375,667 no-sandbox],
             mobileEmulation: mobile_emulation
           }
         end
@@ -72,26 +62,29 @@ module AutoMatching
         @session ||= Capybara::Session.new(driver_name)
       end
 
-      def download_dir
-        Rails.root.join("tmp", token).to_s
-      end
-
-      def delete_download_dir
-        FileUtils.rm_rf(download_dir)
-      end
-
-      def save_current_page_screenshot
-        tmp_screenshot_name = screenshot_name
-        session.save_screenshot(tmp_screenshot_name)
-        tmp_screenshot_name
+      def save_current_page
+        session.save_screenshot(screenshot_name)
+        session.save_page(html_name)
       end
 
       def screenshot_name
-        Rails.root.join("tmp", "screenshot_#{Time.now.to_i}.png")
+        Rails.root.join("tmp", "capybara", "#{ts}_screenshot.png")
+      end
+
+      def html_name
+        Rails.root.join("tmp", "capybara", "#{ts}_page.html")
       end
 
       def ts
         @ts ||= Time.zone.now.strftime("%Y%m%d%H%M%S")
+      end
+
+      def logger
+        @logger ||= Logger.new(logger_name)
+      end
+
+      def logger_name
+        Rails.root.join("log", "execution.log")
       end
   end
 end
