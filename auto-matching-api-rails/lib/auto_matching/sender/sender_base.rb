@@ -10,12 +10,6 @@ module AutoMatching
         super
       end
 
-      def run
-        run_process
-      rescue StandardError => e
-        raise e
-      end
-
       private
 
         def run_process
