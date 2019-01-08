@@ -44,6 +44,10 @@ export default Vue.extend({
         id: id
       })
         .then((response: any) => {
+          this.$store.commit({
+            type: 'posts/deleteTemplate',
+            id: id
+          })
           this.$toasted.success('削除しました')
         })
         .catch((error: any) => {
