@@ -29,7 +29,7 @@ gem "whenever", require: false
 
 gem "capybara"
 gem "selenium-webdriver"
-gem 'chromedriver-helper'
+gem "chromedriver-helper"
 
 gem "active_type"
 
