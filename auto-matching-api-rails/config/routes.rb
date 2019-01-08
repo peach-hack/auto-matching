@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     namespace :api do
       namespace :users do
         namespace :posts do
-          resources :templates, only: %i[index update]
+          resources :templates, only: %i[index update create]
         end
         resources :source_sites, only: %i[index update], path: "source-sites"
       end

@@ -162,7 +162,6 @@ export const getApiUsersPostsTemplatesURL = function (parameters = {}) {
  * url: postApiUsersPostsTemplatesURL
  * method: postApiUsersPostsTemplates_TYPE
  * raw_url: postApiUsersPostsTemplates_RAW_URL
- * @param id - 
  * @param attributes - テンプレート
  */
 export const postApiUsersPostsTemplates = function (parameters = {}) {
@@ -172,10 +171,6 @@ export const postApiUsersPostsTemplates = function (parameters = {}) {
   let body
   let queryParameters = {}
   let form = {}
-  path = path.replace('{id}', `${parameters['id']}`)
-  if (parameters['id'] === undefined) {
-    return Promise.reject(new Error('Missing required  parameter: id'))
-  }
   if (parameters['attributes'] !== undefined) {
     body = parameters['attributes']
   }
@@ -196,7 +191,6 @@ export const postApiUsersPostsTemplatesURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/posts/templates'
-  path = path.replace('{id}', `${parameters['id']}`)
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]

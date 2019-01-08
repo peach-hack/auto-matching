@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   templates-table
-  create-button
+  create-button(path="/posts/templates/new")
 </template>
 
 <script lang="ts">
