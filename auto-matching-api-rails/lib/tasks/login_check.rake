@@ -11,7 +11,7 @@ module LoginCheck
           AutoMatching::Checker::Pcmax,
           AutoMatching::Checker::Ikukuru,
           AutoMatching::Checker::Mint,
-          AutoMatching::Chekcer::Merupara,
+          AutoMatching::Checker::Merupara,
       ]
       classes.each { | klass| AutoMatching::Checker::Executor.new.run(klass) }
     end
