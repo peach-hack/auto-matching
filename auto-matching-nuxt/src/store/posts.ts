@@ -39,6 +39,12 @@ export const mutations: Mutations = {
         updatedAt: template.attributes.updatedAt as Date
       })
     })
+  },
+  deleteTemplate(state: State, payload: any) {
+    const templates = state.templates.filter(
+      (template: Template) => template.id !== payload.id
+    )
+    state.templates = templates
   }
 }
 

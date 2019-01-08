@@ -1,10 +1,11 @@
 <template lang="pug">
 .form-group
-  button(type="button submit").btn.btn-primary
-    | Submit
-  nuxt-link(:to="{ path: path }")
-    button(type="button").btn.btn-light
-      | Cancel
+  .button-group
+    button(type="button submit").btn.btn-primary
+      | Submit
+    nuxt-link(:to="{ path: path }")
+      button(type="button").btn.btn-light
+        | Cancel
 </template>
 
 <script lang="ts">
