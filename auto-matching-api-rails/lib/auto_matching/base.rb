@@ -53,12 +53,12 @@ module AutoMatching
         mobile_emulation = { deviceName: device_name }
         if ENV["DEBUG"]
           {
-            args: %w[disable-gpu window-size=375,667],
+            args: %w[disable-gpu window-size=375,667 no-sandbox],
             mobileEmulation: mobile_emulation
           }
         else
           {
-            args: %w[headless disable-gpu window-size=375,667],
+            args: %w[headless disable-gpu window-size=375,667 no-sandbox],
             mobileEmulation: mobile_emulation
           }
         end
