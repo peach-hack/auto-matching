@@ -48,7 +48,8 @@ module.exports = {
   plugins: [
     { src: '@/plugins/i18n.js' },
     '@/plugins/index.js',
-    { src: '@/plugins/cookieStorage.js', ssr: false }
+    { src: '@/plugins/cookieStorage.js', ssr: false },
+    '@/plugins/moment.js'
   ],
   /*
    ** Nuxt.js modules
@@ -59,7 +60,7 @@ module.exports = {
     // Doc: https://github.com/bootstrap-vue/bootstrap-vue
     ['bootstrap-vue/nuxt', { css: false }],
     '@nuxtjs/pwa',
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
   ],
   manifest: {
     name: 'Auto Matching',
