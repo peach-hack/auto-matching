@@ -10,7 +10,7 @@ module AutoMatching
       run_process
     rescue StandardError => e
       save_current_page
-      raise e
+      logger.error("#{e.message}")
     end
 
     private
@@ -77,6 +77,14 @@ module AutoMatching
 
       def ts
         @ts ||= Time.zone.now.strftime("%Y%m%d%H%M%S")
+      end
+
+      def logger
+        @logger ||= Logger.new(logger_name)
+      end
+
+      def logger_name
+        Rails.root.join("log", "execution.log")
       end
   end
 end
