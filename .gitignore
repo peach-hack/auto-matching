@@ -2,3 +2,5 @@
 *~
 .scannerwork
 .env
+*.spec.js.map
+*.spec.js

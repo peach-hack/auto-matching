@@ -4,6 +4,8 @@ sites-table
 
 <script lang="ts">
 import Vue from 'vue'
+
+//@ts-ignore
 import SitesTable from '@/components/organisms/SitesTable.vue'
 
 export default Vue.extend({
