@@ -17,8 +17,10 @@ export default Vue.extend({
   },
   computed: {
     site: function(): Object {
-      const idx = parseInt(this.$route.params.id) - 1
-      return this.$store.state.sites.sites[idx]
+      const idx = parseInt(this.$route.params.id)
+      return this.$store.state.sites.sites.filter(
+        (site: any) => site.id === idx
+      )[0]
     }
   }
 })

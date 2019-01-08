@@ -1,5 +1,5 @@
 <template lang="pug">
-form(@submit.prevent="updateTemplate")
+form(@submit.prevent="createTemplate")
   .form-group
     label タイトル
     input.form-control(type="text" v-model="newTitle")
@@ -14,33 +14,25 @@ import Vue from 'vue'
 //@ts-ignore
 import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
 //@ts-ignore
-import { putApiUsersPostsTemplatesById } from '@/plugins/api'
+import { postApiUsersPostsTemplates } from '@/plugins/api'
 
 export default Vue.extend({
   components: {
     SubmitButtonGroup
   },
-  props: {
-    template: {
-      type: Object,
-      required: true
-    }
-  },
   data() {
     return {
-      newTitle: this.template.title as string,
-      newBody: this.template.body as string
+      newTitle: '' as string,
+      newBody: '' as string
     }
   },
   methods: {
-    updateTemplate: function() {
+    createTemplate: function() {
       const data = {
-        id: this.template.id,
         title: this.newTitle,
         body: this.newBody
       }
-      putApiUsersPostsTemplatesById({
-        id: this.template.id,
+      postApiUsersPostsTemplates({
         attributes: data
       })
         .then((response: any) => {

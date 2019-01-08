@@ -7,7 +7,6 @@ module Api
       end
 
       def update
-        logger.debug(params)
         source_site = SourceSite.find_by(key: params[:key])
         source_site.update_attributes(
           login_user: params[:login_user],
