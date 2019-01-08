@@ -41,7 +41,9 @@ export const mutations: Mutations = {
     })
   },
   deleteTemplate(state: State, payload: any) {
-    const templates = state.templates.filter((template: Template) => template.id !== payload.id)
+    const templates = state.templates.filter(
+      (template: Template) => template.id !== payload.id
+    )
     state.templates = templates
   }
 }
