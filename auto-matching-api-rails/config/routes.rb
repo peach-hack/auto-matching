@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       namespace :users do
         namespace :posts do
           resources :templates, only: %i[index update create destroy]
+          post :manual_posts, to: "manual_posts#execute", path: "manual-posts"
         end
         resources :source_sites, only: %i[index update], path: "source-sites"
       end

@@ -17,7 +17,7 @@ table.table
       td
         nuxt-link(:to="{ path: getEditPath(template), params: {id: template.id } }") 編集
       td 
-       a(href="#" @click.prevent="deleteTemplate(template.id)") 削除
+        a(href="#" @click.prevent="deleteTemplate(template.id)") 削除
 </template>
 
 <script lang="ts">
