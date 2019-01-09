@@ -7,7 +7,7 @@ module AutoMatching
         def delete_past_post
           session.visit("https://sp.194964.com/bbs/show_bbs_write_list.html")
 
-          unless session.find(".mb10").text == " 書込みをしてアピールしよ"
+          if not session.has_css?(".mb10")
             session.click_button "すべて削除する"
             session.click_button "削除する"
           end
