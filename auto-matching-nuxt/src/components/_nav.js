@@ -24,13 +24,13 @@ export default {
       icon: 'icon-star'
     },
     {
-      name: '定期実行設定',
-      url: '/posts/auto',
+      name: 'マニュアル投稿',
+      url: '/posts/manual',
       icon: 'icon-star'
     },
     {
-      name: 'マニュアル投稿',
-      url: '/posts/manual',
+      name: '定期実行設定',
+      url: '/posts/auto',
       icon: 'icon-star'
     },
     {
