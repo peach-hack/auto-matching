@@ -15,7 +15,6 @@ module AutoMatching
         @data[:age] = 30
 
         @list.add(@data)
-
       end
 
       def save_board
