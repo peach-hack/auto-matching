@@ -4,7 +4,10 @@ module Api
       class ManualPostsController < ::ApplicationController
         def execute
           site_ids = params[:ids]
-          debug_flag = param[:debug]
+          debug_flag = params[:debug]
+
+          ManualPostJob.perform_later(site_ids, debug_flag)
+
           response_success(:manual_posts, :execute)
         end
       end
