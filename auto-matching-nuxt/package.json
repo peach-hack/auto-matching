@@ -25,7 +25,6 @@
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/toast": "^3.0.2",
     "@storybook/vue": "^4.1.2",
-    "@types/": "coreui/vue",
     "@types/axios": "^0.14.0",
     "@types/chart.js": "^2.7.42",
     "@types/eslint-plugin-prettier": "^2.2.0",
