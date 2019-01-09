@@ -37,6 +37,7 @@ module AutoMatching
           sex =[]
           name = []
           age = []
+          post_at = []
 
           # 取得する大枠のテーブルを設定
           input_data = session.all(".item_box")
@@ -46,24 +47,23 @@ module AutoMatching
           title = input_data.map {|title| title.find(".title_link").text.strip.to_s }
           value = input_data.map {|value1| value1.first("span.value1").text }
           from = input_data.map {|value1| value1.all("span.value1")[1].text.strip.to_s }
-          post_at = input_data.map {|value1| value1.all("span.value1")[2].text.strip.to_s }
+          post_time = input_data.map {|value1| value1.all("span.value1")[2].text.strip.to_s }
           category = input_data.map {|value1| value1.all("span.value1")[3].text.strip.to_s }
 
           value.each_with_index do |v,i|
             t = v.split(" ")
             s,n,a = t
-            # sex_i = s = "♀" ? 1 : 0 #性別も日付同様に保留のため文字列のまま
+            sex_i = s = "♀" ? 1 : 0 #性別も日付同様に保留のため文字列のまま
 
-            sex.push(s)
+            sex.push(sex_i)
             name.push(n)
             age.push(a)
           end
 
           #日付型に変更途中(一旦保留なので文字列のまま)
-          # post_at.each do |date|
-          #   a = date.gsub()
-          #   puts post_at = Date.parse(date)
-          # end
+          post_time.each do |date|
+            post_at.push(Time.strptime(date, "%Y年%m月%d日 %H:%M"))
+          end
 
           #配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
@@ -71,7 +71,7 @@ module AutoMatching
             @post_data_list[i] = post_data
           end
 
-          return @post_data_list
+          @post_data_list
         end
 
         def save_board
@@ -88,10 +88,9 @@ module AutoMatching
           # puts test[:title]
           #------------------
 
-          @post_data_list.each do | data |
-          puts data
-          #   a = Post.new(name: data[:name], age: data[:age])
-          #   a.save
+          @post_data_list.each do |d|
+            # post_save_data = Post.new(d[:url], d[:title], d[:sex], d[:name], d[:age], d[:from], d[:post_at], d[:category])
+            # post_save_data.save!
           end
         end
     end
