@@ -6,11 +6,12 @@ module AutoMatching
       end
 
       def try_login
-        session.first(".register-header > .register-h2#login-tab").click
+        session.execute_script "$('.register-header > .register-h2#login-tab').trigger('click')"
 
         session.fill_in "login_id", with: login_user
         session.fill_in "login_pw", with: login_password
-        session.click_button "会員ログイン"
+
+        session.execute_script "$('button.login-btn').click()"
       end
     end
   end

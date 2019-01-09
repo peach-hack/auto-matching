@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   match "*path" => "options_request#preflight", via: :options
 
@@ -7,7 +5,7 @@ Rails.application.routes.draw do
     namespace :api do
       namespace :users do
         namespace :posts do
-          resources :templates, only: %i[index]
+          resources :templates, only: %i[index update create destroy]
         end
         resources :source_sites, only: %i[index update], path: "source-sites"
       end

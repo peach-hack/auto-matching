@@ -7,19 +7,20 @@ div
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
+
+//@ts-ignore
 import SiteForm from '@/components/organisms/SiteForm.vue'
 
-const Api = require('@/plugins/api')
-
-// @ts-ignore
 export default Vue.extend({
   components: {
     SiteForm
   },
   computed: {
     site: function(): Object {
-      const idx = parseInt(this.$route.params.id) - 1
-      return this.$store.state.sites.sites[idx]
+      const idx = parseInt(this.$route.params.id)
+      return this.$store.state.sites.sites.filter(
+        (site: any) => site.id === idx
+      )[0]
     }
   }
 })

@@ -30,8 +30,6 @@ gem "whenever", require: false
 gem "capybara"
 gem "selenium-webdriver"
 gem "chromedriver-helper"
-gem "poltergeist"
-gem "phantomjs", require: "phantomjs/poltergeist"
 
 gem "active_type"
 

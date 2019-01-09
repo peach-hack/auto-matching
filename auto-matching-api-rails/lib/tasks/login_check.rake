@@ -10,8 +10,8 @@ module LoginCheck
           AutoMatching::Checker::Wakuwaku,
           AutoMatching::Checker::Pcmax,
           AutoMatching::Checker::Ikukuru,
-          AutoMatching::CHecker::Mint,
-          AutoMatching::Chekcer::Merupara,
+          AutoMatching::Checker::Mint,
+          AutoMatching::Checker::Merupara,
       ]
       classes.each { | klass| AutoMatching::Checker::Executor.new.run(klass) }
     end
