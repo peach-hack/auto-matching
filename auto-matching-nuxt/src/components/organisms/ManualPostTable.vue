@@ -30,6 +30,8 @@ form(@submit.prevent="manualPost")
 import Vue from 'vue'
 //@ts-ignore
 import Site from '@/types/site'
+//@ts-ignore
+import { postApiUsersPostsManualPosts } from '@/plugins/api'
 
 export default Vue.extend({
   data: function() {
@@ -64,6 +66,23 @@ export default Vue.extend({
     },
     getSite: function(id: number): Site {
       return this.$store.state.sites.sites[id - 1]
+    },
+    manualPost: function() {
+      if (this.selected.length === 0) {
+        this.$toasted.error('投稿先が選択されていません')
+        return
+      }
+      postApiUsersPostsManualPosts({
+        attributes: {
+          ids: this.selected
+        }
+      })
+        .then((response: any) => {
+          this.$toasted.success('投稿しました')
+        })
+        .catch((error: any) => {
+          this.$toasted.error('エラーが発生しました')
+        })
     }
   }
 })
