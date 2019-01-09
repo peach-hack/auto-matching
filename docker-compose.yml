@@ -6,17 +6,17 @@ services:
     volumes:
       - postgres-store:/var/lib/postgresql/data
 
-#  redis:
-#    image: redis
-#    volumes:
-#      - redis-store:/data
+  redis:
+    image: redis
+    volumes:
+      - redis-store:/data
 
   rails:
     build: ./auto-matching-api-rails/
     command: /bin/sh -c "rm -rf /app/tmp/pids/server.pid && bin/rails server -b 0.0.0.0 -p 3000"
     depends_on:
       - postgres
-#      - redis
+      - redis
     environment:
       CC_TEST_REPORTER_ID:
       DATABASE_HOST: postgres
@@ -63,6 +63,7 @@ services:
 
 volumes:
   postgres-store:
-#  redis-store:
+  redis-store:
   bundler-store:
   node-modules-store:
+  
