@@ -36,4 +36,6 @@ class SourceSite < ApplicationRecord
   validates :login_password, presense: false, allow_blank: true
 
   attribute :activate_flag, :boolean, default: -> { true }
+
+  belongs_to :post
 end

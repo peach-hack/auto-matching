@@ -16,4 +16,6 @@ class Profile < ApplicationRecord
   validates :age, presence: true
   validates :sex, presence: true
   validates :from, presence: true
+
+  has_many :posts, dependent: :destroy
 end
