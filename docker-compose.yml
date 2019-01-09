@@ -63,6 +63,19 @@ services:
 #    volumes:
 #      - /dev/shm:/dev/shm
 
+  worker:
+    build: ./auto-matching-api-rails/.
+    command: bundle exec sidekiq
+    environment:
+      DATABASE_HOST: postgres
+      REDIS_URL: redis://redis:6379
+    volumes:
+      - ./auto-matching-api-rails:/app
+      - bundler-store:/usr/local/bundle
+    depends_on:
+      - postgres
+      - redis
+
 volumes:
   postgres-store:
   redis-store:
