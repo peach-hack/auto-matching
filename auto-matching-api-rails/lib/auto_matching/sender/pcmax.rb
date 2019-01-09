@@ -5,10 +5,11 @@ module AutoMatching
 
       private
         def delete_past_post
+          sleep 1
           session.visit("https://pcmax.jp/mobile/bbs_write.php")
           session.click_link "過去の投稿を確認"
 
-          unless session.find(".write_text").text == "まだ掲示板への投稿はありません。"
+          if not session.has_css?(".write_text")
             select_latest_post
             session.click_link "削除する"
           end
@@ -17,7 +18,7 @@ module AutoMatching
         def select_latest_post
           session.evaluate_script("
           document.getElementByXPath = function(sValue) {
-             var a = this.evaluate(sValue, this, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+          var a = this.evaluate(sValue, this, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
           if (a.snapshotLength > 0) { return a.snapshotItem(0); } }")
           target_script = session.evaluate_script("document.getElementByXPath('/html/body/table/tbody/tr[2]/td[3]/a').href")
           session.evaluate_script(target_script.split(":")[1])
