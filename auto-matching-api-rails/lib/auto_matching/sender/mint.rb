@@ -16,9 +16,7 @@ module AutoMatching
           session.fill_in "TBt", with: post[:title]
           session.fill_in "TBm", with: post[:body]
 
-          unless ENV["DEBUG"]
-            session.find("#Bw").native.send_keys :enter
-          end
+          submit { session.find("#Bw").native.send_keys :enter }
         end
     end
   end

@@ -42,5 +42,8 @@ module AutoMatching
     # the framework and any gems in your application.
     config.paths.add "lib", eager_load: true
     config.eager_load_paths += Dir[Rails.root.join("app", "decorators", "concerns")]
+
+    # ActiveJob
+    config.active_job.queue_adapter = :sidekiq
   end
 end

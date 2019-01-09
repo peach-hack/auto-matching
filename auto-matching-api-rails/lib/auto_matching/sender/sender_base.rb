@@ -40,6 +40,12 @@ module AutoMatching
         def send_new_post
           raise NotImprementedError
         end
+
+        def submit
+          return if ENV["DEBUG"]
+          return if $DEBUG
+          yield
+        end
     end
   end
 end

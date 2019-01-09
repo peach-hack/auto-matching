@@ -22,9 +22,7 @@ module AutoMatching
           session.fill_in "Subj", with: post[:title]
           session.fill_in "Body", with: post[:body]
 
-          unless ENV["DEBUG"]
-            session.execute_script "$('.input__form__action__button__send').trigger('click', '[data-remodal-target]')"
-          end
+          submit { session.execute_script "$('.input__form__action__button__send').trigger('click', '[data-remodal-target]')" }
         end
     end
   end

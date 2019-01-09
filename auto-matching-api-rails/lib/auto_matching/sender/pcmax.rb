@@ -32,9 +32,7 @@ module AutoMatching
           session.fill_in "bbs_title", with: post[:title]
           session.fill_in "bbs_comment", with: post[:body]
 
-          unless ENV["DEBUG"]
-            session.find("#wri").native.send_keys :enter
-          end
+          submit { session.find("#wri").native.send_keys :enter }
         end
     end
   end

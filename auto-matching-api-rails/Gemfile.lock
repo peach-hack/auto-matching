@@ -382,6 +382,7 @@ DEPENDENCIES
   rubocop-rails_config
   seed-fu
   selenium-webdriver
+  sidekiq
   simple_scheduler
   solargraph
   spring

@@ -20,9 +20,7 @@ module AutoMatching
           session.fill_in "title", with: post[:title]
           session.fill_in "body", with: post[:body]
 
-          unless ENV["DEBUG"]
-            session.find(".greenButton.width60").native.send_keys :enter
-          end
+          submit { session.find(".greenButton.width60").native.send_keys :enter }
         end
     end
   end

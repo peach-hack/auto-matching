@@ -22,9 +22,7 @@ module AutoMatching
           session.fill_in "title", with: post[:title]
           session.fill_in "body", with: post[:body]
 
-          unless ENV["DEBUG"]
-            session.execute_script "$('.js-btn--post').trigger('click')"
-          end
+          submit { session.execute_script "$('.js-btn--post').trigger('click')" }
         end
     end
   end
