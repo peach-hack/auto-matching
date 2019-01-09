@@ -24,7 +24,6 @@ form(@submit.prevent="manualPost")
   .form-group        
     button(type="button submit").btn.btn-primary
       | 一括投稿
-  p {{ selected }}
 </template>
 
 <script lang="ts">
