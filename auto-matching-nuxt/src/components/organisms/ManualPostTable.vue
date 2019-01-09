@@ -21,9 +21,14 @@ form(@submit.prevent="manualPost")
           th(v-html="getLink(site)")
           th {{ getActivate(site) }}
           th -
+  .form-group
+    .form-check
+      input.form-check-input(type="checkbox" v-model="debug")#debugCheck
+      label.form-check-label(for="debugCheck")
+        | Debug Run Mode
   .form-group        
     button(type="button submit").btn.btn-primary
-      | 一括投稿
+      | Submit
 </template>
 
 <script lang="ts">
@@ -37,7 +42,8 @@ export default Vue.extend({
   data: function() {
     return {
       selected: [] as number[],
-      selectAll: false as boolean
+      selectAll: false as boolean,
+      debug: false as boolean
     }
   },
   methods: {
@@ -74,7 +80,8 @@ export default Vue.extend({
       }
       postApiUsersPostsManualPosts({
         attributes: {
-          ids: this.selected
+          ids: this.selected,
+          debug: this.debug
         }
       })
         .then((response: any) => {
