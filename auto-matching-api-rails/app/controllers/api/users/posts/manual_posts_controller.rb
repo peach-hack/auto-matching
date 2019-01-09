@@ -3,7 +3,7 @@ module Api
     module Posts
       class ManualPostsController < ::ApplicationController
         def execute
-          # TODO
+          response_success(:manual_posts, :execute)
         end
       end
     end
