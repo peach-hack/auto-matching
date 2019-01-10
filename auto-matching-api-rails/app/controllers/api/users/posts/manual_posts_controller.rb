@@ -2,6 +2,10 @@ module Api
   module Users
     module Posts
       class ManualPostsController < ::ApplicationController
+        def index
+          source_sites = ManualPostHistory.all
+        end
+
         def execute
           site_ids = params[:ids]
           debug_flag = params[:debug]
