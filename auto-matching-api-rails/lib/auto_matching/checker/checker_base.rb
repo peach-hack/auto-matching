@@ -3,11 +3,13 @@ module AutoMatching
     class CheckerBase < Base
       include Common::DriverBase
 
+      def module_type
+        "CHECKER"
+      end
+
       private
 
         def run_process
-          logger.info("CHECKER: #{source_site_key} start")
-
           # 実行条件のチェック
           if !login_user.present?
             p "ログインIDが設定されていません"
@@ -23,8 +25,6 @@ module AutoMatching
 
           # ログイン
           try_login
-
-          logger.info("CHECKER: #{source_site_key} end")
         end
     end
   end

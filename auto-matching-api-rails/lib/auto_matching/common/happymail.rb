@@ -6,7 +6,11 @@ module AutoMatching
       end
 
       def try_login
+        logging_start(__method__)
+
         login_mobile
+
+        logging_end(__method__)
       end
 
       def login_mobile

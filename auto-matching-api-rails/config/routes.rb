@@ -1,5 +1,9 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   match "*path" => "options_request#preflight", via: :options
+  mount Sidekiq::Web, at: "/sidekiq"
+  mount Logster::Web, at: "/logs"
 
   defaults format: :json do
     namespace :api do
@@ -13,3 +17,4 @@ Rails.application.routes.draw do
     end
   end
 end
+

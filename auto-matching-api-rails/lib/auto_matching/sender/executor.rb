@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module AutoMatching
   module Sender
     class Executor
@@ -7,20 +5,15 @@ module AutoMatching
         run_sender(sender_class)
       end
 
-    private
-      def run_sender(sender_class)
-        start_time = Time.now
+      private
+        def run_sender(sender_class)
+          post = sample_first_post
+          sender_class.new(post: post).run
+        end
 
-        post = sample_first_post
-        sender_class.new(post: post).run
-        end_time = Time.now
-
-        p "end.(#{end_time - start_time}s)"
-      end
-
-      def sample_first_post
-        PostTemplate.offset(rand(PostTemplate.count)).first
-      end
+        def sample_first_post
+          PostTemplate.offset(rand(PostTemplate.count)).first
+        end
     end
   end
 end

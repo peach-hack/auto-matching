@@ -5,6 +5,8 @@ module AutoMatching
 
       private
         def delete_past_post
+          logging_start(__method__)
+
           sleep 1
           session.visit("https://pcmax.jp/mobile/bbs_write.php")
           session.click_link "過去の投稿を確認"
@@ -13,6 +15,8 @@ module AutoMatching
             select_latest_post
             session.click_link "削除する"
           end
+
+          logging_end(__method__)
         end
 
         def select_latest_post
@@ -25,6 +29,8 @@ module AutoMatching
         end
 
         def send_new_post
+          logging_start(__method__)
+
           session.visit("https://pcmax.jp/mobile/bbs_write.php")
 
           session.click_link "スグ会いたい"
@@ -32,9 +38,9 @@ module AutoMatching
           session.fill_in "bbs_title", with: post[:title]
           session.fill_in "bbs_comment", with: post[:body]
 
-          unless ENV["DEBUG"]
-            session.find("#wri").native.send_keys :enter
-          end
+          submit { session.find("#wri").native.send_keys :enter }
+
+          logging_end(__method__)
         end
     end
   end

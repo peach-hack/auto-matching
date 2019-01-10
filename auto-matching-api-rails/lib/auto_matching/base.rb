@@ -83,12 +83,20 @@ module AutoMatching
         @ts ||= Time.zone.now.strftime("%Y%m%d%H%M%S")
       end
 
-      def logger
-        @logger ||= Logger.new(logger_name)
+      def logging_start(method_name)
+        logger.info("#{logging_format(method_name)} start")
       end
 
-      def logger_name
-        Rails.root.join("log", "execution.log")
+      def logging_end(method_name)
+        logger.info("#{logging_format(method_name)} end")
+      end
+
+      def logging_format(method_name)
+        "#{module_type}:#{source_site_key}:#{method_name}"
+      end
+
+      def logger
+        @logger ||= MultiLogger.logger
       end
 
       def cookie_file_name

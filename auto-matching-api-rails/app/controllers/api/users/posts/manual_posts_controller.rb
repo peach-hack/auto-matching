@@ -4,7 +4,22 @@ module Api
       class ManualPostsController < ::ApplicationController
         def execute
           site_ids = params[:ids]
-          debug_flag = param[:debug]
+          debug_flag = params[:debug]
+
+          sender_classes = [
+            AutoMatching::Sender::Happymail,
+            AutoMatching::Sender::Wakuwaku,
+            AutoMatching::Sender::Pcmax,
+            AutoMatching::Sender::Ikukuru,
+            AutoMatching::Sender::Mint,
+            AutoMatching::Sender::Merupara,
+          ]
+
+          site_ids.each do |id|
+            sender_class = sender_classes[id - 1].to_s
+            ManualPostJob.perform_later(debug_flag, sender_class)
+          end
+
           response_success(:manual_posts, :execute)
         end
       end

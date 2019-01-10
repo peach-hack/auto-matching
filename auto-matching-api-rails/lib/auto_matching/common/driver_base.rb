@@ -1,6 +1,10 @@
 module AutoMatching
   module Common
     module DriverBase
+      def module_type
+        raise NotImprementedError
+      end
+
       def source_site_key
         raise NotImprementedError
       end

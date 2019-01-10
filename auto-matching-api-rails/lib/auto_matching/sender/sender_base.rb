@@ -10,11 +10,13 @@ module AutoMatching
         super
       end
 
+      def module_type
+        "SENDER".freeze
+      end
+
       private
 
         def run_process
-          logger.info("SENDER: #{source_site_key} start")
-
           # 実行条件のチェック
           return if !login_user.present? || !login_password.present?
 
@@ -29,8 +31,6 @@ module AutoMatching
 
           # 記事の投稿
           send_new_post
-
-          logger.info("SENDER: #{source_site_key} end")
         end
 
         def delete_past_post
@@ -39,6 +39,12 @@ module AutoMatching
 
         def send_new_post
           raise NotImprementedError
+        end
+
+        def submit
+          return if ENV["DEBUG"]
+          return if $DEBUG
+          yield
         end
     end
   end
