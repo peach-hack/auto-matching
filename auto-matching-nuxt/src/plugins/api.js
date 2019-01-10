@@ -294,7 +294,46 @@ export const deleteApiUsersPostsTemplatesByIdURL = function (parameters = {}) {
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
 /**
- * 掲示板投稿
+ * 掲示板一括投稿履歴
+ * request: getApiUsersPostsManualPosts
+ * url: getApiUsersPostsManualPostsURL
+ * method: getApiUsersPostsManualPosts_TYPE
+ * raw_url: getApiUsersPostsManualPosts_RAW_URL
+ */
+export const getApiUsersPostsManualPosts = function (parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/posts/manual-posts'
+  let body
+  let queryParameters = {}
+  let form = {}
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('get', domain + path, body, queryParameters, form, config)
+}
+export const getApiUsersPostsManualPosts_RAW_URL = function () {
+  return '/api/users/posts/manual-posts'
+}
+export const getApiUsersPostsManualPosts_TYPE = function () {
+  return 'get'
+}
+export const getApiUsersPostsManualPostsURL = function (parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/posts/manual-posts'
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}
+/**
+ * 掲示板一括投稿
  * request: postApiUsersPostsManualPosts
  * url: postApiUsersPostsManualPostsURL
  * method: postApiUsersPostsManualPosts_TYPE

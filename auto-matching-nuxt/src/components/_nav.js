@@ -11,7 +11,7 @@ export default {
     */
     {
       title: true,
-      name: '自動投稿',
+      name: '一括投稿',
       class: '',
       wrapper: {
         element: '',
