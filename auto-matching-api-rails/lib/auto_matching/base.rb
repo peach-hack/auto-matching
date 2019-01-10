@@ -1,5 +1,6 @@
 module AutoMatching
   class Base
+    include MultiLogger
     attr_reader :token
 
     def initialize(*_args)
@@ -88,7 +89,7 @@ module AutoMatching
       end
 
       def logger_name
-        Rails.root.join("log", "execution.log")
+        Rails.root.join("log", "application.log")
       end
 
       def cookie_file_name

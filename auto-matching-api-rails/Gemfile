@@ -80,4 +80,5 @@ group :development do
   gem "view_source_map"
   gem "rails_db"
   gem "solargraph"
+  gem "logster"
 end
