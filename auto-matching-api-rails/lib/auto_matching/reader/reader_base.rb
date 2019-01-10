@@ -10,8 +10,6 @@ module AutoMatching
       private
 
         def run_process
-          logging_start
-
           # 実行条件のチェック
           return if !login_user.present? || !login_password.present?
 
@@ -23,8 +21,6 @@ module AutoMatching
 
           # 掲示板記事のスクレイピング
           read_board
-
-          logging_end
         end
 
         def read_board

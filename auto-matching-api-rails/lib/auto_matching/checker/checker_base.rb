@@ -10,8 +10,6 @@ module AutoMatching
       private
 
         def run_process
-          logging_start
-
           # 実行条件のチェック
           if !login_user.present?
             p "ログインIDが設定されていません"
@@ -27,8 +25,6 @@ module AutoMatching
 
           # ログイン
           try_login
-
-          logging_end
         end
     end
   end

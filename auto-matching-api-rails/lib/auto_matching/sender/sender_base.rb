@@ -17,8 +17,6 @@ module AutoMatching
       private
 
         def run_process
-          logging_start
-
           # 実行条件のチェック
           return if !login_user.present? || !login_password.present?
 
@@ -33,8 +31,6 @@ module AutoMatching
 
           # 記事の投稿
           send_new_post
-
-          logging_end
         end
 
         def delete_past_post
