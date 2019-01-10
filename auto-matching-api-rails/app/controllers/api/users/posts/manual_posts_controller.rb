@@ -3,7 +3,7 @@ module Api
     module Posts
       class ManualPostsController < ::ApplicationController
         def index
-          histories = ManualPostHistory.all
+          histories = SourceSite::ManualPostHistory.all
           render json: ManualPostHistorySerializer.new(histories).serialized_json
         end
 

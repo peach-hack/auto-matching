@@ -13,7 +13,7 @@ export default Vue.extend({
     ManualPostTable
   },
   async fetch({ store }: { store: any }) {
-    await store.dispatch('sites/fetchSites')
+    await store.dispatch('posts/fetchHistories')
   }
 } as any)
 </script>
