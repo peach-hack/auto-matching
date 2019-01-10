@@ -7,11 +7,10 @@ module AutoMatching
         def delete_past_post
           logging_start(__method__)
 
-          sleep 1
           session.visit("https://pcmax.jp/mobile/bbs_write.php")
           session.click_link "過去の投稿を確認"
 
-          if not session.has_css?(".write_text")
+          unless session.has_text?("まだ掲示板への投稿はありません。")
             select_latest_post
             session.click_link "削除する"
           end
@@ -33,7 +32,7 @@ module AutoMatching
 
           session.visit("https://pcmax.jp/mobile/bbs_write.php")
 
-          session.click_link "スグ会いたい"
+          session.find("a", text: "スグ会いたい").native.send_keys :enter
 
           session.fill_in "bbs_title", with: post[:title]
           session.fill_in "bbs_comment", with: post[:body]
