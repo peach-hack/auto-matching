@@ -3,10 +3,14 @@ module AutoMatching
     class CheckerBase < Base
       include Common::DriverBase
 
+      def module_type
+        "CHECKER"
+      end
+
       private
 
         def run_process
-          logger.info("CHECKER: #{source_site_key} start")
+          logging_start
 
           # 実行条件のチェック
           if !login_user.present?
@@ -24,7 +28,7 @@ module AutoMatching
           # ログイン
           try_login
 
-          logger.info("CHECKER: #{source_site_key} end")
+          logging_end
         end
     end
   end

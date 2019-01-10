@@ -1,6 +1,5 @@
 module AutoMatching
   class Base
-    include MultiLogger
     attr_reader :token
 
     def initialize(*_args)
@@ -84,12 +83,20 @@ module AutoMatching
         @ts ||= Time.zone.now.strftime("%Y%m%d%H%M%S")
       end
 
-      def logger
-        @logger ||= Logger.new(logger_name)
+      def logging_start
+        logger.info("#{logging_format} start")
       end
 
-      def logger_name
-        Rails.root.join("log", "application.log")
+      def logging_end
+        logger.info("#{logging_format} end")
+      end
+
+      def logging_format
+        "#{module_type}:#{source_site_key}:#{__method__}"
+      end
+
+      def logger
+        @logger ||= MultiLogger.logger
       end
 
       def cookie_file_name
