@@ -7,11 +7,7 @@ module AutoMatching
 
       private
         def run_reader(klass)
-          start_time = Time.now
           klass.new.run
-          end_time = Time.now
-
-          p "end.(#{end_time - start_time}s)"
         end
     end
   end

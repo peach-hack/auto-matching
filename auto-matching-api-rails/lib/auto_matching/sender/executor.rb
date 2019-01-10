@@ -7,13 +7,8 @@ module AutoMatching
 
       private
         def run_sender(sender_class)
-          start_time = Time.now
-
           post = sample_first_post
           sender_class.new(post: post).run
-          end_time = Time.now
-
-          p "end.(#{end_time - start_time}s)"
         end
 
         def sample_first_post
