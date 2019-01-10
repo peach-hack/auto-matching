@@ -1,4 +1,5 @@
 require "sidekiq/web"
+require "logster"
 
 Rails.application.routes.draw do
   match "*path" => "options_request#preflight", via: :options
