@@ -3,6 +3,7 @@
     "lint": "bin/lint.sh",
     "lint:fix": "bin/lint-fix.sh",
     "test": "bin/test.sh",
+    "spec": "docker-compose run rails rspec",
     "prepush": "bin/prepush.sh",
     "docker:clean": "docker volume ls | grep automatching | cut -b 21- | xargs docker volume rm",
     "up": "docker-compose up -d",
