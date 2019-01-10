@@ -10,7 +10,7 @@ module AutoMatching
           session.visit("https://pcmax.jp/mobile/bbs_write.php")
           session.click_link "過去の投稿を確認"
 
-          if session.has_css?(".write_text")
+          unless session.has_text?("まだ掲示板への投稿はありません。")
             select_latest_post
             session.click_link "削除する"
           end

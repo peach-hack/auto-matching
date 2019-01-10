@@ -29,6 +29,7 @@ services:
     volumes:
       - ./auto-matching-api-rails:/app
       - bundler-store:/usr/local/bundle
+      - /dev/shm:/dev/shm
 
   nuxt:
     command: /bin/sh -c 'API_URL=http://rails:3000 yarn nuxt'
@@ -72,6 +73,7 @@ services:
     volumes:
       - ./auto-matching-api-rails:/app
       - bundler-store:/usr/local/bundle
+      - /dev/shm:/dev/shm
     depends_on:
       - postgres
       - redis

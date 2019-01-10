@@ -13,7 +13,7 @@ module AutoMatching
 
       save_cookie
     rescue StandardError => e
-      save_current_page
+      # save_current_page
       logger.error("#{e.message}")
     end
 
