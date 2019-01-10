@@ -11,4 +11,5 @@ create_table "source_sites", comment: "出会い系サイトの情報", force: :
   t.string "login_url", null: false, comment: "クロール開始URL"
   t.boolean "activate_flag", null: false, comment: "操作対象"
   t.index ["key"], name: "index_source_sites_on_key", unique: true
+  t.references :post, foreign_key: true
 end

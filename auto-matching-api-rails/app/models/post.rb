@@ -6,7 +6,6 @@
 #
 #  id             :bigint(8)        not null, primary key
 #  area           :integer          not null
-#  body           :text             not null
 #  category       :string           not null
 #  post_at        :datetime         not null
 #  title          :string           not null
@@ -17,11 +16,13 @@
 #
 
 class Post < ApplicationRecord
-  validates :source_site_id, presence: true
+  validates :profile_id, presence: true
+  # validates :source_site_id, presence: true #必要なくなった
   validates :title, presence: true
   validates :post_at, presence: true
   validates :category, presence: true
   validates :area, presence: true
-  validates :profile_id, presence: true
   # validates :body, presence: true ##bodyは取得しないため
+
+  belongs_to :profile, optional: true
 end

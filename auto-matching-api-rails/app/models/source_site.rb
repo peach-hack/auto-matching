@@ -36,4 +36,6 @@ class SourceSite < ApplicationRecord
   validates :login_password, presense: false, allow_blank: true
 
   attribute :activate_flag, :boolean, default: -> { true }
+
+  has_one :profile, dependent: :destroy
 end

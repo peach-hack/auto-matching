@@ -23,17 +23,18 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "posts", comment: "掲示板投稿データ", force: :cascade do |t|
-    t.integer "source_site_id", null: false
+    t.string "profile_id", null: false
     t.string "title", null: false
     t.datetime "post_at", null: false
     t.string "category", null: false
     t.integer "area", null: false
-    t.string "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "profiles", comment: "掲示板投稿データ", force: :cascade do |t|
+    t.string "source_site_id", null: false
+    t.string "user_id", null: false
     t.string "name", null: false
     t.integer "age", null: false
     t.integer "sex", null: false
@@ -52,7 +53,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at", null: false
     t.string "login_url", null: false, comment: "クロール開始URL"
     t.boolean "activate_flag", null: false, comment: "操作対象"
+    t.bigint "post_id"
     t.index ["key"], name: "index_source_sites_on_key", unique: true
+    t.index ["post_id"], name: "index_source_sites_on_post_id"
   end
 
 end

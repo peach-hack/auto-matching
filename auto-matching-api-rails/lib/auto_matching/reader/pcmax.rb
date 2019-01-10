@@ -60,14 +60,25 @@ module AutoMatching
             age.push(a)
           end
 
-          #日付型に変更途中(一旦保留なので文字列のまま)
+          #日付型に変更
           post_time.each do |date|
             post_at.push(Time.strptime(date, "%Y年%m月%d日 %H:%M"))
           end
 
+          #都道府県番号に変更(string -> integer(1-49))
+          #別ブロックにして呼び出す
+          #あとで作成する
+
+          # PCMAXのsource_sitesのIDは3のため
+          source_site_id[:source_site_id] = 3
+
           #配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
-            post_data = { url: url[i], title: title[i], sex: sex[i], name: name[i], age: age[i], from: from[i], post_at: post_at[i], category: category[i]}
+            post_data = {source_site_id: source_site_id[:source_site_id],
+                          url: url[i], title: title[i], sex: sex[i], name: name[i],
+                            age: age[i], from: from[i], post_at: post_at[i], category: category[i]
+                        }
+
             @post_data_list[i] = post_data
           end
 
@@ -89,8 +100,18 @@ module AutoMatching
           #------------------
 
           @post_data_list.each do |d|
-            # post_save_data = Post.new(d[:url], d[:title], d[:sex], d[:name], d[:age], d[:from], d[:post_at], d[:category])
+
+            #ProfileとPostに一括登録の模索１
+            post_save_data = Post.new(post_data_params)
+            post_save_data.save!
+
+            # post_save_data = Post.new(source_site_id[:source_site_id],
+            #    d[:url], d[:title], d[:sex], d[:name], d[:age], d[:from], d[:post_at], d[:category])
             # post_save_data.save!
+          end
+
+          def post_data_params
+            @post_data_list.require(:profile).permit(:source_site_id, :name, :age, :sex, :from, post: [:profile_id, :title, :post_at, :category, :area])
           end
         end
     end
