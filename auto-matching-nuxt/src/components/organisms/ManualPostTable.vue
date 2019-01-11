@@ -11,7 +11,7 @@ form(@submit.prevent="manualPost")
           th サイト名
           th 操作対象
           th 最終投稿時刻
-          th 最終投稿ステータス
+          th 投稿ステータス
       tbody
         tr(v-for="history in $state.posts.histories" :key="history.id")
           th
@@ -41,6 +41,7 @@ import History from '@/types/history'
 import { postApiUsersPostsManualPosts } from '@/plugins/api'
 //@ts-ignore
 import DateUtil from '@/components/mixins/DateUtil'
+import ActionCable from 'actioncable'
 
 export default Vue.extend({
   mixins: [DateUtil],
@@ -48,8 +49,21 @@ export default Vue.extend({
     return {
       selected: [] as number[],
       selectAll: false as boolean,
-      debug: false as boolean
+      debug: false as boolean,
+      statusChannel: null as any
     }
+  },
+  created() {
+    const cable = ActionCable.createConsumer(`${process.env.wsBaseUrl}/cable`)
+    this.statusChannel = cable.subscriptions.create('ManualPostChannel', {
+      received: (data: any) => {
+        this.$store.commit({
+          type: 'posts/changeStatus',
+          ids: data['ids'],
+          status: data['status']
+        })
+      }
+    } as any)
   },
   methods: {
     select: function() {
@@ -94,11 +108,16 @@ export default Vue.extend({
           this.$store.commit({
             type: 'posts/changeStatus',
             ids: this.selected,
-            status: 'Execute'
+            status: '実行中'
           })
         })
         .catch((error: any) => {
           this.$toasted.error('エラーが発生しました')
+          this.$store.commit({
+            type: 'posts/changeStatus',
+            ids: this.selected,
+            status: '失敗'
+          })
         })
     }
   }
