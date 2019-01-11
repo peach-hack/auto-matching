@@ -120,6 +120,16 @@ module AutoMatching
         end
       end
 
+      def get_coolies
+        session.driver.browser.manage.all_cookies
+      end
+
+      def get_cookie(key)
+        cookies = session.driver.browser.manage.all_cookies
+        cookie = cookies.find { |c| c[:name] == key }
+        cookie && cookie[:value]
+      end
+
       def save_cookie
         tmp_cookies = session.driver.browser.manage.all_cookies
         File.open(cookie_file_name, "w") do |f|

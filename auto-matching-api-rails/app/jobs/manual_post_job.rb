@@ -21,12 +21,12 @@ class ManualPostJob < ApplicationJob
   private
     def set_success
       history = SourceSite::ManualPostHistory.find_by(key: @key)
-      history.update(last_post_status: status, last_post_at: date)
+      history.update(last_post_status: SUCCESS, last_post_at: date)
     end
 
     def set_error
       history = SourceSite::ManualPostHistory.find_by(key: @key)
-      history.update(last_post_status: status)
+      history.update(last_post_status: ERROR)
     end
 
     def date
