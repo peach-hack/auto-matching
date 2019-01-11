@@ -49,26 +49,21 @@ export default Vue.extend({
     return {
       selected: [] as number[],
       selectAll: false as boolean,
-      debug: false as boolean
+      debug: false as boolean,
+      statusChannel: null as any
     }
   },
   created() {
-    const cable = ActionCable.createConsumer(
-      `ws://${process.env.baseUrl}/cable`
-    )
-    this.statusChannel = cable.subscriptions.create(
-      {
-        channel: 'ManualPostChannel'
-      },
-      {
-        received: data =>
-          this.$store.commit({
-            type: 'posts/changeStatus',
-            ids: data['ids'],
-            status: data['status']
-          })
+    const cable = ActionCable.createConsumer(`${process.env.wsBaseUrl}/cable`)
+    this.statusChannel = cable.subscriptions.create('ManualPostChannel', {
+      received: (data: any) => {
+        this.$store.commit({
+          type: 'posts/changeStatus',
+          ids: data['ids'],
+          status: data['status']
+        })
       }
-    )
+    } as any)
   },
   methods: {
     select: function() {

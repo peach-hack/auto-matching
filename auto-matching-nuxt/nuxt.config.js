@@ -23,7 +23,8 @@ module.exports = {
   loading: { color: '#42A5CC' },
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:5000'
+    baseUrl: process.env.BASE_URL || 'http://localhost:5000',
+    wsBaseUrl: process.env.WS_BASE_URL || 'ws://localhost:5000'
   },
 
   /**
