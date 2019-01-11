@@ -9,11 +9,11 @@ class ManualPostJob < ApplicationJob
     klass = sender_class_s.constantize
     @key = klass.new.source_site_key
 
-    # AutoMatching::Sender::Executor.new.run(klass)
+    AutoMatching::Sender::Executor.new.run(klass)
 
     set_success
   rescue StandardError => e
-    # set_error
+    set_error
   ensure
     $DEBUG = false
   end
@@ -28,8 +28,8 @@ class ManualPostJob < ApplicationJob
     end
 
     def set_status(status)
-      history = SourceSite::ManualPostHistory.find(1)
-      history.update_attributes = { last_post_status: status, last_post_at: date }
+      history = SourceSite::ManualPostHistory.find_by(key: @key)
+      history.update(last_post_status: status, last_post_at: date)
     end
 
     def date
