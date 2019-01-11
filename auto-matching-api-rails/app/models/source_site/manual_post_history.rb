@@ -21,6 +21,6 @@
 #
 
 class SourceSite < ApplicationRecord
-  class ManualPostHistory < ActiveType::Record[SourceSite]
+  class ManualPostHistory < ActiveType::Record[::SourceSite]
   end
 end

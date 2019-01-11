@@ -10,7 +10,8 @@ form(@submit.prevent="manualPost")
                 type="checkbox" @click="select" v-model="selectAll")
           th サイト名
           th 操作対象
-          th 状態
+          th 最終投稿時刻
+          th 最終投稿ステータス
       tbody
         tr(v-for="history in $state.posts.histories" :key="history.id")
           th
@@ -20,7 +21,8 @@ form(@submit.prevent="manualPost")
                 v-model="selected" :value="history.id")
           th(v-html="getLink(history)")
           th {{ getActivate(history) }}
-          th -
+          th {{ history.date }}
+          th {{ history.status }}
   .form-group
     .form-check
       input.form-check-input(type="checkbox" v-model="debug")#debugCheck
