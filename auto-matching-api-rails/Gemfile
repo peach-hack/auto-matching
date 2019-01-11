@@ -46,6 +46,8 @@ gem "ridgepole"
 gem "seed-fu"
 
 gem "sidekiq"
+gem "rails_db"
+gem "logster"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -79,7 +81,5 @@ group :development do
   gem "better_errors"
   gem "annotate"
   gem "view_source_map"
-  gem "rails_db"
   gem "solargraph"
-  gem "logster"
 end
