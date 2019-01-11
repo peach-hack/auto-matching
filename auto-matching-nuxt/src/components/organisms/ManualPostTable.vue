@@ -91,6 +91,11 @@ export default Vue.extend({
       })
         .then((response: any) => {
           this.$toasted.success('投稿しました')
+          this.$store.commit({
+            type: 'posts/changeStatus',
+            ids: this.selected,
+            status: 'Execute'
+          })
         })
         .catch((error: any) => {
           this.$toasted.error('エラーが発生しました')

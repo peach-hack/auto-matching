@@ -65,6 +65,11 @@ export const mutations: Mutations = {
           date: history.attributes.lastPostAt as string
         })
       })
+  },
+  changeStatus(state: State, payload: any) {
+    payload.ids.forEach((id: number) => {
+      state.histories[id - 1].status = payload.status
+    })
   }
 }
 
