@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
 import Template from '../types/template'
+import History from '../types/history'
 
 import * as Api from '../plugins/api'
 
@@ -8,6 +9,7 @@ Vue.use(Vuex)
 
 export interface State {
   templates: Template[]
+  histories: History[]
 }
 
 export interface Context {
@@ -23,7 +25,8 @@ export interface Actions {
 }
 
 export const state: () => State = () => ({
-  templates: []
+  templates: [],
+  histories: []
 })
 
 export const mutations: Mutations = {
@@ -45,6 +48,28 @@ export const mutations: Mutations = {
       (template: Template) => template.id !== payload.id
     )
     state.templates = templates
+  },
+  addHistories(state, payload) {
+    state.histories = []
+    payload
+      .sort((x: any, y: any) => {
+        return x.id - y.id
+      })
+      .map((history: any) => {
+        state.histories.push({
+          id: history.attributes.id as number,
+          name: history.attributes.name as string,
+          activateFlag: history.attributes.activateFlag as boolean,
+          url: history.attributes.affiliateUrl as string,
+          status: history.attributes.lastPostStatus as string,
+          date: history.attributes.lastPostAt as string
+        })
+      })
+  },
+  changeStatus(state: State, payload: any) {
+    payload.ids.forEach((id: number) => {
+      state.histories[id - 1].status = payload.status
+    })
   }
 }
 
@@ -52,6 +77,10 @@ export const actions: Actions = {
   async fetchTemplates({ commit }) {
     const response = await Api.getApiUsersPostsTemplates()
     commit('addTemplates', response.data.data)
+  },
+  async fetchHistories({ commit }) {
+    const response = await Api.getApiUsersPostsManualPosts()
+    commit('addHistories', response.data.data)
   }
 }
 

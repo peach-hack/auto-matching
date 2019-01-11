@@ -127,8 +127,17 @@ paths:
         '500':
           description: 失敗時のレスポンス
   /api/users/posts/manual-posts:
+    get:
+      summary: 掲示板一括投稿履歴
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
     post:
-      summary: 掲示板投稿
+      summary: 掲示板一括投稿
       produces:
         - application/json
       parameters:

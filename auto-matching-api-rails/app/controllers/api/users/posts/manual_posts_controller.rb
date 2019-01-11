@@ -2,6 +2,11 @@ module Api
   module Users
     module Posts
       class ManualPostsController < ::ApplicationController
+        def index
+          histories = SourceSite::ManualPostHistory.all
+          render json: ManualPostHistorySerializer.new(histories).serialized_json
+        end
+
         def execute
           site_ids = params[:ids]
           debug_flag = params[:debug]

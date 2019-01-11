@@ -10,7 +10,9 @@ module AutoMatching
 
         session.fill_in "email", with: login_user
         session.fill_in "password", with: login_password
-        session.click_on "会員ログイン"
+        session.execute_script "document.email.submit();"
+
+        session.has_text?("top")
 
         logging_end(__method__)
       end

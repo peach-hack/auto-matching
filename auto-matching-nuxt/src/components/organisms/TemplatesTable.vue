@@ -27,14 +27,11 @@ import moment from 'moment'
 import Template from '@types/template'
 //@ts-ignore
 import { deleteApiUsersPostsTemplatesById } from '@/plugins/api'
+//@ts-ignore
+import DateUtil from '@/components/mixins/DateUtil'
 
 export default Vue.extend({
-  filters: {
-    showDate: function(value: string): string {
-      const date = moment(value)
-      return date.format('YYYY-MM-DD HH:mm')
-    }
-  },
+  mixins: [DateUtil],
   methods: {
     getEditPath(template: Template): string {
       return `/posts/templates/${template.id}`

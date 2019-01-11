@@ -10,17 +10,19 @@ form(@submit.prevent="manualPost")
                 type="checkbox" @click="select" v-model="selectAll")
           th サイト名
           th 操作対象
-          th 状態
+          th 最終投稿時刻
+          th 最終投稿ステータス
       tbody
-        tr(v-for="site in $state.sites.sites" :key="site.id")
+        tr(v-for="history in $state.posts.histories" :key="history.id")
           th
             .form-check
               input.form-check-input.position-static(
-                type="checkbox" :disabled="isCheckBoxDisabled(site)" 
-                v-model="selected" :value="site.id")
-          th(v-html="getLink(site)")
-          th {{ getActivate(site) }}
-          th -
+                type="checkbox" :disabled="isCheckBoxDisabled(history)" 
+                v-model="selected" :value="history.id")
+          th(v-html="getLink(history)")
+          th {{ getActivate(history) }}
+          th {{ history.date | showDate }}
+          th {{ history.status }}
   .form-group
     .form-check
       input.form-check-input(type="checkbox" v-model="debug")#debugCheck
@@ -34,11 +36,14 @@ form(@submit.prevent="manualPost")
 <script lang="ts">
 import Vue from 'vue'
 //@ts-ignore
-import Site from '@/types/site'
+import History from '@/types/history'
 //@ts-ignore
 import { postApiUsersPostsManualPosts } from '@/plugins/api'
+//@ts-ignore
+import DateUtil from '@/components/mixins/DateUtil'
 
 export default Vue.extend({
+  mixins: [DateUtil],
   data: function() {
     return {
       selected: [] as number[],
@@ -51,27 +56,27 @@ export default Vue.extend({
       this.selected = []
 
       if (!this.selectAll) {
-        this.getSites().forEach((site: Site) => {
-          if (site.activateFlag) {
-            this.selected.push(this.getSite(site.id).id)
+        this.getHistories().forEach((history: History) => {
+          if (history.activateFlag) {
+            this.selected.push(this.getHistory(history.id).id)
           }
         })
       }
     },
-    getLink: function(site: Site): string {
-      return `<a href=${site.url} target="_blank">${site.name}</a>`
+    getLink: function(history: History): string {
+      return `<a href=${history.url} target="_blank">${history.name}</a>`
     },
-    getActivate: function(site: Site): string {
-      return site.activateFlag ? '有効' : '無効'
+    getActivate: function(history: History): string {
+      return history.activateFlag ? '有効' : '無効'
     },
-    isCheckBoxDisabled: function(site: Site): boolean {
-      return !site.activateFlag
+    isCheckBoxDisabled: function(history: History): boolean {
+      return !history.activateFlag
     },
-    getSites: function(): Site[] {
-      return this.$store.state.sites.sites
+    getHistories: function(): History[] {
+      return this.$store.state.posts.histories
     },
-    getSite: function(id: number): Site {
-      return this.$store.state.sites.sites[id - 1]
+    getHistory: function(id: number): History {
+      return this.$store.state.posts.histories[id - 1]
     },
     manualPost: function() {
       if (this.selected.length === 0) {
@@ -86,6 +91,11 @@ export default Vue.extend({
       })
         .then((response: any) => {
           this.$toasted.success('投稿しました')
+          this.$store.commit({
+            type: 'posts/changeStatus',
+            ids: this.selected,
+            status: 'Execute'
+          })
         })
         .catch((error: any) => {
           this.$toasted.error('エラーが発生しました')

@@ -7,14 +7,15 @@ module AutoMatching
     end
 
     def run
-      set_cookie
+      # set_cookie
 
       run_process
 
-      save_cookie
+      # save_cookie
     rescue StandardError => e
-      # save_current_page
+      save_current_page
       logger.error("#{e.message}")
+      raise e
     end
 
     private
