@@ -11,7 +11,7 @@ form(@submit.prevent="manualPost")
           th サイト名
           th 操作対象
           th 最終投稿時刻
-          th 最終投稿ステータス
+          th 投稿ステータス
       tbody
         tr(v-for="history in $state.posts.histories" :key="history.id")
           th
@@ -94,11 +94,16 @@ export default Vue.extend({
           this.$store.commit({
             type: 'posts/changeStatus',
             ids: this.selected,
-            status: 'Execute'
+            status: '実行中'
           })
         })
         .catch((error: any) => {
           this.$toasted.error('エラーが発生しました')
+          this.$store.commit({
+            type: 'posts/changeStatus',
+            ids: this.selected,
+            status: '失敗'
+          })
         })
     }
   }
