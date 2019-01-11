@@ -21,7 +21,7 @@ form(@submit.prevent="manualPost")
                 v-model="selected" :value="history.id")
           th(v-html="getLink(history)")
           th {{ getActivate(history) }}
-          th {{ history.date }}
+          th {{ history.date | showDate }}
           th {{ history.status }}
   .form-group
     .form-check
@@ -39,8 +39,11 @@ import Vue from 'vue'
 import History from '@/types/history'
 //@ts-ignore
 import { postApiUsersPostsManualPosts } from '@/plugins/api'
+//@ts-ignore
+import DateUtil from '@/components/mixins/DateUtil'
 
 export default Vue.extend({
+  mixins: [DateUtil],
   data: function() {
     return {
       selected: [] as number[],
