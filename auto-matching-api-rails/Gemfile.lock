@@ -92,6 +92,9 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
+    capybara-sessionkeeper (0.1.7)
+      capybara
+      selenium-webdriver
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.0)
@@ -358,6 +361,7 @@ DEPENDENCIES
   better_errors
   byebug
   capybara
+  capybara-sessionkeeper
   chromedriver-helper
   dotenv-rails
   enumerize!

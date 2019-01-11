@@ -10,6 +10,7 @@ module AutoMatching
           logging_start(__method__)
 
           session.visit("http://550909.com/m/bbs/history")
+          session.has_text?("募集履歴")
 
           # すでに投稿がある場合は投稿を削除
           unless session.has_css?(".BtnToPureBBS")
