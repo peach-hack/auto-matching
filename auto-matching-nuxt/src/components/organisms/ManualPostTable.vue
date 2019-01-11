@@ -41,6 +41,7 @@ import History from '@/types/history'
 import { postApiUsersPostsManualPosts } from '@/plugins/api'
 //@ts-ignore
 import DateUtil from '@/components/mixins/DateUtil'
+import ActionCable from 'actioncable'
 
 export default Vue.extend({
   mixins: [DateUtil],
@@ -50,6 +51,24 @@ export default Vue.extend({
       selectAll: false as boolean,
       debug: false as boolean
     }
+  },
+  created() {
+    const cable = ActionCable.createConsumer(
+      `ws://${process.env.baseUrl}/cable`
+    )
+    this.statusChannel = cable.subscriptions.create(
+      {
+        channel: 'ManualPostChannel'
+      },
+      {
+        received: data =>
+          this.$store.commit({
+            type: 'posts/changeStatus',
+            ids: data['ids'],
+            status: data['status']
+          })
+      }
+    )
   },
   methods: {
     select: function() {
