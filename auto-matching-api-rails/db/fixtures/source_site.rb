@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # ハッピーメール
 SourceSite.seed do |p|
   p.id = 1
