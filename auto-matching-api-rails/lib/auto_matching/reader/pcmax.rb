@@ -38,6 +38,7 @@ module AutoMatching
           name = []
           age = []
           post_at = []
+          from = []
 
           # 取得する大枠のテーブルを設定
           input_data = session.all(".item_box")
@@ -46,7 +47,7 @@ module AutoMatching
           url = input_data.map { |value1| value1.find(".title_link")[:href] }
           title = input_data.map { |value1| value1.find(".title_link").text.strip.to_s }
           value = input_data.map { |value1| value1.first("span.value1").text }
-          from = input_data.map { |value1| value1.all("span.value1")[1].text.strip.to_s }
+          post_from = input_data.map { |value1| value1.all("span.value1")[1].text.strip.to_s }
           post_time = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
           category = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
 
@@ -67,8 +68,21 @@ module AutoMatching
           end
 
           # 都道府県番号に変更(string -> integer(1-49))
-          # 別ブロックにして呼び出す
-          # あとで作成する
+          post_from.each do |args|
+            # テスト用　↓どこかに移動させたい
+            from_data = 0
+            case args
+            when args.start_with?("北海道") then
+              from_data = 1 # 北海道
+            when args.start_with?("青森") then
+              from_data = 7 # 青森
+            when args.start_with?("東京") then
+              from_data = 22 # 東京
+            end
+
+            puts "#{from_data}"
+            from.push(from_data)
+          end
 
           # PCMAXのsource_sitesのIDは3のため
           source_site_id = 3
@@ -76,7 +90,7 @@ module AutoMatching
 
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
-            post_data = { source_site_id: source_site_id[:source_site_id],
+            post_data = { source_site_id: source_site_id,
                           url: url[i], title: title[i], sex: sex[i], name: name[i],
                           age: age[i], from: from[i], post_at: post_at[i], category: category[i]
                         }
@@ -114,27 +128,24 @@ module AutoMatching
 
           # puts "\n\n\n #{@post_data_list.count} \n\n\n"
           @post_data_list.each do |d|
+          puts "\n\n\n #{d} \n\n\n"
+
             # ProfileとPostに一括登録の模索１
-            post_save_data = Post.new(post_data_params)
-            post_save_data.save!
+            post_save_data = Profile.new(source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from])
+            # post_save_data.save!
 
             # #ProfileとPostに一括登録の模索１
             # #  id | source_site_id | name | age | sex | from | created_at | updated_at
             # post_save_data = Profile.new( source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from] )
             # #post_save_data = Profile.new(d[:source_site_id], i, d[:url], d[:title], d[:sex], d[:name], d[:age], d[:from])
 
-            # puts "\n\n\n new OK \n\n\n"
-            # if post_save_data.save!
-            #   puts "\n\n\n 成功しました \n\n\n"
-            # else
-            #   puts "\n\n\n 失敗しました \n\n\n"
-            # end
+            puts "\n\n\n new OK \n\n\n"
+            if post_save_data.save!
+              puts "\n\n\n 成功しました \n\n\n"
+            else
+              puts "\n\n\n 失敗しました \n\n\n"
+            end
           end
-
-          # private
-          # def post_data_params
-          #   @post_data_list.require(:profile).permit(:source_site_id, :name, :age, :sex, :from, post: [:profile_id, :title, :post_at, :category, :area])
-          # end
         end
     end
   end
