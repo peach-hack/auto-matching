@@ -17,7 +17,7 @@ table.table
       td
         nuxt-link(:to="{ path: getEditPath(template), params: {id: template.id } }") 編集
       td 
-       a(href="#" @click.prevent="deleteTemplate(template.id)") 削除
+        a(href="#" @click.prevent="deleteTemplate(template.id)") 削除
 </template>
 
 <script lang="ts">
@@ -27,14 +27,11 @@ import moment from 'moment'
 import Template from '@types/template'
 //@ts-ignore
 import { deleteApiUsersPostsTemplatesById } from '@/plugins/api'
+//@ts-ignore
+import DateUtil from '@/components/mixins/DateUtil'
 
 export default Vue.extend({
-  filters: {
-    showDate: function(value: string): string {
-      const date = moment(value)
-      return date.format('YYYY-MM-DD HH:mm')
-    }
-  },
+  mixins: [DateUtil],
   methods: {
     getEditPath(template: Template): string {
       return `/posts/templates/${template.id}`

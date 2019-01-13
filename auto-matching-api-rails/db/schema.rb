@@ -49,11 +49,13 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "affiliate_url", null: false, comment: "アフィリエイトURL"
     t.string "login_user", comment: "ログインユーザー情報"
     t.string "login_password", comment: "ログインパスワード情報"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "login_url", null: false, comment: "クロール開始URL"
     t.boolean "activate_flag", null: false, comment: "操作対象"
+    t.string "last_post_status", comment: "最終投稿ステータス"
+    t.datetime "last_post_at", comment: "最終投稿時刻"
     t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["key"], name: "index_source_sites_on_key", unique: true
     t.index ["post_id"], name: "index_source_sites_on_post_id"
   end

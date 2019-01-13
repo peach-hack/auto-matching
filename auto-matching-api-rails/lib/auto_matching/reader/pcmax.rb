@@ -29,12 +29,12 @@ module AutoMatching
         end
 
         def read_board
-          #各種初期設定
+          # 各種初期設定
           input_data = []
           post_data = {}
           @post_data_list = []
 
-          sex =[]
+          sex = []
           name = []
           age = []
           post_at = []
@@ -42,39 +42,39 @@ module AutoMatching
           # 取得する大枠のテーブルを設定
           input_data = session.all(".item_box")
 
-          #各要素取得
-          url = input_data.map {|url| url.find(".title_link")[:href] }
-          title = input_data.map {|title| title.find(".title_link").text.strip.to_s }
-          value = input_data.map {|value1| value1.first("span.value1").text }
-          from = input_data.map {|value1| value1.all("span.value1")[1].text.strip.to_s }
-          post_time = input_data.map {|value1| value1.all("span.value1")[2].text.strip.to_s }
-          category = input_data.map {|value1| value1.all("span.value1")[3].text.strip.to_s }
+          # 各要素取得
+          url = input_data.map { |value1| value1.find(".title_link")[:href] }
+          title = input_data.map { |value1| value1.find(".title_link").text.strip.to_s }
+          value = input_data.map { |value1| value1.first("span.value1").text }
+          from = input_data.map { |value1| value1.all("span.value1")[1].text.strip.to_s }
+          post_time = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
+          category = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
 
-          value.each_with_index do |v,i|
+          value.each_with_index do |v, i|
             t = v.split(" ")
-            s,n,a = t
-            sex_i = s = "♀" ? 1 : 0 #性別も日付同様に保留のため文字列のまま
+            s, n, a = t
+            sex_i = s = "♀" ? 1 : 0 # 性別も日付同様に保留のため文字列のまま
 
             sex.push(sex_i)
             name.push(n)
             age.push(a)
           end
 
-          #日付型に変更
+          # 日付型に変更
           post_time.each do |date|
             post_at.push(Time.strptime(date, "%Y年%m月%d日 %H:%M"))
           end
 
-          #都道府県番号に変更(string -> integer(1-49))
-          #別ブロックにして呼び出す
-          #あとで作成する
+          # 都道府県番号に変更(string -> integer(1-49))
+          # 別ブロックにして呼び出す
+          # あとで作成する
 
           # PCMAXのsource_sitesのIDは3のため
           source_site_id[:source_site_id] = 3
 
-          #配列の中にハッシュとして取得した要素を格納
+          # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
-            post_data = {source_site_id: source_site_id[:source_site_id],
+            post_data = { source_site_id: source_site_id[:source_site_id],
                           url: url[i], title: title[i], sex: sex[i], name: name[i],
                             age: age[i], from: from[i], post_at: post_at[i], category: category[i]
                         }
@@ -88,7 +88,7 @@ module AutoMatching
         def save_board
           puts "\n\nsave_board\n\n"
 
-          #▼確認用(あとで消す)
+          # ▼確認用(あとで消す)
           #------------------
           # puts "\n\n"
           # puts @list
@@ -100,8 +100,7 @@ module AutoMatching
           #------------------
 
           @post_data_list.each do |d|
-
-            #ProfileとPostに一括登録の模索１
+            # ProfileとPostに一括登録の模索１
             post_save_data = Post.new(post_data_params)
             post_save_data.save!
 

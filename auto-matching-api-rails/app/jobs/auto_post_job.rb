@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class AutoPostingJob < ApplicationJob
+class AutoPostJob < ApplicationJob
   queue_as :default
 
   def perform(*args)

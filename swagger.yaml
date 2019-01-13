@@ -126,3 +126,32 @@ paths:
           description: 成功時のレスポンス
         '500':
           description: 失敗時のレスポンス
+  /api/users/posts/manual-posts:
+    get:
+      summary: 掲示板一括投稿履歴
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+    post:
+      summary: 掲示板一括投稿
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: attributes
+          description: 投稿サイト
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: "サイトID"
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
