@@ -9,6 +9,7 @@
     "up": "docker-compose up -d",
     "down": "docker-compose down",
     "ps": "docker-compose ps",
+    "console": "docker-compose run rails rails c",
     "bundle": "docker-compose run rails bundle && docker-compose run worker bundle",
     "annotate": "docker-compose run rails bundle exec annotate",
     "swagger:up": "docker-compose -f docker-compose-swagger.yml up -d",

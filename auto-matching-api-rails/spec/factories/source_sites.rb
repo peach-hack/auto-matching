@@ -24,26 +24,12 @@
 
 FactoryBot.define do
   factory :source_site do
-    key do
-      SourceSite::KEY_HAPPY_MAIL
-    end
-    name do
-      "ハッピーメール"
-    end
-    login_user do
-      "login_user#{SourceSite.count}@gmail.com"
-    end
-    login_password do
-      "login_password#{SourceSite.count}"
-    end
-    login_url do
-      "http://example#{SourceSite.count}.com"
-    end
-    affiliate_url do
-      "http://example#{SourceSite.count}.com"
-    end
-    activate_flag do
-      true
-    end
+    name { Faker::Name.unique.name }
+    key { name.freeze }
+    sequence(:login_user) { |n| "login_user#{n}@gmail.com" }
+    sequence(:login_password) { |n| "Password#{n}" }
+    sequence(:login_url) { |n| "http://example#{n}.com" }
+    sequence(:affiliate_url) { "http://example#{n}.com" }
+    activate_flag { Faker::Boolean.boolean }
   end
 end

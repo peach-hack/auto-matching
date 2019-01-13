@@ -14,9 +14,10 @@
 
 FactoryBot.define do
   factory :profile do
-    name { "MyString" }
-    age { 1 }
+    name { Faker::Name.name }
+    age {  [*(20..40)].sample }
     sex { 1 }
-    from { 1 }
+    from {  [*(1..49)].sample }
+    source_site { SourceSite.offset(rand(SourceSite.count)).first || association(:source_site)}
   end
 end
