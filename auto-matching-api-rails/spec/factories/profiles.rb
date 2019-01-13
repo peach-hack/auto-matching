@@ -18,6 +18,6 @@ FactoryBot.define do
     age {  [*(20..40)].sample }
     sex { 1 }
     from {  [*(1..49)].sample }
-    source_site { SourceSite.offset(rand(SourceSite.count)).first || association(:source_site)}
+    source_site { SourceSite.offset(rand(SourceSite.count)).first || association(:source_site) }
   end
 end

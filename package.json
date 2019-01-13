@@ -11,6 +11,7 @@
     "ps": "docker-compose ps",
     "console": "docker-compose run rails rails c",
     "bundle": "docker-compose run rails bundle && docker-compose run worker bundle",
+    "rubocop": "docker-compose run rails rubocop -a",
     "annotate": "docker-compose run rails bundle exec annotate",
     "swagger:up": "docker-compose -f docker-compose-swagger.yml up -d",
     "swagger:down": "docker-compose -f docker-compose-swagger.yml down",
