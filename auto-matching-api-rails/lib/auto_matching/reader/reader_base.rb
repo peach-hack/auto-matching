@@ -25,7 +25,7 @@ module AutoMatching
 
           # 掲示板データ保存
           save_board
-          
+
           logger.info("READER: #{source_site_key} end")
         end
 

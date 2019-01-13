@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "profiles", comment: "掲示板投稿データ", force: :cascade do |t|
     t.string "source_site_id", null: false
-    t.string "user_id", null: false
     t.string "name", null: false
     t.integer "age", null: false
     t.integer "sex", null: false

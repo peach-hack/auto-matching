@@ -43,22 +43,23 @@ module AutoMatching
           input_data = session.all(".item_box")
 
           #各要素取得
-          url = input_data.map {|url| url.find(".title_link")[:href] }
-          title = input_data.map {|title| title.find(".title_link").text.strip.to_s }
-          value = input_data.map {|value1| value1.first("span.value1").text }
-          from = input_data.map {|value1| value1.all("span.value1")[1].text.strip.to_s }
-          post_time = input_data.map {|value1| value1.all("span.value1")[2].text.strip.to_s }
-          category = input_data.map {|value1| value1.all("span.value1")[3].text.strip.to_s }
+          url = input_data.map { |url| url.find(".title_link")[:href] }
+          title = input_data.map { |title| title.find(".title_link").text.strip.to_s }
+          value = input_data.map { |value1| value1.first("span.value1").text }
+          from = input_data.map { |value1| value1.all("span.value1")[1].text.strip.to_s }
+          post_time = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
+          category = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
 
-          value.each_with_index do |v,i|
+          value.each_with_index do |v, i|
             t = v.split(" ")
-            s,n,a = t
-            sex_i = s = "♀" ? 1 : 0 #性別も日付同様に保留のため文字列のまま
+            s, n, a = t
+            sex_i = s = "♀" ? 1 : 0
 
             sex.push(sex_i)
             name.push(n)
             age.push(a)
           end
+          puts "\n\n\n read_board1 \n\n\n"
 
           #日付型に変更
           post_time.each do |date|
@@ -70,23 +71,24 @@ module AutoMatching
           #あとで作成する
 
           # PCMAXのsource_sitesのIDは3のため
-          source_site_id[:source_site_id] = 3
+          source_site_id = 3
+          puts "\n\n\n read_board2 \n\n\n"
 
           #配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
-            post_data = {source_site_id: source_site_id[:source_site_id],
-                          url: url[i], title: title[i], sex: sex[i], name: name[i],
+            post_data = {source_site_id: source_site_id, url: url[i], title: title[i], sex: sex[i], name: name[i],
                             age: age[i], from: from[i], post_at: post_at[i], category: category[i]
                         }
 
             @post_data_list[i] = post_data
           end
 
+          puts "\n\n\n read_board3 \n\n\n"
           @post_data_list
         end
 
         def save_board
-          puts "\n\nsave_board\n\n"
+          puts "\n\n\n save_board \n\n\n"
 
           #▼確認用(あとで消す)
           #------------------
@@ -98,21 +100,40 @@ module AutoMatching
           # test = @list[5]
           # puts test[:title]
           #------------------
+          # begin
+          #   last_record = Profile.last
+          # rescue ActiveRecord::RecordNotFound => e
+          #   # last_no = 0 unless last_no.present?
+          #   last_no = 0
+          #   puts "レコードが見つかりません"
+          # end
+          # last_no = last_record.id
 
+          # last_no = 0
+
+          # puts "\n\n\n #{@post_data_list.count} \n\n\n"
           @post_data_list.each do |d|
 
-            #ProfileとPostに一括登録の模索１
-            post_save_data = Post.new(post_data_params)
-            post_save_data.save!
+            puts "\n\n\n #{d} \n\n\n"
 
-            # post_save_data = Post.new(source_site_id[:source_site_id],
-            #    d[:url], d[:title], d[:sex], d[:name], d[:age], d[:from], d[:post_at], d[:category])
-            # post_save_data.save!
+            # #ProfileとPostに一括登録の模索１
+            # #  id | source_site_id | name | age | sex | from | created_at | updated_at
+            # post_save_data = Profile.new( source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from] )
+            # #post_save_data = Profile.new(d[:source_site_id], i, d[:url], d[:title], d[:sex], d[:name], d[:age], d[:from])
+
+            # puts "\n\n\n new OK \n\n\n"
+            # if post_save_data.save!
+            #   puts "\n\n\n 成功しました \n\n\n"
+            # else
+            #   puts "\n\n\n 失敗しました \n\n\n"
+            # end
+
           end
 
-          def post_data_params
-            @post_data_list.require(:profile).permit(:source_site_id, :name, :age, :sex, :from, post: [:profile_id, :title, :post_at, :category, :area])
-          end
+          # private
+          # def post_data_params
+          #   @post_data_list.require(:profile).permit(:source_site_id, :name, :age, :sex, :from, post: [:profile_id, :title, :post_at, :category, :area])
+          # end
         end
     end
   end
