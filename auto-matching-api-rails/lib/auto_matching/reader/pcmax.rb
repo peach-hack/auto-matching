@@ -128,7 +128,7 @@ module AutoMatching
 
           # puts "\n\n\n #{@post_data_list.count} \n\n\n"
           @post_data_list.each do |d|
-          puts "\n\n\n #{d} \n\n\n"
+            puts "\n\n\n #{d} \n\n\n"
 
             # ProfileとPostに一括登録の模索１
             post_save_data = Profile.new(source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from])
