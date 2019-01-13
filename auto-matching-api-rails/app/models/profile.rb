@@ -20,5 +20,5 @@ class Profile < ApplicationRecord
 
   belongs_to :source_site
   has_one :post, dependent: :destroy
-  accepts_nested_attributes_for :post
+  # accepts_nested_attributes_for :post
 end
