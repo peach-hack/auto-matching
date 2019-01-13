@@ -12,8 +12,13 @@
 #
 
 class Profile < ApplicationRecord
+  validate :source_site_id, presence: true
   validates :name, presence: true
   validates :age, presence: true
   validates :sex, presence: true
   validates :from, presence: true
+
+  belongs_to :source_site
+  has_one :post, dependent: :destroy
+  # accepts_nested_attributes_for :post
 end

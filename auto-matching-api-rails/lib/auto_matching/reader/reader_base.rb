@@ -19,11 +19,27 @@ module AutoMatching
           # ログイン
           try_login
 
+          # 掲示板検索
+          search_board
+
           # 掲示板記事のスクレイピング
           read_board
+
+          # 掲示板データ保存
+          save_board
+
+          logger.info("READER: #{source_site_key} end")
+        end
+
+        def search_board
+          raise NotImprementedError
         end
 
         def read_board
+          raise NotImprementedError
+        end
+
+        def save_board
           raise NotImprementedError
         end
     end

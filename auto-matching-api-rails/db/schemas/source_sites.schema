@@ -13,4 +13,5 @@ create_table "source_sites", comment: "出会い系サイトの情報", force: :
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.index ["key"], name: "index_source_sites_on_key", unique: true
+  t.references :post, foreign_key: true
 end
