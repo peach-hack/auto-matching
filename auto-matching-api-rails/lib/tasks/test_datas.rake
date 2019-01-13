@@ -1,15 +1,14 @@
-# frozen_string_literal: true
-
 module TestDatas
   extend Rake::DSL
   extend self
 
   namespace :test_datas do
-    task all: :environment do |_task, _args|
+    desc "テストデータ生成"
+    task all: :environment do
       [
-          "rails test_datas:reset_all",
-          "rails test_datas:create_source_sites",
-          "rails test_datas:create_posts"
+        "rails test_datas:reset_all",
+        "rails test_datas:create_source_sites",
+        "rails test_datas:create_posts"
       ].each do |task|
         sh task
       end
@@ -20,17 +19,19 @@ module TestDatas
       reset_all
     end
 
+    desc "テストデータ生成(source_site)"
     task create_source_sites: :environment do |_task, _args|
       return if disable_env?
-      10.times do |t|
+      6.times do |t|
         create_source_site
       end
     end
 
+    desc "テストデータ生成(post)"
     task create_posts: :environment do | _task, _args|
       return if disable_env?
 
-      1000.times do |t|
+      100.times do |t|
         create_post_and_profile
       end
     end

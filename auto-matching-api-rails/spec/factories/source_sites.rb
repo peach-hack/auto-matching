@@ -29,7 +29,7 @@ FactoryBot.define do
     sequence(:login_user) { |n| "login_user#{n}@gmail.com" }
     sequence(:login_password) { |n| "Password#{n}" }
     sequence(:login_url) { |n| "http://example#{n}.com" }
-    sequence(:affiliate_url) { "http://example#{n}.com" }
+    sequence(:affiliate_url) { |n| "http://example#{n}.com" }
     activate_flag { Faker::Boolean.boolean }
   end
 end
