@@ -9,6 +9,7 @@ module TestDatas
       [
           "rails test_datas:reset_all",
           "rails test_datas:create_source_sites",
+          "rails test_datas:create_posts"
       ].each do |task|
         sh task
       end
@@ -26,14 +27,28 @@ module TestDatas
       end
     end
 
+    task create_posts: :environment do | _task, _args|
+      return if disable_env?
+
+      1000.times do |t|
+        create_post_and_profile
+      end
+    end
+
     def create_source_site
       FactoryBot.create(:source_site)
+    end
+
+    def create_post_and_profile
+      FactoryBot.create(:post)
     end
 
     def reset_all
       return if disable_env?
 
       SourceSite.delete_all
+      Post.delete_all
+      Profile.delete_all
     end
 
     def disable_env?

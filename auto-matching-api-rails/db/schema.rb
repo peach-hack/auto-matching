@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "posts", comment: "掲示板投稿データ", force: :cascade do |t|
-    t.string "profile_id", null: false
+    t.integer "profile_id", null: false
     t.string "title", null: false
     t.datetime "post_at", null: false
     t.string "category", null: false
