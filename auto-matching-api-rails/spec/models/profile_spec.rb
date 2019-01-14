@@ -2,13 +2,14 @@
 #
 # Table name: profiles
 #
-#  id         :bigint(8)        not null, primary key
-#  age        :integer          not null
-#  from       :integer          not null
-#  name       :string           not null
-#  sex        :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :bigint(8)        not null, primary key
+#  age            :integer          not null
+#  from           :integer          not null
+#  name           :string           not null
+#  sex            :integer          not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  source_site_id :integer          not null
 #
 
 require "rails_helper"
