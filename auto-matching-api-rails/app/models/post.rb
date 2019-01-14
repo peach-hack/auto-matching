@@ -15,7 +15,7 @@
 #
 
 class Post < ApplicationRecord
-  validates :profile_id, presence: true
+  # validates :profile_id, presence: true #外部キーのためvalidateかけない
   # validates :source_site_id, presence: true #必要なくなった
   validates :title, presence: true
   validates :post_at, presence: true

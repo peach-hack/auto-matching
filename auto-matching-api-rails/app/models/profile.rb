@@ -13,7 +13,6 @@
 #
 
 class Profile < ApplicationRecord
-  validates :source_site_id, presence: true
   validates :name, presence: true
   validates :age, presence: true
   validates :sex, presence: true

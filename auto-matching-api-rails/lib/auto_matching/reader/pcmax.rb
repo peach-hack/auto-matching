@@ -67,20 +67,18 @@ module AutoMatching
             post_at.push(Time.strptime(date, "%Y年%m月%d日 %H:%M"))
           end
 
-          # 都道府県番号に変更(string -> integer(1-49))
+          # 都道府県番号に変更(string -> integer(1-47))
           post_from.each do |args|
             # テスト用　↓どこかに移動させたい
             from_data = 0
-            case args
-            when args.start_with?("北海道") then
+            if args.include?("北海道")
               from_data = 1 # 北海道
-            when args.start_with?("青森") then
+            elsif args.include?("青森")
               from_data = 7 # 青森
-            when args.start_with?("東京") then
+            elsif args.include?("東京")
               from_data = 22 # 東京
             end
 
-            puts "#{from_data}"
             from.push(from_data)
           end
 
@@ -103,43 +101,15 @@ module AutoMatching
         end
 
         def save_board
-          puts "\n\n\n save_board \n\n\n"
-
-          # ▼確認用(あとで消す)
-          #------------------
-          # puts "\n\n"
-          # puts @list
-
-          # puts "\n\n"
-          # #取り出し方
-          # test = @list[5]
-          # puts test[:title]
-          #------------------
-          # begin
-          #   last_record = Profile.last
-          # rescue ActiveRecord::RecordNotFound => e
-          #   # last_no = 0 unless last_no.present?
-          #   last_no = 0
-          #   puts "レコードが見つかりません"
-          # end
-          # last_no = last_record.id
-
-          # last_no = 0
-
-          # puts "\n\n\n #{@post_data_list.count} \n\n\n"
           @post_data_list.each do |d|
             puts "\n\n\n #{d} \n\n\n"
 
-            # ProfileとPostに一括登録の模索１
-            post_save_data = Profile.new(source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from])
-            # post_save_data.save!
+            # ProfileとPostに一括登録の模索
+            params = { profile: { source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from],
+                        post_attributes: { title: d[:title], post_at: d[:post_at], category: d[:category], area: d[:from]
+                      } } }
+            post_save_data = Profile.new(params[:profile])
 
-            # #ProfileとPostに一括登録の模索１
-            # #  id | source_site_id | name | age | sex | from | created_at | updated_at
-            # post_save_data = Profile.new( source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from] )
-            # #post_save_data = Profile.new(d[:source_site_id], i, d[:url], d[:title], d[:sex], d[:name], d[:age], d[:from])
-
-            puts "\n\n\n new OK \n\n\n"
             if post_save_data.save!
               puts "\n\n\n 成功しました \n\n\n"
             else
