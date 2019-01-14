@@ -60,7 +60,6 @@ module AutoMatching
             name.push(n)
             age.push(a)
           end
-          puts "\n\n\n read_board1 \n\n\n"
 
           # 日付型に変更
           post_time.each do |date|
@@ -84,7 +83,6 @@ module AutoMatching
 
           # PCMAXのsource_sitesのIDは3のため
           source_site_id = 3
-          puts "\n\n\n read_board2 \n\n\n"
 
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
@@ -96,24 +94,39 @@ module AutoMatching
             @post_data_list[i] = post_data
           end
 
-          puts "\n\n\n read_board3 \n\n\n"
           @post_data_list
         end
 
         def save_board
           @post_data_list.each do |d|
-            puts "\n\n\n #{d} \n\n\n"
+            # ProfileとPostに一括登録の模索１
+            # params = { profile: { source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from],
+            #             post_attributes: { title: d[:title], post_at: d[:post_at], category: d[:category], area: d[:from]
+            #           } } }
+            # post_save_data = Profile.new(params[:profile])
 
-            # ProfileとPostに一括登録の模索
-            params = { profile: { source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from],
-                        post_attributes: { title: d[:title], post_at: d[:post_at], category: d[:category], area: d[:from]
-                      } } }
-            post_save_data = Profile.new(params[:profile])
+            # ProfileとPostに一括登録の模索２
+            profile = {}
+            profile[:source_site_id] = d[:source_site_id]
+            profile[:name] = d[:name]
+            profile[:age] = d[:name]
+            profile[:sex] = d[:sex]
+            profile[:from] = 0 # 一旦0で登録。※1
+            # ※1：サイトによって、プロフィールの所属地域と投稿地域が異なる場合を許すことがありますが、たしか課金(10円)じゃないとその情報はとれなかった気がします。
 
-            if post_save_data.save!
-              puts "\n\n\n 成功しました \n\n\n"
+            post = {}
+            post[:title] = d[:title]
+            post[:post_at] = d[:post_at]
+            post[:category] = d[:category]
+            post[:area] = d[:from]
+
+            @profile = Profile.create(profile)
+            @post = @profile.build_post(post)
+
+            if @post.save!
+              logger.debug("\n 成功しました \n")
             else
-              puts "\n\n\n 失敗しました \n\n\n"
+              logger.debug("\n 失敗しました \n")
             end
           end
         end
