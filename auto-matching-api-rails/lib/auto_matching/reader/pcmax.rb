@@ -53,7 +53,7 @@ module AutoMatching
           value.each_with_index do |v, i|
             t = v.split(" ")
             s, n, a = t
-            sex_i = s = "♀" ? 1 : 0 # 性別も日付同様に保留のため文字列のまま
+            sex_i = (s == "♀" ? 1 : 0)
 
             sex.push(sex_i)
             name.push(n)

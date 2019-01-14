@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "yaml"
 
 post_file = "db/templates/posts.yml"
