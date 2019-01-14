@@ -2,6 +2,7 @@ module AutoMatching
   module Reader
     class Pcmax < ReaderBase
       include Common::Pcmax
+      include ValueConverter
       require "date"
 
       private
@@ -34,12 +35,6 @@ module AutoMatching
           post_data = {}
           @post_data_list = []
 
-          sex = []
-          name = []
-          age = []
-          post_at = []
-          from = []
-
           # 取得する大枠のテーブルを設定
           input_data = session.all(".item_box")
 
@@ -51,72 +46,75 @@ module AutoMatching
           post_time = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
           category = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
 
-          value.each_with_index do |v, i|
-            t = v.split(" ")
-            s, n, a = t
-            sex_i = (s == "♀" ? 1 : 0)
+          sex, name, age = name_age_sex_change(value)
 
-            sex.push(sex_i)
-            name.push(n)
-            age.push(a)
-          end
-          puts "\n\n\n read_board1 \n\n\n"
+          post_at = post_at_change(post_time)
 
-          # 日付型に変更
-          post_time.each do |date|
-            post_at.push(Time.strptime(date, "%Y年%m月%d日 %H:%M"))
-          end
-
-          # 都道府県番号に変更(string -> integer(1-47))
-          post_from.each do |args|
-            # テスト用　↓どこかに移動させたい
-            from_data = 0
-            if args.include?("北海道")
-              from_data = 1 # 北海道
-            elsif args.include?("青森")
-              from_data = 7 # 青森
-            elsif args.include?("東京")
-              from_data = 22 # 東京
-            end
-
-            from.push(from_data)
-          end
+          @from = from_change(post_from)
 
           # PCMAXのsource_sitesのIDは3のため
           source_site_id = 3
-          puts "\n\n\n read_board2 \n\n\n"
 
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
+            number_of_fromdata = @from[i].length
+            if number_of_fromdata = 3
+              @prefecture = @from[i][0]
+              @city = @from[i][1]
+              @addres = @from[i][2]
+            elsif number_of_fromdata = 2
+              @prefecture = @from[i][0]
+              @city = @from[i][1]
+              @address = ""
+            elsif number_of_fromdata = 1
+              @prefecture = @from[i][0]
+              @city = ""
+              @address = ""
+            end
+
+            @prefecture = @prefecture.to_s.strip
+            @city = @city.to_s.strip
+            @address = @address.to_s.strip
+
             post_data = { source_site_id: source_site_id,
                           url: url[i], title: title[i], sex: sex[i], name: name[i],
-                          age: age[i], from: from[i], post_at: post_at[i], category: category[i]
+                          age: age[i], post_at: post_at[i], category: category[i],
+                          prefecture: @prefecture, city: @city, address: @address
                         }
-
             @post_data_list[i] = post_data
           end
-
-          puts "\n\n\n read_board3 \n\n\n"
           @post_data_list
         end
 
         def save_board
           @post_data_list.each do |d|
-            puts "\n\n\n #{d} \n\n\n"
 
-            # ProfileとPostに一括登録の模索
-            params = { profile: { source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from],
-                        post_attributes: { title: d[:title], post_at: d[:post_at], category: d[:category], area: d[:from]
-                      } } }
-            post_save_data = Profile.new(params[:profile])
+            profile = {}
+            profile[:source_site_id] = d[:source_site_id]
+            profile[:name] = d[:name]
+            profile[:age] = d[:name]
+            profile[:sex] = d[:sex]
+            profile[:from] = 0
 
-            if post_save_data.save!
-              puts "\n\n\n 成功しました \n\n\n"
+            post = {}
+            post[:title] = d[:title]
+            post[:post_at] = d[:post_at]
+            post[:category] = d[:category]
+            post[:prefecture] = d[:prefecture]
+            post[:city] = d[:city]
+            post[:address] = d[:address]
+
+            @profile = Profile.new(profile)
+            @post = @profile.build_post(post)
+
+            if @post.save!
+              logger.debug("成功しました")
             else
-              puts "\n\n\n 失敗しました \n\n\n"
+              logger.debug("失敗しました")
             end
           end
         end
     end
   end
 end
+
