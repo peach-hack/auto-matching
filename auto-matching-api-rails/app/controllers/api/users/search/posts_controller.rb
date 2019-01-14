@@ -1,10 +1,11 @@
 module Api
   module Users
-    module Serach
+    module Search
       class PostsController < ::ApplicationController
         def index
           q = Post.ransack(params[:q])
-          post = q.result(distinct: trun).recent
+          posts = q.result(distinct: true).recent
+          render json: PostSerializer.new(posts).serialized_json
         end
       end
     end

@@ -15,6 +15,9 @@ Rails.application.routes.draw do
           resources :manual_posts, only: %i[index], path: "manual-posts"
           post :manual_posts, to: "manual_posts#execute", path: "manual-posts"
         end
+        namespace :search do
+          resources :posts, only: %i[index]
+        end
         resources :source_sites, only: %i[index update], path: "source-sites"
       end
     end

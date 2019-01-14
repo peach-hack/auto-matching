@@ -15,13 +15,10 @@
 #
 
 class Post < ApplicationRecord
-  validates :profile_id, presence: true
-  # validates :source_site_id, presence: true #必要なくなった
   validates :title, presence: true
   validates :post_at, presence: true
   validates :category, presence: true
   validates :area, presence: true
-  # validates :body, presence: true ##bodyは取得しないため
 
   belongs_to :profile, optional: true
 end
