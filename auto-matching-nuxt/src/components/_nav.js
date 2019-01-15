@@ -43,6 +43,21 @@ export default {
       }
     },
     {
+      name: 'データベース検索',
+      url: '/search/db',
+      icon: 'icon-star'
+    },
+    {
+      name: 'リアルタイム検索',
+      url: '/search/realtime',
+      icon: 'icon-star'
+    },
+    {
+      name: 'キーワード検索',
+      url: '/search/keyword',
+      icon: 'icon-star'
+    },
+    {
       title: true,
       name: 'その他',
       class: '',
