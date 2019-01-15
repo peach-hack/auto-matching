@@ -14,6 +14,7 @@
     "rails:c": "docker-compose run rails rails c",
     "rails:s": "docker-compose run rails rails s",      
     "rails:bundle": "docker-compose run rails bundle && docker-compose run worker bundle",
+    "rails:routes": "docker-compose run rails rails routes", 
     "rails:rubocop": "docker-compose run rails rubocop -a",
     "rails:annotate": "docker-compose run rails bundle exec annotate",
     "rails:test_datas": "docker-compose run rails rails test_datas:all",
