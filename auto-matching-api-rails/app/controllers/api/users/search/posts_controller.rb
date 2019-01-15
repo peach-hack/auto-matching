@@ -4,7 +4,7 @@ module Api
       class PostsController < ::ApplicationController
         def index
           q = Post.ransack(params[:q])
-          posts = q.result(distinct: true).recent
+          posts = q.result(distinct: true).limit(10)
           render json: PostSerializer.new(posts).serialized_json
         end
       end
