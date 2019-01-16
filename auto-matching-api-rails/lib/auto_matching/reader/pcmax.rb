@@ -34,6 +34,7 @@ module AutoMatching
           input_data = []
           post_data = {}
           @post_data_list = []
+          con = Converter.new
 
           # 取得する大枠のテーブルを設定
           input_data = session.all(".item_box")
@@ -46,43 +47,27 @@ module AutoMatching
           post_time = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
           category = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
 
-          sex, name, age = name_age_sex_change(value)
+          sex, name, age = con.value_split(value)
 
-          post_at = post_at_change(post_time)
+          post_at = con.post_at_value_change(post_time)
 
-          @from = from_change(post_from)
+          from = con.from_value_change(post_from)
 
-          # PCMAXのsource_sitesのIDは3のため
+          prefecture, city, address = con.from_split(from)
+
+          # PCMAXのsource_siteのIDは3のため
           source_site_id = 3
 
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
-            number_of_fromdata = @from[i].length
-            if number_of_fromdata = 3
-              @prefecture = @from[i][0]
-              @city = @from[i][1]
-              @addres = @from[i][2]
-            elsif number_of_fromdata = 2
-              @prefecture = @from[i][0]
-              @city = @from[i][1]
-              @address = ""
-            elsif number_of_fromdata = 1
-              @prefecture = @from[i][0]
-              @city = ""
-              @address = ""
-            end
-
-            @prefecture = @prefecture.to_s.strip
-            @city = @city.to_s.strip
-            @address = @address.to_s.strip
-
             post_data = { source_site_id: source_site_id,
                           url: url[i], title: title[i], sex: sex[i], name: name[i],
                           age: age[i], post_at: post_at[i], category: category[i],
-                          prefecture: @prefecture, city: @city, address: @address
+                          prefecture: prefecture[i], city: city[i], address: address[i]
                         }
             @post_data_list[i] = post_data
           end
+
           @post_data_list
         end
 
