@@ -12,7 +12,7 @@ class ManualPostJob < ApplicationJob
     AutoMatching::Sender::Executor.new.run(klass)
 
     set_success
-  rescue StandardError => e
+  rescue StandardError
     set_error
   ensure
     $DEBUG = false
