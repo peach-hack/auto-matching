@@ -34,7 +34,7 @@ module AutoMatching
           input_data = []
           post_data = {}
           @post_data_list = []
-          con = Converter.new
+          converter = PcmaxConverter.new
 
           # 取得する大枠のテーブルを設定
           input_data = session.all(".item_box")
@@ -47,13 +47,13 @@ module AutoMatching
           post_time = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
           category = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
 
-          sex, name, age = con.value_split(value)
+          sex, name, age = converter.split_value(value)
 
-          post_at = con.post_at_value_change(post_time)
+          post_at = converter.value_change_post_at(post_time)
 
-          from = con.from_value_change(post_from)
+          from = converter.value_change_from(post_from)
 
-          prefecture, city, address = con.from_split(from)
+          prefecture, city, address = converter.split_from(from)
 
           # PCMAXのsource_siteのIDは3のため
           source_site_id = 3
@@ -77,7 +77,7 @@ module AutoMatching
             profile = {}
             profile[:source_site_id] = d[:source_site_id]
             profile[:name] = d[:name]
-            profile[:age] = d[:name]
+            profile[:age] = d[:age]
             profile[:sex] = d[:sex]
             profile[:from] = 0
 
