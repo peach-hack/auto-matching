@@ -2,6 +2,7 @@ module AutoMatching
   module Reader
     class Pcmax < ReaderBase
       include Common::Pcmax
+      include ValueConverter
       require "date"
 
       private
@@ -30,14 +31,9 @@ module AutoMatching
 
         def read_board
           # 各種初期設定
-          input_data = []
           post_data = {}
           @post_data_list = []
-
-          sex = []
-          name = []
-          age = []
-          post_at = []
+          converter = PcmaxConverter.new
 
           # 取得する大枠のテーブルを設定
           input_data = session.all(".item_box")
@@ -46,95 +42,60 @@ module AutoMatching
           url = input_data.map { |value1| value1.find(".title_link")[:href] }
           title = input_data.map { |value1| value1.find(".title_link").text.strip.to_s }
           value = input_data.map { |value1| value1.first("span.value1").text }
-          from = input_data.map { |value1| value1.all("span.value1")[1].text.strip.to_s }
+          post_from = input_data.map { |value1| value1.all("span.value1")[1].text.strip.to_s }
           post_time = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
           category = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
 
-          value.each_with_index do |v, i|
-            t = v.split(" ")
-            s, n, a = t
-            sex_i = (s == "♀" ? 1 : 0)
+          sex, name, age = converter.split_value(value)
 
-            sex.push(sex_i)
-            name.push(n)
-            age.push(a)
-          end
-          puts "\n\n\n read_board1 \n\n\n"
+          post_at = converter.value_change_post_at(post_time)
 
-          # 日付型に変更
-          post_time.each do |date|
-            post_at.push(Time.strptime(date, "%Y年%m月%d日 %H:%M"))
-          end
+          from = converter.value_change_from(post_from)
 
-          # 都道府県番号に変更(string -> integer(1-49))
-          # 別ブロックにして呼び出す
-          # あとで作成する
+          prefecture, city, address = converter.split_from(from)
 
-          # PCMAXのsource_sitesのIDは3のため
+          # PCMAXのsource_siteのIDは3のため
           source_site_id = 3
-          puts "\n\n\n read_board2 \n\n\n"
 
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
-            post_data = { source_site_id: source_site_id[:source_site_id],
+            post_data = { source_site_id: source_site_id,
                           url: url[i], title: title[i], sex: sex[i], name: name[i],
-                          age: age[i], from: from[i], post_at: post_at[i], category: category[i]
+                          age: age[i], post_at: post_at[i], category: category[i],
+                          prefecture: prefecture[i], city: city[i], address: address[i]
                         }
-
             @post_data_list[i] = post_data
           end
 
-          puts "\n\n\n read_board3 \n\n\n"
           @post_data_list
         end
 
         def save_board
-          puts "\n\n\n save_board \n\n\n"
-
-          # ▼確認用(あとで消す)
-          #------------------
-          # puts "\n\n"
-          # puts @list
-
-          # puts "\n\n"
-          # #取り出し方
-          # test = @list[5]
-          # puts test[:title]
-          #------------------
-          # begin
-          #   last_record = Profile.last
-          # rescue ActiveRecord::RecordNotFound => e
-          #   # last_no = 0 unless last_no.present?
-          #   last_no = 0
-          #   puts "レコードが見つかりません"
-          # end
-          # last_no = last_record.id
-
-          # last_no = 0
-
-          # puts "\n\n\n #{@post_data_list.count} \n\n\n"
           @post_data_list.each do |d|
-            # ProfileとPostに一括登録の模索１
-            post_save_data = Post.new(post_data_params)
-            post_save_data.save!
+            profile = {}
+            profile[:source_site_id] = d[:source_site_id]
+            profile[:name] = d[:name]
+            profile[:age] = d[:age]
+            profile[:sex] = d[:sex]
+            profile[:from] = 0
 
-            # #ProfileとPostに一括登録の模索１
-            # #  id | source_site_id | name | age | sex | from | created_at | updated_at
-            # post_save_data = Profile.new( source_site_id: d[:source_site_id], name: d[:name], age: d[:age], sex: d[:sex], from: d[:from] )
-            # #post_save_data = Profile.new(d[:source_site_id], i, d[:url], d[:title], d[:sex], d[:name], d[:age], d[:from])
+            post = {}
+            post[:title] = d[:title]
+            post[:post_at] = d[:post_at]
+            post[:category] = d[:category]
+            post[:prefecture] = d[:prefecture]
+            post[:city] = d[:city]
+            post[:address] = d[:address]
 
-            # puts "\n\n\n new OK \n\n\n"
-            # if post_save_data.save!
-            #   puts "\n\n\n 成功しました \n\n\n"
-            # else
-            #   puts "\n\n\n 失敗しました \n\n\n"
-            # end
+            @profile = Profile.new(profile)
+            @post = @profile.build_post(post)
+
+            if @post.save!
+              logger.debug("成功しました")
+            else
+              logger.debug("失敗しました")
+            end
           end
-
-          # private
-          # def post_data_params
-          #   @post_data_list.require(:profile).permit(:source_site_id, :name, :age, :sex, :from, post: [:profile_id, :title, :post_at, :category, :area])
-          # end
         end
     end
   end

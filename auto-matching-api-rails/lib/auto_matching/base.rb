@@ -26,7 +26,7 @@ module AutoMatching
 
       def capybara_setting
         Capybara.register_driver :headless_chrome do |app|
-          driver = Capybara::Selenium::Driver.new(
+          Capybara::Selenium::Driver.new(
             app,
             browser: :chrome,
             desired_capabilities: capabilities

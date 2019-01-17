@@ -5,7 +5,9 @@ create_table "posts", comment: "掲示板投稿データ", force: :cascade do |t
   t.string "title", null: false
   t.datetime "post_at", null: false
   t.string "category", null: false
-  t.integer "area", null: false
+  t.string "prefecture", null: false
+  t.string "city", null: true
+  t.string "address", null: true
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
 end
