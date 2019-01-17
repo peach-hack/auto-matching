@@ -31,7 +31,6 @@ module AutoMatching
 
         def read_board
           # 各種初期設定
-          input_data = []
           post_data = {}
           @post_data_list = []
           converter = PcmaxConverter.new
@@ -73,7 +72,6 @@ module AutoMatching
 
         def save_board
           @post_data_list.each do |d|
-
             profile = {}
             profile[:source_site_id] = d[:source_site_id]
             profile[:name] = d[:name]
@@ -102,4 +100,3 @@ module AutoMatching
     end
   end
 end
-

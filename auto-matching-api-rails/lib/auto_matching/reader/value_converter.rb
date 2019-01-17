@@ -88,15 +88,15 @@ module AutoMatching
 
           from.each_with_index do |f, i|
             number_of_fromdata = f.length
-            if number_of_fromdata = 3
+            if number_of_fromdata == 3
               add_prefecture = f[0]
               add_city = f[1]
               add_address = f[2]
-            elsif number_of_fromdata = 2
+            elsif number_of_fromdata == 2
               add_prefecture = f[0]
               add_city = f[1]
               add_address = ""
-            elsif number_of_fromdata = 1
+            elsif number_of_fromdata == 1
               add_prefecture = f[0]
               add_city = ""
               add_address = ""
@@ -113,4 +113,3 @@ module AutoMatching
     end
   end
 end
-
