@@ -377,32 +377,36 @@ export const postApiUsersPostsManualPostsURL = function(parameters = {}) {
 }
 /**
  * 掲示板DB検索
- * request: getApiUsersSearchDb
- * url: getApiUsersSearchDbURL
- * method: getApiUsersSearchDb_TYPE
- * raw_url: getApiUsersSearchDb_RAW_URL
+ * request: postApiUsersSearchDb
+ * url: postApiUsersSearchDbURL
+ * method: postApiUsersSearchDb_TYPE
+ * raw_url: postApiUsersSearchDb_RAW_URL
+ * @param attributes - 検索クエリ
  */
-export const getApiUsersSearchDb = function(parameters = {}) {
+export const postApiUsersSearchDb = function(parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/search/db'
   let body
   let queryParameters = {}
   let form = {}
+  if (parameters['attributes'] !== undefined) {
+    body = parameters['attributes']
+  }
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
-  return request('get', domain + path, body, queryParameters, form, config)
+  return request('post', domain + path, body, queryParameters, form, config)
 }
-export const getApiUsersSearchDb_RAW_URL = function() {
+export const postApiUsersSearchDb_RAW_URL = function() {
   return '/api/users/search/db'
 }
-export const getApiUsersSearchDb_TYPE = function() {
-  return 'get'
+export const postApiUsersSearchDb_TYPE = function() {
+  return 'post'
 }
-export const getApiUsersSearchDbURL = function(parameters = {}) {
+export const postApiUsersSearchDbURL = function(parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/search/db'
@@ -415,33 +419,37 @@ export const getApiUsersSearchDbURL = function(parameters = {}) {
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
 /**
- * 掲示板DB検索
- * request: getApiUsersSearchKeyword
- * url: getApiUsersSearchKeywordURL
- * method: getApiUsersSearchKeyword_TYPE
- * raw_url: getApiUsersSearchKeyword_RAW_URL
+ * 掲示板キーワード検索
+ * request: postApiUsersSearchKeyword
+ * url: postApiUsersSearchKeywordURL
+ * method: postApiUsersSearchKeyword_TYPE
+ * raw_url: postApiUsersSearchKeyword_RAW_URL
+ * @param attributes - 検索クエリ
  */
-export const getApiUsersSearchKeyword = function(parameters = {}) {
+export const postApiUsersSearchKeyword = function(parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/search/keyword'
   let body
   let queryParameters = {}
   let form = {}
+  if (parameters['attributes'] !== undefined) {
+    body = parameters['attributes']
+  }
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
-  return request('get', domain + path, body, queryParameters, form, config)
+  return request('post', domain + path, body, queryParameters, form, config)
 }
-export const getApiUsersSearchKeyword_RAW_URL = function() {
+export const postApiUsersSearchKeyword_RAW_URL = function() {
   return '/api/users/search/keyword'
 }
-export const getApiUsersSearchKeyword_TYPE = function() {
-  return 'get'
+export const postApiUsersSearchKeyword_TYPE = function() {
+  return 'post'
 }
-export const getApiUsersSearchKeywordURL = function(parameters = {}) {
+export const postApiUsersSearchKeywordURL = function(parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/search/keyword'
@@ -454,13 +462,13 @@ export const getApiUsersSearchKeywordURL = function(parameters = {}) {
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
 /**
- * 掲示板DB検索
- * request: getApiUsersSearchRealtime
- * url: getApiUsersSearchRealtimeURL
- * method: getApiUsersSearchRealtime_TYPE
- * raw_url: getApiUsersSearchRealtime_RAW_URL
+ * 掲示板リアルタイム検索
+ * request: postApiUsersSearchRealtime
+ * url: postApiUsersSearchRealtimeURL
+ * method: postApiUsersSearchRealtime_TYPE
+ * raw_url: postApiUsersSearchRealtime_RAW_URL
  */
-export const getApiUsersSearchRealtime = function(parameters = {}) {
+export const postApiUsersSearchRealtime = function(parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/search/realtime'
@@ -472,15 +480,15 @@ export const getApiUsersSearchRealtime = function(parameters = {}) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
-  return request('get', domain + path, body, queryParameters, form, config)
+  return request('post', domain + path, body, queryParameters, form, config)
 }
-export const getApiUsersSearchRealtime_RAW_URL = function() {
+export const postApiUsersSearchRealtime_RAW_URL = function() {
   return '/api/users/search/realtime'
 }
-export const getApiUsersSearchRealtime_TYPE = function() {
-  return 'get'
+export const postApiUsersSearchRealtime_TYPE = function() {
+  return 'post'
 }
-export const getApiUsersSearchRealtimeURL = function(parameters = {}) {
+export const postApiUsersSearchRealtimeURL = function(parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/search/realtime'

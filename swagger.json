@@ -170,10 +170,18 @@
       }
     },
     "/api/users/search/db" : {
-      "get" : {
+      "post" : {
         "summary" : "掲示板DB検索",
         "produces" : [ "application/json" ],
-        "parameters" : [ ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "attributes",
+          "description" : "検索クエリ",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/attributes_4"
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "成功時のレスポンス"
@@ -185,10 +193,18 @@
       }
     },
     "/api/users/search/keyword" : {
-      "get" : {
-        "summary" : "掲示板DB検索",
+      "post" : {
+        "summary" : "掲示板キーワード検索",
         "produces" : [ "application/json" ],
-        "parameters" : [ ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "attributes",
+          "description" : "検索クエリ",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/attributes_5"
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "成功時のレスポンス"
@@ -200,8 +216,8 @@
       }
     },
     "/api/users/search/realtime" : {
-      "get" : {
-        "summary" : "掲示板DB検索",
+      "post" : {
+        "summary" : "掲示板リアルタイム検索",
         "produces" : [ "application/json" ],
         "parameters" : [ ],
         "responses" : {
@@ -251,6 +267,24 @@
         "id" : {
           "type" : "integer",
           "description" : "サイトID"
+        }
+      }
+    },
+    "attributes_4" : {
+      "type" : "object",
+      "properties" : {
+        "keywordTitle" : {
+          "type" : "string",
+          "description" : "キーワード（タイトル）"
+        }
+      }
+    },
+    "attributes_5" : {
+      "type" : "object",
+      "properties" : {
+        "keyword" : {
+          "type" : "string",
+          "description" : "キーワード"
         }
       }
     },

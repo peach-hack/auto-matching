@@ -156,28 +156,48 @@ paths:
         '500':
           description: 失敗時のレスポンス
   /api/users/search/db:
-    get:
+    post:
       summary: 掲示板DB検索
       produces:
         - application/json
+      parameters:
+        - in: body
+          name: attributes
+          description: 検索クエリ
+          schema:
+            type: object
+            properties:
+              keywordTitle:
+                type: string
+                description: "キーワード（タイトル）"
       responses:
         '200':
           description: 成功時のレスポンス
         '500':
           description: 失敗時のレスポンス
   /api/users/search/keyword:
-    get:
-      summary: 掲示板DB検索
+    post:
+      summary: 掲示板キーワード検索
       produces:
         - application/json
+      parameters:
+        - in: body
+          name: attributes
+          description: 検索クエリ
+          schema:
+            type: object
+            properties:
+              keyword:
+                type: string
+                description: "キーワード"
       responses:
         '200':
           description: 成功時のレスポンス
         '500':
           description: 失敗時のレスポンス
   /api/users/search/realtime:
-    get:
-      summary: 掲示板DB検索
+    post:
+      summary: 掲示板リアルタイム検索
       produces:
         - application/json
       responses:

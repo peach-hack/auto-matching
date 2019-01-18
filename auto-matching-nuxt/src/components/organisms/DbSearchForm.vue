@@ -15,6 +15,25 @@ import SearchButton from '@/components/atoms/SearchButton.vue'
 export default Vue.extend({
   components: {
     SearchButton
+  },
+  data() {
+    return {
+      titleKeywords: '' as string
+    }
+  },
+  methods: {
+    updateSite: function() {
+      const data = {
+        title: this.titleKeywords
+      }
+
+      putApiUsersSourceSitesById({
+        id: this.site.id,
+        attributes: data
+      }).catch((error: any) => {
+        this.$toasted.error('エラーが発生しました')
+      })
+    }
   }
 })
 </script>
