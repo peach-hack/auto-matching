@@ -110,7 +110,7 @@
     "nodemon": "^1.11.0",
     "prettier": "^1.15.3",
     "ts-jest": "^23.10.5",
-    "typescript-eslint-parser": "^21.0.2",
+    "typescript-eslint-parser": "^22.0.0",
     "vue-class-component": "^6.3.2",
     "vue-eslint-parser": "^5.0.0",
     "vue-jest": "^3.0.2",
