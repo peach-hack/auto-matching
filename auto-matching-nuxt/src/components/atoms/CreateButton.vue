@@ -1,6 +1,6 @@
 <template lang="pug">
 nuxt-link(:to="{ path: path }")
-  button(type="button button-primary").btn.btn-primary
+  button.btn.btn-primary
     | 新規作成
 </template>
 
