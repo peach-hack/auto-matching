@@ -79,7 +79,7 @@
     "swagger-vue": "^1.0.3",
     "ts-loader": "^5.3.3",
     "types-installer": "^1.4.0",
-    "typescript": "3.2.2",
+    "typescript": "3.2.4",
     "typescript-estree": "^18.1.0",
     "vue": "^2.5.22",
     "vue-chartjs": "^3.4.0",
