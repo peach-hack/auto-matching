@@ -1,5 +1,5 @@
 class PostSerializer < ApplicationSerializer
-  attributes :id, :title, :post_at, :area, :category
+  attributes :id, :title, :post_at, :category, :prefecture, :city, :address
   attribute :profile do | object |
     {
       name: object.profile.name,
