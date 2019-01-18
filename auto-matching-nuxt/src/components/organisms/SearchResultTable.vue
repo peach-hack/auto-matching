@@ -5,7 +5,6 @@ div(v-if="$state.search.posts.length !== 0")
   table.table
     thead
       tr
-        th サイト名
         th タイトル
         th 投稿日時
         th カテゴリ
@@ -16,6 +15,8 @@ div(v-if="$state.search.posts.length !== 0")
         th 年代
         th 性別
         th 登録地域
+        th サイト名
+        th 掲示板へ
     tbody
       search-result-list(v-for="post in $state.search.posts" :post="post" :key="post.id")
 

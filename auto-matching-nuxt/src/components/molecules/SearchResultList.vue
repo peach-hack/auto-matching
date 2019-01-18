@@ -1,6 +1,5 @@
 <template lang="pug">
 tr
-  th(v-html="siteName")
   th {{ post.title }}
   th {{ post.postAt | showDate }}
   th {{ post.category }}
@@ -11,6 +10,8 @@ tr
   th {{ post.age }}
   th {{ post.sex }}
   th {{ post.profileFrom }}
+  th {{ post.siteName }}
+  th link
 </template>
 
 <script lang="ts">
