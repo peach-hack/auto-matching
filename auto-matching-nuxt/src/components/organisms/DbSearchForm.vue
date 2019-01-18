@@ -28,12 +28,14 @@ export default Vue.extend({
       const data = {
         title: this.title
       }
-
-      getApiUsersSearchDb({
-        attributes: data
-      }).catch((error: any) => {
-        this.$toasted.error('エラーが発生しました')
-      })
+      this.$store
+        .dispatch('search/searchDb', {
+          data: data
+        })
+        .catch((error: any) => {
+          console.log(error)
+          this.$toasted.error('エラーが発生しました')
+        })
     }
   }
 })

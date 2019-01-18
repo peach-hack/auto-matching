@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div(v-if="$state.search.posts.length !== 0")
   h4
     | 検索結果
   table.table

@@ -12,8 +12,8 @@ export default Vue.extend({
   components: {
     ManualPostTable
   },
-  async fetch({ store }: { store: any }) {
-    await store.dispatch('posts/fetchHistories')
+  mounted() {
+    this.$store.dispatch('posts/fetchHistories')
   }
-} as any)
+})
 </script>
