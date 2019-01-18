@@ -1,7 +1,7 @@
 /* eslint-disable */
 import axios from 'axios'
 import qs from 'qs'
-let domaim = process.env.baseUrl
+let domain = process.env.baseUrl
 export const getDomain = () => {
   return domain
 }
