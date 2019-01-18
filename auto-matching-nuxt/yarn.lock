@@ -657,10 +657,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@coreui/vue@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@coreui/vue/-/vue-2.1.1.tgz#e8fe215ba52a1b0b7df698409c75ee459ff4782b"
-  integrity sha512-clYEQJ0iKoUpqWIM0pkF+V/Ek7FBDY4yajxOBQ/Oa2ldQFapMjjn9d2L+2Hcie1iblFzB3B46DffzpmKoK4aqA==
+"@coreui/vue@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@coreui/vue/-/vue-2.1.2.tgz#7495df32770c279d6ee4eda5d4a7babca7797c4f"
+  integrity sha512-nnsvnzVWn/jN3Vsjxs2k9LjWzCc4C8vmlybxkB7lrM08VzqXj8ZcBhw3V6FsqrXyJVQ9Hk+lRiGUwiQ1kEyElw==
   dependencies:
     vue-clickaway "^2.2.2"
     vue-perfect-scrollbar "^0.1.0"

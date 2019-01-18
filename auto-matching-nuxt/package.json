@@ -19,7 +19,7 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
-    "@coreui/vue": "^2.1.1",
+    "@coreui/vue": "^2.1.2",
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/babel-preset-app": "^0.8.0",
     "@nuxtjs/pwa": "^2.6.0",
