@@ -23,6 +23,9 @@ export default Vue.extend({
       title: '' as string
     }
   },
+  created() {
+    this.$store.commit('search/clearPosts')
+  },
   methods: {
     search: function() {
       const data = {

@@ -46,6 +46,9 @@ export const mutations: Mutations = {
         siteUrl: post.attributes.sourceSite.url
       })
     })
+  },
+  clearPosts(state) {
+    state.posts = []
   }
 }
 
