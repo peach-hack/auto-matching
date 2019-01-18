@@ -4,3 +4,4 @@
 .env
 *.spec.js.map
 *.spec.js
+tmp

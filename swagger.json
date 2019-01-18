@@ -5,9 +5,8 @@
     "version" : "1.0.0",
     "title" : "Auto Matching"
   },
-  "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/tsu-nera/auto-matching/1.0.0",
-  "schemes" : [ "https", "http" ],
+  "host" : "localhost:5000",
+  "schemes" : [ "http" ],
   "paths" : {
     "/api/users/source-sites" : {
       "get" : {
@@ -160,6 +159,51 @@
             "$ref" : "#/definitions/attributes_3"
           }
         } ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
+    "/api/users/search/db" : {
+      "get" : {
+        "summary" : "掲示板DB検索",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
+    "/api/users/search/keyword" : {
+      "get" : {
+        "summary" : "掲示板DB検索",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
+    "/api/users/search/realtime" : {
+      "get" : {
+        "summary" : "掲示板DB検索",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
         "responses" : {
           "200" : {
             "description" : "成功時のレスポンス"
