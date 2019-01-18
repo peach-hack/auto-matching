@@ -9,7 +9,10 @@ export default {
         'posts-templates-new': '投稿テンプレート新規作成',
         'posts-templates-id': '投稿テンプレート編集',
         'posts-auto': '定期実行設定',
-        'posts-manual': 'マニュアル投稿'
+        'posts-manual': 'マニュアル投稿',
+        'search-db': 'データベース検索',
+        'search-realtime': 'リアルタイム検索',
+        'search-keyword': 'キーワード検索'
       }
     }
   }

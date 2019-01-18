@@ -6,7 +6,6 @@ div
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapGetters } from 'vuex'
 
 //@ts-ignore
 import SiteForm from '@/components/organisms/SiteForm.vue'

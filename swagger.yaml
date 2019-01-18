@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  title: Auto Matching
-  description: API description in Markdown.
-  version: 1.0.0
+  title: 'Auto Matching'
+  description: 'API description in Markdown.'
+  version: '1.0.0'
 host: 'localhost:5000'
 schemes:
   - http
@@ -150,6 +150,36 @@ paths:
               id:
                 type: integer
                 description: "サイトID"
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/search/db:
+    get:
+      summary: 掲示板DB検索
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/search/keyword:
+    get:
+      summary: 掲示板DB検索
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/search/realtime:
+    get:
+      summary: 掲示板DB検索
+      produces:
+        - application/json
       responses:
         '200':
           description: 成功時のレスポンス
