@@ -17,11 +17,19 @@ div(v-if="$state.search.posts.length !== 0")
         th 性別
         th 登録地域
     tbody
+      search-result-list(v-for="post in $state.search.posts" :post="post" :key="post.id")
 
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
-export default Vue.extend({})
+//@ts-ignore
+import SearchResultList from '@/components/molecules/SearchResultList.vue'
+
+export default Vue.extend({
+  components: {
+    SearchResultList
+  }
+})
 </script>
