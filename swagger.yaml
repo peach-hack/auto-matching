@@ -156,7 +156,7 @@ paths:
         '500':
           description: 失敗時のレスポンス
   /api/users/search/db:
-    post:
+    get:
       summary: 掲示板DB検索
       produces:
         - application/json
@@ -167,16 +167,16 @@ paths:
           schema:
             type: object
             properties:
-              keywordTitle:
+              keyword:
                 type: string
-                description: "キーワード（タイトル）"
+                description: "キーワード"
       responses:
         '200':
           description: 成功時のレスポンス
         '500':
           description: 失敗時のレスポンス
   /api/users/search/keyword:
-    post:
+    get:
       summary: 掲示板キーワード検索
       produces:
         - application/json
@@ -196,7 +196,7 @@ paths:
         '500':
           description: 失敗時のレスポンス
   /api/users/search/realtime:
-    post:
+    get:
       summary: 掲示板リアルタイム検索
       produces:
         - application/json

@@ -1,8 +1,8 @@
 <template lang="pug">
-form
+form(@submit.prevent="search")
   .form-group
     label(for="titleKeywordInput") キーワード（タイトル）
-    input(type="text").form-control#titleKeywordInput
+    input(type="text" v-model="title").form-control#titleKeywordInput
   search-button
 </template>
 
@@ -11,6 +11,8 @@ import Vue from 'vue'
 
 //@ts-ignore
 import SearchButton from '@/components/atoms/SearchButton.vue'
+//@ts-ignore
+import { getApiUsersSearchDb } from '@/plugins/api'
 
 export default Vue.extend({
   components: {
@@ -18,17 +20,16 @@ export default Vue.extend({
   },
   data() {
     return {
-      titleKeywords: '' as string
+      title: '' as string
     }
   },
   methods: {
-    updateSite: function() {
+    search: function() {
       const data = {
-        title: this.titleKeywords
+        title: this.title
       }
 
-      putApiUsersSourceSitesById({
-        id: this.site.id,
+      getApiUsersSearchDb({
         attributes: data
       }).catch((error: any) => {
         this.$toasted.error('エラーが発生しました')

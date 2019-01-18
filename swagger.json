@@ -170,7 +170,7 @@
       }
     },
     "/api/users/search/db" : {
-      "post" : {
+      "get" : {
         "summary" : "掲示板DB検索",
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -193,7 +193,7 @@
       }
     },
     "/api/users/search/keyword" : {
-      "post" : {
+      "get" : {
         "summary" : "掲示板キーワード検索",
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -216,7 +216,7 @@
       }
     },
     "/api/users/search/realtime" : {
-      "post" : {
+      "get" : {
         "summary" : "掲示板リアルタイム検索",
         "produces" : [ "application/json" ],
         "parameters" : [ ],
@@ -273,9 +273,9 @@
     "attributes_4" : {
       "type" : "object",
       "properties" : {
-        "keywordTitle" : {
+        "keyword" : {
           "type" : "string",
-          "description" : "キーワード（タイトル）"
+          "description" : "キーワード"
         }
       }
     },
