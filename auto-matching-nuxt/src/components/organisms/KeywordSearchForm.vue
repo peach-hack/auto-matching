@@ -15,6 +15,9 @@ import SearchButton from '@/components/atoms/SearchButton.vue'
 export default Vue.extend({
   components: {
     SearchButton
+  },
+  created() {
+    this.$store.commit('search/clearPosts')
   }
 })
 </script>

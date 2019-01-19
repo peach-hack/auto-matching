@@ -381,6 +381,7 @@ export const postApiUsersPostsManualPostsURL = function(parameters = {}) {
  * url: getApiUsersSearchDbURL
  * method: getApiUsersSearchDb_TYPE
  * raw_url: getApiUsersSearchDb_RAW_URL
+ * @param attributes - 検索クエリ
  */
 export const getApiUsersSearchDb = function(parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
@@ -389,6 +390,9 @@ export const getApiUsersSearchDb = function(parameters = {}) {
   let body
   let queryParameters = {}
   let form = {}
+  if (parameters['attributes'] !== undefined) {
+    body = parameters['attributes']
+  }
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
@@ -415,11 +419,12 @@ export const getApiUsersSearchDbURL = function(parameters = {}) {
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
 /**
- * 掲示板DB検索
+ * 掲示板キーワード検索
  * request: getApiUsersSearchKeyword
  * url: getApiUsersSearchKeywordURL
  * method: getApiUsersSearchKeyword_TYPE
  * raw_url: getApiUsersSearchKeyword_RAW_URL
+ * @param attributes - 検索クエリ
  */
 export const getApiUsersSearchKeyword = function(parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
@@ -428,6 +433,9 @@ export const getApiUsersSearchKeyword = function(parameters = {}) {
   let body
   let queryParameters = {}
   let form = {}
+  if (parameters['attributes'] !== undefined) {
+    body = parameters['attributes']
+  }
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
@@ -454,7 +462,7 @@ export const getApiUsersSearchKeywordURL = function(parameters = {}) {
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
 /**
- * 掲示板DB検索
+ * 掲示板リアルタイム検索
  * request: getApiUsersSearchRealtime
  * url: getApiUsersSearchRealtimeURL
  * method: getApiUsersSearchRealtime_TYPE

@@ -10,7 +10,8 @@ class PostSerializer < ApplicationSerializer
   end
   attribute :source_site do |object|
     {
-      key: object.profile.source_site.key
+      name: object.profile.source_site.name,
+      url: object.profile.source_site.affiliate_url,
     }
   end
 end
