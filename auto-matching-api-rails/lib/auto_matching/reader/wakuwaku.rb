@@ -5,19 +5,15 @@ module AutoMatching
 
       private
         def search_board
-          logger.debug("search_board now")
-          # TODO
-          # 大人の募集 ※直リンクでいけた
-          session.visit "https://550909.com/m/bbs/genre?menu=adult"
-
-          # エリア選択　関東 > 東京都 > 新宿区　※直リンクでいけた
-          session.visit "https://550909.com/m/setting/set_city?mode=area&city=227&pref=14"
+          logging_start(__method__)
 
           # すぐ会いたい ※直リンクでいけた
           session.visit "https://550909.com/m/bbs/list?genre=3"
         end
 
         def read_board
+          logging_start(__method__)
+
           post_data = {}
           @post_data_list = []
 
@@ -47,7 +43,8 @@ module AutoMatching
           # 性別、名前を分割
           value.each do |v1|
             sex_tmp, add_name = v1.split(/\A(.{1})/, 2)[1..-1]
-            add_sex = (sex_tmp == "♀" ? 1 : 0)
+            sex_i = (sex_tmp == "♀" ? 1 : 0)
+            add_sex = (sex_i == 1 ? "女性" : "男性")
             sex.push(add_sex)
             name.push(add_name)
           end
@@ -87,7 +84,8 @@ module AutoMatching
         end
 
         def save_board
-          logger.debug("save_board now")
+          logging_start(__method__)
+
           @post_data_list.each do |d|
             logger.debug("\n\n ここで取得テスト \n\n")
             logger.debug("url:#{d[:url]}")

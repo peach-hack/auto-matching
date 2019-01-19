@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "source_site_id", null: false
     t.string "name", null: false
     t.string "age", null: false
-    t.integer "sex", null: false
+    t.string "sex", null: false
     t.integer "from", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
