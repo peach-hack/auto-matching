@@ -5,3 +5,4 @@
 *.spec.js.map
 *.spec.js
 tmp
+dump.rdb
