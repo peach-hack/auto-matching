@@ -21,12 +21,21 @@ Auto Matching
 
 注: 以下はアフィリエイトリンクですが、サイトへの登録をすることで無償提供の対価として開発者に寄付していただけると嬉しいです。
 
+v1(古典的サイト）(開発中)
 - [ハッピーメール](https://happymail.co.jp/?af14212217)
 - [ワクワクメール](https://550909.com/?f6858637)
 - [PCMAX](https://pcmax.jp/lp/?ad_id=rm181904)
 - [イクヨクルヨ](https://194964.com/AF1213451)
 - [ミントC!Jメール](https://mintj.com/?mdc=991&afguid=1iojxazbuotgo2d2n8pf4xszii)
 - [メルパラ](https://meru-para.com/?mdc=991&afguid=1y803u9dpjvt42admh2jxq7tv6)
+
+v2（現代的サイト）（開発予定)
+- Tinder
+- Pairs
+- タッフル誕生
+- with
+- Omiai
+- イヴイヴ
 
 ## Deploy Button
 
