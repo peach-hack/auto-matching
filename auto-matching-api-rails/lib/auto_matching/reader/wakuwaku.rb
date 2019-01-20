@@ -7,7 +7,7 @@ module AutoMatching
         def search_board
           logging_start(__method__)
 
-          # すぐ会いたい ※直リンクでいけた
+          # アダルトのすぐ会いたい ※直リンクでいけた
           session.visit "https://550909.com/m/bbs/list?genre=3"
         end
 
@@ -45,18 +45,16 @@ module AutoMatching
             sex_tmp, add_name = v1.split(/\A(.{1})/, 2)[1..-1]
             sex_i = (sex_tmp == "♀" ? 1 : 0)
             add_sex = (sex_i == 1 ? "女性" : "男性")
-            sex.push(add_sex)
-            name.push(add_name)
+            sex.push(add_sex.to_s.strip)
+            name.push(add_name.to_s.strip)
           end
 
           # 年齢、市区町村を分割
           value2.each do |v2|
             add_age, add_city = v2.split(" ")
-            age.push(add_age)
-            city.push(add_city)
+            age.push(add_age.to_s.strip)
+            city.push(add_city.to_s.strip)
           end
-          # # これは数字だけ取り出す処理　Converterで使えるかもなので保留
-          # # age = a.gsub(/[^\d]/, "").to_i
 
           # 投稿日を変換
           post_time.each do |v3|
@@ -70,12 +68,15 @@ module AutoMatching
           # WAKUWAKUのsource_site_idは2のため
           source_site_id = 2
 
+          # addressには何も設定しない
+          address = ""
+
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
             post_data = { source_site_id: source_site_id,
                           url: url[i], title: title[i], sex: sex[i], name: name[i],
                           age: age[i], post_at: post_at[i], category: category[i],
-                          prefecture: prefecture, city: city[i] #, address: address[i]
+                          prefecture: prefecture, city: city[i], address: address
                         }
             @post_data_list[i] = post_data
           end
@@ -87,18 +88,29 @@ module AutoMatching
           logging_start(__method__)
 
           @post_data_list.each do |d|
-            logger.debug("\n\n ここで取得テスト \n\n")
-            logger.debug("url:#{d[:url]}")
-            logger.debug("source_site_id:#{d[:source_site_id]}")
-            logger.debug("name:#{d[:name]}")
-            logger.debug("age:#{d[:age]}")
-            logger.debug("sex:#{d[:sex]}")
-            logger.debug("title:#{d[:title]}")
-            logger.debug("post_at:#{d[:post_at]}")
-            logger.debug("category:#{d[:category]}")
-            logger.debug("prefecture:#{d[:prefecture]}")
-            logger.debug("city:#{d[:city]}")
-            logger.debug("\n\n ここまでテスト \n\n")
+            profile = {}
+            profile[:source_site_id] = d[:source_site_id]
+            profile[:name] = d[:name]
+            profile[:age] = d[:age]
+            profile[:sex] = d[:sex]
+            profile[:from] = 0
+
+            post = {}
+            post[:title] = d[:title]
+            post[:post_at] = d[:post_at]
+            post[:category] = d[:category]
+            post[:prefecture] = d[:prefecture]
+            post[:city] = d[:city]
+            post[:address] = d[:address]
+
+            @profile = Profile.new(profile)
+            @post = @profile.build_post(post)
+
+            if @post.save!
+              logger.debug("成功しました")
+            else
+              logger.debug("失敗しました")
+            end
           end
         end
     end
