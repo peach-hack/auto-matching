@@ -1,4 +1,4 @@
-Auto Matching
+Auto Matching 
 ===
 
 ![](https://img.shields.io/github/issues/tsu-nera/auto-matching.svg)
@@ -15,6 +15,8 @@ Auto Matching
 
 ## 概要
 
+統合出会い系エンジン(Integrated Deai Engine: IDE).
+
 出会い系マッチングサイトをIT技術の力によって自動化、効率化する、オープンソースのWebアプリです。誰でも無料で利用することができます。
 
 ### 対応サイト
@@ -30,7 +32,7 @@ v1(古典的サイト）(開発中)
 - [メルパラ](https://meru-para.com/?mdc=991&afguid=1y803u9dpjvt42admh2jxq7tv6)
 
 v2（現代的サイト）（開発予定)
-- Tinder
+- [Tinder](https://tinder.com/)
 - Pairs
 - タッフル誕生
 - with
