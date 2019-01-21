@@ -54,8 +54,7 @@ module AutoMatching
 
           prefecture, city, address = converter.split_from(from)
 
-          # PCMAXのsource_siteのIDは3のため
-          source_site_id = 3
+          source_site_id = SourceSite.find_by(key: SourceSite::KEY_PCMAX).id
 
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
@@ -81,6 +80,7 @@ module AutoMatching
 
             post = {}
             post[:title] = d[:title]
+            post[:url] = d[:url]
             post[:post_at] = d[:post_at]
             post[:category] = d[:category]
             post[:prefecture] = d[:prefecture]
