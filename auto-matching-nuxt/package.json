@@ -2,7 +2,7 @@
   "name": "auto-matching-nuxt",
   "version": "1.0.0",
   "private": true,
-  "description": "Dating meets Tech",
+  "description": "Integrated Deai Engine",
   "author": "tsu-nera",
   "scripts": {
     "dev": "nuxt",
