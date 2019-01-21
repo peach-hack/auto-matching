@@ -11,7 +11,7 @@ tr
   th {{ post.sex }}
   th {{ post.profileFrom }}
   th {{ post.siteName }}
-  th link
+  th(v-html="link")
 </template>
 
 <script lang="ts">
@@ -29,10 +29,8 @@ export default Vue.extend({
     post: Object
   },
   computed: {
-    siteName: function(): string {
-      return `<a href=${this.post.siteUrl} target="_blank">${
-        this.post.siteName
-      }</a>`
+    link: function(): string {
+      return `<a href=${this.post.url} target="_blank">link</a>`
     }
   }
 })

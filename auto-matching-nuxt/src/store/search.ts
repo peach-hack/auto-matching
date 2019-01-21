@@ -33,6 +33,7 @@ export const mutations: Mutations = {
       state.posts.push({
         id: Number(post.attributes.id),
         title: post.attributes.title,
+        url: post.attributes.url,
         postAt: post.attributes.postAt,
         category: post.attributes.category,
         prefecture: post.attributes.prefecture,
