@@ -1,7 +1,7 @@
 export default interface Post {
   id: Number
   title: String
-  url: String,
+  url: String
   postAt: Date
   category: Number
   prefecture: String

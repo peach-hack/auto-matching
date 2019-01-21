@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
 
 // import { getApiUsersSearchDb } from '../plugins/api'
+import Axios from 'axios'
 import Post from '../types/post.d'
-import Axios from 'axios';
 
 Vue.use(Vuex)
 
@@ -57,7 +57,10 @@ export const mutations: Mutations = {
 export const actions: Actions = {
   async searchDb({ commit }, data) {
     // const response = await getApiUsersSearchDb(data)
-    const response = await Axios.get(process.env.baseUrl + '/api/users/search/db', data)
+    const response = await Axios.get(
+      process.env.baseUrl + '/api/users/search/db',
+      data
+    )
     commit('addPosts', response.data.data)
   }
 }
