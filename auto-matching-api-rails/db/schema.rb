@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "posts", comment: "掲示板投稿データ", force: :cascade do |t|
     t.integer "profile_id", null: false
     t.string "title", null: false
+    t.string "url", null: false
     t.datetime "post_at", null: false
     t.string "category", null: false
     t.string "prefecture", null: false

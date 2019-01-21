@@ -2,7 +2,7 @@
 form(@submit.prevent="search")
   .form-group
     label(for="titleKeywordInput") キーワード（タイトル）
-    input(type="text" v-model="title").form-control#titleKeywordInput
+    input(type="text" v-model="query.title_cont").form-control#titleKeywordInput
   search-button
 </template>
 
@@ -13,6 +13,7 @@ import Vue from 'vue'
 import SearchButton from '@/components/atoms/SearchButton.vue'
 //@ts-ignore
 import { getApiUsersSearchDb } from '@/plugins/api'
+import Qs from 'qs'
 
 export default Vue.extend({
   components: {
@@ -20,7 +21,9 @@ export default Vue.extend({
   },
   data() {
     return {
-      title: '' as string
+      query: {
+        title_cont: '' as string
+      }
     }
   },
   created() {
@@ -28,13 +31,16 @@ export default Vue.extend({
   },
   methods: {
     search: function() {
-      const data = {
-        title: this.title
+      const queryParameters = {
+        params: {
+          q: this.query
+        },
+        paramsSerializer: function(params: any) {
+          return Qs.stringify(params, { arrayFormat: 'brackets' })
+        }
       }
       this.$store
-        .dispatch('search/searchDb', {
-          data: data
-        })
+        .dispatch('search/searchDb', queryParameters)
         .catch((error: any) => {
           console.log(error)
           this.$toasted.error('エラーが発生しました')

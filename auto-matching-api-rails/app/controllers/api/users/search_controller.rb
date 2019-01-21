@@ -2,7 +2,7 @@ module Api
   module Users
     class SearchController < ::ApplicationController
       def db
-        q = Post.ransack(params[:q])
+        q = Post.ransack(search_params)
         posts = q.result(distinct: true).limit(10)
         render json: PostSerializer.new(posts).serialized_json
       end
@@ -12,6 +12,11 @@ module Api
 
       def keyword
       end
+
+      private
+        def search_params
+          params.require(:q).permit(:title_cont)
+        end
     end
   end
 end
