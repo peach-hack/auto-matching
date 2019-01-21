@@ -17,6 +17,7 @@
 FactoryBot.define do
   factory :post do
     prefecture {  [*(1..49)].sample }
+    sequence(:url) { |n| "http://example#{n}.com" }
     post_at { Time.zone.now }
     category { [*(1..10)].sample.to_s }
     title { Faker::Lorem.sentence }

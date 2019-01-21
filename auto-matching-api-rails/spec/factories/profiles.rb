@@ -17,7 +17,7 @@ FactoryBot.define do
     name { Faker::Name.name }
     age {  [*(20..40)].sample }
     sex { 1 }
-    from {  [*(1..49)].sample }
+    from { 0 }
     source_site { SourceSite.offset(rand(SourceSite.count)).first || association(:source_site) }
   end
 end
