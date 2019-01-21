@@ -61,7 +61,6 @@ module AutoMatching
             # なんか、RailsだとActiveSupport::TimeWithZoneを使う方がいいらしい
             now = Time.current
             v3.insert(0, "#{now.year}/")
-            logger.debug(v3)
             post_at.push(Time.zone.parse(v3))
           end
 

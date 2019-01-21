@@ -14,23 +14,24 @@ module AutoMatching
           name = []
           age = []
 
-          value.each_with_index do |v, i|
-            after_value = v.split(" ")
-            sex_tmp, name_tmp, age_tmp = after_value
+          value.each_with_index do |v1, i|
+            preparation_value = v1.split(" ")
+            sex_tmp, name_tmp, age_tmp = preparation_value
 
             sex_i = (sex_tmp == "♀" ? 1 : 0)
+            add_sex = (sex_i == 1 ? "女性" : "男性")
 
-            name_s = name_tmp.strip
+            add_name = name_tmp.strip
 
-            unless age_tmp.include?("歳")
-              a_i = age_tmp.gsub(/歳/, "").to_i
+            if age_tmp.include?("歳")
+              add_age = age_tmp
             else
-              a_i = age_tmp.to_i
+              add_age = age_tmp << "歳"
             end
 
-            sex.push(sex_i)
-            name.push(name_s)
-            age.push(a_i)
+            sex.push(add_sex)
+            name.push(add_name)
+            age.push(add_age)
           end
 
           return sex, name, age
@@ -41,7 +42,8 @@ module AutoMatching
           post_at = []
 
           post_time.each do |date|
-            post_at.push(Time.strptime(date, "%Y年%m月%d日 %H:%M"))
+            date.gsub!(/(年|月|日)/, "年" => "-", "月" => "-", "日" => "-")
+            post_at.push(Time.zone.parse(date))
           end
 
           post_at
@@ -86,18 +88,18 @@ module AutoMatching
           city = []
           address = []
 
-          from.each_with_index do |f, i|
-            number_of_fromdata = f.length
+          from.each_with_index do |v2, i|
+            number_of_fromdata = v2.length
             if number_of_fromdata == 3
-              add_prefecture = f[0]
-              add_city = f[1]
-              add_address = f[2]
+              add_prefecture = v2[0]
+              add_city = v2[1]
+              add_address = v2[2]
             elsif number_of_fromdata == 2
-              add_prefecture = f[0]
-              add_city = f[1]
+              add_prefecture = v2[0]
+              add_city = v2[1]
               add_address = ""
             elsif number_of_fromdata == 1
-              add_prefecture = f[0]
+              add_prefecture = v2[0]
               add_city = ""
               add_address = ""
             end
