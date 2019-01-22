@@ -3,8 +3,8 @@ form(@submit.prevent="search")
   .form-group
     label(for="datetimeInput") 投稿日時
     .form-inline
-      datetime(v-model="query.date_gteq" type="datetime" placeholder="はじめ")#datetimeInput
-      datetime(v-model="query.date_lteq" type="datetime" placeholder="おわり")#datetimeInput
+      datetime(v-model="query.post_at_gteq" type="datetime" placeholder="はじめ")#datetimeInput
+      datetime(v-model="query.post_at_lteq" type="datetime" placeholder="おわり")#datetimeInput
   .form-group
     label(for="titleKeywordInput") タイトル
     input(type="text" v-model="query.title_cont" placeholder="キーワード").form-control#titleKeywordInput
@@ -31,8 +31,8 @@ export default Vue.extend({
     return {
       query: {
         title_cont: '' as string,
-        date_gteq: '' as string,
-        date_lteq: '' as string
+        post_at_gteq: '' as string,
+        post_at_lteq: '' as string
       }
     }
   },
