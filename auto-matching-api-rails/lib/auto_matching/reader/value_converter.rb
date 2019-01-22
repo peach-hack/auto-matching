@@ -15,22 +15,18 @@ module AutoMatching
           age = []
 
           value.each_with_index do |v, i|
-            after_value = v.split(" ")
-            sex_tmp, name_tmp, age_tmp = after_value
+            preparation_value = v.split(" ")
+            sex_tmp, add_name, add_age = preparation_value
 
-            sex_i = (sex_tmp == "♀" ? 1 : 0)
+            add_sex = (sex_tmp == "♀" ? "女性" : "男性")
 
-            name_s = name_tmp.strip
+            add_name.strip
 
-            unless age_tmp.include?("歳")
-              a_i = age_tmp.gsub(/歳/, "").to_i
-            else
-              a_i = age_tmp.to_i
-            end
+            add_age.include?("歳") ? add_age.strip : add_age.concat("歳").strip
 
-            sex.push(sex_i)
-            name.push(name_s)
-            age.push(a_i)
+            sex.push(add_sex)
+            name.push(add_name)
+            age.push(add_age)
           end
 
           return sex, name, age
@@ -41,7 +37,8 @@ module AutoMatching
           post_at = []
 
           post_time.each do |date|
-            post_at.push(Time.strptime(date, "%Y年%m月%d日 %H:%M"))
+            date.gsub!(/(年|月|日)/, "年" => "-", "月" => "-", "日" => "-")
+            post_at.push(Time.zone.parse(date))
           end
 
           post_at
@@ -86,18 +83,18 @@ module AutoMatching
           city = []
           address = []
 
-          from.each_with_index do |f, i|
-            number_of_fromdata = f.length
+          from.each_with_index do |v, i|
+            number_of_fromdata = v.length
             if number_of_fromdata == 3
-              add_prefecture = f[0]
-              add_city = f[1]
-              add_address = f[2]
+              add_prefecture = v[0]
+              add_city = v[1]
+              add_address = v[2]
             elsif number_of_fromdata == 2
-              add_prefecture = f[0]
-              add_city = f[1]
+              add_prefecture = v[0]
+              add_city = v[1]
               add_address = ""
             elsif number_of_fromdata == 1
-              add_prefecture = f[0]
+              add_prefecture = v[0]
               add_city = ""
               add_address = ""
             end
