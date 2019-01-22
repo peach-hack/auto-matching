@@ -10,7 +10,6 @@ div(v-if="$state.search.posts.length !== 0")
         th カテゴリ
         th 都道府県
         th 区市町村
-        th -
         th プロフィール名
         th 年代
         th 性別

@@ -5,7 +5,6 @@ tr
   th {{ post.category }}
   th {{ post.prefecture }}
   th {{ post.city }}
-  th {{ post.address }}
   th {{ post.profileName }}
   th {{ post.age }}
   th {{ post.sex }}

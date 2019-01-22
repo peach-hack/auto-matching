@@ -6,6 +6,11 @@ form(@submit.prevent="search")
       datetime(v-model="query.post_at_gteq" type="datetime" placeholder="はじめ")#datetimeInput
       datetime(v-model="query.post_at_lteq" type="datetime" placeholder="おわり")#datetimeInput
   .form-group
+      label(for="areaInput") 投稿地域
+      .form-group
+        input(type="text" v-model="query.prefecture_cont" placeholder="都道府県").form-control#areaInput
+        input(type="text" v-model="query.city_cont" placeholder="市区町村").form-control#areaInput
+  .form-group
     label(for="titleKeywordInput") タイトル
     input(type="text" v-model="query.title_cont" placeholder="キーワード").form-control#titleKeywordInput
   search-button
@@ -35,7 +40,9 @@ export default Vue.extend({
       query: {
         title_cont: '' as string,
         post_at_gteq: '' as string,
-        post_at_lteq: '' as string
+        post_at_lteq: '' as string,
+        prefecture_cont: '' as string,
+        city_cont: '' as string
       }
     }
   },
@@ -63,6 +70,8 @@ export default Vue.extend({
       this.query.title_cont = ''
       this.query.post_at_gteq = ''
       this.query.post_at_lteq = ''
+      this.query.prefecture_cont = ''
+      this.query.city_cont = ''
     }
   }
 })
