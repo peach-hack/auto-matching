@@ -5,7 +5,7 @@ styled-container
     styled-title
       | Auto Matching
     styled-subtitle
-      | Dating meets Tech
+      | Integrated Deai Engine
 </template>
 
 <script>
