@@ -1,22 +1,38 @@
 <template lang="pug">
 form(@submit.prevent="search")
   .form-group
+    label(for="titleKeywordInput") 投稿タイトル
+    input(type="text" v-model="query.title_cont" placeholder="キーワード").form-control#titleKeywordInput
+  .form-group
     label(for="datetimeInput") 投稿日時
     .form-inline
       datetime(v-model="query.post_at_gteq" type="datetime" placeholder="はじめ")#datetimeInput
       datetime(v-model="query.post_at_lteq" type="datetime" placeholder="おわり")#datetimeInput
   .form-group
-      label(for="areaInput") 投稿地域
-      .form-group
-        input(type="text" v-model="query.prefecture_cont" placeholder="都道府県").form-control#areaInput
-        input(type="text" v-model="query.city_cont" placeholder="市区町村").form-control#areaInput
+    label(for="areaInput") 投稿地域
+    .form-group
+      input(type="text" v-model="query.prefecture_cont" placeholder="都道府県").form-control#areaInput
+      input(type="text" v-model="query.city_cont" placeholder="市区町村").form-control#areaInput
   .form-group
-    label(for="titleKeywordInput") タイトル
-    input(type="text" v-model="query.title_cont" placeholder="キーワード").form-control#titleKeywordInput
+    label(for="profileInput") プロフィール
+    .form-group
+      input(type="text" v-model="query.profileName_cont" placeholder="プロフィール名").form-control#profileInput
+      input(type="text" v-model="query.age_cont" placeholder="年代").form-control#profileInput
+  .form-group
+    label(for="siteInput") サイト
+    .form-group
+      input(type="text" v-model="query.siteName_cont" placeholder="サイト名").form-control#siteInput
+      .dropdown
+        button(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")#dropdownMenu1.btn.btn-light.dropdown-toggle
+          | カテゴリ
+        .dropdown-menu(aria-labelledby="dropdownMenu1")
+          a.dropdown-item(href="#") Item1
+          a.dropdown-item(href="#") Item2
+          a.dropdown-item(href="#") Item3
+  // input(type="text" v-model="query.category_eq" placeholder="カテゴリ").form-control#siteInput
   search-button
   button(type="button" @click="clear").btn.btn-light
     | Clear
-
 </template>
 
 <script lang="ts">
@@ -42,7 +58,8 @@ export default Vue.extend({
         post_at_gteq: '' as string,
         post_at_lteq: '' as string,
         prefecture_cont: '' as string,
-        city_cont: '' as string
+        city_cont: '' as string,
+        category_eq: '' as string
       }
     }
   },
@@ -72,6 +89,7 @@ export default Vue.extend({
       this.query.post_at_lteq = ''
       this.query.prefecture_cont = ''
       this.query.city_cont = ''
+      this.query.category_eq = ''
     }
   }
 })
