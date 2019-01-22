@@ -2,7 +2,6 @@
 tr
   th {{ post.title }}
   th {{ post.postAt | showDate }}
-  th {{ post.category }}
   th {{ post.prefecture }}
   th {{ post.city }}
   th {{ post.profileName }}
@@ -10,6 +9,7 @@ tr
   th {{ post.sex }}
   th {{ post.profileFrom }}
   th {{ post.siteName }}
+  th {{ post.category }}
   th(v-html="link")
 </template>
 
