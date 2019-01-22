@@ -79,7 +79,6 @@ module AutoMatching
             @post_data_list[i] = post_data
           end
 
-          @post_data_list
           logging_end(__method__)
         end
 
@@ -112,6 +111,7 @@ module AutoMatching
               logger.debug("失敗しました")
             end
           end
+
           logging_end(__method__)
         end
     end

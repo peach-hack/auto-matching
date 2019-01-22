@@ -2,7 +2,6 @@ module AutoMatching
   module Reader
     class Pcmax < ReaderBase
       include Common::Pcmax
-      include ValueConverter
 
       private
         def search_board
@@ -38,7 +37,7 @@ module AutoMatching
           # 各種初期設定
           post_data = {}
           @post_data_list = []
-          converter = PcmaxConverter.new
+          converter = AutoMatching::Converter::Pcmax.new
 
           # 取得する大枠のテーブルを設定
           input_data = session.all(".item_box")

@@ -16,7 +16,7 @@ FactoryBot.define do
   factory :profile do
     name { Faker::Name.name }
     age {  [*(20..40)].sample }
-    sex { "女" }
+    sex { "女性" }
     from { Gimei.prefecture.kanji }
     source_site { SourceSite.offset(rand(SourceSite.count)).first || association(:source_site) }
   end
