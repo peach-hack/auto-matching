@@ -4,7 +4,7 @@
 #
 #  id             :bigint(8)        not null, primary key
 #  age            :string           not null
-#  from           :integer          not null
+#  from           :string           not null
 #  name           :string           not null
 #  sex            :string           not null
 #  created_at     :datetime         not null
@@ -16,8 +16,8 @@ FactoryBot.define do
   factory :profile do
     name { Faker::Name.name }
     age {  [*(20..40)].sample }
-    sex { 1 }
-    from {  Gimei.address.kanji }
+    sex { "女" }
+    from { Gimei.prefecture.kanji }
     source_site { SourceSite.offset(rand(SourceSite.count)).first || association(:source_site) }
   end
 end

@@ -4,7 +4,7 @@
 #
 #  id             :bigint(8)        not null, primary key
 #  age            :string           not null
-#  from           :integer          not null
+#  from           :string           not null
 #  name           :string           not null
 #  sex            :string           not null
 #  created_at     :datetime         not null

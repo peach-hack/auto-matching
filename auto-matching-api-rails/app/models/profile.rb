@@ -4,7 +4,7 @@
 #
 #  id             :bigint(8)        not null, primary key
 #  age            :string           not null
-#  from           :integer          not null
+#  from           :string           not null
 #  name           :string           not null
 #  sex            :string           not null
 #  created_at     :datetime         not null
@@ -16,7 +16,7 @@ class Profile < ApplicationRecord
   validates :name, presence: true
   validates :age, presence: true
   validates :sex, presence: true
-  validates :from, presence: true
+  validates :from, presence: false
 
   belongs_to :source_site
   has_one :post, dependent: :destroy

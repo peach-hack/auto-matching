@@ -6,7 +6,6 @@ tr
   th {{ post.city }}
   th {{ post.profileName }}
   th {{ post.age }}
-  th {{ post.sex }}
   th {{ post.profileFrom }}
   th {{ post.siteName }}
   th {{ post.category }}

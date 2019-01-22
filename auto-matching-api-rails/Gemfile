@@ -73,7 +73,7 @@ group :development, :test do
 
   gem "rails-i18n"
   gem "faker"
-  gem 'gimei'
+  gem "gimei"
 end
 
 group :development do

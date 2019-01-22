@@ -11,7 +11,6 @@ div(v-if="$state.search.posts.length !== 0")
         th 区市町村
         th プロフィール名
         th 年代
-        th 性別
         th 登録地域
         th サイト名
         th カテゴリ
