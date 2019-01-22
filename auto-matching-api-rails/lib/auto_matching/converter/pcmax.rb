@@ -7,24 +7,29 @@ module AutoMatching
 
       # valueには性別、名前、年齢が格納されているためそれぞれ分割
       def split_value(value)
-        sex = []
-        name = []
-        age = []
+        sex_list = name_list = age_list = []
 
-        value.each_with_index dzzo | v, i |
-          preparation_value = v.split(" ")
-        sex_tmp, add_name, add_age = preparation_value
+        value.each do |v|
+          sex, name, age = split_sex_name_age(v)
 
-        add_sex = (sex_tmp == "♀" ? "女性" : "男性")
+          sex_list.push(sex)
+          name_list.push(name)
+          age_list.push(age)
+        end
 
-        add_name.strip
+        [sex_list, name_list, age_list]
+      end
 
-        add_age.include?("歳") ? add_age.strip : add_age.concat("歳").strip
+      def split_sex_name_age(line)
+        sex_tmp, name_tmp, age_tmp = line.split(" ")
 
-        sex.push(add_sex)
-        name.push(add_name)
-        age.push(add_age)
-        return sex, name, age
+        sex = (sex_tmp == "♀" ? "女性" : "男性")
+
+        name = name_tmp.strip
+
+        age = convert_to_generation(age_tmp.chop.to_i)
+
+        [sex, name, age]
       end
 
       # post_atは文字列で格納されているため日付型に変更
