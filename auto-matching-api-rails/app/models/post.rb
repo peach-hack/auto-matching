@@ -11,6 +11,7 @@
 #  post_at    :datetime         not null
 #  prefecture :string           not null
 #  title      :string           not null
+#  url        :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  profile_id :integer          not null
@@ -18,6 +19,7 @@
 
 class Post < ApplicationRecord
   validates :title, presence: true
+  validates :url, presence: true
   validates :post_at, presence: true
   validates :category, presence: true
   validates :prefecture, presence: true

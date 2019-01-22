@@ -127,6 +127,8 @@ GEM
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
     ffi (1.10.0)
+    gimei (0.3.0)
+      romaji
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     htmlentities (4.3.4)
@@ -254,6 +256,8 @@ GEM
       diffy
     rollbar (2.18.2)
       multi_json
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -375,6 +379,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fast_jsonapi
+  gimei
   listen (>= 3.0.5, < 3.2)
   logster
   meta-tags
