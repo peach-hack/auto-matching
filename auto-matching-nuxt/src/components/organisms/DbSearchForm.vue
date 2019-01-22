@@ -1,10 +1,13 @@
 <template lang="pug">
 form(@submit.prevent="search")
   .form-group
-    label(for="titleKeywordInput") キーワード（タイトル）
-    input(type="text" v-model="query.title_cont").form-control#titleKeywordInput
+    label(for="datetimeInput") 投稿日時
+    .form-inline
+      datetime(v-model="query.date_gteq" type="datetime" placeholder="はじめ")#datetimeInput
+      datetime(v-model="query.date_lteq" type="datetime" placeholder="おわり")#datetimeInput
   .form-group
-    datetime(v-model="query.date")
+    label(for="titleKeywordInput") タイトル
+    input(type="text" v-model="query.title_cont" placeholder="キーワード").form-control#titleKeywordInput
   search-button
 </template>
 
@@ -27,7 +30,9 @@ export default Vue.extend({
   data() {
     return {
       query: {
-        title_cont: '' as string
+        title_cont: '' as string,
+        date_gteq: '' as string,
+        date_lteq: '' as string
       }
     }
   },
