@@ -28,6 +28,8 @@ module AutoMatching
 
           # 検索結果取得ページに遷移
           session.execute_script "$('button.btn.moji_bold').click()"
+
+          logging_end(__method__)
         end
 
         def read_board
@@ -71,6 +73,8 @@ module AutoMatching
           end
 
           @post_data_list
+
+          logging_end(__method__)
         end
 
         def save_board
@@ -101,6 +105,7 @@ module AutoMatching
               logger.debug("失敗しました")
             end
           end
+          logging_end(__method__)
         end
     end
   end

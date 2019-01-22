@@ -14,20 +14,15 @@ module AutoMatching
           name = []
           age = []
 
-          value.each_with_index do |v1, i|
-            preparation_value = v1.split(" ")
-            sex_tmp, name_tmp, age_tmp = preparation_value
+          value.each_with_index do |v, i|
+            preparation_value = v.split(" ")
+            sex_tmp, add_name, add_age = preparation_value
 
-            sex_i = (sex_tmp == "♀" ? 1 : 0)
-            add_sex = (sex_i == 1 ? "女性" : "男性")
+            add_sex = (sex_tmp == "♀" ? "女性" : "男性")
 
-            add_name = name_tmp.strip
+            add_name.strip
 
-            if age_tmp.include?("歳")
-              add_age = age_tmp
-            else
-              add_age = age_tmp << "歳"
-            end
+            add_age.include?("歳") ? add_age.strip : add_age.concat("歳").strip
 
             sex.push(add_sex)
             name.push(add_name)
@@ -88,18 +83,18 @@ module AutoMatching
           city = []
           address = []
 
-          from.each_with_index do |v2, i|
-            number_of_fromdata = v2.length
+          from.each_with_index do |v, i|
+            number_of_fromdata = v.length
             if number_of_fromdata == 3
-              add_prefecture = v2[0]
-              add_city = v2[1]
-              add_address = v2[2]
+              add_prefecture = v[0]
+              add_city = v[1]
+              add_address = v[2]
             elsif number_of_fromdata == 2
-              add_prefecture = v2[0]
-              add_city = v2[1]
+              add_prefecture = v[0]
+              add_city = v[1]
               add_address = ""
             elsif number_of_fromdata == 1
-              add_prefecture = v2[0]
+              add_prefecture = v[0]
               add_city = ""
               add_address = ""
             end
