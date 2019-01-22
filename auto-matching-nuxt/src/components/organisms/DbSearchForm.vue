@@ -9,6 +9,9 @@ form(@submit.prevent="search")
     label(for="titleKeywordInput") タイトル
     input(type="text" v-model="query.title_cont" placeholder="キーワード").form-control#titleKeywordInput
   search-button
+  button(type="button" @click="clear").btn.btn-light
+    | Clear
+
 </template>
 
 <script lang="ts">
@@ -55,6 +58,11 @@ export default Vue.extend({
           console.log(error)
           this.$toasted.error('エラーが発生しました')
         })
+    },
+    clear: function() {
+      this.query.title_cont = ''
+      this.query.post_at_gteq = ''
+      this.query.post_at_lteq = ''
     }
   }
 })
