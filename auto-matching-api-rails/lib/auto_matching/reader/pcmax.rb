@@ -3,10 +3,11 @@ module AutoMatching
     class Pcmax < ReaderBase
       include Common::Pcmax
       include ValueConverter
-      require "date"
 
       private
         def search_board
+          logging_start(__method__)
+
           # 検索ページに移動
           session.visit "https://pcmax.jp/mobile/bbs_reference.php"
 
@@ -27,9 +28,13 @@ module AutoMatching
 
           # 検索結果取得ページに遷移
           session.execute_script "$('button.btn.moji_bold').click()"
+
+          logging_end(__method__)
         end
 
         def read_board
+          logging_start(__method__)
+
           # 各種初期設定
           post_data = {}
           @post_data_list = []
@@ -67,9 +72,13 @@ module AutoMatching
           end
 
           @post_data_list
+
+          logging_end(__method__)
         end
 
         def save_board
+          logging_start(__method__)
+
           @post_data_list.each do |d|
             profile = {}
             profile[:source_site_id] = d[:source_site_id]
@@ -96,6 +105,7 @@ module AutoMatching
               logger.debug("失敗しました")
             end
           end
+          logging_end(__method__)
         end
     end
   end
