@@ -3,11 +3,15 @@ form(@submit.prevent="search")
   .form-group
     label(for="titleKeywordInput") キーワード（タイトル）
     input(type="text" v-model="query.title_cont").form-control#titleKeywordInput
+  .form-group
+    datetime(v-model="query.date")
   search-button
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { Datetime } from 'vue-datetime'
+import 'vue-datetime/dist/vue-datetime.css'
 
 //@ts-ignore
 import SearchButton from '@/components/atoms/SearchButton.vue'
@@ -17,7 +21,8 @@ import Qs from 'qs'
 
 export default Vue.extend({
   components: {
-    SearchButton
+    SearchButton,
+    datetime: Datetime
   },
   data() {
     return {
