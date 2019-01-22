@@ -113,7 +113,7 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^5.0.0-0",
     "nodemon": "^1.11.0",
-    "prettier": "^1.16.0",
+    "prettier": "^1.16.1",
     "ts-jest": "^23.10.5",
     "typescript-eslint-parser": "^22.0.0",
     "vue-class-component": "^6.3.2",
