@@ -17,35 +17,38 @@ form(@submit.prevent="search")
     label(for="profileInput") プロフィール
     .form-group
       input(type="text" v-model="query.profileName_cont" placeholder="プロフィール名").form-control#profileInput
-      b-dropdown(text="年代" v-model="query.age_eq")#profileInput
-        b-dropdown-item 18-19歳
-        b-dropdown-item 20代前半
-        b-dropdown-item 20代半ば
-        b-dropdown-item 20代後半
-        b-dropdown-item 30代前半
-        b-dropdown-item 30代半ば
-        b-dropdown-item 30代後半
-        b-dropdown-item 40代前半
-        b-dropdown-item 40代半ば
-        b-dropdown-item 40代後半
-        b-dropdown-item 50代前半
-        b-dropdown-item 50代半ば
-        b-dropdown-item 50代後半
-        b-dropdown-item 60歳以上
+      select#profileInput.custom-select
+        option(selected disabled value="") 年代
+        option 18-19歳
+        option 20代前半
+        option 20代半ば
+        option 20代後半
+        option 30代前半
+        option 30代半ば
+        option 30代後半
+        option 40代前半
+        option 40代半ば
+        option 40代後半
+        option 50代前半
+        option 50代半ば
+        option 50代後半
+        option 60歳以上
   .form-group
     label(for="siteInput") サイト
     .form-group
-      b-dropdown(text="サイト名" v-model="query.category_eq")#siteInput.m-md-2
-        b-dropdown-item ハッピーメール
-        b-dropdown-item ワクワクメール
-        b-dropdown-item PCMAX
-        b-dropdown-item イクヨクルヨ
-        b-dropdown-item ミントC!Jメール
-        b-dropdown-item メルパラ
-      b-dropdown(text="掲示板カテゴリ" v-model="query.category_eq")#siteInput.m-md-2
-        b-dropdown-item スグ会いたい
-        b-dropdown-item スグじゃないけど
-        b-dropdown-item アブノーマル
+      select#siteInput.custom-select
+        option(selected disabled value="") サイト名
+        option ハッピーメール
+        option ワクワクメール
+        option PCMAX
+        option イクヨクルヨ
+        option ミントC!Jメール
+        option メルパラ
+      select#siteInput.custom-select
+        option(selected disabled value="") 掲示板カテゴリ
+        option スグ会いたい
+        option スグじゃないけど
+        option アブノーマル
   search-button
   button(type="button" @click="clear").btn.btn-light
     | Clear
