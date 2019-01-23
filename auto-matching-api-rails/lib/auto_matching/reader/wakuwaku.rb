@@ -64,8 +64,7 @@ module AutoMatching
             post_at.push(Time.zone.parse(date))
           end
 
-          # WAKUWAKUのsource_site_idは2のため
-          source_site_id = 2
+          source_site_id = SourceSite.find_by(key: SourceSite::KEY_WAKUWAKU).id
 
           # addressには何も設定しない
           address = ""
@@ -80,7 +79,6 @@ module AutoMatching
             @post_data_list[i] = post_data
           end
 
-          @post_data_list
           logging_end(__method__)
         end
 
@@ -97,6 +95,7 @@ module AutoMatching
 
             post = {}
             post[:title] = d[:title]
+            post[:url] = d[:url]
             post[:post_at] = d[:post_at]
             post[:category] = d[:category]
             post[:prefecture] = d[:prefecture]
@@ -112,6 +111,7 @@ module AutoMatching
               logger.debug("失敗しました")
             end
           end
+
           logging_end(__method__)
         end
     end

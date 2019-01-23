@@ -31,7 +31,7 @@ module TestDatas
     task create_posts: :environment do | _task, _args|
       return if disable_env?
 
-      100.times do |t|
+      500.times do |t|
         create_post_and_profile
       end
     end

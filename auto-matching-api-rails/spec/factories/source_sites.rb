@@ -24,7 +24,7 @@
 
 FactoryBot.define do
   factory :source_site do
-    name { Faker::Name.unique.name }
+    name { Faker::Company.unique.name }
     key { name.freeze }
     sequence(:login_user) { |n| "login_user#{n}@gmail.com" }
     sequence(:login_password) { |n| "Password#{n}" }
