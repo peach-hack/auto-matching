@@ -2,7 +2,7 @@
 form(@submit.prevent="search")
   .form-group
     label(for="titleKeywordInput") 投稿タイトル
-    input(type="text" v-model="query.title_cont" placeholder="キーワード").form-control#titleKeywordInput
+    input(type="text" v-model="query.title_cont" placeholder="キーワード").form-control#titleKeywordInput.col-3
   .form-group
     label(for="datetimeInput") 投稿日時
     .form-inline
@@ -10,14 +10,14 @@ form(@submit.prevent="search")
       datetime(v-model="query.post_at_lteq" type="datetime" placeholder="おわり")#datetimeInput.m-md-2
   .form-group
     label(for="areaInput") 投稿地域
-    .form-group
-      input(type="text" v-model="query.prefecture_cont" placeholder="都道府県").form-control#areaInput
-      input(type="text" v-model="query.city_cont" placeholder="市区町村").form-control#areaInput
+    .form-inline
+      input(type="text" v-model="query.prefecture_cont" placeholder="都道府県").form-control#areaInput.col-2
+      input(type="text" v-model="query.city_cont" placeholder="市区町村").form-control#areaInput.col-2
   .form-group
     label(for="profileInput") プロフィール
-    .form-group
-      input(type="text" v-model="query.profile_name_cont" placeholder="プロフィール名").form-control#profileInput
-      select#profileInput.custom-select(v-model="query.profile_age_eq")
+    .form-inline
+      input(type="text" v-model="query.profile_name_cont" placeholder="プロフィール名").form-control#profileInput.col-3
+      select#profileInput.custom-select(v-model="query.profile_age_eq").col-3
         option(selected disabled value="") 年代
         option 18-19歳
         option 20代前半
@@ -35,8 +35,8 @@ form(@submit.prevent="search")
         option 60歳以上
   .form-group
     label(for="siteInput") サイト
-    .form-group
-      select#siteInput.custom-select(v-model="query.profile_source_site_name_eq")
+    .form-inline
+      select#siteInput.custom-select(v-model="query.profile_source_site_name_eq").col-3
         option(selected disabled value="") サイト名
         option ハッピーメール
         option ワクワクメール
@@ -44,7 +44,7 @@ form(@submit.prevent="search")
         option イクヨクルヨ
         option ミントC!Jメール
         option メルパラ
-      select#siteInput.custom-select(v-model="query.category_eq")
+      select#siteInput.custom-select(v-model="query.category_eq").col-3
         option(selected disabled value="") 掲示板カテゴリ
         option スグ会いたい
         option スグじゃないけど
