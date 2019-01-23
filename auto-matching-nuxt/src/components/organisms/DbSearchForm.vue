@@ -6,8 +6,8 @@ form(@submit.prevent="search")
   .form-group
     label(for="datetimeInput") 投稿日時
     .form-inline
-      datetime(v-model="query.post_at_gteq" type="datetime" placeholder="はじめ")#datetimeInput
-      datetime(v-model="query.post_at_lteq" type="datetime" placeholder="おわり")#datetimeInput
+      datetime(v-model="query.post_at_gteq" type="datetime" placeholder="はじめ")#datetimeInput.m-md-2
+      datetime(v-model="query.post_at_lteq" type="datetime" placeholder="おわり")#datetimeInput.m-md-2
   .form-group
     label(for="areaInput") 投稿地域
     .form-group
@@ -17,19 +17,35 @@ form(@submit.prevent="search")
     label(for="profileInput") プロフィール
     .form-group
       input(type="text" v-model="query.profileName_cont" placeholder="プロフィール名").form-control#profileInput
-      input(type="text" v-model="query.age_cont" placeholder="年代").form-control#profileInput
+      b-dropdown(text="年代" v-model="query.age_eq")#profileInput
+        b-dropdown-item 18-19歳
+        b-dropdown-item 20代前半
+        b-dropdown-item 20代半ば
+        b-dropdown-item 20代後半
+        b-dropdown-item 30代前半
+        b-dropdown-item 30代半ば
+        b-dropdown-item 30代後半
+        b-dropdown-item 40代前半
+        b-dropdown-item 40代半ば
+        b-dropdown-item 40代後半
+        b-dropdown-item 50代前半
+        b-dropdown-item 50代半ば
+        b-dropdown-item 50代後半
+        b-dropdown-item 60歳以上
   .form-group
     label(for="siteInput") サイト
     .form-group
-      input(type="text" v-model="query.siteName_cont" placeholder="サイト名").form-control#siteInput
-      .dropdown
-        button(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")#dropdownMenu1.btn.btn-light.dropdown-toggle
-          | カテゴリ
-        .dropdown-menu(aria-labelledby="dropdownMenu1")
-          a.dropdown-item(href="#") Item1
-          a.dropdown-item(href="#") Item2
-          a.dropdown-item(href="#") Item3
-  // input(type="text" v-model="query.category_eq" placeholder="カテゴリ").form-control#siteInput
+      b-dropdown(text="サイト名" v-model="query.category_eq")#siteInput.m-md-2
+        b-dropdown-item ハッピーメール
+        b-dropdown-item ワクワクメール
+        b-dropdown-item PCMAX
+        b-dropdown-item イクヨクルヨ
+        b-dropdown-item ミントC!Jメール
+        b-dropdown-item メルパラ
+      b-dropdown(text="掲示板カテゴリ" v-model="query.category_eq")#siteInput.m-md-2
+        b-dropdown-item スグ会いたい
+        b-dropdown-item スグじゃないけど
+        b-dropdown-item アブノーマル
   search-button
   button(type="button" @click="clear").btn.btn-light
     | Clear
