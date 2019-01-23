@@ -17,7 +17,7 @@ form(@submit.prevent="search")
     label(for="profileInput") プロフィール
     .form-group
       input(type="text" v-model="query.profile_name_cont" placeholder="プロフィール名").form-control#profileInput
-      select#profileInput.custom-select
+      select#profileInput.custom-select(v-model="query.profile_age_eq")
         option(selected disabled value="") 年代
         option 18-19歳
         option 20代前半
@@ -78,8 +78,8 @@ export default Vue.extend({
         post_at_lteq: '' as string,
         prefecture_cont: '' as string,
         city_cont: '' as string,
-        // category_eq: '' as string,
-        profile_name_cont: '' as string
+        profile_name_cont: '' as string,
+        profile_age_eq: '' as string
       }
     }
   },
@@ -111,6 +111,7 @@ export default Vue.extend({
       this.query.city_cont = ''
       // this.query.category_eq = ''
       this.query.profile_name_cont = ''
+      this.query.profile_age_eq = ''
     }
   }
 })

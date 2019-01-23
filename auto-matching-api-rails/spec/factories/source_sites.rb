@@ -1,4 +1,4 @@
-# == Schema Information
+# == Shema Information
 #
 # Table name: source_sites
 #
@@ -24,8 +24,11 @@
 
 FactoryBot.define do
   factory :source_site do
-    name { Faker::Company.unique.name }
-    key { name.freeze }
+    sequence(:key) do |n|
+      sites = ["ハッピーメール", "ワクワクメール", "PCMAX", "イクヨクルヨ", "ミントC!Jメール", "メルパラ"]
+      sites[n - 1]
+    end
+    name { key.freeze }
     sequence(:login_user) { |n| "login_user#{n}@gmail.com" }
     sequence(:login_password) { |n| "Password#{n}" }
     sequence(:login_url) { |n| "http://example#{n}.com" }
