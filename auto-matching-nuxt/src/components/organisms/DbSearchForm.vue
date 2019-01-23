@@ -36,7 +36,7 @@ form(@submit.prevent="search")
   .form-group
     label(for="siteInput") サイト
     .form-group
-      select#siteInput.custom-select
+      select#siteInput.custom-select(v-model="query.profile_source_site_name_eq")
         option(selected disabled value="") サイト名
         option ハッピーメール
         option ワクワクメール
@@ -44,7 +44,7 @@ form(@submit.prevent="search")
         option イクヨクルヨ
         option ミントC!Jメール
         option メルパラ
-      select#siteInput.custom-select
+      select#siteInput.custom-select(v-model="query.category_eq")
         option(selected disabled value="") 掲示板カテゴリ
         option スグ会いたい
         option スグじゃないけど
@@ -79,7 +79,9 @@ export default Vue.extend({
         prefecture_cont: '' as string,
         city_cont: '' as string,
         profile_name_cont: '' as string,
-        profile_age_eq: '' as string
+        profile_age_eq: '' as string,
+        profile_source_site_name_eq: '' as string,
+        category_eq: '' as string
       }
     }
   },
@@ -109,9 +111,10 @@ export default Vue.extend({
       this.query.post_at_lteq = ''
       this.query.prefecture_cont = ''
       this.query.city_cont = ''
-      // this.query.category_eq = ''
       this.query.profile_name_cont = ''
       this.query.profile_age_eq = ''
+      this.query.profile_source_site_name_eq = ''
+      this.query.category_eq = ''
     }
   }
 })
