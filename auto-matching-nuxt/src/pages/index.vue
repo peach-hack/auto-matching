@@ -6,6 +6,13 @@ styled-container
       | Auto Matching
     styled-subtitle
       | Integrated Deai Engine
+    div
+      .content(v-if="loggedIn()")
+        nuxt-link(to="/logout")
+          button(type="button").btn.btn-primary Logout
+      .content(v-if="!loggedIn()")
+        nuxt-link(to="/login")
+          button(type="button").btn.btn-primary Login
 </template>
 
 <script>
@@ -44,6 +51,21 @@ export default {
     StyledContainer,
     StyledTitle,
     StyledSubtitle
+  },
+  methods: {
+    loggedIn() {
+      return this.$auth0.isAuthenticated()
+    },
+    async ping() {
+      const ret = await this.$axios.$get('/api/v1/ping')
+      console.log(ret)
+    },
+    async securedPing() {
+      const ret = await this.$axios.$get('/api/v1/secured_ping', {
+        headers: { Authorization: 'Bearer ' + this.$auth0.getIdToken() }
+      })
+      console.log(ret)
+    }
   }
 }
 </script>

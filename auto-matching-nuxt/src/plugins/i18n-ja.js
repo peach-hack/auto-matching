@@ -4,6 +4,7 @@ export default {
       route: {
         index: '',
         sites: 'サイト管理',
+        login: 'ログイン',
         'sites-id': 'サイト設定',
         'posts-templates': '投稿テンプレート管理',
         'posts-templates-new': '投稿テンプレート新規作成',
