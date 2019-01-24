@@ -7,7 +7,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
     subject { get api_users_source_sites_path }
 
     before do
-      create(:source_site)
+      create(:source_site, key: SourceSite::KEY_HAPPY_MAIL)
       subject
     end
 
@@ -24,7 +24,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
     subject { put api_users_source_site_path(target), params: params }
 
     before do
-      create(:source_site)
+      create(:source_site, key: SourceSite::KEY_HAPPY_MAIL)
       subject
     end
 

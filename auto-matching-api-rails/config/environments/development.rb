@@ -67,9 +67,12 @@ Rails.application.configure do
   config.web_console.whitelisted_ips = "0.0.0.0/0"
 
   # bullet
-    Bullet.enable = true
-    Bullet.alert = true
-    Bullet.bullet_logger = true
-    Bullet.console = true
-    Bullet.rails_logger = true
+  Bullet.enable = true
+  Bullet.alert = true
+  Bullet.bullet_logger = true
+  Bullet.console = true
+  Bullet.rails_logger = true
+
+  # strong parameter check
+  config.action_controller.action_on_unpermitted_parameters = :raise
 end
