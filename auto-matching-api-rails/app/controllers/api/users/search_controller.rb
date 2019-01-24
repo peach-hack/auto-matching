@@ -15,7 +15,9 @@ module Api
 
       private
         def search_params
-          params.require(:q).permit(:title_cont, :post_at_gteq, :post_at_lteq, :prefecture_cont, :city_cont)
+          params.require(:q).permit(:title_cont, :post_at_gteq, :post_at_lteq,
+            :prefecture_cont, :city_cont, :profile_name_cont, :profile_age_eq,
+            :profile_source_site_name_eq, :category_eq)
         end
     end
   end

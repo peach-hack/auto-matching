@@ -17,12 +17,12 @@
 
 FactoryBot.define do
   factory :post do
-    prefecture {  Gimei.prefecture.kanji }
+    prefecture { Gimei.prefecture.kanji }
     city { Gimei.city.kanji }
     address { Gimei.town.kanji }
     sequence(:url) { |n| "http://example#{n}.com" }
     post_at { Time.zone.now }
-    category { [*(1..10)].sample.to_s }
+    category { ["スグ会いたい", "スグじゃないけど", "アブノーマル"].sample }
     title { Faker::Lorem.sentence }
     association :profile
   end

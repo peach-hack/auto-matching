@@ -132,7 +132,7 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     htmlentities (4.3.4)
-    i18n (1.5.2)
+    i18n (1.5.3)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     jaro_winkler (1.5.2)
@@ -222,7 +222,8 @@ GEM
     rails-i18n (5.1.2)
       i18n (>= 0.7, < 2)
       railties (>= 5.0, < 6)
-    rails_db (2.0.5)
+    rails_db (2.0.6)
+      activerecord
       codemirror-rails
       kaminari
       rails (>= 5.0.0)
