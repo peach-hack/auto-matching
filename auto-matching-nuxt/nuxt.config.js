@@ -51,7 +51,8 @@ module.exports = {
     '@/plugins/index.js',
     { src: '@/plugins/cookieStorage.js', ssr: false },
     '@/plugins/moment.js',
-    '@/plugins/auth0.js'
+    '@/plugins/auth0.js',
+    '@/plugins/axios.js'
   ],
   /*
    ** Nuxt.js modules
