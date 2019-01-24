@@ -36,9 +36,11 @@ module AutoMatching
           value00 = []
           value01 = []
           regex_ken = /都道府県/
+          regex_ken_shikuchoson = /(...??[都道府県])(...??[市区町村])/
+          regex_shikuchoson = /(市|区|町|群)/
           from_to_tokyo = "東京都"
-          from_prefecture = []
-          from_city = []
+          from = []
+          from_trip = []
 
           # TODO
           # 取得する大枠のテーブル設定
@@ -47,27 +49,26 @@ module AutoMatching
           get_title = session.all(".textComment")
 
           # from_cityの取得
-          clober = ".miniNewFaceIcon"
+          # clober = ".miniNewFaceIcon"
           number = session.all(".contentsTextContribute").map { |t| t.all(:css, "span").size }
-          
-          # 普通の状態の情報を取得
+
+          # 普通の状態の情報を取得 #number じゃなくてもよくなりましたが、一旦これで...あとあと直す
           number.each do |i|
             pointer = 2
-            value00 = session.all(".contentsTextContribute").map { |t|
+            value00 = session.all(".contentsTextContribute").each { |t|
               # pointer = 3 if t.has_no_content?(clober) #できなかった...
-              logger.debug("\n\n#{pointer}\n\n")
-              t.all(:css, "span")[i - pointer]
+              t.all(:css, "span")
             }
           end
-          # 初心者マークのある情報を取得
-          number.each do |i|
-            pointer = 3
-            value01 = session.all(".contentsTextContribute").map { |t|
-              pointer = 1 if t.has_no_content?(clober)
-              logger.debug("\n\n#{pointer}\n\n")
-              t.all(:css, "span")[i - pointer]
-            }
-          end
+          # # 初心者マークのある情報を取得
+          # number.each do |i|
+          #   pointer = 1 # ここは機能してないかも...
+          #   value01 = session.all(".contentsTextContribute").map { |t|
+          #     pointer = 3 if t.has_no_content?(clober)
+          #     logger.debug("\n\n#{pointer}\n\n")
+          #     t.all(:css, "span")[i - pointer]
+          #   }
+          # end
 
 
           # 各要素取得
@@ -75,15 +76,30 @@ module AutoMatching
           title = get_title.map { |t| t.text.strip }
           get_sex = value1.map { |t| t.find("span.woman").text.strip }
           get_name_and_age = value1.map { |t| t.text.gsub(/♀/, "") }
-          from = value00.map { |t| t.text }
-          from_clover = value01.map { |t| t.text }
-
-          # 空白（初心者マークの情報）をマージして空白をなくす
-          from.each_with_index do |v, i|
-            if v.blank?
-              from[i] = from_clover[i]
+          add_from = value00.map { |t| t.text }
+          
+          add_from.each_with_index do |v, i|
+            tmp_v = v.split(" ").last
+            kugiri = tmp_v.index(regex_shikuchoson)
+            city = tmp_v[0..kugiri]
+            prefecture = tmp_v[kugiri + 1..-1]
+            
+            if prefecture.blank?
+              from.push(from_to_tokyo + city)
+            else
+              from.push(prefecture)
+              from_trip.push(city)
             end
+            
           end
+
+
+          # from_clover = value01.map { |t| t.text }
+
+          # # 空白（初心者マークの情報）をマージして空白をなくす
+          # from.each_with_index do |v, i|
+          #   from[i] = from_clover[i] if v.blank?
+          # end
 
           # 性別の変換
           get_sex.each do |v|
@@ -105,6 +121,7 @@ module AutoMatching
           logger.debug(name)
           logger.debug(age)
           logger.debug(from)
+          logger.debug(from_trip)
 
           logging_end(__method__)
         end
