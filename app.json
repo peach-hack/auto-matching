@@ -2,7 +2,10 @@
   "name": "Auto Matching",
   "description": "Auto Matching Rails API server",
   "repository": "https://github.com/tsu-nera/auto-matching",
-  "keywords": ["rails", "ruby"],
+  "keywords": [
+    "rails",
+    "ruby"
+  ],
   "addons": [
     {
       "plan": "heroku-postgresql",
@@ -22,6 +25,12 @@
   "env": {
     "APP_BASE": {
       "value": "auto-matching-api-rails"
+    },
+    "AUTH0_CLIENT_ID": {
+      "value": "dq1NOLYioOI9bMnPg4rOdDJGjgLdNMFy"
+    },
+    "AUTH0_JWKS": {
+      "value": "https://auto-matching.auth0.com/.well-known/jwks.json"
     }
   },
   "scripts": {
