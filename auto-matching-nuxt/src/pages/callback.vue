@@ -1,0 +1,3 @@
+<template lang="pug">
+p Signing in ...
+</template>
