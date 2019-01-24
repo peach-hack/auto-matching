@@ -4,6 +4,7 @@ import axios from 'axios'
 axios.interceptors.request.use(
   config => {
     console.log('Making request to ' + config.url)
+    config.headers.Authorization = `Bearer ${this.$auth0.getIdToken()}`
     return config
   },
   function(error) {
