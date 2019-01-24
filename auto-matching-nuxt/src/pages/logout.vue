@@ -7,6 +7,7 @@ export default {
   mounted() {
     this.$auth0.unsetToken()
     this.$router.replace('/')
+    document.cookie = 'vuex=;'
   }
 }
 </script>
