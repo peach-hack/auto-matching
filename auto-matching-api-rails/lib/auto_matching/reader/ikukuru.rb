@@ -18,6 +18,7 @@ module AutoMatching
 
           # いますぐ会いたい
           session.visit "https://sp.194964.com/bbs/show_bbs.html?q=ZTJvTzJzRGhPQW5yRmsrdm5KeXhFdz09"
+          #session.visit "https://sp.194964.com/bbs/show_bbs.html?q=TTVzV090eEJFdG42aEc3ZnYzeitXZz09"
 
           # TODO
           logging_end(__method__)
@@ -27,76 +28,77 @@ module AutoMatching
           logging_start(__method__)
           post_data = {}
           @post_data_list = []
+
           name = []
           age = []
-          value00 = []
-          regex_ken = /都道府県/
-          from_to_tokyo = " 東京都"
+          sex = []
 
+          value00 = []
+          value01 = []
+          regex_ken = /都道府県/
+          from_to_tokyo = "東京都"
           from_prefecture = []
           from_city = []
+
           # TODO
-
-          # input_data = session.all(".bgMiddle")
-          # value00 = session.all(".contentsTextContribute").map { |t| t.all(".refinedBbsDesign")[2] }
-          # .miniCarIconがあるとspan = 4 , .miniNewFaceIconがあるとspan = 4, 両方あるとspan = 5
-          span_number = session.all(".contentsTextContribute").map { |t| t.all(:css, "span").size }
-
-
-          logger.debug("\n\n#{span_number}\n\n")
-          span_number.each_with_index do |v, i|
-            if v == 5
-              logger.debug("5now")
-              value00 = session.all(".contentsTextContribute").map { |t| t.all(:css, "span")[3] }
-              # from_city[i] = session.all(".contentsTextContribute").map { |t| t.all(:css, "span")[3].text }
-            elsif v == 4
-              logger.debug("4now")
-              value00 = session.all(".contentsTextContribute").map { |t| t.all(:css, "span")[2] }
-            elsif v == 3
-              logger.debug("3now")
-              value00 = session.all(".contentsTextContribute").map { |t| t.all(:css, "span")[1] }
-              # from_city[i] = ""
-            end
-          end
-          from = value00.map { |t| t.text }
-
-          # if span .miniCarIcon != nil && span .miniNewFaceIcon != nil
-          #   # span 5 で 4つ目のみ取得
-          # elsif span .miniCarIcon = nil && span .miniNewFaceIcon != nil
-          #   # span 4 で 3つ目のみ取得
-          # elsif span .miniCarIcon != nil && span .miniNewFaceIcon = nil
-          #   # span 4 で 3つ目のみ取得　例： 3:杉並区(旅行とか) 4:本住所
-          # elsif span .miniCarICon = nil && span .miniNewFaceIcon = nil
-          #   # span 4 で 2つ目のみ取得
-          #   value00 = session.all(".contentsTextContribute").map { |t| t.all(:css, "span")[1] }
-          # end
-          
-          value = session.all(".contentsTextContribute").map { |t| t.first(".refinedBbsDesign") }
-
-
           # 取得する大枠のテーブル設定
+          value1 = session.all(".contentsTextContribute").map { |t| t.first(".refinedBbsDesign") }
           get_time = session.all(".timeContribute")
           get_title = session.all(".textComment")
-          # get_value1 = session.all(".woman")
-          # get_title = session.all(".")
-          # get_title = session.all(".")
-          # get_title = session.all(".")
-          # get_title = session.all(".")
 
+          # from_cityの取得
+          clober = ".miniNewFaceIcon"
+          number = session.all(".contentsTextContribute").map { |t| t.all(:css, "span").size }
+          
+          # 普通の状態の情報を取得
+          number.each do |i|
+            pointer = 2
+            value00 = session.all(".contentsTextContribute").map { |t|
+              # pointer = 3 if t.has_no_content?(clober) #できなかった...
+              logger.debug("\n\n#{pointer}\n\n")
+              t.all(:css, "span")[i - pointer]
+            }
+          end
+          # 初心者マークのある情報を取得
+          number.each do |i|
+            pointer = 3
+            value01 = session.all(".contentsTextContribute").map { |t|
+              pointer = 1 if t.has_no_content?(clober)
+              logger.debug("\n\n#{pointer}\n\n")
+              t.all(:css, "span")[i - pointer]
+            }
+          end
+
+
+          # 各要素取得
           post_at = get_time.map { |t| t.text.strip }
           title = get_title.map { |t| t.text.strip }
-          sex = value.map { |t| t.find("span.woman").text.strip }
-          value1 = value.map { |t| t.text.gsub(/♀/, "") }
-          
-          
+          get_sex = value1.map { |t| t.find("span.woman").text.strip }
+          get_name_and_age = value1.map { |t| t.text.gsub(/♀/, "") }
+          from = value00.map { |t| t.text }
+          from_clover = value01.map { |t| t.text }
 
+          # 空白（初心者マークの情報）をマージして空白をなくす
+          from.each_with_index do |v, i|
+            if v.blank?
+              from[i] = from_clover[i]
+            end
+          end
 
-          value1.each do |v|
+          # 性別の変換
+          get_sex.each do |v|
+            add_sex = (v == "♀" ? "女性" : "男性")
+            sex.push(add_sex.to_s.strip)
+          end
+
+          # 名前と年齢の分割
+          get_name_and_age.each do |v|
             tmp_name, tmp_age = v.split(" ")
             name.push(tmp_name.strip)
             age.push(tmp_age.strip)
           end
 
+          # 取得状況テスト
           logger.debug(post_at)
           logger.debug(title)
           logger.debug(sex)
