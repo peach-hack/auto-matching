@@ -1,11 +1,9 @@
 import Auth0Lock from 'auth0-lock'
 import jwtDecode from 'jwt-decode'
 import queryString from 'query-string'
+import nuxtConfig from '../../nuxt.config'
 
-const config = {
-  clientID: 'dq1NOLYioOI9bMnPg4rOdDJGjgLdNMFy',
-  domain: 'auto-matching.auth0.com'
-}
+const config = nuxtConfig.auth0
 
 class Auth0Util {
   showLock(container) {

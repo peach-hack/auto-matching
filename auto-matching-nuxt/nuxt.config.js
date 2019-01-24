@@ -51,7 +51,7 @@ module.exports = {
     '@/plugins/index.js',
     { src: '@/plugins/cookieStorage.js', ssr: false },
     '@/plugins/moment.js',
-    '@/plugins/auth0.js',
+    '@/plugins/auth0.js'
   ],
   /*
    ** Nuxt.js modules
@@ -70,6 +70,10 @@ module.exports = {
     tilte: 'Auto Matching',
     description: 'Dating meets Tech',
     lang: 'ja'
+  },
+  auth0: {
+    clientID: 'dq1NOLYioOI9bMnPg4rOdDJGjgLdNMFy',
+    domain: 'auto-matching.auth0.com'
   },
   toast: {
     position: 'top-right',
