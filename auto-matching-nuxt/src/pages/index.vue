@@ -6,23 +6,13 @@ styled-container
       | Auto Matching
     styled-subtitle
       | Integrated Deai Engine
-    <div>
-      <div v-if="loggedIn()" class="content">
-        <h2>ログイン中です</h2>
-          <nuxt-link class="button is-warning" to="/logout">
-            <span class="icon"><i class="fa fa-sign-out"></i></span>
-            <span>Logout</span>
-          </nuxt-link>
-      </div>
-      <div v-if="!loggedIn()" class="content"> <h2>ログインしてください</h2>
-        <nuxt-link class="button is-primary" to="/login">
-          <span class="icon"><i class="fa fa-sign-in"></i></span>
-          <span>Login</span>
-        </nuxt-link>
-      </div>
-      <button class="button is-primary" @click="ping">Ping</button>
-      <button class="button is-danger" @click="securedPing">Secured Ping</button>
-    </div>
+    div
+      .content(v-if="loggedIn()")
+        nuxt-link(to="/logout")
+          button(type="button").btn.btn-primary Logout
+      .content(v-if="!loggedIn()")
+        nuxt-link(to="/login")
+          button(type="button").btn.btn-primary Login
 </template>
 
 <script>
