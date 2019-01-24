@@ -1,6 +1,8 @@
 module Api
   module Users
     class SearchController < ::ApplicationController
+      before_action :authenticate_user
+
       def db
         q = Post.ransack(search_params)
         posts = q.result(distinct: true).limit(10)

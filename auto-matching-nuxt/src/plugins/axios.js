@@ -4,13 +4,22 @@ import axios from 'axios'
 axios.interceptors.request.use(
   config => {
     console.log('Making request to ' + config.url)
-    config.headers.Authorization = `Bearer ${this.$auth0.getIdToken()}`
+    config.headers.Authorization = `Bearer ${getIdToken()}`
     return config
   },
   function(error) {
     return Promise.reject(error)
   }
 )
+
+function isAuthenticated() {
+  const expiresAt = window.localStorage.getItem('expiresAt')
+  return new Date().getTime() < expiresAt
+}
+
+function getIdToken() {
+  return isAuthenticated() ? localStorage.getItem('idToken') : null
+}
 
 axios.interceptors.response.use(
   function(response) {
