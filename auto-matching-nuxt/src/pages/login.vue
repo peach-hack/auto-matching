@@ -1,13 +1,17 @@
-<template lang="pug">
-#show-auth
+<template>
+  <div id="show-auth" />
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
+<script>
+export default {
   mounted() {
     this.$auth0.showLock('show-auth')
   }
-} as any)
+}
 </script>
+
+<style scoped>
+#show-auth {
+  margin-top: 20px;
+}
+</style>
