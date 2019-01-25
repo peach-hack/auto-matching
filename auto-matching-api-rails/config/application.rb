@@ -49,8 +49,7 @@ module AutoMatching
     config.middleware.use ActionDispatch::Flash
 
     config.action_dispatch.default_headers = {
-      "Access-Control-Allow-Credentials" => "true",
-      "Access-Control-Allow-Origin" => "*",
+      "Access-Control-Allow-Origin" => "https://*.netlify.com",
       "Access-Control-Request-Method" => "*"
     }
   end
