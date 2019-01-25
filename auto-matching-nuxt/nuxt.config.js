@@ -73,7 +73,7 @@ module.exports = {
     lang: 'ja'
   },
   auth0: {
-    clientID: 'dq1NOLYioOI9bMnPg4rOdDJGjgLdNMFy',
+    clientID: 'vaEBW6t1rOgiibdPPPWun0p69THjesnD',
     domain: 'auto-matching.auth0.com'
   },
   toast: {
