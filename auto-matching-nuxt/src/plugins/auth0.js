@@ -18,6 +18,7 @@ class Auth0Util {
         }
       }
     })
+    lock.crossOriginVerification()
     lock.show()
   }
 
