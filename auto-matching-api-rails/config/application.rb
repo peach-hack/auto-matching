@@ -50,7 +50,7 @@ module AutoMatching
 
     config.action_dispatch.default_headers = {
       "Access-Control-Allow-Credentials" => "true",
-      "Access-Control-Allow-Origin" => "https://*.netlify.com",
+      "Access-Control-Allow-Origin" => "*",
       "Access-Control-Request-Method" => "*"
     }
   end
