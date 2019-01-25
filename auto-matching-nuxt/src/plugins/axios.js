@@ -4,12 +4,12 @@ import axios from 'axios'
 axios.interceptors.request.use(
   config => {
     console.log('Making request to ' + config.url)
-    config.headers.common['Content-Type'] = 'application/json'
     config.headers.Authorization = `Bearer ${getIdToken()}`
+    config.headers.common['Content-Type'] = 'application/json'
     config.headers.common['Access-Control-Allow-Origin'] = '*'
     return config
   },
-  function(error) {
+  function (error) {
     return Promise.reject(error)
   }
 )
@@ -24,10 +24,10 @@ function getIdToken() {
 }
 
 axios.interceptors.response.use(
-  function(response) {
+  function (response) {
     return response
   },
-  function(error) {
+  function (error) {
     if (error.response && error.response.status === 401) {
       window.location.href = '/login'
     }
