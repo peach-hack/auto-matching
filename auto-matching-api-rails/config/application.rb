@@ -47,10 +47,5 @@ module AutoMatching
     config.api_only = true
 
     config.middleware.use ActionDispatch::Flash
-
-    config.action_dispatch.default_headers = {
-      "Access-Control-Allow-Origin" => "https://*.netlify.com",
-      "Access-Control-Request-Method" => "*"
-    }
   end
 end
