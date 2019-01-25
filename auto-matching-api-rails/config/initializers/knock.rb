@@ -1,11 +1,5 @@
 require "net/http"
 Knock.setup do |config|
-  config.token_signature_algorithm = "RS256"
-  jwks_raw = Net::HTTP.get URI(ENV["AUTH0_JWKS"])
-  jwks_keys = Array(JSON.parse(jwks_raw)["keys"])
-  config.token_public_key = OpenSSL::X509::Certificate.new(
-    Base64.decode64(jwks_keys[0]["x5c"].first)).public_key
-
   ## Expiration claim
   ## ----------------
   ##
@@ -34,7 +28,7 @@ Knock.setup do |config|
   ## Configure the algorithm used to encode the token
   ##
   ## Default:
-  # config.token_signature_algorithm = 'HS256'
+  config.token_signature_algorithm = "HS256"
 
   ## Signature key
   ## -------------
@@ -45,8 +39,7 @@ Knock.setup do |config|
   # config.token_secret_signature_key = -> { Rails.application.secrets.secret_key_base }
 
   ## If using Auth0, uncomment the line below
-  config.token_secret_signature_key = -> { JWT.base64url_encode(JWT.base64url_decode Rails.application.secrets.auth0_client_secret) }
-  # config.token_secret_signature_key = -> { JWT.base64url_decode Rails.application.secrets.auth0_client_secret }
+  config.token_secret_signature_key = -> { JWT.base64url_decode Rails.application.secrets.auth0_client_secret }
 
   ## Public key
   ## ----------
@@ -55,6 +48,9 @@ Knock.setup do |config|
   ##
   ## Default:
   # config.token_public_key = nil
+  jwks_raw = Net::HTTP.get URI(ENV["AUTH0_JWKS"])
+  jwks_keys = Array(JSON.parse(jwks_raw)["keys"])
+  config.token_public_key = OpenSSL::X509::Certificate.new(Base64.decode64(jwks_keys[0]["x5c"].first)).public_key
 
   ## Exception Class
   ## ---------------
