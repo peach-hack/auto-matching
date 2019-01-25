@@ -29,7 +29,7 @@ axios.interceptors.response.use(
   },
   function(error) {
     if (error.response && error.response.status === 401) {
-      window.location.href = '/login'
+      // window.location.href = '/login'
     }
     if (error.response && error.response.status === 500) {
       Vue.toasted.clear()
