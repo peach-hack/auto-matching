@@ -4,8 +4,12 @@ import axios from 'axios'
 axios.interceptors.request.use(
   config => {
     console.log('Making request to ' + config.url)
-    config.headers.Authorization = `Bearer ${getIdToken()}`
-    config.headers['Access-Control-Allow-Origin'] = '*'
+
+    config.headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+      Autorization: `Bearer ${getIdToken()}`
+    }
     return config
   },
   function(error) {
