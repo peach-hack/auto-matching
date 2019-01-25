@@ -5,6 +5,7 @@ axios.interceptors.request.use(
   config => {
     console.log('Making request to ' + config.url)
     config.headers.Authorization = `Bearer ${getIdToken()}`
+    config.headers['Access-Control-Allow-Origin'] = '*'
     return config
   },
   function(error) {
