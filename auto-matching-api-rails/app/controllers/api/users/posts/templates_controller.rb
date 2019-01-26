@@ -2,6 +2,8 @@ module Api
   module Users
     module Posts
       class TemplatesController < ::ApplicationController
+        before_action :authenticate_user
+
         def index
           templates = PostTemplate.all
           render json: PostTemplateSerializer.new(templates).serialized_json

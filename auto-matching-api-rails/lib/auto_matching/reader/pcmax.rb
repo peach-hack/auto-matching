@@ -2,11 +2,11 @@ module AutoMatching
   module Reader
     class Pcmax < ReaderBase
       include Common::Pcmax
-      include ValueConverter
-      require "date"
 
       private
         def search_board
+          logging_start(__method__)
+
           # 検索ページに移動
           session.visit "https://pcmax.jp/mobile/bbs_reference.php"
 
@@ -27,13 +27,17 @@ module AutoMatching
 
           # 検索結果取得ページに遷移
           session.execute_script "$('button.btn.moji_bold').click()"
+
+          logging_end(__method__)
         end
 
         def read_board
+          logging_start(__method__)
+
           # 各種初期設定
           post_data = {}
           @post_data_list = []
-          converter = PcmaxConverter.new
+          converter = AutoMatching::Converter::Pcmax.new
 
           # 取得する大枠のテーブルを設定
           input_data = session.all(".item_box")
@@ -54,8 +58,7 @@ module AutoMatching
 
           prefecture, city, address = converter.split_from(from)
 
-          # PCMAXのsource_siteのIDは3のため
-          source_site_id = 3
+          source_site_id = SourceSite.find_by(key: SourceSite::KEY_PCMAX).id
 
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
@@ -68,9 +71,13 @@ module AutoMatching
           end
 
           @post_data_list
+
+          logging_end(__method__)
         end
 
         def save_board
+          logging_start(__method__)
+
           @post_data_list.each do |d|
             profile = {}
             profile[:source_site_id] = d[:source_site_id]
@@ -81,6 +88,7 @@ module AutoMatching
 
             post = {}
             post[:title] = d[:title]
+            post[:url] = d[:url]
             post[:post_at] = d[:post_at]
             post[:category] = d[:category]
             post[:prefecture] = d[:prefecture]
@@ -96,6 +104,7 @@ module AutoMatching
               logger.debug("失敗しました")
             end
           end
+          logging_end(__method__)
         end
     end
   end

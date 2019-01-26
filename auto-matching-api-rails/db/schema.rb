@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "posts", comment: "掲示板投稿データ", force: :cascade do |t|
     t.integer "profile_id", null: false
     t.string "title", null: false
+    t.string "url", null: false
     t.datetime "post_at", null: false
     t.string "category", null: false
-    t.string "prefecture", null: false
+    t.string "prefecture"
     t.string "city"
     t.string "address"
     t.datetime "created_at", null: false
@@ -37,9 +38,9 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "profiles", comment: "掲示板投稿データ", force: :cascade do |t|
     t.integer "source_site_id", null: false
     t.string "name", null: false
-    t.integer "age", null: false
-    t.integer "sex", null: false
-    t.integer "from", null: false
+    t.string "age", null: false
+    t.string "sex", null: false
+    t.string "from", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

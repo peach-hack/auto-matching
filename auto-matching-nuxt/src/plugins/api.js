@@ -1,6 +1,6 @@
 /* eslint-disable */
-import axios from 'axios'
 import qs from 'qs'
+import axios from 'axios'
 let domain = process.env.baseUrl
 export const getDomain = () => {
   return domain
@@ -36,7 +36,7 @@ export const request = (method, url, body, queryParameters, form, config) => {
  * method: getApiUsersSourceSites_TYPE
  * raw_url: getApiUsersSourceSites_RAW_URL
  */
-export const getApiUsersSourceSites = function(parameters = {}) {
+export const getApiUsersSourceSites = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/source-sites'
@@ -44,24 +44,24 @@ export const getApiUsersSourceSites = function(parameters = {}) {
   let queryParameters = {}
   let form = {}
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('get', domain + path, body, queryParameters, form, config)
 }
-export const getApiUsersSourceSites_RAW_URL = function() {
+export const getApiUsersSourceSites_RAW_URL = function () {
   return '/api/users/source-sites'
 }
-export const getApiUsersSourceSites_TYPE = function() {
+export const getApiUsersSourceSites_TYPE = function () {
   return 'get'
 }
-export const getApiUsersSourceSitesURL = function(parameters = {}) {
+export const getApiUsersSourceSitesURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/source-sites'
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -77,7 +77,7 @@ export const getApiUsersSourceSitesURL = function(parameters = {}) {
  * @param id - 
  * @param attributes - サイト情報
  */
-export const putApiUsersSourceSitesById = function(parameters = {}) {
+export const putApiUsersSourceSitesById = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/source-sites/{id}'
@@ -92,25 +92,25 @@ export const putApiUsersSourceSitesById = function(parameters = {}) {
     body = parameters['attributes']
   }
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('put', domain + path, body, queryParameters, form, config)
 }
-export const putApiUsersSourceSitesById_RAW_URL = function() {
+export const putApiUsersSourceSitesById_RAW_URL = function () {
   return '/api/users/source-sites/{id}'
 }
-export const putApiUsersSourceSitesById_TYPE = function() {
+export const putApiUsersSourceSitesById_TYPE = function () {
   return 'put'
 }
-export const putApiUsersSourceSitesByIdURL = function(parameters = {}) {
+export const putApiUsersSourceSitesByIdURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/source-sites/{id}'
   path = path.replace('{id}', `${parameters['id']}`)
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -124,7 +124,7 @@ export const putApiUsersSourceSitesByIdURL = function(parameters = {}) {
  * method: getApiUsersPostsTemplates_TYPE
  * raw_url: getApiUsersPostsTemplates_RAW_URL
  */
-export const getApiUsersPostsTemplates = function(parameters = {}) {
+export const getApiUsersPostsTemplates = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/posts/templates'
@@ -132,24 +132,24 @@ export const getApiUsersPostsTemplates = function(parameters = {}) {
   let queryParameters = {}
   let form = {}
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('get', domain + path, body, queryParameters, form, config)
 }
-export const getApiUsersPostsTemplates_RAW_URL = function() {
+export const getApiUsersPostsTemplates_RAW_URL = function () {
   return '/api/users/posts/templates'
 }
-export const getApiUsersPostsTemplates_TYPE = function() {
+export const getApiUsersPostsTemplates_TYPE = function () {
   return 'get'
 }
-export const getApiUsersPostsTemplatesURL = function(parameters = {}) {
+export const getApiUsersPostsTemplatesURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/posts/templates'
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -164,7 +164,7 @@ export const getApiUsersPostsTemplatesURL = function(parameters = {}) {
  * raw_url: postApiUsersPostsTemplates_RAW_URL
  * @param attributes - テンプレート
  */
-export const postApiUsersPostsTemplates = function(parameters = {}) {
+export const postApiUsersPostsTemplates = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/posts/templates'
@@ -175,24 +175,24 @@ export const postApiUsersPostsTemplates = function(parameters = {}) {
     body = parameters['attributes']
   }
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('post', domain + path, body, queryParameters, form, config)
 }
-export const postApiUsersPostsTemplates_RAW_URL = function() {
+export const postApiUsersPostsTemplates_RAW_URL = function () {
   return '/api/users/posts/templates'
 }
-export const postApiUsersPostsTemplates_TYPE = function() {
+export const postApiUsersPostsTemplates_TYPE = function () {
   return 'post'
 }
-export const postApiUsersPostsTemplatesURL = function(parameters = {}) {
+export const postApiUsersPostsTemplatesURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/posts/templates'
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -208,7 +208,7 @@ export const postApiUsersPostsTemplatesURL = function(parameters = {}) {
  * @param id - 
  * @param attributes - テンプレート
  */
-export const putApiUsersPostsTemplatesById = function(parameters = {}) {
+export const putApiUsersPostsTemplatesById = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/posts/templates/{id}'
@@ -223,25 +223,25 @@ export const putApiUsersPostsTemplatesById = function(parameters = {}) {
     body = parameters['attributes']
   }
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('put', domain + path, body, queryParameters, form, config)
 }
-export const putApiUsersPostsTemplatesById_RAW_URL = function() {
+export const putApiUsersPostsTemplatesById_RAW_URL = function () {
   return '/api/users/posts/templates/{id}'
 }
-export const putApiUsersPostsTemplatesById_TYPE = function() {
+export const putApiUsersPostsTemplatesById_TYPE = function () {
   return 'put'
 }
-export const putApiUsersPostsTemplatesByIdURL = function(parameters = {}) {
+export const putApiUsersPostsTemplatesByIdURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/posts/templates/{id}'
   path = path.replace('{id}', `${parameters['id']}`)
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -256,7 +256,7 @@ export const putApiUsersPostsTemplatesByIdURL = function(parameters = {}) {
  * raw_url: deleteApiUsersPostsTemplatesById_RAW_URL
  * @param id - 
  */
-export const deleteApiUsersPostsTemplatesById = function(parameters = {}) {
+export const deleteApiUsersPostsTemplatesById = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/posts/templates/{id}'
@@ -268,25 +268,25 @@ export const deleteApiUsersPostsTemplatesById = function(parameters = {}) {
     return Promise.reject(new Error('Missing required  parameter: id'))
   }
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('delete', domain + path, body, queryParameters, form, config)
 }
-export const deleteApiUsersPostsTemplatesById_RAW_URL = function() {
+export const deleteApiUsersPostsTemplatesById_RAW_URL = function () {
   return '/api/users/posts/templates/{id}'
 }
-export const deleteApiUsersPostsTemplatesById_TYPE = function() {
+export const deleteApiUsersPostsTemplatesById_TYPE = function () {
   return 'delete'
 }
-export const deleteApiUsersPostsTemplatesByIdURL = function(parameters = {}) {
+export const deleteApiUsersPostsTemplatesByIdURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/posts/templates/{id}'
   path = path.replace('{id}', `${parameters['id']}`)
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -300,7 +300,7 @@ export const deleteApiUsersPostsTemplatesByIdURL = function(parameters = {}) {
  * method: getApiUsersPostsManualPosts_TYPE
  * raw_url: getApiUsersPostsManualPosts_RAW_URL
  */
-export const getApiUsersPostsManualPosts = function(parameters = {}) {
+export const getApiUsersPostsManualPosts = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/posts/manual-posts'
@@ -308,24 +308,24 @@ export const getApiUsersPostsManualPosts = function(parameters = {}) {
   let queryParameters = {}
   let form = {}
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('get', domain + path, body, queryParameters, form, config)
 }
-export const getApiUsersPostsManualPosts_RAW_URL = function() {
+export const getApiUsersPostsManualPosts_RAW_URL = function () {
   return '/api/users/posts/manual-posts'
 }
-export const getApiUsersPostsManualPosts_TYPE = function() {
+export const getApiUsersPostsManualPosts_TYPE = function () {
   return 'get'
 }
-export const getApiUsersPostsManualPostsURL = function(parameters = {}) {
+export const getApiUsersPostsManualPostsURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/posts/manual-posts'
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -340,7 +340,7 @@ export const getApiUsersPostsManualPostsURL = function(parameters = {}) {
  * raw_url: postApiUsersPostsManualPosts_RAW_URL
  * @param attributes - 投稿サイト
  */
-export const postApiUsersPostsManualPosts = function(parameters = {}) {
+export const postApiUsersPostsManualPosts = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/posts/manual-posts'
@@ -351,24 +351,24 @@ export const postApiUsersPostsManualPosts = function(parameters = {}) {
     body = parameters['attributes']
   }
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('post', domain + path, body, queryParameters, form, config)
 }
-export const postApiUsersPostsManualPosts_RAW_URL = function() {
+export const postApiUsersPostsManualPosts_RAW_URL = function () {
   return '/api/users/posts/manual-posts'
 }
-export const postApiUsersPostsManualPosts_TYPE = function() {
+export const postApiUsersPostsManualPosts_TYPE = function () {
   return 'post'
 }
-export const postApiUsersPostsManualPostsURL = function(parameters = {}) {
+export const postApiUsersPostsManualPostsURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/posts/manual-posts'
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -383,7 +383,7 @@ export const postApiUsersPostsManualPostsURL = function(parameters = {}) {
  * raw_url: getApiUsersSearchDb_RAW_URL
  * @param attributes - 検索クエリ
  */
-export const getApiUsersSearchDb = function(parameters = {}) {
+export const getApiUsersSearchDb = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/search/db'
@@ -394,24 +394,24 @@ export const getApiUsersSearchDb = function(parameters = {}) {
     body = parameters['attributes']
   }
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('get', domain + path, body, queryParameters, form, config)
 }
-export const getApiUsersSearchDb_RAW_URL = function() {
+export const getApiUsersSearchDb_RAW_URL = function () {
   return '/api/users/search/db'
 }
-export const getApiUsersSearchDb_TYPE = function() {
+export const getApiUsersSearchDb_TYPE = function () {
   return 'get'
 }
-export const getApiUsersSearchDbURL = function(parameters = {}) {
+export const getApiUsersSearchDbURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/search/db'
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -426,7 +426,7 @@ export const getApiUsersSearchDbURL = function(parameters = {}) {
  * raw_url: getApiUsersSearchKeyword_RAW_URL
  * @param attributes - 検索クエリ
  */
-export const getApiUsersSearchKeyword = function(parameters = {}) {
+export const getApiUsersSearchKeyword = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/search/keyword'
@@ -437,24 +437,24 @@ export const getApiUsersSearchKeyword = function(parameters = {}) {
     body = parameters['attributes']
   }
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('get', domain + path, body, queryParameters, form, config)
 }
-export const getApiUsersSearchKeyword_RAW_URL = function() {
+export const getApiUsersSearchKeyword_RAW_URL = function () {
   return '/api/users/search/keyword'
 }
-export const getApiUsersSearchKeyword_TYPE = function() {
+export const getApiUsersSearchKeyword_TYPE = function () {
   return 'get'
 }
-export const getApiUsersSearchKeywordURL = function(parameters = {}) {
+export const getApiUsersSearchKeywordURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/search/keyword'
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
@@ -468,7 +468,7 @@ export const getApiUsersSearchKeywordURL = function(parameters = {}) {
  * method: getApiUsersSearchRealtime_TYPE
  * raw_url: getApiUsersSearchRealtime_RAW_URL
  */
-export const getApiUsersSearchRealtime = function(parameters = {}) {
+export const getApiUsersSearchRealtime = function (parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
   let path = '/api/users/search/realtime'
@@ -476,24 +476,24 @@ export const getApiUsersSearchRealtime = function(parameters = {}) {
   let queryParameters = {}
   let form = {}
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
   return request('get', domain + path, body, queryParameters, form, config)
 }
-export const getApiUsersSearchRealtime_RAW_URL = function() {
+export const getApiUsersSearchRealtime_RAW_URL = function () {
   return '/api/users/search/realtime'
 }
-export const getApiUsersSearchRealtime_TYPE = function() {
+export const getApiUsersSearchRealtime_TYPE = function () {
   return 'get'
 }
-export const getApiUsersSearchRealtimeURL = function(parameters = {}) {
+export const getApiUsersSearchRealtimeURL = function (parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/search/realtime'
   if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+    Object.keys(parameters.$queryParameters).forEach(function (parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     })
   }
