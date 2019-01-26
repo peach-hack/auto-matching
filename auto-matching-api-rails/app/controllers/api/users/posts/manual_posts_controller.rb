@@ -27,7 +27,7 @@ module Api
           site_ids.each do |id|
             site_history = histories.first
 
-            if elapsed_time(site_history.last_post_at) > ENV["NEST_POST_ALLOW_TIME"].to_f
+            if elapsed_time(site_history.last_post_at) > ENV["NEXT_POST_ALLOW_TIME"].to_f
               sender_class = sender_classes[id - 1].to_s
               ManualPostJob.perform_later(debug_flag, sender_class)
             else
