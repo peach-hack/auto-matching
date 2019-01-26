@@ -9,6 +9,8 @@ module AutoMatching
 
           # アダルトのすぐ会いたい ※直リンクでいけた
           session.visit "https://550909.com/m/bbs/list?genre=3"
+
+          logging_end(__method__)
         end
 
         def read_board
@@ -41,32 +43,28 @@ module AutoMatching
           post_time = post_at_list.map { |t| t.text.strip.to_s }
 
           # 性別、名前を分割
-          value.each do |v1|
-            sex_tmp, add_name = v1.split(/\A(.{1})/, 2)[1..-1]
-            sex_i = (sex_tmp == "♀" ? 1 : 0)
-            add_sex = (sex_i == 1 ? "女性" : "男性")
+          value.each do |v|
+            sex_tmp, add_name = v.split(/\A(.{1})/, 2)[1..-1]
+            add_sex = (sex_tmp == "♀" ? "女性" : "男性")
             sex.push(add_sex.to_s.strip)
             name.push(add_name.to_s.strip)
           end
 
           # 年齢、市区町村を分割
-          value2.each do |v2|
-            add_age, add_city = v2.split(" ")
+          value2.each do |v|
+            add_age, add_city = v.split(" ")
             age.push(add_age.to_s.strip)
             city.push(add_city.to_s.strip)
           end
 
           # 投稿日を変換
-          post_time.each do |v3|
-            # なんか、RailsだとActiveSupport::TimeWithZoneを使う方がいいらしい
+          post_time.each do |date|
             now = Time.current
-            v3.insert(0, "#{now.year}/")
-            logger.debug(v3)
-            post_at.push(Time.zone.parse(v3))
+            date.insert(0, "#{now.year}/")
+            post_at.push(Time.zone.parse(date))
           end
 
-          # WAKUWAKUのsource_site_idは2のため
-          source_site_id = 2
+          source_site_id = SourceSite.find_by(key: SourceSite::KEY_WAKUWAKU).id
 
           # addressには何も設定しない
           address = ""
@@ -81,7 +79,7 @@ module AutoMatching
             @post_data_list[i] = post_data
           end
 
-          @post_data_list
+          logging_end(__method__)
         end
 
         def save_board
@@ -97,6 +95,7 @@ module AutoMatching
 
             post = {}
             post[:title] = d[:title]
+            post[:url] = d[:url]
             post[:post_at] = d[:post_at]
             post[:category] = d[:category]
             post[:prefecture] = d[:prefecture]
@@ -112,6 +111,8 @@ module AutoMatching
               logger.debug("失敗しました")
             end
           end
+
+          logging_end(__method__)
         end
     end
   end
