@@ -29,16 +29,12 @@ module AutoMatching
           post_data = {}
           @post_data_list = []
 
-          url_list = []
-          title_list = []
           name_list = []
           age_list = []
           sex_list = []
           post_at_list = []
 
           value01 = []
-          regex_ken = /都道府県/
-          regex_ken_shikuchoson = /(...??[都道府県])(...??[市区町村])/
           regex_shikuchoson = /(市|区|町|群)/
           from_to_tokyo = "東京都"
           from_list = []
