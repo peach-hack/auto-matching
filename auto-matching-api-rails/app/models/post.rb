@@ -22,7 +22,6 @@ class Post < ApplicationRecord
   validates :url, presence: true
   validates :post_at, presence: true
   validates :category, presence: true
-  validates :prefecture, presence: true
 
   belongs_to :profile, optional: true
 end
