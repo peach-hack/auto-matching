@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "url", null: false
     t.datetime "post_at", null: false
     t.string "category", null: false
-    t.string "prefecture", null: false
+    t.string "prefecture"
     t.string "city"
     t.string "address"
     t.datetime "created_at", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name", null: false
     t.string "age", null: false
     t.string "sex", null: false
-    t.integer "from", null: false
+    t.string "from", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
