@@ -1,6 +1,8 @@
 module Api
   module Users
     class SourceSitesController < ::ApplicationController
+      before_action :authenticate_user
+
       def index
         source_sites = SourceSite.all
         render json: SourceSiteSerializer.new(source_sites).serialized_json
