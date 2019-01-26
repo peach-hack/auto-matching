@@ -125,7 +125,6 @@ module AutoMatching
           logging_start(__method__)
           # TODO
           @post_data_list.each do |d|
-
             profile = {}
             profile[:source_site_id] = d[:source_site_id]
             profile[:name] = d[:name]
