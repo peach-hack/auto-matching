@@ -25,14 +25,15 @@ module Api
           ]
 
           site_ids.each do |id|
-            site_history = histories.first
+            @last_time = histories.first.last_post_at
 
-            if elapsed_time(site_history.last_post_at) > ENV["NEXT_POST_ALLOW_TIME"].to_f
-              sender_class = sender_classes[id - 1].to_s
-              ManualPostJob.perform_later(debug_flag, sender_class)
-            else
-              # どうやって制御しよう。
-            end
+            # MEMO: 連投制限に引っかかった場合は、Jobの呼び出しをスキップする。
+            #       bad_requestを返さないので投稿ステータスが「実行中」から変わらないが、第一リリース時点では運用回避に留める。
+            # TODO: エラー返却の制御
+            next if !allow_manual_post?
+
+            sender_class = sender_classes[id - 1].to_s
+            ManualPostJob.perform_later(debug_flag, sender_class)
           end
 
           response_success(:manual_posts, :execute)
@@ -40,9 +41,13 @@ module Api
 
         private
 
-          def elapsed_time(last_time)
-            elapsed_seconds = Time.zone.now - last_time
-            elapsed_mitutes = elapsed_seconds / 60
+          def allow_manual_post?
+            calculate_elapsed_minutes > ENV["NEXT_MANUAL_POST_ALLOW_MINUTES"].to_f
+          end
+
+          def calculate_elapsed_minutes
+            elapsed_seconds = Time.zone.now - @last_time
+            elapsed_seconds / 60
           end
       end
     end
