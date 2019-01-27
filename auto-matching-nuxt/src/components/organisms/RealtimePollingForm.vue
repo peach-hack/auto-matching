@@ -1,5 +1,5 @@
 <template lang="pug">
-form(@submit.prevent="manualPost")
+form(@submit.prevent="submit")
   .form-group
     table.table
       thead
@@ -23,11 +23,6 @@ form(@submit.prevent="manualPost")
           th {{ getActivate(history) }}
           th {{ history.date | showDate }}
           th {{ history.status }}
-  .form-group
-    .form-check
-      input.form-check-input(type="checkbox" v-model="debug")#debugCheck
-      label.form-check-label(for="debugCheck")
-        | Debug Run Mode
   .form-group        
     submit-button
 </template>
@@ -54,7 +49,6 @@ export default Vue.extend({
     return {
       selected: [] as number[],
       selectAll: false as boolean,
-      debug: false as boolean,
       statusChannel: null as any
     }
   },
@@ -97,15 +91,15 @@ export default Vue.extend({
     getHistory: function(id: number): History {
       return this.$store.state.posts.histories[id - 1]
     },
-    manualPost: function() {
+    submit: function() {
       if (this.selected.length === 0) {
         this.$toasted.error('対象サイトが選択されていません')
         return
       }
+      // TODO
       postApiUsersPostsManualPosts({
         attributes: {
-          ids: this.selected,
-          debug: this.debug
+          ids: this.selected
         }
       })
         .then((response: any) => {
