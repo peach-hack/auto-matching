@@ -31,21 +31,9 @@ jobs:
       - run:
           command: docker build -t tsune/auto-matching .
       - run:
-          command: docker run -itd --privileged --name auto-matching tsune/auto-matching
-      - run:
-          command: docker exec -it auto-matching git pull
-      - run:
-          command: docker exec -it auto-matching docker-compose up -d
-      - run:
-          command: docker exec -it auto-matching yarn docker:install
-      - run:
-          command: docker exec -it auto-matching yarn db:recovery
-      - run:
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - run:
           command: docker push tsune/auto-matching
-      - run:
-          command: docker stop auto-matching
 workflows:
   version: 2
   test_and_build:
@@ -57,3 +45,4 @@ workflows:
           filters:
             branches:
               only: master
+nn
