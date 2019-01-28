@@ -5,8 +5,8 @@ jobs:
       - image: tsune/auto-matching
     steps:
       - checkout
-      - setup_remote_docker
-        docker_layer_caching: true 
+      - setup_remote_docker:
+          docker_layer_caching: true 
       - run:
           command: docker run -itd --privileged --name auto-matching tsune/auto-matching
       - run:
@@ -26,8 +26,8 @@ jobs:
       - image: tsune/auto-matching
     steps:
       - checkout
-      - setup_remote_docker
-        docker_layer_caching: true 
+      - setup_remote_docker:
+          docker_layer_caching: true 
       - run:
           command: docker build -t tsune/auto-matching .
       - run:
