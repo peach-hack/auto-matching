@@ -14,6 +14,3 @@ Run apk add --no-cache yarn
 RUN git clone https://github.com/tsu-nera/auto-matching.git app
 ENV APP_ROOT /app
 WORKDIR $APP_ROOT
-
-# run docker-compose
-# RUN docker-compose build
