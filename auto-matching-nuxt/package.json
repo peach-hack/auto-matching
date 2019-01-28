@@ -68,7 +68,7 @@
     "luxon": "^1.10.0",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
-    "nuxt": "^2.3.4",
+    "nuxt": "^2.4.0",
     "nuxt-babel": "^0.1.2",
     "nuxt-property-decorator": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.16",
