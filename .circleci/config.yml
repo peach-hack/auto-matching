@@ -45,4 +45,3 @@ workflows:
           filters:
             branches:
               only: master
-nn
