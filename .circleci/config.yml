@@ -47,10 +47,11 @@ jobs:
 workflows:
   version: 2
   test_and_build:
-    - test:
-    - build:
-      requires:
-        - test
-      filters:
-        branches:
+    jobs:
+      - test
+      - build
+        requires:
+          - test
+        filters:
+          branches:
           only: master
