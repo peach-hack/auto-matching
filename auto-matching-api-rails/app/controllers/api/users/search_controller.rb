@@ -1,7 +1,7 @@
 module Api
   module Users
     class SearchController < ::ApplicationController
-      before_action :authenticate_user
+      before_action :authenticate_user unless Rails.env.test?
 
       def db
         q = Post.ransack(search_params)

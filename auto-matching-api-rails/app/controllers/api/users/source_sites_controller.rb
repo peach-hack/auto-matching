@@ -1,7 +1,7 @@
 module Api
   module Users
     class SourceSitesController < ::ApplicationController
-      before_action :authenticate_user
+      before_action :authenticate_user unless Rails.env.test?
 
       def index
         source_sites = SourceSite.all
