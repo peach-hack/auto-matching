@@ -315,7 +315,7 @@ GEM
     simple_scheduler (1.0.0)
       rails (>= 4.2)
       sidekiq (>= 4.2)
-    solargraph (0.31.1)
+    solargraph (0.31.2)
       backport (~> 0.3)
       htmlentities (~> 4.3, >= 4.3.4)
       jaro_winkler (~> 1.5)
