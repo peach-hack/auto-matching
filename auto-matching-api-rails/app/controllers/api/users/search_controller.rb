@@ -9,13 +9,10 @@ module Api
         render json: PostSerializer.new(posts).serialized_json
       end
 
-      def realtime
-      end
-
       def keyword
       end
 
-      def polling
+      def realtime
       end
 
       private
