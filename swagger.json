@@ -170,7 +170,7 @@
       }
     },
     "/api/users/search/db" : {
-      "get" : {
+      "post" : {
         "summary" : "掲示板DB検索",
         "produces" : [ "application/json" ],
         "parameters" : [ {

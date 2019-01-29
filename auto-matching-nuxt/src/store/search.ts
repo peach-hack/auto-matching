@@ -3,7 +3,7 @@ import Vuex, { Mutation } from 'vuex'
 import Axios from 'axios'
 import History from '../types/history'
 
-import { getApiUsersSearch, postApiUsersSearchResult } from '../plugins/api'
+import { getApiUsersSearch, postApiUsersSearchResult, postApiUsersSearchDb } from '../plugins/api'
 
 import Post from '../types/post.d'
 
@@ -82,11 +82,9 @@ export const mutations: Mutations = {
 
 export const actions: Actions = {
   async searchDb({ commit }, data) {
-    // const response = await getApiUsersSearchDb(data)
-    const response = await Axios.get(
-      process.env.baseUrl + '/api/users/search/db',
-      data
-    )
+    const response = await postApiUsersSearchDb({
+      attributes: data
+    })
     commit('addPosts', response.data.data)
   },
   async fetchHistories({ commit }) {
