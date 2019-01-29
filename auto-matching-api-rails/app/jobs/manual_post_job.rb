@@ -1,8 +1,6 @@
-class ManualPostJob < ApplicationJob
+class ManualPostJob < ManualJob
   queue_as :default
-
-  SUCCESS = "成功".freeze
-  ERROR = "失敗".freeze
+  MANUAL_POST_CHANNEL = "manual_post_channel".freeze
 
   def perform(debug_flag, sender_class_s)
     $DEBUG = debug_flag
@@ -22,13 +20,13 @@ class ManualPostJob < ApplicationJob
     def set_success
       history = SourceSite::ManualPostHistory.find_by(key: @key)
       history.update(last_post_status: SUCCESS, last_post_at: date)
-      ActionCable.server.broadcast "manual_post_channel", ids: [history.id], status: SUCCESS
+      ActionCable.server.broadcast MANUAL_POST_CHANNEL, ids: [history.id], status: SUCCESS
     end
 
     def set_error
       history = SourceSite::ManualPostHistory.find_by(key: @key)
       history.update(last_post_status: ERROR)
-      ActionCable.server.broadcast "manual_post_channel", ids: [history.id], status: ERROR
+      ActionCable.server.broadcast MANUAL_POST_CHANNEL, ids: [history.id], status: ERROR
     end
 
     def date

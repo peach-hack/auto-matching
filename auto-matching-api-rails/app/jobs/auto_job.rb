@@ -1,0 +1,2 @@
+class AutoJob < ApplicationJob
+end
