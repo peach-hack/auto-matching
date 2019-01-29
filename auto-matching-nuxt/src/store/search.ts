@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
+import Axios from 'axios'
 import History from '../types/history'
 
 import * as Api from '../plugins/api'
 
-import Axios from 'axios'
 import Post from '../types/post.d'
 
 Vue.use(Vuex)
 
 export interface State {
-  posts: Post[],
+  posts: Post[]
   histories: History[]
 }
 

@@ -40,7 +40,8 @@ export default Vue.extend({
     return {
       selected: [] as number[],
       selectAll: false as boolean,
-      postStatusChannel: {} as Channel
+      postStatusChannel: {} as Channel,
+      searchStatusChannel: {} as Channel
     }
   },
   created() {
@@ -57,6 +58,22 @@ export default Vue.extend({
         })
       }
     })
+    this.searchStatusChannel = cable.subscriptions.create(
+      'RealtimeSearchChannel',
+      {
+        connected: function() {},
+        disconnected: function() {},
+        rejected: function() {},
+        received: (data: any) => {
+          this.$store.commit({
+            type: 'search/changeStatus',
+            ids: data['ids'],
+            status: data['status']
+          })
+          // TODO getSearchResult
+        }
+      }
+    )
   },
   methods: {
     check: function() {
