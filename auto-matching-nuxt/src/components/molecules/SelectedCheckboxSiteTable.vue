@@ -27,7 +27,7 @@ table.table
 import Vue from 'vue'
 //@ts-ignore
 import History from '@/types/history'
-import ActionCable from 'actioncable'
+import ActionCable, { Channel } from 'actioncable'
 //@ts-ignore
 import DateUtil from '@/components/mixins/DateUtil'
 
@@ -40,12 +40,15 @@ export default Vue.extend({
     return {
       selected: [] as number[],
       selectAll: false as boolean,
-      statusChannel: null as any
+      postStatusChannel: {} as Channel
     }
   },
   created() {
     const cable = ActionCable.createConsumer(`${process.env.wsBaseUrl}/cable`)
-    this.statusChannel = cable.subscriptions.create('ManualPostChannel', {
+    this.postStatusChannel = cable.subscriptions.create('ManualPostChannel', {
+      connected: function() {},
+      disconnected: function() {},
+      rejected: function() {},
       received: (data: any) => {
         this.$store.commit({
           type: 'posts/changeStatus',
@@ -53,11 +56,10 @@ export default Vue.extend({
           status: data['status']
         })
       }
-    } as any)
+    })
   },
   methods: {
     check: function() {
-      console.log(this.selected)
       this.$emit('update:selected', this.selected)
     },
     checkAll: function() {
