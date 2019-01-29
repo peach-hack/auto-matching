@@ -16,6 +16,8 @@ import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
 //@ts-ignore
 import { putApiUsersPostsTemplatesById } from '@/plugins/api'
 
+import { AxiosResponse, AxiosError } from 'axios'
+
 export default Vue.extend({
   components: {
     SubmitButtonGroup
@@ -43,11 +45,11 @@ export default Vue.extend({
         id: this.template.id,
         attributes: data
       })
-        .then((response: any) => {
+        .then((response: AxiosResponse) => {
           this.$router.push('/posts/templates')
           this.$toasted.success('更新しました')
         })
-        .catch((error: any) => {
+        .catch((error: AxiosError) => {
           this.$toasted.error('エラーが発生しました')
         })
     }

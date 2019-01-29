@@ -43,7 +43,8 @@ import DateUtil from '@/components/mixins/DateUtil'
 //@ts-ignore
 import SubmitButton from '@/components/atoms/SubmitButton.vue'
 
-import ActionCable from 'actioncable'
+import ActionCable, { Channel } from 'actioncable'
+import { AxiosError, AxiosResponse } from 'axios'
 
 export default Vue.extend({
   components: {
@@ -55,12 +56,18 @@ export default Vue.extend({
       selected: [] as number[],
       selectAll: false as boolean,
       debug: false as boolean,
-      statusChannel: null as any
+      statusChannel: {} as Channel
     }
   },
   created() {
     const cable = ActionCable.createConsumer(`${process.env.wsBaseUrl}/cable`)
     this.statusChannel = cable.subscriptions.create('ManualPostChannel', {
+      // サブスクリプションがサーバー側で利用可能になると呼び出される
+      connected: function() {},
+      // WebSocket接続が閉じると呼び出される
+      disconnected: function() {},
+      // サブスクリプションがサーバーに拒否されると呼び出される
+      rejected: function() {},
       received: (data: any) => {
         this.$store.commit({
           type: 'posts/changeStatus',
@@ -68,7 +75,7 @@ export default Vue.extend({
           status: data['status']
         })
       }
-    } as any)
+    })
   },
   methods: {
     select: function() {
@@ -108,7 +115,7 @@ export default Vue.extend({
           debug: this.debug
         }
       })
-        .then((response: any) => {
+        .then((response: AxiosResponse) => {
           this.$toasted.success('実行しました')
           this.$store.commit({
             type: 'posts/changeStatus',
@@ -116,7 +123,7 @@ export default Vue.extend({
             status: '実行中'
           })
         })
-        .catch((error: any) => {
+        .catch((error: AxiosError) => {
           this.$toasted.error('エラーが発生しました')
           this.$store.commit({
             type: 'posts/changeStatus',
