@@ -15,12 +15,12 @@ import RealtimePollingForm from '@/components/organisms/RealtimePollingForm.vue'
 import SearchResultTable from '@/components/organisms/SearchResultTable.vue'
 
 export default Vue.extend({
-  mounted() {
-    this.$store.dispatch('posts/fetchHistories')
-  },
   components: {
     RealtimePollingForm,
     SearchResultTable
+  },
+  mounted() {
+    this.$store.dispatch('posts/fetchHistories')
   }
 })
 </script>
