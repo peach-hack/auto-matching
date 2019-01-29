@@ -19,7 +19,7 @@ form(@submit.prevent="updateSite")
           input.form-check-input(type="radio" name="activation" value="false" v-model="newActivateFlag")#deactivate
           label.form-check-label(for="deactivate")
             | 無効
-  submit-button-group(path="/sites")
+  submit-button-group(path="/settings/sites")
 </template>
 
 <script lang="ts">
@@ -27,7 +27,7 @@ import Vue from 'vue'
 //@ts-ignore
 import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
 //@ts-ignore
-import { putApiUsersSourceSitesById } from '@/plugins/api'
+import { putApiUsersSettingsSitesById } from '@/plugins/api'
 import { AxiosError, AxiosResponse } from 'axios'
 
 export default Vue.extend({
@@ -56,13 +56,12 @@ export default Vue.extend({
         loginPassword: this.newLoginPassword,
         activateFlag: this.newActivateFlag
       }
-
-      putApiUsersSourceSitesById({
+      putApiUsersSettingsSitesById({
         id: this.site.id,
         attributes: data
       })
         .then((response: AxiosResponse) => {
-          this.$router.push('/sites')
+          this.$router.push('/settings/sites')
           this.$toasted.success('更新しました')
         })
         .catch((error: AxiosError) => {

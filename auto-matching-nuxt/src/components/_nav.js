@@ -78,7 +78,7 @@ export default {
     },
     {
       title: true,
-      name: 'その他',
+      name: '設定',
       class: '',
       wrapper: {
         element: '',
@@ -86,8 +86,13 @@ export default {
       }
     },
     {
-      name: 'サイト管理',
-      url: '/sites',
+      name: 'サイト設定',
+      url: '/settings/sites',
+      icon: 'icon-star'
+    },
+    {
+      name: 'データベース設定',
+      url: '/settings/db',
       icon: 'icon-star'
     },
     {

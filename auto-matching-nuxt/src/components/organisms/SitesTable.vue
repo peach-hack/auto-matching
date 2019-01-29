@@ -33,7 +33,7 @@ export default Vue.extend({
       return site.activateFlag ? '有効' : '無効'
     },
     getEditPath: function(site: Site): string {
-      return `/sites/${site.id}`
+      return `/settings/sites/${site.id}`
     }
   }
 })

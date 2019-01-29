@@ -8,49 +8,6 @@
   "host" : "localhost:5000",
   "schemes" : [ "http" ],
   "paths" : {
-    "/api/users/source-sites" : {
-      "get" : {
-        "summary" : "サイト一覧",
-        "produces" : [ "application/json" ],
-        "parameters" : [ ],
-        "responses" : {
-          "200" : {
-            "description" : "成功時のレスポンス"
-          },
-          "500" : {
-            "description" : "失敗時のレスポンス"
-          }
-        }
-      }
-    },
-    "/api/users/source-sites/{id}" : {
-      "put" : {
-        "summary" : "サイト情報更新",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "required" : true,
-          "type" : "integer"
-        }, {
-          "in" : "body",
-          "name" : "attributes",
-          "description" : "サイト情報",
-          "required" : false,
-          "schema" : {
-            "$ref" : "#/definitions/attributes"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "成功時のレスポンス"
-          },
-          "500" : {
-            "description" : "失敗時のレスポンス"
-          }
-        }
-      }
-    },
     "/api/users/posts/templates" : {
       "get" : {
         "summary" : "テンプレート一覧",
@@ -74,7 +31,7 @@
           "description" : "テンプレート",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_1"
+            "$ref" : "#/definitions/attributes"
           }
         } ],
         "responses" : {
@@ -102,7 +59,7 @@
           "description" : "テンプレート",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_2"
+            "$ref" : "#/definitions/attributes_1"
           }
         } ],
         "responses" : {
@@ -156,7 +113,7 @@
           "description" : "投稿サイト",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_3"
+            "$ref" : "#/definitions/attributes_2"
           }
         } ],
         "responses" : {
@@ -179,7 +136,7 @@
           "description" : "検索クエリ",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_4"
+            "$ref" : "#/definitions/attributes_3"
           }
         } ],
         "responses" : {
@@ -202,7 +159,7 @@
           "description" : "検索クエリ",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_5"
+            "$ref" : "#/definitions/attributes_4"
           }
         } ],
         "responses" : {
@@ -224,7 +181,7 @@
           "name" : "attributes",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_6"
+            "$ref" : "#/definitions/attributes_5"
           }
         } ],
         "responses" : {
@@ -246,7 +203,7 @@
           "name" : "attributes",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_7"
+            "$ref" : "#/definitions/attributes_6"
           }
         } ],
         "responses" : {
@@ -273,23 +230,83 @@
           }
         }
       }
+    },
+    "/api/users/settings/sites" : {
+      "get" : {
+        "summary" : "サイト一覧",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
+    "/api/users/settings/sites/{id}" : {
+      "put" : {
+        "summary" : "サイト情報更新",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "in" : "body",
+          "name" : "attributes",
+          "description" : "サイト情報",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/attributes_7"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
+    "/api/users/settings/posts" : {
+      "get" : {
+        "summary" : "投稿データ情報",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
+    "/api/users/settings/posts/clear" : {
+      "post" : {
+        "summary" : "投稿データ削除",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
     }
   },
   "definitions" : {
     "attributes_1" : {
-      "type" : "object",
-      "properties" : {
-        "title" : {
-          "type" : "string",
-          "description" : "タイトル"
-        },
-        "body" : {
-          "type" : "string",
-          "description" : "本文"
-        }
-      }
-    },
-    "attributes_2" : {
       "type" : "object",
       "properties" : {
         "id" : {
@@ -305,7 +322,7 @@
         }
       }
     },
-    "attributes_3" : {
+    "attributes_2" : {
       "type" : "object",
       "properties" : {
         "ids" : {
@@ -315,6 +332,15 @@
         "debug" : {
           "type" : "boolean",
           "description" : "Dry Run"
+        }
+      }
+    },
+    "attributes_3" : {
+      "type" : "object",
+      "properties" : {
+        "keyword" : {
+          "type" : "string",
+          "description" : "キーワード"
         }
       }
     },
@@ -330,22 +356,13 @@
     "attributes_5" : {
       "type" : "object",
       "properties" : {
-        "keyword" : {
-          "type" : "string",
-          "description" : "キーワード"
-        }
-      }
-    },
-    "attributes_6" : {
-      "type" : "object",
-      "properties" : {
         "ids" : {
           "type" : "integer",
           "description" : "サイトID"
         }
       }
     },
-    "attributes_7" : {
+    "attributes_6" : {
       "type" : "object",
       "properties" : {
         "time" : {
@@ -354,7 +371,7 @@
         }
       }
     },
-    "attributes" : {
+    "attributes_7" : {
       "type" : "object",
       "properties" : {
         "id" : {
@@ -374,6 +391,19 @@
         "activateFlag" : {
           "type" : "boolean",
           "description" : "有効フラグ"
+        }
+      }
+    },
+    "attributes" : {
+      "type" : "object",
+      "properties" : {
+        "title" : {
+          "type" : "string",
+          "description" : "タイトル"
+        },
+        "body" : {
+          "type" : "string",
+          "description" : "本文"
         }
       }
     }
