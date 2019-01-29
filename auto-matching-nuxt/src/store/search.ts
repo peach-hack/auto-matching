@@ -91,7 +91,7 @@ export const actions: Actions = {
   },
   async fetchHistories({ commit }) {
     // TODO
-    const response = await Api.getApiUsersPostsManualPosts()
+    const response = await Api.getApiUsersSearchRealtime()
     commit('addHistories', response.data.data)
   }
 }

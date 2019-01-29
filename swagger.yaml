@@ -147,9 +147,12 @@ paths:
           schema:
             type: object
             properties:
-              id:
+              ids:
                 type: integer
                 description: "サイトID"
+              debug:
+                type: boolean
+                description: "Dry Run"
       responses:
         '200':
           description: 成功時のレスポンス
@@ -197,9 +200,28 @@ paths:
           description: 失敗時のレスポンス
   /api/users/search/realtime:
     get:
+      summary: 掲示板リアルタイム検索履歴
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+    post:
       summary: 掲示板リアルタイム検索
       produces:
         - application/json
+      parameters:
+        - in: body
+          name: attributes
+          description: 投稿サイト
+          schema:
+            type: object
+            properties:
+              ids:
+                type: integer
+                description: "サイトID"
       responses:
         '200':
           description: 成功時のレスポンス
