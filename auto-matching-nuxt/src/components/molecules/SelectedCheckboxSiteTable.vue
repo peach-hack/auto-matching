@@ -33,9 +33,7 @@ import DateUtil from '@/components/mixins/DateUtil'
 
 export default Vue.extend({
   mixins: [DateUtil],
-  props: {
-    histories: Object
-  },
+  props: ['histories'],
   data: function() {
     return {
       selected: [] as number[],
