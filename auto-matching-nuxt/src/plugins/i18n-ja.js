@@ -3,9 +3,10 @@ export default {
     main: {
       route: {
         index: '',
-        sites: 'サイト管理',
         login: 'ログイン',
-        'sites-id': 'サイト設定',
+        'settings-sites': 'サイト設定',
+        'settings-sites-id': 'サイト設定編集',
+        'settings-db': 'データベース設定',
         'posts-templates': '投稿テンプレート管理',
         'posts-templates-new': '投稿テンプレート新規作成',
         'posts-templates-id': '投稿テンプレート編集',
