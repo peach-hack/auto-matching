@@ -216,7 +216,7 @@
       }
     },
     "/api/users/search/realtime" : {
-      "get" : {
+      "post" : {
         "summary" : "掲示板リアルタイム検索",
         "produces" : [ "application/json" ],
         "parameters" : [ {

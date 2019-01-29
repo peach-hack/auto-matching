@@ -55,16 +55,6 @@ export default {
   methods: {
     loggedIn() {
       return this.$auth0.isAuthenticated()
-    },
-    async ping() {
-      const ret = await this.$axios.$get('/api/v1/ping')
-      console.log(ret)
-    },
-    async securedPing() {
-      const ret = await this.$axios.$get('/api/v1/secured_ping', {
-        headers: { Authorization: 'Bearer ' + this.$auth0.getIdToken() }
-      })
-      console.log(ret)
     }
   }
 }

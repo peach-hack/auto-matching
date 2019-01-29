@@ -66,7 +66,6 @@ export default Vue.extend({
           ids: data['ids'],
           status: data['status']
         })
-        // TODO getSearchResult
       }
     })
   },

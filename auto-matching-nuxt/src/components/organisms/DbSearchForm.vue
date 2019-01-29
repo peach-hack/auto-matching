@@ -100,7 +100,6 @@ export default Vue.extend({
         }
       }
       this.$store.dispatch('search/searchDb', queryParameters).catch(error => {
-        console.log(error)
         this.$toasted.error('エラーが発生しました')
       })
     },

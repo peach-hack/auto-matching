@@ -1,5 +1,5 @@
 # ハッピーメール
-SourceSite.seed do |p|
+SourceSite.seed_once do |p|
   p.id = 1
   p.key = SourceSite::KEY_HAPPY_MAIL
   p.name = "ハッピーメール"
@@ -11,7 +11,7 @@ SourceSite.seed do |p|
 end
 
 # ワクワクメール
-SourceSite.seed do |p|
+SourceSite.seed_once do |p|
   p.id = 2
   p.key = SourceSite::KEY_WAKUWAKU
   p.name = "ワクワクメール"
@@ -23,7 +23,7 @@ SourceSite.seed do |p|
 end
 
 # PCMAX
-SourceSite.seed do |p|
+SourceSite.seed_once do |p|
   p.id = 3
   p.key = SourceSite::KEY_PCMAX
   p.name = "PCMAX"
@@ -35,7 +35,7 @@ SourceSite.seed do |p|
 end
 
 # イクヨクルヨ
-SourceSite.seed do |p|
+SourceSite.seed_once do |p|
   p.id = 4
   p.key = SourceSite::KEY_IKUKURU
   p.name = "イクヨクルヨ"
@@ -47,7 +47,7 @@ SourceSite.seed do |p|
 end
 
 # ミントC!Jメール
-SourceSite.seed do |p|
+SourceSite.seed_once do |p|
   p.id = 5
   p.key = SourceSite::KEY_MINT
   p.name = "ミントC!Jメール"
@@ -59,7 +59,7 @@ SourceSite.seed do |p|
 end
 
 # メルパラ
-SourceSite.seed do |p|
+SourceSite.seed_once do |p|
   p.id = 6
   p.key = SourceSite::KEY_MERUPARA
   p.name = "メルパラ"

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
         resources :search, only: %i[index] do
           get :db, on: :collection
           get :keyword, on: :collection
-          get :realtime, on: :collection
+          post :realtime, on: :collection
         end
       end
     end
