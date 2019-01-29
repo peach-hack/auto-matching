@@ -21,6 +21,7 @@ export default Vue.extend({
         postApiUsersSettingsPostsClear()
           .then((response: AxiosResponse) => {
             this.$toasted.success('削除しました')
+            window.location.reload()
           })
           .catch((error: AxiosError) => {
             this.$toasted.error('エラーが発生しました')
