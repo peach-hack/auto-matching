@@ -256,7 +256,8 @@ paths:
           description: 成功時のレスポンス
         '500':
           description: 失敗時のレスポンス
-    delete:
+  /api/users/settings/posts/clear:          
+    post:
       summary: 投稿データ削除
       produces:
         - application/json

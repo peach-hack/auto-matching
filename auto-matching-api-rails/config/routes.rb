@@ -26,7 +26,9 @@ Rails.application.routes.draw do
 
         namespace :settings do
           resources :source_sites, only: %i[index update], path: "sites"
-          resources :posts, only: %i[index, destroy]
+          resources :posts, only: %i[index] do
+            post :clear, on: :collection
+          end
         end
       end
    end

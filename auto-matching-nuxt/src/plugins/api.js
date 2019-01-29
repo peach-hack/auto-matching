@@ -627,15 +627,15 @@ export const getApiUsersSettingsPostsURL = function(parameters = {}) {
 }
 /**
  * 投稿データ削除
- * request: deleteApiUsersSettingsPosts
- * url: deleteApiUsersSettingsPostsURL
- * method: deleteApiUsersSettingsPosts_TYPE
- * raw_url: deleteApiUsersSettingsPosts_RAW_URL
+ * request: postApiUsersSettingsPostsClear
+ * url: postApiUsersSettingsPostsClearURL
+ * method: postApiUsersSettingsPostsClear_TYPE
+ * raw_url: postApiUsersSettingsPostsClear_RAW_URL
  */
-export const deleteApiUsersSettingsPosts = function(parameters = {}) {
+export const postApiUsersSettingsPostsClear = function(parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
-  let path = '/api/users/settings/posts'
+  let path = '/api/users/settings/posts/clear'
   let body
   let queryParameters = {}
   let form = {}
@@ -644,18 +644,18 @@ export const deleteApiUsersSettingsPosts = function(parameters = {}) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
-  return request('delete', domain + path, body, queryParameters, form, config)
+  return request('post', domain + path, body, queryParameters, form, config)
 }
-export const deleteApiUsersSettingsPosts_RAW_URL = function() {
-  return '/api/users/settings/posts'
+export const postApiUsersSettingsPostsClear_RAW_URL = function() {
+  return '/api/users/settings/posts/clear'
 }
-export const deleteApiUsersSettingsPosts_TYPE = function() {
-  return 'delete'
+export const postApiUsersSettingsPostsClear_TYPE = function() {
+  return 'post'
 }
-export const deleteApiUsersSettingsPostsURL = function(parameters = {}) {
+export const postApiUsersSettingsPostsClearURL = function(parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
-  let path = '/api/users/settings/posts'
+  let path = '/api/users/settings/posts/clear'
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]

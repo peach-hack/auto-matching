@@ -10,11 +10,22 @@ div
 
 <script lang="ts">
 import Vue from 'vue'
+//@ts-ignore
+import { postApiUsersSettingsPostsClear } from '@/plugins/api'
+import { AxiosResponse, AxiosError } from 'axios'
 
 export default Vue.extend({
   methods: {
     clear() {
-      console.log('clear')
+      if (confirm('本当に削除しますか？')) {
+        postApiUsersSettingsPostsClear()
+          .then((response: AxiosResponse) => {
+            this.$toasted.success('削除しました')
+          })
+          .catch((error: AxiosError) => {
+            this.$toasted.error('エラーが発生しました')
+          })
+      }
     }
   }
 })
