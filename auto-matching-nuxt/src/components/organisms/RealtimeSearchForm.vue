@@ -1,7 +1,7 @@
 <template lang="pug">
 form(@submit.prevent="submit")
   .form-group
-    selected-checkbox-site-table(@update:selected="selected = $event")
+    selected-checkbox-site-table(@update:selected="selected = $event" :histories="$state.search.histories")
   .form-group        
     submit-button
 </template>
@@ -26,9 +26,6 @@ export default Vue.extend({
     }
   },
   methods: {
-    updateSelected: function(ids: number[]) {
-      this.selected = ids
-    },
     submit: function() {
       if (this.selected.length === 0) {
         this.$toasted.error('対象サイトが選択されていません')
@@ -43,7 +40,7 @@ export default Vue.extend({
         .then((response: any) => {
           this.$toasted.success('実行しました')
           this.$store.commit({
-            type: 'posts/changeStatus',
+            type: 'search/changeStatus',
             ids: this.selected,
             status: '実行中'
           })
@@ -51,7 +48,7 @@ export default Vue.extend({
         .catch((error: any) => {
           this.$toasted.error('エラーが発生しました')
           this.$store.commit({
-            type: 'posts/changeStatus',
+            type: 'search/changeStatus',
             ids: this.selected,
             status: '失敗'
           })

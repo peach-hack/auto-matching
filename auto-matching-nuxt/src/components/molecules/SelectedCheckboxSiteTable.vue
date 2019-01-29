@@ -11,7 +11,7 @@ table.table
       th 最終実行時刻
       th 実行ステータス
   tbody
-    tr(v-for="history in $state.posts.histories" :key="history.id")
+    tr(v-for="history in histories" :key="history.id")
       th
         .form-check
           input.form-check-input.position-static(
@@ -33,6 +33,9 @@ import DateUtil from '@/components/mixins/DateUtil'
 
 export default Vue.extend({
   mixins: [DateUtil],
+  props: {
+    histories: Array
+  },
   data: function() {
     return {
       selected: [] as number[],

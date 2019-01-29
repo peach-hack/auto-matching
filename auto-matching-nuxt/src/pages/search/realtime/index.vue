@@ -20,7 +20,7 @@ export default Vue.extend({
     SearchResultTable
   },
   mounted() {
-    this.$store.dispatch('posts/fetchHistories')
+    this.$store.dispatch('search/fetchHistories')
   }
 })
 </script>
