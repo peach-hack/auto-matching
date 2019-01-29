@@ -27,7 +27,7 @@ import Vue from 'vue'
 //@ts-ignore
 import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
 //@ts-ignore
-import { putApiUsersSourceSitesById } from '@/plugins/api'
+import { putApiUsersSettingsSitesById } from '@/plugins/api'
 import { AxiosError, AxiosResponse } from 'axios'
 
 export default Vue.extend({
@@ -56,8 +56,7 @@ export default Vue.extend({
         loginPassword: this.newLoginPassword,
         activateFlag: this.newActivateFlag
       }
-
-      putApiUsersSourceSitesById({
+      putApiUsersSettingsSitesById({
         id: this.site.id,
         attributes: data
       })

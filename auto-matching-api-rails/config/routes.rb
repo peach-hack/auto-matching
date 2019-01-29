@@ -13,11 +13,9 @@ Rails.application.routes.draw do
       namespace :users do
         namespace :posts do
           resources :templates, only: %i[index update create destroy]
-
           resources :manual_posts, only: %i[index], path: "manual-posts"
           post :manual_posts, to: "manual_posts#execute", path: "manual-posts"
         end
-        resources :source_sites, only: %i[index update], path: "source-sites"
 
         resources :search, only: %i[index] do
           post :db, on: :collection
@@ -25,7 +23,12 @@ Rails.application.routes.draw do
           post :realtime, on: :collection
           post :result, on: :collection
         end
+
+        namespace :settings do
+          resources :source_sites, only: %i[index update], path: "sites"
+          resources :posts, only: %i[index, destroy]
+        end
       end
-    end
+   end
   end
 end

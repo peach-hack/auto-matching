@@ -30,94 +30,6 @@ export const request = (method, url, body, queryParameters, form, config) => {
  *                    API description in Markdown.
  ==========================================================*/
 /**
- * サイト一覧
- * request: getApiUsersSourceSites
- * url: getApiUsersSourceSitesURL
- * method: getApiUsersSourceSites_TYPE
- * raw_url: getApiUsersSourceSites_RAW_URL
- */
-export const getApiUsersSourceSites = function(parameters = {}) {
-  const domain = parameters.$domain ? parameters.$domain : getDomain()
-  const config = parameters.$config
-  let path = '/api/users/source-sites'
-  let body
-  let queryParameters = {}
-  let form = {}
-  if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
-    });
-  }
-  return request('get', domain + path, body, queryParameters, form, config)
-}
-export const getApiUsersSourceSites_RAW_URL = function() {
-  return '/api/users/source-sites'
-}
-export const getApiUsersSourceSites_TYPE = function() {
-  return 'get'
-}
-export const getApiUsersSourceSitesURL = function(parameters = {}) {
-  let queryParameters = {}
-  const domain = parameters.$domain ? parameters.$domain : getDomain()
-  let path = '/api/users/source-sites'
-  if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
-    })
-  }
-  let keys = Object.keys(queryParameters)
-  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
-}
-/**
- * サイト情報更新
- * request: putApiUsersSourceSitesById
- * url: putApiUsersSourceSitesByIdURL
- * method: putApiUsersSourceSitesById_TYPE
- * raw_url: putApiUsersSourceSitesById_RAW_URL
- * @param id - 
- * @param attributes - サイト情報
- */
-export const putApiUsersSourceSitesById = function(parameters = {}) {
-  const domain = parameters.$domain ? parameters.$domain : getDomain()
-  const config = parameters.$config
-  let path = '/api/users/source-sites/{id}'
-  let body
-  let queryParameters = {}
-  let form = {}
-  path = path.replace('{id}', `${parameters['id']}`)
-  if (parameters['id'] === undefined) {
-    return Promise.reject(new Error('Missing required  parameter: id'))
-  }
-  if (parameters['attributes'] !== undefined) {
-    body = parameters['attributes']
-  }
-  if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
-    });
-  }
-  return request('put', domain + path, body, queryParameters, form, config)
-}
-export const putApiUsersSourceSitesById_RAW_URL = function() {
-  return '/api/users/source-sites/{id}'
-}
-export const putApiUsersSourceSitesById_TYPE = function() {
-  return 'put'
-}
-export const putApiUsersSourceSitesByIdURL = function(parameters = {}) {
-  let queryParameters = {}
-  const domain = parameters.$domain ? parameters.$domain : getDomain()
-  let path = '/api/users/source-sites/{id}'
-  path = path.replace('{id}', `${parameters['id']}`)
-  if (parameters.$queryParameters) {
-    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
-    })
-  }
-  let keys = Object.keys(queryParameters)
-  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
-}
-/**
  * テンプレート一覧
  * request: getApiUsersPostsTemplates
  * url: getApiUsersPostsTemplatesURL
@@ -578,6 +490,172 @@ export const getApiUsersSearchURL = function(parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   let path = '/api/users/search'
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}
+/**
+ * サイト一覧
+ * request: getApiUsersSettingsSites
+ * url: getApiUsersSettingsSitesURL
+ * method: getApiUsersSettingsSites_TYPE
+ * raw_url: getApiUsersSettingsSites_RAW_URL
+ */
+export const getApiUsersSettingsSites = function(parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/settings/sites'
+  let body
+  let queryParameters = {}
+  let form = {}
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('get', domain + path, body, queryParameters, form, config)
+}
+export const getApiUsersSettingsSites_RAW_URL = function() {
+  return '/api/users/settings/sites'
+}
+export const getApiUsersSettingsSites_TYPE = function() {
+  return 'get'
+}
+export const getApiUsersSettingsSitesURL = function(parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/settings/sites'
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}
+/**
+ * サイト情報更新
+ * request: putApiUsersSettingsSitesById
+ * url: putApiUsersSettingsSitesByIdURL
+ * method: putApiUsersSettingsSitesById_TYPE
+ * raw_url: putApiUsersSettingsSitesById_RAW_URL
+ * @param id - 
+ * @param attributes - サイト情報
+ */
+export const putApiUsersSettingsSitesById = function(parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/settings/sites/{id}'
+  let body
+  let queryParameters = {}
+  let form = {}
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters['id'] === undefined) {
+    return Promise.reject(new Error('Missing required  parameter: id'))
+  }
+  if (parameters['attributes'] !== undefined) {
+    body = parameters['attributes']
+  }
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('put', domain + path, body, queryParameters, form, config)
+}
+export const putApiUsersSettingsSitesById_RAW_URL = function() {
+  return '/api/users/settings/sites/{id}'
+}
+export const putApiUsersSettingsSitesById_TYPE = function() {
+  return 'put'
+}
+export const putApiUsersSettingsSitesByIdURL = function(parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/settings/sites/{id}'
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}
+/**
+ * 投稿データ情報
+ * request: getApiUsersSettingsPosts
+ * url: getApiUsersSettingsPostsURL
+ * method: getApiUsersSettingsPosts_TYPE
+ * raw_url: getApiUsersSettingsPosts_RAW_URL
+ */
+export const getApiUsersSettingsPosts = function(parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/settings/posts'
+  let body
+  let queryParameters = {}
+  let form = {}
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('get', domain + path, body, queryParameters, form, config)
+}
+export const getApiUsersSettingsPosts_RAW_URL = function() {
+  return '/api/users/settings/posts'
+}
+export const getApiUsersSettingsPosts_TYPE = function() {
+  return 'get'
+}
+export const getApiUsersSettingsPostsURL = function(parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/settings/posts'
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}
+/**
+ * 投稿データ削除
+ * request: deleteApiUsersSettingsPosts
+ * url: deleteApiUsersSettingsPostsURL
+ * method: deleteApiUsersSettingsPosts_TYPE
+ * raw_url: deleteApiUsersSettingsPosts_RAW_URL
+ */
+export const deleteApiUsersSettingsPosts = function(parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/settings/posts'
+  let body
+  let queryParameters = {}
+  let form = {}
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('delete', domain + path, body, queryParameters, form, config)
+}
+export const deleteApiUsersSettingsPosts_RAW_URL = function() {
+  return '/api/users/settings/posts'
+}
+export const deleteApiUsersSettingsPosts_TYPE = function() {
+  return 'delete'
+}
+export const deleteApiUsersSettingsPostsURL = function(parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/settings/posts'
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]

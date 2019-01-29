@@ -51,7 +51,7 @@ export const mutations: Mutations = {
 
 export const actions: Actions = {
   async fetchSites({ commit }) {
-    const response = await Api.getApiUsersSourceSites()
+    const response = await Api.getApiUsersSettingsSites()
     commit('addSites', response.data.data)
   }
 }
