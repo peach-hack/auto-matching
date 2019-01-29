@@ -1,14 +1,17 @@
 import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
-
-// import { getApiUsersSearchDb } from '../plugins/api'
 import Axios from 'axios'
+import History from '../types/history'
+
+import { getApiUsersSearch } from '../plugins/api'
+
 import Post from '../types/post.d'
 
 Vue.use(Vuex)
 
 export interface State {
   posts: Post[]
+  histories: History[]
 }
 
 export interface Context {
@@ -24,7 +27,8 @@ export interface Actions {
 }
 
 export const state: () => State = () => ({
-  posts: []
+  posts: [],
+  histories: []
 })
 
 export const mutations: Mutations = {
@@ -51,6 +55,28 @@ export const mutations: Mutations = {
   },
   clearPosts(state) {
     state.posts = []
+  },
+  addHistories(state, payload) {
+    state.histories = []
+    payload
+      .sort((x: any, y: any) => {
+        return x.id - y.id
+      })
+      .map((history: any) => {
+        state.histories.push({
+          id: history.attributes.id as number,
+          name: history.attributes.name as string,
+          activateFlag: history.attributes.activateFlag as boolean,
+          url: history.attributes.affiliateUrl as string,
+          status: history.attributes.lastSearchStatus as string,
+          date: history.attributes.lastSearchAt as string
+        })
+      })
+  },
+  changeStatus(state: State, payload: any) {
+    payload.ids.forEach((id: number) => {
+      state.histories[id - 1].status = payload.status
+    })
   }
 }
 
@@ -62,6 +88,10 @@ export const actions: Actions = {
       data
     )
     commit('addPosts', response.data.data)
+  },
+  async fetchHistories({ commit }) {
+    const response = await getApiUsersSearch()
+    commit('addHistories', response.data.data)
   }
 }
 

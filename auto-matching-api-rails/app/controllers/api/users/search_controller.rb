@@ -9,10 +9,15 @@ module Api
         render json: PostSerializer.new(posts).serialized_json
       end
 
-      def realtime
+      def index
+        histories = SourceSite::SearchHistory.all
+        render json: SearchHistorySerializer.new(histories).serialized_json
       end
 
       def keyword
+      end
+
+      def realtime
       end
 
       private

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: source_sites
@@ -27,23 +25,6 @@
 #
 
 class SourceSite < ApplicationRecord
-  KEY_HAPPY_MAIL = "happy_mail".freeze
-  KEY_WAKUWAKU = "wakuwaku".freeze
-  KEY_PCMAX = "pcmax".freeze
-  KEY_IKUKURU = "ikukuru".freeze
-  KEY_MINT = "mint".freeze
-  KEY_MERUPARA = "merupara".freeze
-
-  VALID_PHONE_OR_EMAIL_REGEX = /\A(\d{10}$|^\d{11})|([^@\s]+@([^@\s]+\.)+[^@\s]+)\z/
-
-  validates :key, presence: true, uniqueness: true
-  validates :name, presence: true
-  validates :login_url, presence: true
-  validates :affiliate_url, presence: true
-  validates :login_user, presense: false, allow_blank: true, format: { with: VALID_PHONE_OR_EMAIL_REGEX }
-  validates :login_password, presense: false, allow_blank: true
-
-  attribute :activate_flag, :boolean, default: -> { true }
-
-  has_one :profile, dependent: :destroy
+  class SearchHistory < ActiveType::Record[::SourceSite]
+  end
 end

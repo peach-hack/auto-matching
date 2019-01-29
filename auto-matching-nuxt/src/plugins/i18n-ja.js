@@ -12,8 +12,9 @@ export default {
         'posts-auto': '定期実行設定',
         'posts-manual': 'マニュアル投稿',
         'search-db': 'データベース検索',
+        'search-keyword': 'キーワード検索',
         'search-realtime': 'リアルタイム検索',
-        'search-keyword': 'キーワード検索'
+        'search-polling': 'リアルタイム監視'
       }
     }
   }

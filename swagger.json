@@ -219,6 +219,29 @@
       "get" : {
         "summary" : "掲示板リアルタイム検索",
         "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "attributes",
+          "description" : "投稿サイト",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/attributes_6"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
+    "/api/users/search" : {
+      "get" : {
+        "summary" : "掲示板検索履歴",
+        "produces" : [ "application/json" ],
         "parameters" : [ ],
         "responses" : {
           "200" : {
@@ -264,9 +287,13 @@
     "attributes_3" : {
       "type" : "object",
       "properties" : {
-        "id" : {
+        "ids" : {
           "type" : "integer",
           "description" : "サイトID"
+        },
+        "debug" : {
+          "type" : "boolean",
+          "description" : "Dry Run"
         }
       }
     },
@@ -285,6 +312,15 @@
         "keyword" : {
           "type" : "string",
           "description" : "キーワード"
+        }
+      }
+    },
+    "attributes_6" : {
+      "type" : "object",
+      "properties" : {
+        "ids" : {
+          "type" : "integer",
+          "description" : "サイトID"
         }
       }
     },

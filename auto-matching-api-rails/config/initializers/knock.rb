@@ -20,7 +20,7 @@ Knock.setup do |config|
   # config.token_audience = nil
 
   ## If using Auth0, uncomment the line below
-  config.token_audience = -> { Rails.application.credentials.auth0[:client_id] }
+  # config.token_audience = -> { Rails.application.credentials.auth0[:client_id] }
 
   ## Signature algorithm
   ## -------------------
@@ -39,7 +39,7 @@ Knock.setup do |config|
   # config.token_secret_signature_key = -> { Rails.application.secrets.secret_key_base }
 
   ## If using Auth0, uncomment the line below
-  config.token_secret_signature_key = -> { JWT.base64url_decode Rails.application.credentials.auth0[:client_secret] }
+  # config.token_secret_signature_key = -> { JWT.base64url_decode Rails.application.credentials.auth0[:client_secret] }
 
   ## Public key
   ## ----------
