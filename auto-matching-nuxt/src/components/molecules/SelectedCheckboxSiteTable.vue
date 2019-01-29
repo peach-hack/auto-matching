@@ -11,11 +11,11 @@ table.table
       th 最終実行時刻
       th 実行ステータス
   tbody
-    tr(v-for="history in histories" :key="history.id")
+    tr(v-for="history in histories" :key="history.id" :class="{'table-active': isCheckBoxDisabled(history)}")
       th
         .form-check
           input.form-check-input.position-static(
-            type="checkbox" :disabled="isCheckBoxDisabled(history)" 
+            type="checkbox" :disabled="isCheckBoxDisabled(history)"
             :value="history.id" @change="check" v-model="selected")
       th(v-html="getLink(history)")
       th {{ getActivate(history) }}
@@ -33,9 +33,7 @@ import DateUtil from '@/components/mixins/DateUtil'
 
 export default Vue.extend({
   mixins: [DateUtil],
-  props: {
-    histories: Array
-  },
+  props: ['histories'],
   data: function() {
     return {
       selected: [] as number[],
@@ -58,22 +56,23 @@ export default Vue.extend({
         })
       }
     })
-    this.searchStatusChannel = cable.subscriptions.create(
-      'RealtimeSearchChannel',
-      {
-        connected: function() {},
-        disconnected: function() {},
-        rejected: function() {},
-        received: (data: any) => {
-          this.$store.commit({
-            type: 'search/changeStatus',
-            ids: data['ids'],
-            status: data['status']
+    this.searchStatusChannel = cable.subscriptions.create('SearchChannel', {
+      connected: function() {},
+      disconnected: function() {},
+      rejected: function() {},
+      received: (data: any) => {
+        this.$store.commit({
+          type: 'search/changeStatus',
+          ids: data['ids'],
+          status: data['status']
+        })
+        if (data['status'] == '成功') {
+          this.$store.dispatch('search/getResult', {
+            time: data['time']
           })
-          // TODO getSearchResult
         }
       }
-    )
+    })
   },
   methods: {
     check: function() {
@@ -83,9 +82,9 @@ export default Vue.extend({
       this.selected = []
 
       if (!this.selectAll) {
-        this.getHistories().forEach((history: History) => {
+        this.histories.forEach((history: History) => {
           if (history.activateFlag) {
-            this.selected.push(this.getHistory(history.id).id)
+            this.selected.push(history.id)
           }
         })
       }
@@ -99,12 +98,6 @@ export default Vue.extend({
     },
     isCheckBoxDisabled: function(history: History): boolean {
       return !history.activateFlag
-    },
-    getHistories: function(): History[] {
-      return this.$store.state.posts.histories
-    },
-    getHistory: function(id: number): History {
-      return this.$store.state.posts.histories[id - 1]
     }
   }
 })

@@ -2,7 +2,7 @@
 table.table
   thead
     tr
-      th #
+      th 
       th サイト名
       th ログインID
       th ログインパスワード
@@ -10,7 +10,7 @@ table.table
       th 編集
   tbody
     tr(v-for="site in $state.sites.sites" :key="site.id")
-      th {{ site.id }}
+      th 
       th(v-html="getLink(site)")
       td {{ site.loginUser }}
       td {{ site.loginPassword }}

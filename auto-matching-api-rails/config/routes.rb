@@ -20,9 +20,10 @@ Rails.application.routes.draw do
         resources :source_sites, only: %i[index update], path: "source-sites"
 
         resources :search, only: %i[index] do
-          get :db, on: :collection
-          get :keyword, on: :collection
-          get :realtime, on: :collection
+          post :db, on: :collection
+          post :keyword, on: :collection
+          post :realtime, on: :collection
+          post :result, on: :collection
         end
       end
     end

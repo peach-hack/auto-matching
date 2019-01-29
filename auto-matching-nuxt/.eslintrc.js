@@ -39,6 +39,7 @@ module.exports = {
     "vue/html-self-closing": 0,
     "vue/singleline-html-element-content-newline": 0,
     "vue/component-name-in-template-casing": 0,
+    "vue/require-prop-types": 0,
     "no-restricted-syntax": 0,
     "no-param-reassign": 0,
     "import/prefer-default-export": 0,
