@@ -11,11 +11,11 @@ table.table
       th 最終実行時刻
       th 実行ステータス
   tbody
-    tr(v-for="history in histories" :key="history.id")
+    tr(v-for="history in histories" :key="history.id" :class="{'table-active': isCheckBoxDisabled(history)}")
       th
         .form-check
           input.form-check-input.position-static(
-            type="checkbox" :disabled="isCheckBoxDisabled(history)" 
+            type="checkbox" :disabled="isCheckBoxDisabled(history)"
             :value="history.id" @change="check" v-model="selected")
       th(v-html="getLink(history)")
       th {{ getActivate(history) }}
