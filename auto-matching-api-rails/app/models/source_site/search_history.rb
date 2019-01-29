@@ -24,7 +24,7 @@
 #  index_source_sites_on_post_id  (post_id)
 #
 
-require "rails_helper"
-
-RSpec.describe SourceSite, type: :model do
+class SourceSite < ApplicationRecord
+  class SearchHistory < ActiveType::Record[::SourceSite]
+  end
 end

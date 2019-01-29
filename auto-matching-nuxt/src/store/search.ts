@@ -68,8 +68,8 @@ export const mutations: Mutations = {
           name: history.attributes.name as string,
           activateFlag: history.attributes.activateFlag as boolean,
           url: history.attributes.affiliateUrl as string,
-          status: history.attributes.lastPostStatus as string,
-          date: history.attributes.lastPostAt as string
+          status: history.attributes.lastSearchStatus as string,
+          date: history.attributes.lastSearchAt as string
         })
       })
   },
