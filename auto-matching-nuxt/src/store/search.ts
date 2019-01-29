@@ -3,7 +3,11 @@ import Vuex, { Mutation } from 'vuex'
 import Axios from 'axios'
 import History from '../types/history'
 
-import { getApiUsersSearch, postApiUsersSearchResult, postApiUsersSearchDb } from '../plugins/api'
+import {
+  getApiUsersSearch,
+  postApiUsersSearchResult,
+  postApiUsersSearchDb
+} from '../plugins/api'
 
 import Post from '../types/post.d'
 
