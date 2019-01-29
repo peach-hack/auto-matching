@@ -33,6 +33,7 @@ export default Vue.extend({
         this.$toasted.error('対象サイトが選択されていません')
         return
       }
+      this.$store.commit('search/clearPosts')
       postApiUsersSearchRealtime({
         attributes: {
           ids: this.selected

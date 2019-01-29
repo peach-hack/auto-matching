@@ -1,5 +1,5 @@
 class ApplicationJob < ActiveJob::Base
-  def date
+  def time_now
     Time.zone.now
   end
 end

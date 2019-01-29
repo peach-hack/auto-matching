@@ -179,7 +179,7 @@ paths:
         '500':
           description: 失敗時のレスポンス
   /api/users/search/keyword:
-    get:
+    post:
       summary: 掲示板キーワード検索
       produces:
         - application/json
@@ -206,13 +206,31 @@ paths:
       parameters:
         - in: body
           name: attributes
-          description: 投稿サイト
           schema:
             type: object
             properties:
               ids:
                 type: integer
                 description: "サイトID"
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/search/result:
+    post:
+      summary: 掲示板検索結果
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: attributes
+          schema:
+            type: object
+            properties:
+              time:
+                type: string
+                description: "検索開始時刻"
       responses:
         '200':
           description: 成功時のレスポンス

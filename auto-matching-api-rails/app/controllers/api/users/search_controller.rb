@@ -29,12 +29,21 @@ module Api
           AutoMatching::Reader::Merupara,
         ]
 
+        start_time = Time.zone.now.to_s
+
         site_ids.each do |id|
           reader_class = reader_classes[id - 1].to_s
-          RealtimeSearchJob.perform_later(reader_class)
+          RealtimeSearchJob.perform_later(reader_class, start_time)
         end
 
         response_success(:search, :execute)
+      rescue StandardError
+        response_internal_server_error(:search, :execute)
+      end
+
+      def result
+        posts = Post.where.has { |post| post.updated_at >= params[:time] }.ordering { post_at.desc }
+        render json: PostSerializer.new(posts).serialized_json
       end
 
       private

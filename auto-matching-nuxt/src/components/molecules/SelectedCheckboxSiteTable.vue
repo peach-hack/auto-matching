@@ -66,6 +66,11 @@ export default Vue.extend({
           ids: data['ids'],
           status: data['status']
         })
+        if (data['status'] == '成功') {
+          this.$store.dispatch('search/getResult', {
+            time: data['time']
+          })
+        }
       }
     })
   },

@@ -19,7 +19,7 @@ class ManualPostJob < ManualJob
   private
     def set_success
       history = SourceSite::ManualPostHistory.find_by(key: @key)
-      history.update(last_post_status: SUCCESS, last_post_at: date)
+      history.update(last_post_status: SUCCESS, last_post_at: time_now)
       ActionCable.server.broadcast MANUAL_POST_CHANNEL, ids: [history.id], status: SUCCESS
     end
 
@@ -27,9 +27,5 @@ class ManualPostJob < ManualJob
       history = SourceSite::ManualPostHistory.find_by(key: @key)
       history.update(last_post_status: ERROR)
       ActionCable.server.broadcast MANUAL_POST_CHANNEL, ids: [history.id], status: ERROR
-    end
-
-    def date
-      Time.zone.now
     end
 end
