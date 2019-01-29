@@ -29,11 +29,6 @@ export default {
       icon: 'icon-star'
     },
     {
-      name: '定期投稿設定',
-      url: '/posts/auto',
-      icon: 'icon-star'
-    },
-    {
       title: true,
       name: '横断検索',
       class: '',
@@ -58,8 +53,27 @@ export default {
       icon: 'icon-star'
     },
     {
+      title: true,
+      name: '定期実行',
+      class: '',
+      wrapper: {
+        element: '',
+        attributes: {}
+      }
+    },
+    {
+      name: '定期投稿設定',
+      url: '/', // '/posts/auto',
+      icon: 'icon-star'
+    },
+    {
+      name: '定期監視設定',
+      url: '/', // '/posts/auto',
+      icon: 'icon-star'
+    },
+    {
       name: 'リアルタイム監視',
-      url: '/search/polling',
+      url: '/', // '/search/polling',
       icon: 'icon-star'
     },
     {

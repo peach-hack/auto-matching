@@ -15,6 +15,9 @@ module Api
       def keyword
       end
 
+      def polling
+      end
+
       private
         def search_params
           params.require(:q).permit(:title_cont, :post_at_gteq, :post_at_lteq,

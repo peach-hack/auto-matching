@@ -27,7 +27,7 @@ form(@submit.prevent="manualPost")
     .form-check
       input.form-check-input(type="checkbox" v-model="debug")#debugCheck
       label.form-check-label(for="debugCheck")
-        | Debug Run Mode
+        | Dry Run Mode
   .form-group        
     submit-button
 </template>

@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  realtime-polling-form
+  realtime-search-form
   br
   br
   search-result-table
@@ -10,13 +10,13 @@ div
 import Vue from 'vue'
 
 //@ts-ignore
-import RealtimePollingForm from '@/components/organisms/RealtimePollingForm.vue'
+import RealtimeSearchForm from '@/components/organisms/RealtimeSearchForm.vue'
 //@ts-ignore
 import SearchResultTable from '@/components/organisms/SearchResultTable.vue'
 
 export default Vue.extend({
   components: {
-    RealtimePollingForm,
+    RealtimeSearchForm,
     SearchResultTable
   },
   mounted() {
