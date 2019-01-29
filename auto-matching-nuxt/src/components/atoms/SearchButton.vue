@@ -1,6 +1,6 @@
 <template lang="pug">
 button(type="submit").btn.btn-primary 
-  | 検索
+  | Search
 </template>
 
 <script lang="ts">

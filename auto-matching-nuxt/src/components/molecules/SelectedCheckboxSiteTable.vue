@@ -33,9 +33,7 @@ import DateUtil from '@/components/mixins/DateUtil'
 
 export default Vue.extend({
   mixins: [DateUtil],
-  props: {
-    histories: Array
-  },
+  props: ['histories'],
   data: function() {
     return {
       selected: [] as number[],
@@ -83,9 +81,9 @@ export default Vue.extend({
       this.selected = []
 
       if (!this.selectAll) {
-        this.getHistories().forEach((history: History) => {
+        this.histories.forEach((history: History) => {
           if (history.activateFlag) {
-            this.selected.push(this.getHistory(history.id).id)
+            this.selected.push(history.id)
           }
         })
       }
@@ -99,12 +97,6 @@ export default Vue.extend({
     },
     isCheckBoxDisabled: function(history: History): boolean {
       return !history.activateFlag
-    },
-    getHistories: function(): History[] {
-      return this.$store.state.posts.histories
-    },
-    getHistory: function(id: number): History {
-      return this.$store.state.posts.histories[id - 1]
     }
   }
 })
