@@ -200,15 +200,6 @@ paths:
           description: 失敗時のレスポンス
   /api/users/search/realtime:
     get:
-      summary: 掲示板リアルタイム検索履歴
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: 成功時のレスポンス
-        '500':
-          description: 失敗時のレスポンス
-    post:
       summary: 掲示板リアルタイム検索
       produces:
         - application/json
@@ -222,6 +213,16 @@ paths:
               ids:
                 type: integer
                 description: "サイトID"
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/search:
+    get:
+      summary: 掲示板検索履歴
+      produces:
+        - application/json
       responses:
         '200':
           description: 成功時のレスポンス

@@ -462,11 +462,12 @@ export const getApiUsersSearchKeywordURL = function(parameters = {}) {
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
 /**
- * 掲示板リアルタイム検索履歴
+ * 掲示板リアルタイム検索
  * request: getApiUsersSearchRealtime
  * url: getApiUsersSearchRealtimeURL
  * method: getApiUsersSearchRealtime_TYPE
  * raw_url: getApiUsersSearchRealtime_RAW_URL
+ * @param attributes - 投稿サイト
  */
 export const getApiUsersSearchRealtime = function(parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
@@ -475,6 +476,9 @@ export const getApiUsersSearchRealtime = function(parameters = {}) {
   let body
   let queryParameters = {}
   let form = {}
+  if (parameters['attributes'] !== undefined) {
+    body = parameters['attributes']
+  }
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
@@ -501,40 +505,36 @@ export const getApiUsersSearchRealtimeURL = function(parameters = {}) {
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
 /**
- * 掲示板リアルタイム検索
- * request: postApiUsersSearchRealtime
- * url: postApiUsersSearchRealtimeURL
- * method: postApiUsersSearchRealtime_TYPE
- * raw_url: postApiUsersSearchRealtime_RAW_URL
- * @param attributes - 投稿サイト
+ * 掲示板検索履歴
+ * request: getApiUsersSearch
+ * url: getApiUsersSearchURL
+ * method: getApiUsersSearch_TYPE
+ * raw_url: getApiUsersSearch_RAW_URL
  */
-export const postApiUsersSearchRealtime = function(parameters = {}) {
+export const getApiUsersSearch = function(parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
-  let path = '/api/users/search/realtime'
+  let path = '/api/users/search'
   let body
   let queryParameters = {}
   let form = {}
-  if (parameters['attributes'] !== undefined) {
-    body = parameters['attributes']
-  }
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
-  return request('post', domain + path, body, queryParameters, form, config)
+  return request('get', domain + path, body, queryParameters, form, config)
 }
-export const postApiUsersSearchRealtime_RAW_URL = function() {
-  return '/api/users/search/realtime'
+export const getApiUsersSearch_RAW_URL = function() {
+  return '/api/users/search'
 }
-export const postApiUsersSearchRealtime_TYPE = function() {
-  return 'post'
+export const getApiUsersSearch_TYPE = function() {
+  return 'get'
 }
-export const postApiUsersSearchRealtimeURL = function(parameters = {}) {
+export const getApiUsersSearchURL = function(parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
-  let path = '/api/users/search/realtime'
+  let path = '/api/users/search'
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]

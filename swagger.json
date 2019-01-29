@@ -217,19 +217,6 @@
     },
     "/api/users/search/realtime" : {
       "get" : {
-        "summary" : "掲示板リアルタイム検索履歴",
-        "produces" : [ "application/json" ],
-        "parameters" : [ ],
-        "responses" : {
-          "200" : {
-            "description" : "成功時のレスポンス"
-          },
-          "500" : {
-            "description" : "失敗時のレスポンス"
-          }
-        }
-      },
-      "post" : {
         "summary" : "掲示板リアルタイム検索",
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -241,6 +228,21 @@
             "$ref" : "#/definitions/attributes_6"
           }
         } ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
+    "/api/users/search" : {
+      "get" : {
+        "summary" : "掲示板検索履歴",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
         "responses" : {
           "200" : {
             "description" : "成功時のレスポンス"

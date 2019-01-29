@@ -31,7 +31,7 @@
     "@types/jest": "^23.3.13",
     "@types/js-cookie": "^2.2.0",
     "@types/moment": "^2.13.0",
-    "@types/node": "^10.12.18",
+    "@types/node": "^10.12.19",
     "@types/node-sass": "^3.10.32",
     "@types/pug": "^2.0.4",
     "@types/qs": "^6.5.1",

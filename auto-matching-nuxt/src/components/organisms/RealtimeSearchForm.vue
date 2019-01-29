@@ -9,7 +9,7 @@ form(@submit.prevent="submit")
 <script lang="ts">
 import Vue from 'vue'
 //@ts-ignore
-import { postApiUsersSearchRealtime } from '@/plugins/api'
+import { getApiUsersSearchRealtime } from '@/plugins/api'
 //@ts-ignore
 import SelectedCheckboxSiteTable from '@/components/molecules/SelectedCheckboxSiteTable.vue'
 //@ts-ignore
@@ -33,7 +33,7 @@ export default Vue.extend({
         this.$toasted.error('対象サイトが選択されていません')
         return
       }
-      postApiUsersSearchRealtime({
+      getApiUsersSearchRealtime({
         attributes: {
           ids: this.selected
         }

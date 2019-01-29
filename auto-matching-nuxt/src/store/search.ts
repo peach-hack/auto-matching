@@ -3,7 +3,7 @@ import Vuex, { Mutation } from 'vuex'
 import Axios from 'axios'
 import History from '../types/history'
 
-import * as Api from '../plugins/api'
+import { getApiUsersSearch } from '../plugins/api'
 
 import Post from '../types/post.d'
 
@@ -90,8 +90,7 @@ export const actions: Actions = {
     commit('addPosts', response.data.data)
   },
   async fetchHistories({ commit }) {
-    // TODO
-    const response = await Api.getApiUsersSearchRealtime()
+    const response = await getApiUsersSearch()
     commit('addHistories', response.data.data)
   }
 }
