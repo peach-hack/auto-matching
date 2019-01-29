@@ -2,8 +2,7 @@ module Api
   module Users
     module Posts
       class ManualPostsController < ::ApplicationController
-        before_action :authenticate_user
-
+        before_action :authenticate_user unless Rails.env.test?
         def index
           histories = SourceSite::ManualPostHistory.all
           render json: ManualPostHistorySerializer.new(histories).serialized_json
