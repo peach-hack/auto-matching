@@ -77,7 +77,6 @@ GEM
       pry-rails
       railties
     backport (0.3.0)
-    bcrypt (3.1.12)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -139,7 +138,6 @@ GEM
     jaro_winkler (1.5.2)
     join_dependency (0.1.4)
       activerecord (>= 4.2.0)
-    jwt (1.5.6)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -152,10 +150,6 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
-    knock (2.1.1)
-      bcrypt (~> 3.1)
-      jwt (~> 1.5)
-      rails (>= 4.2)
     kramdown (1.17.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -387,7 +381,6 @@ DEPENDENCIES
   faker
   fast_jsonapi
   gimei
-  knock
   listen (>= 3.0.5, < 3.2)
   logster
   meta-tags

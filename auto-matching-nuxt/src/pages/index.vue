@@ -7,12 +7,12 @@ styled-container
     styled-subtitle
       | Integrated Deai Engine
     div
-      .content(v-if="loggedIn()")
-        nuxt-link(to="/logout")
-          button(type="button").btn.btn-primary Logout
-      .content(v-if="!loggedIn()")
-        nuxt-link(to="/login")
-          button(type="button").btn.btn-primary Login
+      //- .content(v-if="loggedIn()")
+      //-   nuxt-link(to="/logout")
+      //-     button(type="button").btn.btn-primary Logout
+      //- .content(v-if="!loggedIn()")
+      //-   nuxt-link(to="/login")
+      //-     button(type="button").btn.btn-primary Login
 </template>
 
 <script>
@@ -51,11 +51,6 @@ export default {
     StyledContainer,
     StyledTitle,
     StyledSubtitle
-  },
-  methods: {
-    loggedIn() {
-      return this.$auth0.isAuthenticated()
-    }
   }
 }
 </script>
