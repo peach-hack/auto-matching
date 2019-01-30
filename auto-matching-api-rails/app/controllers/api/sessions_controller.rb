@@ -4,7 +4,8 @@ module Api
       if @user = User.authenticate(session_params[:username], session_params[:password])
 
         session[:user_id] = @user.id
-        render json: UserSerializer.new(@user).serialized_json
+        # render json: UserSerializer.new(@user).serialized_json
+        render status: :created
       else
         response_unauthorized
       end
