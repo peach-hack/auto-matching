@@ -7,6 +7,61 @@ host: 'localhost:5000'
 schemes:
   - http
 paths:
+  /api/session:
+    delete:
+      summary: セッション終了
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス    
+    post:
+      summary: セッション開始
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: attributes
+          description: ログイン情報
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+                description: "ユーザ名"
+              password:
+                description: "パスワード"
+                type: string
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users:
+    post:
+      summary: ユーザ登録
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: attributes
+          description: 情報情報
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+                description: "ユーザ名"
+              password:
+                description: "パスワード"
+                type: string
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
   /api/users/posts/templates:
     get:
       summary: テンプレート一覧

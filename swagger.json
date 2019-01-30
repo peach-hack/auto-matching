@@ -8,6 +8,65 @@
   "host" : "localhost:5000",
   "schemes" : [ "http" ],
   "paths" : {
+    "/api/session" : {
+      "post" : {
+        "summary" : "セッション開始",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "attributes",
+          "description" : "ログイン情報",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/attributes"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "セッション終了",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
+    "/api/users" : {
+      "post" : {
+        "summary" : "ユーザ登録",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "attributes",
+          "description" : "情報情報",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/attributes_1"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "成功時のレスポンス"
+          },
+          "500" : {
+            "description" : "失敗時のレスポンス"
+          }
+        }
+      }
+    },
     "/api/users/posts/templates" : {
       "get" : {
         "summary" : "テンプレート一覧",
@@ -31,7 +90,7 @@
           "description" : "テンプレート",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes"
+            "$ref" : "#/definitions/attributes_2"
           }
         } ],
         "responses" : {
@@ -59,7 +118,7 @@
           "description" : "テンプレート",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_1"
+            "$ref" : "#/definitions/attributes_3"
           }
         } ],
         "responses" : {
@@ -113,7 +172,7 @@
           "description" : "投稿サイト",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_2"
+            "$ref" : "#/definitions/attributes_4"
           }
         } ],
         "responses" : {
@@ -136,7 +195,7 @@
           "description" : "検索クエリ",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_3"
+            "$ref" : "#/definitions/attributes_5"
           }
         } ],
         "responses" : {
@@ -159,7 +218,7 @@
           "description" : "検索クエリ",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_4"
+            "$ref" : "#/definitions/attributes_6"
           }
         } ],
         "responses" : {
@@ -181,7 +240,7 @@
           "name" : "attributes",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_5"
+            "$ref" : "#/definitions/attributes_7"
           }
         } ],
         "responses" : {
@@ -203,7 +262,7 @@
           "name" : "attributes",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_6"
+            "$ref" : "#/definitions/attributes_8"
           }
         } ],
         "responses" : {
@@ -261,7 +320,7 @@
           "description" : "サイト情報",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/attributes_7"
+            "$ref" : "#/definitions/attributes_9"
           }
         } ],
         "responses" : {
@@ -309,6 +368,32 @@
     "attributes_1" : {
       "type" : "object",
       "properties" : {
+        "username" : {
+          "type" : "string",
+          "description" : "ユーザ名"
+        },
+        "password" : {
+          "type" : "string",
+          "description" : "パスワード"
+        }
+      }
+    },
+    "attributes_2" : {
+      "type" : "object",
+      "properties" : {
+        "title" : {
+          "type" : "string",
+          "description" : "タイトル"
+        },
+        "body" : {
+          "type" : "string",
+          "description" : "本文"
+        }
+      }
+    },
+    "attributes_3" : {
+      "type" : "object",
+      "properties" : {
         "id" : {
           "type" : "integer"
         },
@@ -322,7 +407,7 @@
         }
       }
     },
-    "attributes_2" : {
+    "attributes_4" : {
       "type" : "object",
       "properties" : {
         "ids" : {
@@ -335,25 +420,25 @@
         }
       }
     },
-    "attributes_3" : {
-      "type" : "object",
-      "properties" : {
-        "keyword" : {
-          "type" : "string",
-          "description" : "キーワード"
-        }
-      }
-    },
-    "attributes_4" : {
-      "type" : "object",
-      "properties" : {
-        "keyword" : {
-          "type" : "string",
-          "description" : "キーワード"
-        }
-      }
-    },
     "attributes_5" : {
+      "type" : "object",
+      "properties" : {
+        "keyword" : {
+          "type" : "string",
+          "description" : "キーワード"
+        }
+      }
+    },
+    "attributes_6" : {
+      "type" : "object",
+      "properties" : {
+        "keyword" : {
+          "type" : "string",
+          "description" : "キーワード"
+        }
+      }
+    },
+    "attributes_7" : {
       "type" : "object",
       "properties" : {
         "ids" : {
@@ -362,7 +447,7 @@
         }
       }
     },
-    "attributes_6" : {
+    "attributes_8" : {
       "type" : "object",
       "properties" : {
         "time" : {
@@ -371,7 +456,7 @@
         }
       }
     },
-    "attributes_7" : {
+    "attributes_9" : {
       "type" : "object",
       "properties" : {
         "id" : {
@@ -397,13 +482,13 @@
     "attributes" : {
       "type" : "object",
       "properties" : {
-        "title" : {
+        "username" : {
           "type" : "string",
-          "description" : "タイトル"
+          "description" : "ユーザ名"
         },
-        "body" : {
+        "password" : {
           "type" : "string",
-          "description" : "本文"
+          "description" : "パスワード"
         }
       }
     }
