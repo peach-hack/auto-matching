@@ -3,7 +3,9 @@ export default {
     main: {
       route: {
         index: '',
-        login: 'ログイン',
+        signup: 'サインアップ',
+        signin: 'サイイイン',
+        signout: 'サイアウト',
         'settings-sites': 'サイト設定',
         'settings-sites-id': 'サイト設定編集',
         'settings-db': 'データベース設定',
