@@ -4,9 +4,6 @@ import axios from 'axios'
 axios.interceptors.request.use(
   config => {
     console.log('Making request to ' + config.url)
-    config.headers.Authorization = `Bearer ${getIdToken()}`
-    config.headers.common['Content-Type'] = 'application/json'
-    config.headers.common['Access-Control-Allow-Origin'] = '*'
     return config
   },
   function(error) {
@@ -19,6 +16,7 @@ axios.interceptors.response.use(
     return response
   },
   function(error) {
+    console.log(error)
     if (error.response && error.response.status === 401) {
       window.location.href = '/signin'
     }
