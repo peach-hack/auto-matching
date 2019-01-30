@@ -28,10 +28,8 @@ axios.interceptors.response.use(
       error.response &&
       (error.response.status === 500 || error.response.status === 400)
     ) {
-      Vue.toasted.clear()
-      Vue.toasted.error('エラーが発生しました')
       this.$store.dispatch('session/signOut').then(() => {
-        this.$router.replace('signin')
+        window.location.href = '/signin'
       })
     }
     return Promise.reject(error.response)
