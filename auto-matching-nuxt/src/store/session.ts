@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
 import Axios from 'axios'
 
+//@ts-ignore
+import * as Api from "@/plugins/api"
+
 Vue.use(Vuex)
 
 export interface State {
@@ -36,50 +39,37 @@ export const mutations: Mutations = {
 }
 
 export const actions: Actions = {
-  signIn({ commit }, { username, password }) {
-    // The Promise used for router redirect in Signin.vue
-    return new Promise((resolve, reject) => {
-/*       api
-        .createSession(username, password)
-        .then(response => {
-          commit("setUser", response.data);
-          this.dispatch("getTackleBoxItems");
-          resolve();
-        })
-        .catch(error => {
-          // if the request fails, clear user
-          commit("clearUser");
-          reject(error.response.data.error);
-        });
- */    });
+  signIn({ commit }, data) {
+    Api.postApiSession({
+      username: data.username,
+      password: data.password
+    })
+      .then(response => {
+        commit("setUser", response.data.data);
+      })
+      .catch(error => {
+        commit("clearUser");
+      });
   },
-  signUp({ commit }, { username, password }) {
-    // The Promise used for router redirect in Signup.vue
-    return new Promise((resolve, reject) => {
-      /*       api
-              .createUser(username, password)
-              .then(response => {
-                commit("setUser", response.data);
-                resolve();
-              })
-              .catch(error => {
-                commit("clearUser");
-                reject(error.response.data.errors);
-              });
-      
-            */
-    });
+  signUp({ commit }, data) {
+    Api.postApiUsers({
+      username: data.username,
+      password: data.password
+    })
+      .then(response => {
+        commit("setUser", response.data.data);
+      })
+      .catch(() => {
+        commit("clearUser");
+      });
   },
   signOut({ commit }) {
-    // The Promise used for router redirect in Header.vue
-    return new Promise(resolve => {
-      // api.deleteSession().then(() => {
-      // commit("clearUser");
-      // resolve();
-    })
-  }
+    Api.deleteApiSession()
+      .then(() => {
+        commit("clearUser");
+      })
+  },
 }
-
 export default {
   state,
   mutations,
