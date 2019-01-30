@@ -50,15 +50,14 @@ module AutoMatching
           get_post_at = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
           category_list = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
           profile_from_list = input_data.map { |value1| value1.all("span.value1")[4].text.strip.to_s }
-          
+
 
           sex_list, name_list, age_list = converter.split_value(value)
 
           post_at_list = converter.value_change_post_at(get_post_at)
 
-          post_from_list = converter.value_change_from(get_post_from)
+          prefecture_list, city_list, address_list = converter.from_change(get_post_from)
 
-          prefecture_list, city_list, address_list = converter.split_post_from(post_from_list)
 
           source_site_id = SourceSite.find_by(key: SourceSite::KEY_PCMAX).id
 

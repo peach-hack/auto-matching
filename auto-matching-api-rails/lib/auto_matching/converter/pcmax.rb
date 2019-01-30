@@ -1,7 +1,6 @@
 module AutoMatching
   module Converter
     class Pcmax < ConverterBase
-
       # valueには性別、名前、年齢が格納されているためそれぞれ分割
       def split_value(value)
         sex_list = []
@@ -43,6 +42,12 @@ module AutoMatching
         post_at
       end
 
+      def from_change(post_from)
+        post_from_list = value_change_from(post_from)
+        prefecture_list, city_list, address_list = split_post_from(post_from_list)
+        [prefecture_list, city_list, address_list]
+      end
+
       # post_fromは住所を丸々格納しているのでそれぞれ分割
       # 例：神奈川県川崎市中原区 → 神奈川県、川崎市、中原区
       def value_change_from(post_from)
@@ -63,7 +68,6 @@ module AutoMatching
         address_list = []
 
         from.each_with_index do |v, i|
-
           prefecture, city, address = convert_to_from(v)
 
           prefecture_list.push(prefecture.to_s.strip)
