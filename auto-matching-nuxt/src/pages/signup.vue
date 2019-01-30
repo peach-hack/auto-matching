@@ -51,13 +51,12 @@ export default {
   methods: {
     signUp() {
       this.$store
-        .dispatch('signUp', {
+        .dispatch('session/signUp', {
           username: this.username,
           password: this.password
         })
         .then(() => {
           this.errors = {}
-          this.$router.push('baits')
         })
         .catch(errors => {
           this.errors = errors

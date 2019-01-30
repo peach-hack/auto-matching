@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
-import Axios from 'axios'
+import Axios, { AxiosError, AxiosResponse } from 'axios'
 
 //@ts-ignore
-import * as Api from "@/plugins/api"
+import { postApiSession, postApiUsers, deleteApiSession } from "@/plugins/api"
 
 Vue.use(Vuex)
 
@@ -40,23 +40,23 @@ export const mutations: Mutations = {
 
 export const actions: Actions = {
   signIn({ commit }, data) {
-    Api.postApiSession({
+    postApiSession({
       username: data.username,
       password: data.password
     })
-      .then(response => {
+      .then((response: AxiosResponse) => {
         commit("setUser", response.data.data);
       })
-      .catch(error => {
+      .catch((error: AxiosError) => {
         commit("clearUser");
       });
   },
   signUp({ commit }, data) {
-    Api.postApiUsers({
+    postApiUsers({
       username: data.username,
       password: data.password
     })
-      .then(response => {
+      .then((response: AxiosResponse) => {
         commit("setUser", response.data.data);
       })
       .catch(() => {
@@ -64,7 +64,7 @@ export const actions: Actions = {
       });
   },
   signOut({ commit }) {
-    Api.deleteApiSession()
+    deleteApiSession()
       .then(() => {
         commit("clearUser");
       })

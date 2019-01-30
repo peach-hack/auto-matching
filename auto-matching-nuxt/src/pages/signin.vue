@@ -53,7 +53,7 @@ export default {
   methods: {
     signIn() {
       this.$store
-        .dispatch('signIn', {
+        .dispatch('session/signIn', {
           username: this.username,
           password: this.password
         })
