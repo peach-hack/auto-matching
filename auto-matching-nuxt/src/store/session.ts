@@ -51,7 +51,7 @@ export const actions: Actions = {
     })
       .then((response: AxiosResponse) => {
         console.log(response)
-        commit("setUser", response.data.data.attributes.username);
+        commit("setUser", response.data.data.attributes);
       })
       .catch((error: AxiosError) => {
         commit("clearUser");
@@ -68,7 +68,7 @@ export const actions: Actions = {
     })
       .then((response: AxiosResponse) => {
         console.log(response)
-        commit("setUser", response.data.data.attributes.username);
+        commit("setUser", response.data.data.attributes);
       })
       .catch(() => {
         commit("clearUser");

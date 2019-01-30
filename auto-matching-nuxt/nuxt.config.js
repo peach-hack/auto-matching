@@ -71,10 +71,6 @@ module.exports = {
     description: 'Dating meets Tech',
     lang: 'ja'
   },
-  auth0: {
-    clientID: 'vaEBW6t1rOgiibdPPPWun0p69THjesnD',
-    domain: 'auto-matching.auth0.com'
-  },
   toast: {
     position: 'top-right',
     duration: 2000

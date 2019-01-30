@@ -6,8 +6,7 @@ module Api
       @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
-        # render json: UserSerializer.new(@user).serialized_json
-        render status: :created
+        render json: UserSerializer.new(@user).serialized_json
       else
         response_internal_server_error
       end
