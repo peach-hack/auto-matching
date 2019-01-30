@@ -1,5 +1,5 @@
 <template lang="pug">
-p Signing in ...  
+div
 </template>
 
 <script lang="ts">
@@ -7,8 +7,9 @@ import Vue from 'vue'
 
 export default Vue.extend({
   mounted() {
-    this.$auth0.setTokenByQuery()
-    this.$router.replace('/')
+    this.$store.dispatch('session/signOut').then(() => {
+      this.$router.push('/')
+    })
   }
-} as any)
+})
 </script>

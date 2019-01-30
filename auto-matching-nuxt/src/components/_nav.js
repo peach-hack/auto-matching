@@ -96,8 +96,8 @@ export default {
       icon: 'icon-star'
     },
     {
-      name: 'ログアウト',
-      url: '/logout',
+      name: 'サインアウト',
+      url: '/signout',
       icon: 'icon-star'
     }
   ]

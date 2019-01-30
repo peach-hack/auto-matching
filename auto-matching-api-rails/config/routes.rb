@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   defaults format: :json do
     namespace :api do
+      resources :users, only: [:create]
+      resource :session, only: [:create, :destroy]
+
       namespace :users do
         namespace :posts do
           resources :templates, only: %i[index update create destroy]
@@ -31,6 +34,6 @@ Rails.application.routes.draw do
           end
         end
       end
-   end
+    end
   end
 end

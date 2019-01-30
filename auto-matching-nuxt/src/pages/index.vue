@@ -6,16 +6,17 @@ styled-container
       | Auto Matching
     styled-subtitle
       | Integrated Deai Engine
-    div
-      .content(v-if="loggedIn()")
-        nuxt-link(to="/logout")
-          button(type="button").btn.btn-primary Logout
-      .content(v-if="!loggedIn()")
-        nuxt-link(to="/login")
-          button(type="button").btn.btn-primary Login
+    div(v-if="isAuthenticated")
+      button(@click="signOut").btn.btn-primary
+        | サインアウト 
+    div(v-else)
+      nuxt-link(to="/signin")
+        button.btn.btn-primary
+          | サインイン
 </template>
 
 <script>
+import Vue from 'vue'
 import styled from 'vue-styled-components'
 import Logo from '@/components/Logo.vue'
 
@@ -52,9 +53,19 @@ export default {
     StyledTitle,
     StyledSubtitle
   },
+  computed: {
+    isAuthenticated() {
+      return !!this.$store.state.session.user
+    },
+    username() {
+      return this.$store.state.session.user.username
+    }
+  },
   methods: {
-    loggedIn() {
-      return this.$auth0.isAuthenticated()
+    signOut: function() {
+      this.$store.dispatch('session/signOut').then(() => {
+        this.$router.push('/')
+      })
     }
   }
 }
