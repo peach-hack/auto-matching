@@ -4,10 +4,9 @@ module Api
 
     def create
       @user = User.new(user_params)
-      p @user.valud?
       if @user.save
         session[:user_id] = @user.id
-        response_success(:users, :create)
+        render json: UserSerializer.new(@user).serialized_json
       else
         response_internal_server_error
       end
