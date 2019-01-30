@@ -1,10 +1,10 @@
 module Api
-  class SessionsController < ApplicationController
+  class SessionsController < ::ApplicationController
     def create
       if @user = User.authenticate(session_params[:username], session_params[:password])
 
         session[:user_id] = @user.id
-        response(:sessions, :create)
+        response_success(:sessions, :create)
       else
         response_unauthorized
       end

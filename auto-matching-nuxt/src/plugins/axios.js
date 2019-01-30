@@ -20,7 +20,10 @@ axios.interceptors.response.use(
     if (error.response && error.response.status === 401) {
       window.location.href = '/signin'
     }
-    if (error.response && error.response.status === 500) {
+    if (
+      error.response &&
+      (error.response.status === 500 || error.response.status === 400)
+    ) {
       Vue.toasted.clear()
       Vue.toasted.error('エラーが発生しました')
     }

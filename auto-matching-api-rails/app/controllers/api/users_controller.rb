@@ -1,9 +1,10 @@
 module Api
-  class UsersController < ApplicationController
+  class UsersController < ::ApplicationController
     wrap_parameters :user, include: [:username, :password]
 
     def create
       @user = User.new(user_params)
+      p @user.valud?
       if @user.save
         session[:user_id] = @user.id
         response_success(:users, :create)

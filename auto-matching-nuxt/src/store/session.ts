@@ -42,8 +42,12 @@ export const mutations: Mutations = {
 export const actions: Actions = {
   signIn({ commit }, data) {
     postApiSession({
-      username: data.username,
-      password: data.password
+      attributes: {
+        session: {
+          username: data.username,
+          password: data.password
+        }
+      }
     })
       .then((response: AxiosResponse) => {
         commit("setUser", response.data.data);
@@ -54,8 +58,12 @@ export const actions: Actions = {
   },
   signUp({ commit }, data) {
     postApiUsers({
-      username: data.username,
-      password: data.password
+      attributes: {
+        user: {
+          username: data.username,
+          password: data.password
+        }
+      }
     })
       .then((response: AxiosResponse) => {
         commit("setUser", response.data.data);
