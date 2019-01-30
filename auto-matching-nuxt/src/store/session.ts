@@ -3,7 +3,7 @@ import Vuex, { Mutation } from 'vuex'
 import Axios, { AxiosError, AxiosResponse } from 'axios'
 
 //@ts-ignore
-import { postApiSession, postApiUsers, deleteApiSession } from "@/plugins/api"
+import { postApiSession, postApiUsers, deleteApiSession } from '@/plugins/api'
 
 Vue.use(Vuex)
 
@@ -25,17 +25,17 @@ export interface Actions {
 
 export const state: () => State = () => ({
   //@ts-ignore
-  user: JSON.parse(localStorage.getItem("user"))
+  user: JSON.parse(localStorage.getItem('user'))
 })
 
 export const mutations: Mutations = {
   setUser(state, user) {
-    state.user = user;
-    localStorage.setItem("user", JSON.stringify(user));
+    state.user = user
+    localStorage.setItem('user', JSON.stringify(user))
   },
   clearUser(state) {
-    state.user = "";
-    localStorage.removeItem("user");
+    state.user = ''
+    localStorage.removeItem('user')
   }
 }
 
@@ -51,11 +51,11 @@ export const actions: Actions = {
     })
       .then((response: AxiosResponse) => {
         console.log(response)
-        commit("setUser", response.data.data.attributes);
+        commit('setUser', response.data.data.attributes)
       })
       .catch((error: AxiosError) => {
-        commit("clearUser");
-      });
+        commit('clearUser')
+      })
   },
   signUp({ commit }, data) {
     postApiUsers({
@@ -68,18 +68,17 @@ export const actions: Actions = {
     })
       .then((response: AxiosResponse) => {
         console.log(response)
-        commit("setUser", response.data.data.attributes);
+        commit('setUser', response.data.data.attributes)
       })
       .catch(() => {
-        commit("clearUser");
-      });
-  },
-  signOut({ commit }) {
-    deleteApiSession()
-      .then(() => {
-        commit("clearUser");
+        commit('clearUser')
       })
   },
+  signOut({ commit }) {
+    deleteApiSession().then(() => {
+      commit('clearUser')
+    })
+  }
 }
 export default {
   state,
