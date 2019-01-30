@@ -24,7 +24,8 @@ export interface Actions {
 }
 
 export const state: () => State = () => ({
-  user: ""// JSON.parse(localStorage.getItem("user"))
+  //@ts-ignore
+  user: JSON.parse(localStorage.getItem("user"))
 })
 
 export const mutations: Mutations = {
