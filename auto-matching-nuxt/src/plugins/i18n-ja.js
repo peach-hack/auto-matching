@@ -4,8 +4,8 @@ export default {
       route: {
         index: '',
         signup: 'サインアップ',
-        signin: 'サイイイン',
-        signout: 'サイアウト',
+        signin: 'サインイン',
+        signout: 'サインアウト',
         'settings-sites': 'サイト設定',
         'settings-sites-id': 'サイト設定編集',
         'settings-db': 'データベース設定',

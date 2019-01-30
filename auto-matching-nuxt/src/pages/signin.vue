@@ -18,7 +18,7 @@
             placeholder="Password"
             type="password"
             required).form-control
-        button(type="submit").btn.btn-info.btn-block
+        button(type="submit").btn.btn-primary.btn-block
           | サインイン
 </template>
 
