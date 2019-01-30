@@ -1,79 +1,72 @@
 <template lang="pug">
-section
+styled-container
   div
     logo
-    h1
+    styled-title
       | Auto Matching
-    h2
+    styled-subtitle
       | Integrated Deai Engine
-  div(v-if="isAuthenticated")
-    li.nav-item
-      a(@click="signOut")
-        | Sign Out
-    li.nav-item.user
-      i.far.fa-user {{ username }}
-  div(v-else)
-    li.nav-item
+    div(v-if="isAuthenticated")
+      button(@click="signOut").btn.btn-primary
+        | サインアウト 
+    div(v-else)
       nuxt-link(to="/signin")
-        | サインイン
-    li.nav-item
-      nuxt-link(to="/signup")
-        | サインアップ
+        button.btn.btn-primary
+          | サインイン
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import styled from 'vue-styled-components'
-//@ts-ignore
 import Logo from '@/components/Logo.vue'
 
-// const StyledContainer = styled.section`
-//   min-height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   text-align: center;
-// `
+const StyledContainer = styled.section`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`
 
-// const StyledTitle = styled.h1`
-//   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-//     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-//   display: block;
-//   font-weight: 300;
-//   font-size: 100px;
-//   color: #35495e;
-//   letter-spacing: 1px;
-// `
+const StyledTitle = styled.h1`
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  font-weight: 300;
+  font-size: 100px;
+  color: #35495e;
+  letter-spacing: 1px;
+`
 
-// const StyledSubtitle = styled.h2`
-//   font-weight: 300;
-//   font-size: 42px;
-//   color: #526488;
-//   word-spacing: 5px;
-//   padding-bottom: 15px;
-// `
+const StyledSubtitle = styled.h2`
+  font-weight: 300;
+  font-size: 42px;
+  color: #526488;
+  word-spacing: 5px;
+  padding-bottom: 15px;
+`
 
-export default Vue.extend({
+export default {
   components: {
-    Logo
-    // StyledContainer
-    // StyledTitle,
-    // StyledSubtitle
+    Logo,
+    StyledContainer,
+    StyledTitle,
+    StyledSubtitle
   },
   computed: {
-    isAuthenticated(): boolean {
+    isAuthenticated() {
       return !!this.$store.state.session.user
     },
-    username(): string {
+    username() {
       return this.$store.state.session.user.username
     }
   },
   methods: {
     signOut: function() {
       this.$store.dispatch('session/signOut').then(() => {
-        this.$router.push('signin')
+        this.$router.push('/')
       })
     }
   }
-})
+}
 </script>
