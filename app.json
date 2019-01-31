@@ -34,9 +34,6 @@
     },
     "DEPLOY_TASKS": {
       "value": "ridgepole:apply db:seed_fu"
-    },
-    "REDIS_PROVIDER": {
-      "value" : "REDISTOGO_URL"
     }
   }
 }
