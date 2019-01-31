@@ -26,6 +26,12 @@
     },
     {
       "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-chromedriver.git"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-google-chrome.git"
     }
   ],
   "env": {

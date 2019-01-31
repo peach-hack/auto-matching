@@ -47,17 +47,27 @@ module AutoMatching
 
       def chrome_options
         mobile_emulation = { deviceName: device_name }
+        chrome_bin = ENV.fetch("GOOGLE_CHROME_SHIM", nil)
         if ENV["DEBUG"]
           {
             args: %w[disable-gpu window-size=375,667 no-sandbox],
             mobileEmulation: mobile_emulation
           }
-        else
+        elsif heroku?
           {
             args: %w[headless disable-gpu window-size=375,667 no-sandbox],
-            mobileEmulation: mobile_emulation
+            mobileEmulation: mobile_emulation,
+            binary: chrome_bin
           }
+        else          {
+          args: %w[headless disable-gpu window-size=375,667 no-sandbox],
+          mobileEmulation: mobile_emulation
+        }
         end
+      end
+
+      def heroku?
+        Rails.env.production?
       end
 
       def capabilities
