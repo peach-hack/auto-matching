@@ -1,14 +1,15 @@
+// https://github.com/robinvdvleuten/vuex-persistedstate/issues/54#issuecomment-414605839
 import createPersistedState from 'vuex-persistedstate'
 import * as Cookies from 'js-cookie'
 
 let cookieStorage = {
-  getItem: function(key) {
+  getItem: function (key) {
     return Cookies.getJSON(key)
   },
-  setItem: function(key, value) {
+  setItem: function (key, value) {
     return Cookies.set(key, value, { expires: 3, secure: false })
   },
-  removeItem: function(key) {
+  removeItem: function (key) {
     return Cookies.remove(key)
   }
 }

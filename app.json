@@ -12,6 +12,9 @@
       "options": {
         "version": "11"
       }
+    },
+    {
+      "plan": "heroku-redis"
     }
   ],
   "buildpacks": [
