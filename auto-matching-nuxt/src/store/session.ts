@@ -37,7 +37,7 @@ export const mutations: Mutations = {
   clearUser(state) {
     state.user = ''
     localStorage.removeItem('user')
-    Cookies.remove('vuex', { path: '/' });
+    Cookies.remove('vuex');
   }
 }
 
