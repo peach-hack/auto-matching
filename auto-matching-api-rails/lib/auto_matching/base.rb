@@ -55,7 +55,7 @@ module AutoMatching
           }
         elsif heroku?
           {
-            args: %w[headless disable-gpu window-size=375,667 no-sandbox],
+            args: %w[headless disable-gpu window-size=375,667 no-sandbox disable-dev-shm-usage],
             mobileEmulation: mobile_emulation,
             binary: chrome_bin
           }
