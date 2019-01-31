@@ -20,22 +20,17 @@
     },
     {
       "url": "heroku/ruby"
+    },
+    {
+      "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
     }
   ],
   "env": {
     "APP_BASE": {
       "value": "auto-matching-api-rails"
     },
-    "AUTH0_CLIENT_ID": {
-      "value": "dq1NOLYioOI9bMnPg4rOdDJGjgLdNMFy"
-    },
-    "AUTH0_JWKS": {
-      "value": "https://auto-matching.auth0.com/.well-known/jwks.json"
+    "DEPLOY_TASKS": {
+      "value": "ridgepole:apply db:seed_fu"
     }
-  },
-  "scripts": {
-    "postdeploy": [
-      "bundle exec rails db:prepare"
-    ]
   }
 }
