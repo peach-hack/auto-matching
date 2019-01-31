@@ -42,4 +42,6 @@ ENV APP_ROOT /app
 RUN mkdir $APP_ROOT
 WORKDIR $APP_ROOT
 
-RUN bundle install
+COPY Gemfile* ./
+
+RUN gem install bundler && bundle install
