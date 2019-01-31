@@ -7,5 +7,6 @@ build:
     web: auto-matching-api-rails/Dockerfile
     worker: auto-matching-api-rails/Dockerfile
 run:
-  web: rails s
-  worker: sidekiq -C config/sidekiq_production.yml
+  web: "rails s"
+  worker: "sidekiq -C config/sidekiq_production.yml"
+  
