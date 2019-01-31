@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
 import Axios, { AxiosError, AxiosResponse } from 'axios'
-import * as Cookies from 'js-cookie'
+import Cookie from 'js-cookie'
 
 //@ts-ignore
 import { postApiSession, postApiUsers, deleteApiSession } from '@/plugins/api'
@@ -37,7 +37,7 @@ export const mutations: Mutations = {
   clearUser(state) {
     state.user = ''
     localStorage.removeItem('user')
-    Cookies.remove('vuex')
+    Cookie.remove('vuex')
   }
 }
 
@@ -52,7 +52,6 @@ export const actions: Actions = {
       }
     })
       .then((response: AxiosResponse) => {
-        console.log(response)
         commit('setUser', response.data.data.attributes)
       })
       .catch((error: AxiosError) => {
@@ -69,7 +68,6 @@ export const actions: Actions = {
       }
     })
       .then((response: AxiosResponse) => {
-        console.log(response)
         commit('setUser', response.data.data.attributes)
       })
       .catch(() => {
