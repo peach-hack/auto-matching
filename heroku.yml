@@ -4,9 +4,5 @@ setup:
     - plan: radistogo
 build:
   docker:
-    web: auto-matching-api-rails/Dockerfile
-    worker: auto-matching-api-rails/Dockerfile
-run:
-  web: ./bin/boot_rails
-  worker: ./bin/boot_sidekiq
-
+    web: auto-matching-api-rails/Dockerfile.web
+    worker: auto-matching-api-rails/Dockerfile.worker
