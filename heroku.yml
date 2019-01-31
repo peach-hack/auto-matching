@@ -7,6 +7,6 @@ build:
     web: auto-matching-api-rails/Dockerfile
     worker: auto-matching-api-rails/Dockerfile
 run:
-  web: bin/boot_rails
-  worker: bin/boot_sidekiq
+  web: ./bin/boot_rails
+  worker: ./bin/boot_sidekiq
 
