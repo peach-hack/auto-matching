@@ -37,9 +37,6 @@ export const mutations: Mutations = {
   clearUser(state) {
     state.user = ''
     localStorage.removeItem('user')
-    if (navigator.cookieEnabled) {
-      document.cookie = "vuex=; max-age=0"
-    }
   }
 }
 
@@ -79,6 +76,9 @@ export const actions: Actions = {
   signOut({ commit }) {
     deleteApiSession().then(() => {
       commit('clearUser')
+      if (navigator.cookieEnabled) {
+        document.cookie = "vuex=; max-age=0"
+      }
     })
   }
 }
