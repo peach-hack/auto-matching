@@ -13,7 +13,7 @@ module AutoMatching
 
       # save_cookie
     rescue StandardError => e
-      save_current_page
+      save_current_page if Rails.env.development?
       logger.error("#{e.message}")
       raise e
     end

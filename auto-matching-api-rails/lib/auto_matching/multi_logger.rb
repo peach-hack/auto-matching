@@ -19,7 +19,7 @@ module AutoMatching
           srdout_logger = ActiveSupport::Logger.new(STDOUT)
           multiple_loggers = ActiveSupport::Logger.broadcast(srdout_logger)
 
-          logger.extend(multiple_loggers)
+          logger.extend(multiple_loggers) if Rails.env.development?
 
           logger
         end
