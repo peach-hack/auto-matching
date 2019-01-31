@@ -1,0 +1,11 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+    - plan: radistogo
+build:
+  docker:
+    web: Dockerfile
+    worker: Dockerfile
+run:
+  web: bundle exec rails s
+  worker: bundle exec sidekiq -C config/sidekiq_production.yml
