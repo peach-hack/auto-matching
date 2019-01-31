@@ -14,7 +14,5 @@ COPY Gemfile* $APP_ROOT/
 RUN gem install bundler && bundle install
 
 COPY . $APP_ROOT/
-RUN bundle exec rails ridgepole:apply
-RUN bundle exec rails db:seed_fu
 
 CMD ["bundle", "exec", "rails", "server"]

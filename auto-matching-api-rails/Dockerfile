@@ -6,15 +6,15 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && apt-get install -y
 
 # Japanese
 RUN cd /tmp && \
-    mkdir noto && \
-    curl -O -L https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip && \
-    unzip NotoSansCJKjp-hinted.zip -d ./noto && \
-    mkdir -p /usr/share/fonts/noto && \
-    cp ./noto/*.otf /usr/share/fonts/noto/ && \
-    chmod 644 /usr/share/fonts/noto/*.otf && \
-    fc-cache -fv && \
-    rm -rf NotoSansCJKjp-hinted.zip ./noto
-    
+  mkdir noto && \
+  curl -O -L https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip && \
+  unzip NotoSansCJKjp-hinted.zip -d ./noto && \
+  mkdir -p /usr/share/fonts/noto && \
+  cp ./noto/*.otf /usr/share/fonts/noto/ && \
+  chmod 644 /usr/share/fonts/noto/*.otf && \
+  fc-cache -fv && \
+  rm -rf NotoSansCJKjp-hinted.zip ./noto
+
 # Install Chrome WebDriver
 RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
   mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION && \
@@ -34,14 +34,5 @@ RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
 RUN bundle config path /usr/local/bundle
 ENV APP_ROOT /app
 
-# ENV CHROMEDRIVER_PORT 4444
-# ENV CHROMEDRIVER_WHITELISTED_IPS "127.0.0.1"
-# ENV CHROMEDRIVER_URL_BASE ''
-# ENV CHROMEDRIVER_EXTRA_ARGS ''
-
 RUN mkdir $APP_ROOT
 WORKDIR $APP_ROOT
-
-COPY Gemfile* ./
-
-RUN gem install bundler && bundle install

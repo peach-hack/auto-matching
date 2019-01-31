@@ -6,3 +6,7 @@ build:
   docker:
     web: auto-matching-api-rails/Dockerfile.web
     worker: auto-matching-api-rails/Dockerfile.worker
+release:
+  command:
+    - bundle exec rails ridgepole:apply
+    - bundle exec rails db:seed_fu
