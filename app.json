@@ -14,7 +14,7 @@
       }
     },
     {
-      "plan": "heroku-redis"
+      "plan": "redistogo"
     }
   ],
   "buildpacks": [
@@ -34,6 +34,9 @@
     },
     "DEPLOY_TASKS": {
       "value": "ridgepole:apply db:seed_fu"
+    },
+    "REDIS_PROVIDER": {
+      "value" : "REDISTOGO_URL"
     }
   }
 }
