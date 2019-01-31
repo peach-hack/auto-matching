@@ -23,7 +23,7 @@ services:
     environment:
       CC_TEST_REPORTER_ID:
       DATABASE_HOST: postgres
-      REDIS_PROVIDER: redis://redis:6379
+      REDIS_URL: redis://redis:6379
     ports:
       - '5000:3000'
     tty: true
@@ -50,7 +50,7 @@ services:
     command: bundle exec sidekiq
     environment:
       DATABASE_HOST: postgres
-      REDIS_PROVIDER: redis://redis:6379
+      REDIS_URL: redis://redis:6379
     volumes:
       - ./auto-matching-api-rails:/app
       - bundler-store:/usr/local/bundle
