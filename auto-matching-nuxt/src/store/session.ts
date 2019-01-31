@@ -37,7 +37,9 @@ export const mutations: Mutations = {
   clearUser(state) {
     state.user = ''
     localStorage.removeItem('user')
-    Cookies.remove('vuex');
+    if (navigator.cookieEnabled) {
+      document.cookie = "vuex=; max-age=0"
+    }
   }
 }
 
