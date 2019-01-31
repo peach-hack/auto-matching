@@ -37,9 +37,9 @@ ENV APP_ROOT /app
 RUN mkdir $APP_ROOT
 WORKDIR $APP_ROOT
 
-COPY Gemfile* $APP_ROOT
+COPY Gemfile* $APP_ROOT/
 RUN gem install bundler && bundle install
 
-COPY . $APP_ROOT
+COPY . $APP_ROOT/
 
 CMD ["bundle", "exec", "sidekiq", "-C", "config/sidekiq_production.yml"]
