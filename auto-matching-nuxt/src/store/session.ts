@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
 import Axios, { AxiosError, AxiosResponse } from 'axios'
-import Cookie from 'js-cookie'
+import * as Cookies from 'js-cookie'
 
 //@ts-ignore
 import { postApiSession, postApiUsers, deleteApiSession } from '@/plugins/api'
@@ -37,7 +37,7 @@ export const mutations: Mutations = {
   clearUser(state) {
     state.user = ''
     localStorage.removeItem('user')
-    Cookie.remove('vuex')
+    Cookies.remove('vuex')
   }
 }
 
