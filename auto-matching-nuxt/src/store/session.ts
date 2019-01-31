@@ -76,9 +76,7 @@ export const actions: Actions = {
   signOut({ commit }) {
     deleteApiSession().then(() => {
       commit('clearUser')
-      if (navigator.cookieEnabled) {
-        document.cookie = "vuex=; max-age=0"
-      }
+      document.cookie = "vuex=; max-age=0"
     })
   }
 }
