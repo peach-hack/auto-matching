@@ -41,4 +41,4 @@ COPY Gemfile* ./
 
 RUN gem install bundler && bundle install
 
-CMD bundle exec sidekiq -C config/sidekiq_production.yml
+CMD ["bundle", "exec", "sidekiq", "-C", "config/sidekiq_production.yml"]

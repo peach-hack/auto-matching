@@ -14,4 +14,4 @@ COPY Gemfile* ./
 
 RUN gem install bundler && bundle install
 
-CMD bundle exec rails s
+CMD ["bundle", "exec", "rails", "server"]
