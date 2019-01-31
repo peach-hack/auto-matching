@@ -46,6 +46,9 @@ export const mutations: Mutations = {
           url: site.attributes.affiliateUrl as string
         })
       })
+  },
+  clearSites(state, payload) {
+    state.sites = []
   }
 }
 

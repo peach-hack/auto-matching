@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex, { Mutation } from 'vuex'
 import Axios, { AxiosError, AxiosResponse } from 'axios'
-import * as Cookies from 'js-cookie'
 
 //@ts-ignore
 import { postApiSession, postApiUsers, deleteApiSession } from '@/plugins/api'
@@ -76,7 +75,6 @@ export const actions: Actions = {
   signOut({ commit }) {
     deleteApiSession().then(() => {
       commit('clearUser')
-      document.cookie = 'vuex=; max-age=0'
     })
   }
 }
