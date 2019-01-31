@@ -13,7 +13,7 @@ table.table
       th 
       th(v-html="getLink(site)")
       td {{ site.loginUser }}
-      td {{ site.loginPassword }}
+      td {{ site.loginPassword | hidePassword }}
       td {{ getActivate(site) }}
       td
         nuxt-link(:to="{ path: getEditPath(site), params: {id: site.id } }") 編集
@@ -25,6 +25,19 @@ import Vue from 'vue'
 import Site from '@/types/site'
 
 export default Vue.extend({
+  filters: {
+    hidePassword: function(value: string): string {
+      if (value === null || value == '') {
+        return ''
+      } else {
+        let ret = ''
+        for (var i = 0; i < value.length; i++) {
+          ret += '*'
+        }
+        return ret
+      }
+    }
+  },
   methods: {
     getLink: function(site: Site): string {
       return `<a href=${site.url} target="_blank">${site.name}</a>`
