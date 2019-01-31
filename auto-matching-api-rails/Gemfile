@@ -44,8 +44,6 @@ gem "ridgepole"
 gem "seed-fu"
 
 gem "sidekiq"
-gem "rails_db"
-gem "logster"
 
 # for search
 gem "ransack"
@@ -91,4 +89,7 @@ group :development do
   gem "annotate"
   gem "view_source_map"
   gem "solargraph"
+
+  gem "rails_db"
+  gem "logster"
 end
