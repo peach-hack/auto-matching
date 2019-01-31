@@ -21,7 +21,7 @@ module AutoMatching
       def split_sex_name_age(line)
         sex_tmp, name_tmp, age_tmp = line.split(" ")
 
-        sex = (sex_tmp == "♀" ? "女性" : "男性")
+        sex = convert_to_sex(sex_tmp)
 
         name = name_tmp.strip
 

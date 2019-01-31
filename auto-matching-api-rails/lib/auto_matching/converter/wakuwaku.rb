@@ -7,8 +7,8 @@ module AutoMatching
         name_list = []
 
         value.each do |v|
-          add_sex, name = v.split(/\A(.{1})/, 2)[1..-1]
-          sex = (add_sex == "♀" ? "女性" : "男性")
+          tmp_sex, name = v.split(/\A(.{1})/, 2)[1..-1]
+          sex = convert_to_sex(tmp_sex)
           sex_list.push(sex.to_s.strip)
           name_list.push(name.to_s.strip)
         end
