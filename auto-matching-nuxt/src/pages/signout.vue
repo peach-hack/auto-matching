@@ -9,6 +9,7 @@ export default Vue.extend({
   mounted() {
     this.$store.dispatch('session/signOut').then(() => {
       this.$router.push('/')
+      document.cookie = 'vuex=; max-age=0'
     })
   }
 })
