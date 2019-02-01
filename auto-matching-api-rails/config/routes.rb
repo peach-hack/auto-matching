@@ -18,6 +18,7 @@ Rails.application.routes.draw do
           resources :templates, only: %i[index update create destroy]
           resources :manual_posts, only: %i[index], path: "manual-posts"
           post :manual_posts, to: "manual_posts#execute", path: "manual-posts"
+          post :daily_crawl, to: "daily_crawl#execute", path: "daily-crawl"
         end
 
         resources :search, only: %i[index] do
