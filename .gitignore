@@ -6,3 +6,4 @@
 *.spec.js
 tmp
 dump.rdb
+bin/cookie
