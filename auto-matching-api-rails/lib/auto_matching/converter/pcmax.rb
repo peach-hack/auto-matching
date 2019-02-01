@@ -2,6 +2,8 @@ module AutoMatching
   module Converter
     class Pcmax < ConverterBase
       # valueには性別、名前、年齢が格納されているためそれぞれ分割
+      SITE_ID = "pcmax"
+
       def split_value(value)
         sex_list = []
         name_list = []
@@ -32,19 +34,20 @@ module AutoMatching
 
       # post_atは文字列で格納されているため日付型に変更
       def value_change_post_at(post_time)
-        post_at = []
+        post_at_list = []
 
         post_time.each do |date|
-          date.gsub!(/(年|月|日)/, "年" => "-", "月" => "-", "日" => "-")
-          post_at.push(Time.zone.parse(date))
+          post_at = convert_to_post_at(SITE_ID, date)
+          post_at_list.push(Time.zone.parse(post_at))
         end
 
-        post_at
+        post_at_list
       end
 
       def from_change(post_from)
         post_from_list = value_change_from(post_from)
         prefecture_list, city_list, address_list = split_post_from(post_from_list)
+        
         [prefecture_list, city_list, address_list]
       end
 

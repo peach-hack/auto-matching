@@ -48,6 +48,15 @@ module AutoMatching
         end
       end
 
+      def convert_to_post_at(site_id, date)
+        if site_id == "pcmax"
+          date.gsub!(/(年|月|日)/, "年" => "/", "月" => "/", "日" => "/")
+        elsif site_id == "ikukuru" || site_id == "wakuwaku"
+          now = Time.current
+          date.insert(0, "#{now.year}/")
+        end
+      end
+
       def convert_to_split_from(from)
         if from.match(FROM_ALL_REGEX)
           from.match(FROM_ALL_REGEX).captures
