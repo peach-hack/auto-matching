@@ -1,14 +1,12 @@
 <template lang="pug">
-p Signing in ...  
+button(type="button submit").btn.btn-primary 
+  | Submit
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  mounted() {
-    this.$auth0.setTokenByQuery()
-    this.$router.replace('/')
-  }
-} as any)
+  name: 'SubmitButton'
+})
 </script>

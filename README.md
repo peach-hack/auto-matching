@@ -3,7 +3,8 @@ Auto Matching
 
 ![](https://img.shields.io/github/issues/tsu-nera/auto-matching.svg)
 ![](https://img.shields.io/github/license/tsu-nera/auto-matching.svg)
-![](https://img.shields.io/circleci/project/github/tsu-nera/auto-matching.svg)
+[![CircleCI](https://circleci.com/gh/tsu-nera/auto-matching.svg?style=svg)](https://circleci.com/gh/tsu-nera/auto-matching)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/46087ec1-0ef7-40af-a87d-4591199a68a5/deploy-status)](https://app.netlify.com/sites/auto-matching/deploys)
 [![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/tsu-nera/auto-matching/)
 
 - Ruby version 2.6.0

@@ -44,15 +44,17 @@ gem "ridgepole"
 gem "seed-fu"
 
 gem "sidekiq"
-gem "rails_db"
-gem "logster"
 
 # for search
 gem "ransack"
 gem "bullet"
 
-# for auth
-gem "knock"
+# Use ActiveModel has_secure_password
+gem "bcrypt"
+
+# for APM
+gem "newrelic_rpm"
+gem "rails_12factor", group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -91,4 +93,7 @@ group :development do
   gem "annotate"
   gem "view_source_map"
   gem "solargraph"
+
+  gem "rails_db"
+  gem "logster"
 end

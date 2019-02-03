@@ -7,45 +7,56 @@ host: 'localhost:5000'
 schemes:
   - http
 paths:
-  /api/users/source-sites:
-    get:
-      summary: サイト一覧
+  /api/session:
+    delete:
+      summary: セッション終了
       produces:
         - application/json
       responses:
         '200':
           description: 成功時のレスポンス
         '500':
-          description: 失敗時のレスポンス
-  /api/users/source-sites/{id}:
-    put:
-      summary: サイト情報更新
+          description: 失敗時のレスポンス    
+    post:
+      summary: セッション開始
       produces:
-          - application/json
+        - application/json
       parameters:
-        - name: "id"
-          in: "path"
-          type: integer
-          required: true
         - in: body
           name: attributes
-          description: サイト情報
+          description: ログイン情報
           schema:
             type: object
             properties:
-              id:
-                type: integer
-              key:
+              username:
                 type: string
-              loginId:
-                description: "ログインID"
+                description: "ユーザ名"
+              password:
+                description: "パスワード"
                 type: string
-              loginPassword:
-                description: "ログインパスワード"
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users:
+    post:
+      summary: ユーザ登録
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: attributes
+          description: 情報情報
+          schema:
+            type: object
+            properties:
+              username:
                 type: string
-              activateFlag:
-                description: "有効フラグ"
-                type: boolean
+                description: "ユーザ名"
+              password:
+                description: "パスワード"
+                type: string
       responses:
         '200':
           description: 成功時のレスポンス
@@ -147,16 +158,19 @@ paths:
           schema:
             type: object
             properties:
-              id:
+              ids:
                 type: integer
                 description: "サイトID"
+              debug:
+                type: boolean
+                description: "Dry Run"
       responses:
         '200':
           description: 成功時のレスポンス
         '500':
           description: 失敗時のレスポンス
   /api/users/search/db:
-    get:
+    post:
       summary: 掲示板DB検索
       produces:
         - application/json
@@ -176,7 +190,7 @@ paths:
         '500':
           description: 失敗時のレスポンス
   /api/users/search/keyword:
-    get:
+    post:
       summary: 掲示板キーワード検索
       produces:
         - application/json
@@ -196,8 +210,110 @@ paths:
         '500':
           description: 失敗時のレスポンス
   /api/users/search/realtime:
-    get:
+    post:
       summary: 掲示板リアルタイム検索
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: attributes
+          schema:
+            type: object
+            properties:
+              ids:
+                type: integer
+                description: "サイトID"
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/search/result:
+    post:
+      summary: 掲示板検索結果
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: attributes
+          schema:
+            type: object
+            properties:
+              time:
+                type: string
+                description: "検索開始時刻"
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/search:
+    get:
+      summary: 掲示板検索履歴
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/settings/sites:
+    get:
+      summary: サイト一覧
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/settings/sites/{id}:
+    put:
+      summary: サイト情報更新
+      produces:
+          - application/json
+      parameters:
+        - name: "id"
+          in: "path"
+          type: integer
+          required: true
+        - in: body
+          name: attributes
+          description: サイト情報
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              key:
+                type: string
+              loginId:
+                description: "ログインID"
+                type: string
+              loginPassword:
+                description: "ログインパスワード"
+                type: string
+              activateFlag:
+                description: "有効フラグ"
+                type: boolean
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/settings/posts:
+    get:
+      summary: 投稿データ情報
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
+  /api/users/settings/posts/clear:          
+    post:
+      summary: 投稿データ削除
       produces:
         - application/json
       responses:

@@ -9,6 +9,8 @@ import Vue from 'vue'
 
 //@ts-ignore
 import SiteForm from '@/components/organisms/SiteForm.vue'
+//@ts-ignore
+import Site from '@/types/site'
 
 export default Vue.extend({
   components: {
@@ -18,7 +20,7 @@ export default Vue.extend({
     site: function(): Object {
       const idx = parseInt(this.$route.params.id)
       return this.$store.state.sites.sites.filter(
-        (site: any) => site.id === idx
+        (site: Site) => site.id === idx
       )[0]
     }
   }

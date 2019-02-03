@@ -1,7 +1,7 @@
 <template lang="pug">
 nuxt-link(:to="{ path: path }")
   button.btn.btn-primary
-    | 新規作成
+    | Create
 </template>
 
 <script lang="ts">

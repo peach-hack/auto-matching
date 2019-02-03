@@ -46,12 +46,15 @@ export const mutations: Mutations = {
           url: site.attributes.affiliateUrl as string
         })
       })
+  },
+  clearSites(state, payload) {
+    state.sites = []
   }
 }
 
 export const actions: Actions = {
   async fetchSites({ commit }) {
-    const response = await Api.getApiUsersSourceSites()
+    const response = await Api.getApiUsersSettingsSites()
     commit('addSites', response.data.data)
   }
 }

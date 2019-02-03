@@ -13,7 +13,7 @@ module AutoMatching
 
       # save_cookie
     rescue StandardError => e
-      save_current_page
+      save_current_page if Rails.env.development?
       logger.error("#{e.message}")
       raise e
     end
@@ -54,7 +54,7 @@ module AutoMatching
           }
         else
           {
-            args: %w[headless disable-gpu window-size=375,667 no-sandbox],
+            args: %w[headless disable-gpu window-size=375,667 no-sandbox disable-dev-shm-usage],
             mobileEmulation: mobile_emulation
           }
         end

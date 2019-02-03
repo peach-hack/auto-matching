@@ -1,1 +1,2 @@
-web: rails s
+web: bundle exec rails s
+worker: bundle exec sidekiq -C config/sidekiq_production.yml

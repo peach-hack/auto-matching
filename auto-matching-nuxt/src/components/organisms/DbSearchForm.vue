@@ -56,6 +56,7 @@ form(@submit.prevent="search")
 
 <script lang="ts">
 import Vue from 'vue'
+//@ts-ignore
 import { Datetime } from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 
@@ -94,16 +95,13 @@ export default Vue.extend({
         params: {
           q: this.query
         },
-        paramsSerializer: function(params: any) {
+        paramsSerializer: function(params: any): string {
           return Qs.stringify(params, { arrayFormat: 'brackets' })
         }
       }
-      this.$store
-        .dispatch('search/searchDb', queryParameters)
-        .catch((error: any) => {
-          console.log(error)
-          this.$toasted.error('エラーが発生しました')
-        })
+      this.$store.dispatch('search/searchDb', queryParameters).catch(error => {
+        this.$toasted.error('エラーが発生しました')
+      })
     },
     clear: function() {
       this.query.title_cont = ''
