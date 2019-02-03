@@ -2,7 +2,7 @@ module AutoMatching
   module Converter
     class Wakuwaku < ConverterBase
       SITE_ID = "wakuwaku"
-      
+
       # 性別、名前を分割
       def sex_name_split_value(value)
         sex_list = []
@@ -10,6 +10,7 @@ module AutoMatching
 
         value.each do |v|
           tmp_sex, name = v.split(/\A(.{1})/, 2)[1..-1]
+          tmp_sex.to_s unless tmp_sex.kind_of?(String)
           sex = convert_to_sex(tmp_sex)
           sex_list.push(sex.to_s.strip)
           name_list.push(name.to_s.strip)
@@ -35,7 +36,8 @@ module AutoMatching
         post_at_list = []
 
         post_time.each do |date|
-          post_at = convert_to_post_at(SITE_ID, date)
+          now = Time.current
+          post_at = date.insert(0, "#{now.year}/")
           post_at_list.push(Time.zone.parse(post_at))
         end
         post_at_list

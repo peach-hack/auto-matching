@@ -2,12 +2,13 @@ module AutoMatching
   module Converter
     class Ikukuru < ConverterBase
       SITE_ID = "ikukuru"
-      
+
       # 性別を変換
       def sex_value_change(get_sex)
         sex_list = []
 
         get_sex.each do |v|
+          v.to_s unless v.kind_of?(String)
           sex = convert_to_sex(v)
           sex_list.push(sex.to_s.strip)
         end
@@ -53,7 +54,8 @@ module AutoMatching
         post_at_list = []
 
         get_post_at.each do |date|
-          post_at = convert_to_post_at(SITE_ID, date)
+          now = Time.current
+          post_at = date.insert(0, "#{now.year}/")
           post_at_list.push(Time.zone.parse(post_at))
         end
         post_at_list

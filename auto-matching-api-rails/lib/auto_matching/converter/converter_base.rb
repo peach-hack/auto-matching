@@ -40,49 +40,7 @@ module AutoMatching
       end
 
       def convert_to_sex(sex)
-        sex.to_s unless sex.kind_of?(String)
-        if sex.include?("♀" || "♂")
-          sex == "♀" ? "女性" : "男性"
-        else
-          false
-        end
-      end
-
-      def convert_to_post_at(site_id, date)
-        if site_id == "pcmax"
-          date.gsub!(/(年|月|日)/, "年" => "/", "月" => "/", "日" => "/")
-        elsif site_id == "ikukuru" || site_id == "wakuwaku"
-          now = Time.current
-          date.insert(0, "#{now.year}/")
-        end
-      end
-
-      def convert_to_split_from(from)
-        if from.match(FROM_ALL_REGEX)
-          from.match(FROM_ALL_REGEX).captures
-        elsif from.match(FROM_CITY_REGEX)
-          from.match(FROM_CITY_REGEX).captures
-        else
-          from.match(FROM_PREFECTURE_REGEX).captures
-        end
-      end
-
-      def convert_to_from(from_list)
-        from_length = from_list.length
-        if from_length == 3
-          prefecture = from_list[0]
-          city = from_list[1]
-          address = from_list[2]
-        elsif from_length == 2
-          prefecture = from_list[0]
-          city = from_list[1]
-          address = ""
-        elsif from_length == 1
-          prefecture = from_list[0]
-          city = ""
-          address = ""
-        end
-        [prefecture, city, address]
+        sex == "♀" ? "女性" : "男性"
       end
     end
   end
