@@ -42,4 +42,5 @@ staging:
   app_name: Auto Matching (Staging)
 
 production:
+  attributes.include: job.sidekiq.args.*
   <<: *default_settings
