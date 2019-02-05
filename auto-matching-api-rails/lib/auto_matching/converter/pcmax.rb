@@ -3,14 +3,14 @@ module AutoMatching
     class Pcmax < ConverterBase
       # valueには性別、名前、年齢が格納されているためそれぞれ分割
 
-      def split_value(value)
+      def split_value(value_list)
         sex_list = []
         name_list = []
         age_list = []
 
-        value.each do |v|
+        value_list.each do |v|
           sex, name, age = split_sex_name_age(v)
-          sex.to_s unless sex.kind_of?(String)
+          sex = sex.to_s unless sex.kind_of?(String)
 
           sex_list.push(sex)
           name_list.push(name)
