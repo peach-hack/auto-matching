@@ -1,7 +1,7 @@
 <template lang="pug">
 footer.app-footer.ml-auto
   span.mr-1 Powered by
-  a(href="https://github.com/tsu-nera/auto-matching") tsu-nera
+  a(href="https://github.com/peach-hack/auto-matching") Peach Hack
 </template>
 
 <script lang="ts">

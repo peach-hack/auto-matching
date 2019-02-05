@@ -1,11 +1,11 @@
 Auto Matching 
 ===
 
-![](https://img.shields.io/github/issues/tsu-nera/auto-matching.svg)
-![](https://img.shields.io/github/license/tsu-nera/auto-matching.svg)
-[![CircleCI](https://circleci.com/gh/tsu-nera/auto-matching.svg?style=svg)](https://circleci.com/gh/tsu-nera/auto-matching)
+![](https://img.shields.io/github/issues/peach-hack/auto-matching.svg)
+![](https://img.shields.io/github/license/peach-hack/auto-matching.svg)
+[![CircleCI](https://circleci.com/gh/epach-hack/auto-matching.svg?style=svg)](https://circleci.com/gh/peach-hack/auto-matching)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/46087ec1-0ef7-40af-a87d-4591199a68a5/deploy-status)](https://app.netlify.com/sites/auto-matching/deploys)
-[![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/tsu-nera/auto-matching/)
+[![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/peach-hack/auto-matching/)
 
 - Ruby version 2.6.0
 - Rails 5.2.1
@@ -44,8 +44,8 @@ v2（現代的サイト）（開発予定)
 
 ひみつのボタン。ポチっとな。
  
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tsu-nera/auto-matching)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tsu-nera/auto-matching)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/peach-hack/auto-matching)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/peach-hack/auto-matching)
 
 ## お試しサーバ
 
@@ -80,4 +80,4 @@ Hey dude! Help me out for a couple of :beers:!
 
 頑張ってIssueやっつけるから、ぼくにビールおごってよ！！
 
-[![Beerpay](https://beerpay.io/tsu-nera/auto-matching/badge.svg?style=beer-square)](https://beerpay.io/tsu-nera/auto-matching)  [![Beerpay](https://beerpay.io/tsu-nera/auto-matching/make-wish.svg?style=flat-square)](https://beerpay.io/tsu-nera/auto-matching?focus=wish)
+[![Beerpay](https://beerpay.io/peach-hack/auto-matching/badge.svg?style=beer-square)](https://beerpay.io/peach-hack/auto-matching)  [![Beerpay](https://beerpay.io/peach-hack/auto-matching/make-wish.svg?style=flat-square)](https://beerpay.io/peach-hack/auto-matching?focus=wish)

@@ -11,6 +11,6 @@ RUN apk add --no-cache bash git
 Run apk add --no-cache yarn
 
 # get projects
-RUN git clone https://github.com/tsu-nera/auto-matching.git app
+RUN git clone https://github.com/peach-hack/auto-matching.git app
 ENV APP_ROOT /app
 WORKDIR $APP_ROOT
