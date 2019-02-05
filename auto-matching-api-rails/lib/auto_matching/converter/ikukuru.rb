@@ -8,7 +8,7 @@ module AutoMatching
         sex_list = []
 
         get_sex.each do |v|
-          v.to_s unless v.kind_of?(String)
+          v = v.to_s unless v.kind_of?(String)
           sex = convert_to_sex(v)
           sex_list.push(sex.to_s.strip)
         end
