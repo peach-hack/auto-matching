@@ -27,8 +27,6 @@ module AutoMatching
 
           # 掲示板データ保存
           save_board
-
-          logger.info("READER: #{source_site_key} end")
         end
 
         def search_board
@@ -41,6 +39,19 @@ module AutoMatching
 
         def save_board
           raise NotImprementedError
+        end
+
+        def save!(post)
+          if post.nil?
+            logger.debug("Post is duplicated.")
+            return
+          end
+
+          if post.save!
+            logger.debug("Post save Successfully.")
+          else
+            logger.error("Post save error occured #{post.errors.full_messages}")
+          end
         end
     end
   end

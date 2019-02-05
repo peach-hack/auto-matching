@@ -4,7 +4,7 @@ Auto Matching
 ![](https://img.shields.io/github/issues/peach-hack/auto-matching.svg)
 ![](https://img.shields.io/github/license/peach-hack/auto-matching.svg)
 [![CircleCI](https://circleci.com/gh/epach-hack/auto-matching.svg?style=svg)](https://circleci.com/gh/peach-hack/auto-matching)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/46087ec1-0ef7-40af-a87d-4591199a68a5/deploy-status)](https://app.netlify.com/sites/auto-matching/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f35b2a14-c4d4-4ad5-bab8-a530f89d02f9/deploy-status)](https://app.netlify.com/sites/auto-matching/deploys)
 [![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/peach-hack/auto-matching/)
 
 - Ruby version 2.6.0
@@ -43,7 +43,7 @@ v2（現代的サイト）（開発予定)
 ## Deploy Button
 
 ひみつのボタン。ポチっとな。
- 
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/peach-hack/auto-matching)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/peach-hack/auto-matching)
 

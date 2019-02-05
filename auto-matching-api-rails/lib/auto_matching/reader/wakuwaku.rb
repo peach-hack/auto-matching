@@ -54,7 +54,7 @@ module AutoMatching
             post_data = { source_site_id: source_site_id,
                           url: url_list[i], title: title_list[i], sex: sex_list[i], name: name_list[i],
                           age: age_list[i], post_at: post_at_list[i], category: category_list[i],
-                          prefecture: prefecture, city: city_list[i], address: address
+                          prefecture: prefecture, city: city_list[i], address: address, from: ""
                         }
             @post_data_list[i] = post_data
           end
@@ -66,30 +66,8 @@ module AutoMatching
           logging_start(__method__)
 
           @post_data_list.each do |d|
-            profile = {}
-            profile[:source_site_id] = d[:source_site_id]
-            profile[:name] = d[:name]
-            profile[:age] = d[:age]
-            profile[:sex] = d[:sex]
-            profile[:from] = ""
-
-            post = {}
-            post[:title] = d[:title]
-            post[:url] = d[:url]
-            post[:post_at] = d[:post_at]
-            post[:category] = d[:category]
-            post[:prefecture] = d[:prefecture]
-            post[:city] = d[:city]
-            post[:address] = d[:address]
-
-            @profile = Profile.new(profile)
-            @post = @profile.build_post(post)
-
-            if @post.save!
-              logger.debug("成功しました")
-            else
-              logger.debug("失敗しました")
-            end
+            post = Post.compose(Post.prepare(d), Profile.prepare(d))
+            save!(post)
           end
 
           logging_end(__method__)
