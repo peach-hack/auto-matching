@@ -24,4 +24,23 @@ class Post < ApplicationRecord
   validates :category, presence: true
 
   belongs_to :profile, optional: true
+
+  def prepare(title, url, post_at, category, prefecture, city, address)
+    post = {}
+    post[:title] = title
+    post[:url] = url
+    post[:post_at] = post_at
+    post[:category] = category
+    post[:prefecture] = prefecture
+    post[:city] = city
+    post[:address] = address
+    post
+  end
+
+  def compose(post_hash, profile_hash)
+    return nil if Post.find_by_url(post_hash[:url])
+    profile_obj = Profile.find_or_initialize_by(profile)
+
+    profile_obj.build_post(post_hash)
+  end
 end
