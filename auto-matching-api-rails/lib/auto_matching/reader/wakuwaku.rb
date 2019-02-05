@@ -54,7 +54,7 @@ module AutoMatching
             post_data = { source_site_id: source_site_id,
                           url: url_list[i], title: title_list[i], sex: sex_list[i], name: name_list[i],
                           age: age_list[i], post_at: post_at_list[i], category: category_list[i],
-                          prefecture: prefecture, city: city_list[i], address: address
+                          prefecture: prefecture, city: city_list[i], address: address, from: ""
                         }
             @post_data_list[i] = post_data
           end

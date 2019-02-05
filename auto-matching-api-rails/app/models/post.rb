@@ -25,15 +25,15 @@ class Post < ApplicationRecord
 
   belongs_to :profile, optional: true
 
-  def self.prepare(args)
+  def self.prepare(**args)
     post = {}
-    post[:title] = title
-    post[:url] = url
-    post[:post_at] = post_at
-    post[:category] = category
-    post[:prefecture] = prefecture
-    post[:city] = city
-    post[:address] = address
+    post[:title] = args[:title]
+    post[:url] = args[:url]
+    post[:post_at] = args[:post_at]
+    post[:category] = args[:category]
+    post[:prefecture] = args[:prefecture]
+    post[:city] = args[:city]
+    post[:address] = args[:address]
     post
   end
 
