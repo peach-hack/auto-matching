@@ -25,7 +25,7 @@ class Post < ApplicationRecord
 
   belongs_to :profile, optional: true
 
-  def prepare(title, url, post_at, category, prefecture, city, address)
+  def self.prepare(title, url, post_at, category, prefecture, city, address)
     post = {}
     post[:title] = title
     post[:url] = url
@@ -37,9 +37,9 @@ class Post < ApplicationRecord
     post
   end
 
-  def compose(post_hash, profile_hash)
+  def self.compose(post_hash, profile_hash)
     return nil if Post.find_by_url(post_hash[:url])
-    profile_obj = Profile.find_or_initialize_by(profile)
+    profile_obj = Profile.find_or_initialize_by(profile_hash)
 
     profile_obj.build_post(post_hash)
   end
