@@ -42,10 +42,15 @@ module AutoMatching
         end
 
         def save!(post)
-          if post && post.save!
+          if post.nil?
+            logger.debug("Post is duplicated.")
+            return
+          end
+
+          if post.save!
             logger.debug("Post save Successfully.")
           else
-            logger.error("Post save error occured.")
+            logger.error("Post save error occured #{post.errors.full_messages}")
           end
         end
     end
