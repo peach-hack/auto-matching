@@ -19,50 +19,30 @@ module AutoMatching
           post_data = {}
           @post_data_list = []
 
-          sex = []
-          name = []
-          age = []
-          city = []
-          post_at = []
+          converter = AutoMatching::Converter::Wakuwaku.new
 
           # 取得する大枠のテーブルを設定
-          url_list = session.all(".rightBtn")
-          title_list = session.all(".message")
-          category_list = session.all(".category1")
+          get_url = session.all(".rightBtn")
+          get_title = session.all(".message")
+          get_category = session.all(".category1")
           value_list = session.all(".name")
           value2_list = session.all(".age")
           post_at_list = session.all(".time")
 
           # 各要素取得
           prefecture = session.find(".subHeaderBBS").text.gsub(/エリア：/, "").strip
-          url = url_list.map { |t| t[:href] }
-          title = title_list.map { |t| t.text.strip.to_s }
-          category = category_list.map { |t| t.text.strip.to_s }
+          url_list = get_url.map { |t| t[:href] }
+          title_list = get_title.map { |t| t.text.strip.to_s }
+          category_list = get_category.map { |t| t.text.strip.to_s }
           value = value_list.map { |t| t.text.strip.to_s }
           value2 = value2_list.map { |t| t.text.strip.to_s }
-          post_time = post_at_list.map { |t| t.text.strip.to_s }
+          get_post_at = post_at_list.map { |t| t.text.strip.to_s }
 
-          # 性別、名前を分割
-          value.each do |v|
-            sex_tmp, add_name = v.split(/\A(.{1})/, 2)[1..-1]
-            add_sex = (sex_tmp == "♀" ? "女性" : "男性")
-            sex.push(add_sex.to_s.strip)
-            name.push(add_name.to_s.strip)
-          end
+          sex_list, name_list = converter.sex_name_split_value(value)
 
-          # 年齢、市区町村を分割
-          value2.each do |v|
-            add_age, add_city = v.split(" ")
-            age.push(add_age.to_s.strip)
-            city.push(add_city.to_s.strip)
-          end
+          age_list, city_list = converter.age_city_split_value(value2)
 
-          # 投稿日を変換
-          post_time.each do |date|
-            now = Time.current
-            date.insert(0, "#{now.year}/")
-            post_at.push(Time.zone.parse(date))
-          end
+          post_at_list = converter.post_at_change_value(get_post_at)
 
           source_site_id = SourceSite.find_by(key: SourceSite::KEY_WAKUWAKU).id
 
@@ -72,9 +52,9 @@ module AutoMatching
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
             post_data = { source_site_id: source_site_id,
-                          url: url[i], title: title[i], sex: sex[i], name: name[i],
-                          age: age[i], post_at: post_at[i], category: category[i],
-                          prefecture: prefecture, city: city[i], address: address
+                          url: url_list[i], title: title_list[i], sex: sex_list[i], name: name_list[i],
+                          age: age_list[i], post_at: post_at_list[i], category: category_list[i],
+                          prefecture: prefecture, city: city_list[i], address: address
                         }
             @post_data_list[i] = post_data
           end

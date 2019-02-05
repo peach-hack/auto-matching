@@ -29,16 +29,10 @@ module AutoMatching
           post_data = {}
           @post_data_list = []
 
-          name_list = []
-          age_list = []
-          sex_list = []
-          post_at_list = []
+          converter = AutoMatching::Converter::Ikukuru.new
 
           value01 = []
-          regex_shikuchoson = /(市|区|町|群)/
-          from_to_tokyo = "東京都"
-          from_list = []
-          from_trip_list = []
+
 
           # TODO
           # 取得する大枠のテーブル設定
@@ -57,45 +51,22 @@ module AutoMatching
           # 各要素取得
           category_list = session.find("#title").text.strip
           get_post_at = get_time.map { |t| t.text.strip }
-          get_url = get_url.map { |t| t[:href] }
-          get_title = get_post_title.map { |t| t.text.strip }
+          url_list = get_url.map { |t| t[:href] }
+          title_list = get_post_title.map { |t| t.text.strip }
           get_sex = value00.map { |t| t.find("span.woman").text.strip }
           get_name_age = value00.map { |t| t.text.gsub(/♀/, "") }
           get_from = value01.map { |t| t.text }
 
-          get_from.each do |v|
-            tmp_v = v.split(" ").last
-            kugiri = tmp_v.index(regex_shikuchoson)
-            city = tmp_v[0..kugiri]
-            prefecture = tmp_v[kugiri + 1..-1]
+          from_list, trip_from_list = converter.split_from_value(get_from)
 
-            if prefecture.blank?
-              from_list.push(from_to_tokyo + city)
-            else
-              from_list.push(prefecture)
-              from_trip_list.push(city)
-            end
-          end
+          # Sider落ちるため保存はしませんが、旅行先の住所を格納している変数を下に記述しておく
+          trip_from_list
 
-          # 性別の変換
-          get_sex.each do |v|
-            add_sex = (v == "♀" ? "女性" : "男性")
-            sex_list.push(add_sex.to_s.strip)
-          end
+          sex_list = converter.sex_value_change(get_sex)
 
-          # 名前と年齢の分割
-          get_name_age.each do |v|
-            add_name, add_age = v.split(" ")
-            name_list.push(add_name.strip)
-            age_list.push(add_age.strip)
-          end
+          name_list, age_list = converter.split_name_age_value(get_name_age)
 
-          # 投稿時間の変換
-          get_post_at.each do |date|
-            now = Time.current
-            date.insert(0, "#{now.year}/")
-            post_at_list.push(Time.zone.parse(date))
-          end
+          post_at_list = converter.post_at_value_change(get_post_at)
 
           source_site_id = SourceSite.find_by(key: SourceSite::KEY_IKUKURU).id
 
@@ -107,7 +78,7 @@ module AutoMatching
           # 配列の中にハッシュとして取得した要素を格納
           15.times.with_index do |i|
             post_data = { source_site_id: source_site_id,
-              url: get_url[i], title: get_title[i], sex: sex_list[i], name: name_list[i],
+              url: url_list[i], title: title_list[i], sex: sex_list[i], name: name_list[i],
               age: age_list[i], post_at: post_at_list[i], category: category_list,
               prefecture: prefecture_list, city: city_list, address: address_list, from: from_list[i]
             }
