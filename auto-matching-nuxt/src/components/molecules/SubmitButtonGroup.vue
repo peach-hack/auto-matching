@@ -1,8 +1,7 @@
 <template lang="pug">
 .form-group
   .button-group
-    button(type="button submit").btn.btn-primary
-      | Submit
+    submit-button
     nuxt-link(:to="{ path: path }")
       button(type="button").btn.btn-light
         | Cancel
@@ -11,8 +10,14 @@
 <script lang="ts">
 import Vue from 'vue'
 
+//@ts-ignore
+import SubmitButton from '@/components/atoms/SubmitButton.vue'
+
 export default Vue.extend({
   name: 'SubmitButtonGroup',
+  components: {
+    SubmitButton
+  },
   props: {
     path: String
   }

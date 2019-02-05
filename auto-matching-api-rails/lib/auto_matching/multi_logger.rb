@@ -11,17 +11,21 @@ module AutoMatching
       )
 
       def logger
-        @logger ||= begin
-          logger = ActiveSupport::Logger.new(logfile_name)
-          logger.formatter = Logger::Formatter.new
-          logger.datetime_format = logdate_format
+        if Rails.env.development?
+          @logger ||= begin
+            logger = ActiveSupport::Logger.new(logfile_name)
+            logger.formatter = Logger::Formatter.new
+            logger.datetime_format = logdate_format
 
-          srdout_logger = ActiveSupport::Logger.new(STDOUT)
-          multiple_loggers = ActiveSupport::Logger.broadcast(srdout_logger)
+            srdout_logger = ActiveSupport::Logger.new(STDOUT)
+            multiple_loggers = ActiveSupport::Logger.broadcast(srdout_logger)
 
-          logger.extend(multiple_loggers)
+            logger.extend(multiple_loggers)
 
-          logger
+            logger
+          end
+        else
+          @logger ||= Logger.new(STDOUT)
         end
       end
 

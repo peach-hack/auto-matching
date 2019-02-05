@@ -21,8 +21,7 @@ class ManualPostJob < ApplicationJob
     set_success
   rescue StandardError
     set_error
-    rescue hogehoge
-      set_suspend
+  rescue hogehoge
   ensure
     $DEBUG = false
   end
@@ -39,7 +38,6 @@ class ManualPostJob < ApplicationJob
       history.update(last_post_status: ERROR)
       ActionCable.server.broadcast "manual_post_channel", ids: [history.id], status: ERROR
     end
-
     def set_suspend
       ActionCable.server.broadcast "manual_post_channel", ids: [history.id], status: SUSPEND
     end
@@ -49,7 +47,8 @@ class ManualPostJob < ApplicationJob
     end
 
     def allow_manual_post?(history)
-      calculate_elapsed_minutes(history) > ENV["NEXT_MANUAL_POST_ALLOW_MINUTES"].to_f && history.last_post_status != "成功"
+      # TODO: 投稿制限条件を強める考慮
+      calculate_elapsed_minutes(history) > ENV["NEXT_MANUAL_POST_ALLOW_MINUTES"].to_f || history.last_post_status != "成功"
     end
 
     def calculate_elapsed_minutes(history)

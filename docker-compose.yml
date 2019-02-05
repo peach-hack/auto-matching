@@ -5,6 +5,8 @@ services:
     image: postgres:10.6-alpine
     volumes:
       - postgres-store:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
 
   redis:
     image: redis:latest
@@ -21,7 +23,6 @@ services:
     environment:
       CC_TEST_REPORTER_ID:
       DATABASE_HOST: postgres
- #     SELENIUM_URL: http://selenium-server:4444/wd/hub
       REDIS_URL: redis://redis:6379
     ports:
       - '5000:3000'
@@ -43,26 +44,6 @@ services:
       - ./auto-matching-nuxt:/app
       - node-modules-store:/app/node_modules
     working_dir: /app
-
-#  nuxt-test:
-#    command: /bin/sh -c 'API_URL=http://rails:5001 yarn nuxt'
-#    environment:
-#      HOST: 0.0.0.0
-#    image: node:11.3-alpine
-#    ports:
-#      - '3001:3000'
-#    tty: true
-#    volumes:
-#      - ./auto-matching-nuxt:/app
-#      - node-modules-store:/app/node_modules
-#    working_dir: /app
-#
-#  selenium-server:
-#    image: selenium/standalone-chrome-debug:3.11.0-bismuth
-#    ports:
-#      - 4444:4444
-#    volumes:
-#      - /dev/shm:/dev/shm
 
   worker:
     build: ./auto-matching-api-rails/.

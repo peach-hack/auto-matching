@@ -4,9 +4,10 @@ import axios from 'axios'
 axios.interceptors.request.use(
   config => {
     console.log('Making request to ' + config.url)
-    config.headers.Authorization = `Bearer ${getIdToken()}`
-    config.headers.common['Content-Type'] = 'application/json'
-    config.headers.common['Access-Control-Allow-Origin'] = '*'
+    config.headers.post['Content-Type'] = 'application/json'
+    config.xsrfCookieName = 'CSRF-TOKEN'
+    config.xsrfHeaderName = 'X-CSRF-Token'
+    config.withCredentials = true
     return config
   },
   function(error) {
@@ -14,26 +15,22 @@ axios.interceptors.request.use(
   }
 )
 
-function isAuthenticated() {
-  const expiresAt = window.localStorage.getItem('expiresAt')
-  return new Date().getTime() < expiresAt
-}
-
-function getIdToken() {
-  return isAuthenticated() ? localStorage.getItem('idToken') : null
-}
-
 axios.interceptors.response.use(
   function(response) {
     return response
   },
   function(error) {
+    console.log(error)
     if (error.response && error.response.status === 401) {
-      window.location.href = '/login'
+      window.location.href = '/signin'
     }
-    if (error.response && error.response.status === 500) {
-      Vue.toasted.clear()
-      Vue.toasted.error('エラーが発生しました')
+    if (
+      error.response &&
+      (error.response.status === 500 || error.response.status === 400)
+    ) {
+      this.$store.dispatch('session/signOut').then(() => {
+        window.location.href = '/signin'
+      })
     }
     return Promise.reject(error.response)
   }

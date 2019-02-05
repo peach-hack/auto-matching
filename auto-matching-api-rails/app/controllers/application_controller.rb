@@ -1,5 +1,16 @@
 class ApplicationController < ActionController::API
-  include Knock::Authenticable
+  include ActionController::Cookies
+  include ActionController::RequestForgeryProtection
+
+  before_action :set_csrf_cookie
+
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    response_not_found
+  end
+
+  rescue_from ActionController::InvalidAuthenticityToken do |e|
+    response_unauthorized
+  end
 
   # 200 Success
   def response_success(class_name, action_name)
@@ -30,4 +41,21 @@ class ApplicationController < ActionController::API
   def response_internal_server_error
     render status: 500, json: { status: 500, message: "Internal Server Error" }
   end
+
+  private
+
+    def set_csrf_cookie
+      cookies["CSRF-TOKEN"] = form_authenticity_token
+    end
+
+    def authenticate_user
+      unless current_user
+        response_unauthorized
+        nil
+      end
+    end
+
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
 end

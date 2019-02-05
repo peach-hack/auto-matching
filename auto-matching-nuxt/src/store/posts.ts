@@ -49,6 +49,9 @@ export const mutations: Mutations = {
     )
     state.templates = templates
   },
+  clearTemplates(state: State, payload: any) {
+    state.templates = []
+  },
   addHistories(state, payload) {
     state.histories = []
     payload

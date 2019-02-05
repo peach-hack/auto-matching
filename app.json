@@ -1,7 +1,7 @@
 {
   "name": "Auto Matching",
   "description": "Auto Matching Rails API server",
-  "repository": "https://github.com/tsu-nera/auto-matching",
+  "repository": "https://github.com/peach-hack/auto-matching",
   "keywords": [
     "rails",
     "ruby"
@@ -12,6 +12,9 @@
       "options": {
         "version": "11"
       }
+    },
+    {
+      "plan": "redistogo"
     }
   ],
   "buildpacks": [
@@ -25,17 +28,6 @@
   "env": {
     "APP_BASE": {
       "value": "auto-matching-api-rails"
-    },
-    "AUTH0_CLIENT_ID": {
-      "value": "dq1NOLYioOI9bMnPg4rOdDJGjgLdNMFy"
-    },
-    "AUTH0_JWKS": {
-      "value": "https://auto-matching.auth0.com/.well-known/jwks.json"
     }
-  },
-  "scripts": {
-    "postdeploy": [
-      "bundle exec rails db:prepare"
-    ]
   }
 }

@@ -21,4 +21,14 @@ class Profile < ApplicationRecord
   belongs_to :source_site
   has_one :post, dependent: :destroy
   accepts_nested_attributes_for :post
+
+  def self.prepare(**args)
+    profile = {}
+    profile[:source_site_id] = args[:source_site_id]
+    profile[:name] = args[:name]
+    profile[:age] = args[:age]
+    profile[:sex] = args[:sex]
+    profile[:from] = args[:from]
+    profile
+  end
 end

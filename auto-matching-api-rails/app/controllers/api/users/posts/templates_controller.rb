@@ -2,7 +2,7 @@ module Api
   module Users
     module Posts
       class TemplatesController < ::ApplicationController
-        before_action :authenticate_user
+        before_action :authenticate_user unless Rails.env.test?
 
         def index
           templates = PostTemplate.all
@@ -15,7 +15,7 @@ module Api
           if template.save
             response_success(:template, :create)
           else
-            response_bad_request
+            response_internal_server_error
           end
         end
 
@@ -28,7 +28,7 @@ module Api
           if template.save
             response_success(:template, :update)
           else
-            response_bad_request
+            response_internal_server_error
           end
         end
 
@@ -37,7 +37,7 @@ module Api
           if template.destroy
             response_success(:template, :destroy)
           else
-            response_bad_request
+            response_internal_server_error
           end
         end
       end

@@ -29,6 +29,7 @@ import Template from '@types/template'
 import { deleteApiUsersPostsTemplatesById } from '@/plugins/api'
 //@ts-ignore
 import DateUtil from '@/components/mixins/DateUtil'
+import { AxiosError, AxiosResponse } from 'axios'
 
 export default Vue.extend({
   mixins: [DateUtil],
@@ -40,14 +41,14 @@ export default Vue.extend({
       deleteApiUsersPostsTemplatesById({
         id: id
       })
-        .then((response: any) => {
+        .then((response: AxiosResponse) => {
           this.$store.commit({
             type: 'posts/deleteTemplate',
             id: id
           })
           this.$toasted.success('削除しました')
         })
-        .catch((error: any) => {
+        .catch((error: AxiosError) => {
           this.$toasted.error('エラーが発生しました')
         })
     }

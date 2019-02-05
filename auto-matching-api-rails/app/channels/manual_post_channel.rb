@@ -1,5 +1,5 @@
-class ManualPostChannel < ApplicationCable::Channel
+class SearchChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "manual_post_channel"
+    stream_from "search_channel"
   end
 end

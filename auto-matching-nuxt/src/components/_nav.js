@@ -29,11 +29,6 @@ export default {
       icon: 'icon-star'
     },
     {
-      name: '定期実行設定',
-      url: '/posts/auto',
-      icon: 'icon-star'
-    },
-    {
       title: true,
       name: '横断検索',
       class: '',
@@ -48,18 +43,18 @@ export default {
       icon: 'icon-star'
     },
     {
-      name: 'リアルタイム検索',
-      url: '/search/realtime',
-      icon: 'icon-star'
-    },
-    {
       name: 'キーワード検索',
       url: '/search/keyword',
       icon: 'icon-star'
     },
     {
+      name: 'リアルタイム検索',
+      url: '/search/realtime',
+      icon: 'icon-star'
+    },
+    {
       title: true,
-      name: 'その他',
+      name: '定期実行',
       class: '',
       wrapper: {
         element: '',
@@ -67,8 +62,42 @@ export default {
       }
     },
     {
-      name: 'サイト管理',
-      url: '/sites',
+      name: '定期投稿設定',
+      url: '/', // '/posts/auto',
+      icon: 'icon-star'
+    },
+    {
+      name: '定期監視設定',
+      url: '/', // '/posts/auto',
+      icon: 'icon-star'
+    },
+    {
+      name: 'リアルタイム監視',
+      url: '/', // '/search/polling',
+      icon: 'icon-star'
+    },
+    {
+      title: true,
+      name: '設定',
+      class: '',
+      wrapper: {
+        element: '',
+        attributes: {}
+      }
+    },
+    {
+      name: 'サイト設定',
+      url: '/settings/sites',
+      icon: 'icon-star'
+    },
+    {
+      name: 'データベース設定',
+      url: '/settings/db',
+      icon: 'icon-star'
+    },
+    {
+      name: 'サインアウト',
+      url: '/signout',
       icon: 'icon-star'
     }
   ]

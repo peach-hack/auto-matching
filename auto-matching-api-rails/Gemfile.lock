@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/brainspec/enumerize.git
-  revision: f8c4ccbf55fa4060c6d6349fa46c1cf1e5451459
+  revision: f76e2a0dff7d513900c53805c8bbcf5f13cc827d
   specs:
     enumerize (2.2.2)
       activesupport (>= 3.2)
@@ -62,7 +62,7 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     annotate (2.7.4)
       activerecord (>= 3.2, < 6.0)
@@ -88,7 +88,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (10.0.2)
-    capybara (3.12.0)
+    capybara (3.13.2)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -139,7 +139,6 @@ GEM
     jaro_winkler (1.5.2)
     join_dependency (0.1.4)
       activerecord (>= 4.2.0)
-    jwt (1.5.6)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -152,10 +151,6 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
-    knock (2.1.1)
-      bcrypt (~> 3.1)
-      jwt (~> 1.5)
-      rails (>= 4.2)
     kramdown (1.17.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -177,6 +172,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    newrelic_rpm (6.0.0.351)
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
@@ -225,9 +221,12 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails-i18n (5.1.2)
+    rails-i18n (5.1.3)
       i18n (>= 0.7, < 2)
       railties (>= 5.0, < 6)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_db (2.0.6)
       activerecord
       codemirror-rails
@@ -238,6 +237,8 @@ GEM
       terminal-table
     rails_pretty_json_rednerer (0.1.0)
       rails (>= 3.2)
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.2.2)
       actionpack (= 5.2.2)
       activesupport (= 5.2.2)
@@ -315,7 +316,7 @@ GEM
     simple_scheduler (1.0.0)
       rails (>= 4.2)
       sidekiq (>= 4.2)
-    solargraph (0.31.1)
+    solargraph (0.31.2)
       backport (~> 0.3)
       htmlentities (~> 4.3, >= 4.3.4)
       jaro_winkler (~> 1.5)
@@ -375,6 +376,7 @@ DEPENDENCIES
   annotate
   awesome_rails_console
   baby_squeel!
+  bcrypt
   better_errors
   bullet
   byebug
@@ -387,10 +389,10 @@ DEPENDENCIES
   faker
   fast_jsonapi
   gimei
-  knock
   listen (>= 3.0.5, < 3.2)
   logster
   meta-tags
+  newrelic_rpm
   pg
   pry
   pry-byebug
@@ -400,6 +402,7 @@ DEPENDENCIES
   rails (~> 5.2.1)
   rails-controller-testing
   rails-i18n
+  rails_12factor
   rails_db
   rails_pretty_json_rednerer
   ransack

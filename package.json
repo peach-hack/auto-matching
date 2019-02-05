@@ -18,6 +18,7 @@
     "rails:rubocop": "docker-compose run rails rubocop -a",
     "rails:annotate": "docker-compose run rails bundle exec annotate",
     "rails:test_datas": "docker-compose run rails rails test_datas:all",
+    "nuxt:dev": "docker-compose run nuxt yarn dev",
     "swagger:up": "docker-compose -f docker-compose-swagger.yml up -d",
     "swagger:down": "docker-compose -f docker-compose-swagger.yml down",
     "swagger:gen": "./bin/swagger-yaml2json.sh",
