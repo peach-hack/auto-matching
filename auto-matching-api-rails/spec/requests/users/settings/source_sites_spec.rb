@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.describe Api::Users::SourceSitesController, type: :request do
+RSpec.describe Api::Users::Settings::SourceSitesController, type: :request do
   let(:target) { build(:source_site, id: 1) }
 
   describe "#index" do
-    subject { get api_users_source_sites_path }
+    subject { get api_users_settings_source_sites_path }
 
     before do
       create(:source_site, key: SourceSite::KEY_HAPPY_MAIL)
@@ -21,7 +21,7 @@ RSpec.describe Api::Users::SourceSitesController, type: :request do
 
   describe "#update" do
     let(:params) { { login_user: "", login_password: "", activate_flag: true, key: SourceSite::KEY_HAPPY_MAIL } }
-    subject { put api_users_source_site_path(target), params: params }
+    subject { put api_users_settings_source_site_path(target), params: params }
 
     before do
       create(:source_site, key: SourceSite::KEY_HAPPY_MAIL)
