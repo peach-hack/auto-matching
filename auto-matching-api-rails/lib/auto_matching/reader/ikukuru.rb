@@ -92,7 +92,7 @@ module AutoMatching
           logging_start(__method__)
 
           @post_data_list.each do |d|
-            post = Post.compose(Post.prepare(d), Profilew.prepare(d))
+            post = Post.compose(Post.prepare(d), Profile.prepare(d))
             save!(post)
           end
 

@@ -25,7 +25,7 @@ class Post < ApplicationRecord
 
   belongs_to :profile, optional: true
 
-  def self.prepare(title, url, post_at, category, prefecture, city, address)
+  def self.prepare(args)
     post = {}
     post[:title] = title
     post[:url] = url
