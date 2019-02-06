@@ -23,14 +23,21 @@ module AutoMatching
           search_board
 
           # 掲示板記事のスクレイピング
-          read_board
-
-          # 掲示板データ保存
-          save_board
+          scraping_board
         end
 
         def search_board
           raise NotImprementedError
+        end
+
+        def scraping_board
+          # 掲示板データ読み取り
+          read_board
+
+          # 掲示板データ保存
+          save_board
+
+          scraping_board if continue?
         end
 
         def read_board
@@ -39,6 +46,10 @@ module AutoMatching
 
         def save_board
           raise NotImprementedError
+        end
+
+        def continue?
+          false
         end
 
         def save!(post)
