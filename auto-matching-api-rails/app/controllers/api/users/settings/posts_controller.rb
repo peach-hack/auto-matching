@@ -9,8 +9,8 @@ module Api
           profile_count = Profile.count
 
           posts = Post.order(:post_at)
-          last = count != 0 && posts.first.post_at
-          latest = count != 0 && posts.last.post_at
+          last = post_count != 0 && posts.first.post_at
+          latest = post_count != 0 && posts.last.post_at
           response = { post_count: post_count, profile_count: profile_count, last: last, latest: latest }
           render json: response
         end
