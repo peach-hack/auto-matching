@@ -5,9 +5,14 @@ div
   .row
     .col-sm-2
       .callout.callout-info.b-t-1.b-r-1.b-b-1
-        small.text-muted 投稿データ数
+        small.text-muted 投稿ポスト数
         br
         strong.h4 {{ post.count }}
+    .col-sm-2
+      .callout.callout-info.b-t-1.b-r-1.b-b-1
+        small.text-muted 投稿プロフィール数
+        br
+        strong.h4 {{ profile.count }}
     .col-sm-3
       .callout.callout-danger.b-t-1.b-r-1.b-b-1
         small.text-muted 最も新しい投稿
@@ -35,14 +40,18 @@ export default Vue.extend({
         count: 0 as number,
         latest: {} as Date,
         last: {} as Date
+      },
+      profile: {
+        count: 0 as number
       }
     }
   },
   async mounted() {
     const response = await getApiUsersSettingsPosts()
-    this.post.count = response.data.count
+    this.post.count = response.data.post_count
     this.post.latest = response.data.latest
     this.post.last = response.data.last
+    this.profile.count = response.data.profile_count
   }
 })
 </script>
