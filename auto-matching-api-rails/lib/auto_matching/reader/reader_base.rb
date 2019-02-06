@@ -49,7 +49,7 @@ module AutoMatching
         end
 
         def continue?
-          false
+          raise NotImprementedError
         end
 
         def save!(post)
