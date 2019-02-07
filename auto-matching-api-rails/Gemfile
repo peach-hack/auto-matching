@@ -98,4 +98,5 @@ group :development do
   gem "logster"
 
   gem "sidekiq-history"
+  gem "sidekiq-failures"
 end

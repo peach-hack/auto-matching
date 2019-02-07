@@ -4,6 +4,7 @@ module AutoMatching
       include Common::Wakuwaku
 
       def initialize
+        super
         @page_no = 1
       end
 
@@ -54,7 +55,7 @@ module AutoMatching
           address = ""
 
           # 配列の中にハッシュとして取得した要素を格納
-          20.times.with_index do |i|
+          POST_COUNT.times.with_index do |i|
             post_data = { source_site_id: source_site_id,
                           url: url_list[i], title: title_list[i], sex: sex_list[i], name: name_list[i],
                           age: age_list[i], post_at: post_at_list[i], category: category_list[i],

@@ -10,8 +10,9 @@ class RealtimeSearchJob < ManualJob
     AutoMatching::Reader::Executor.new.run(klass)
 
     set_success
-  rescue StandardError
+  rescue StandardError => e
     set_error
+    raise e
   end
 
   private

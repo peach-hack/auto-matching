@@ -310,6 +310,8 @@ GEM
       rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    sidekiq-failures (1.0.0)
+      sidekiq (>= 4.0.0)
     sidekiq-history (0.0.9)
       sidekiq (>= 3.0.0)
     simple_form (4.1.0)
@@ -417,6 +419,7 @@ DEPENDENCIES
   seed-fu
   selenium-webdriver
   sidekiq
+  sidekiq-failures
   sidekiq-history
   simple_scheduler
   solargraph

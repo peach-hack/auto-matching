@@ -71,6 +71,8 @@ module AutoMatching
             return
           end
 
+          logger.debug(post)
+
           if post.save!
             logger.debug("Post save Successfully.")
           else
