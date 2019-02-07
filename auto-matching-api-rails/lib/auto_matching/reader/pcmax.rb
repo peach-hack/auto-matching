@@ -59,7 +59,7 @@ module AutoMatching
           prefecture_list, city_list, address_list = converter.from_change(get_post_from)
 
 
-          source_site_id = SourceSite.find_by(key: SourceSite::KEY_PCMAX).id
+          source_site_id = SourceSite.find_by(key: source_site_key).id
 
           # 配列の中にハッシュとして取得した要素を格納
           20.times.with_index do |i|
@@ -70,8 +70,6 @@ module AutoMatching
                         }
             @post_data_list[i] = post_data
           end
-
-          @post_data_list
 
           logging_end(__method__)
         end
@@ -87,16 +85,8 @@ module AutoMatching
           logging_end(__method__)
         end
 
-        def continue?
-          last_search_at = SourceSite::ManualPostHistory.find_by(key: SourceSite::KEY_PCMAX).last_search_at.to_datetime
-          last_post_at = @post_data_list.last[:post_at].to_datetime
-
-          if last_post_at >= last_search_at
-            session.execute_script "$('table > tbody > tr > td:nth-child(3) > a').trigger('click')"
-            true
-          else
-            false
-          end
+        def click_next
+          session.execute_script "$('table > tbody > tr > td:nth-child(3) > a').trigger('click')"
         end
     end
   end

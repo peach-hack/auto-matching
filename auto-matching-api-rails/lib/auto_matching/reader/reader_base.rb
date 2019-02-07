@@ -2,6 +2,7 @@ module AutoMatching
   module Reader
     class ReaderBase < Base
       include Common::DriverBase
+      attr_reader :post_data_list
 
       def module_type
         "READER".freeze
@@ -49,7 +50,19 @@ module AutoMatching
         end
 
         def continue?
-          raise NotImprementedError
+          last_search_at = SourceSite::ManualPostHistory.find_by(key: source_site_key).last_search_at.to_datetime
+          last_post_at = post_data_list.last[:post_at].to_datetime
+
+          if last_post_at >= last_search_at
+            click_next
+            true
+          else
+            false
+          end
+        end
+
+        def click_next
+          raise NotImplementedError
         end
 
         def save!(post)
