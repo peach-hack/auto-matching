@@ -81,6 +81,12 @@ module AutoMatching
         [prefecture_list, city_list, address_list]
       end
 
+      def convert_category(category)
+        if category == "今からあそぼ"
+          CATEGORY_NOW
+        end
+      end
+
       private
         def convert_to_split_from(from)
           if from.match?(FROM_ALL_REGEX)

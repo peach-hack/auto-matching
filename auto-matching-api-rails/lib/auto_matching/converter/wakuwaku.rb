@@ -3,6 +3,12 @@ module AutoMatching
     class Wakuwaku < ConverterBase
       SITE_ID = "wakuwaku"
 
+      def convert_category(category)
+        if category == "すぐ会いたい"
+          CATEGORY_NOW
+        end
+      end
+
       # 性別、名前を分割
       def sex_name_split_value(value)
         sex_list = []

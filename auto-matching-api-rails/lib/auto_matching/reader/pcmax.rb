@@ -48,7 +48,7 @@ module AutoMatching
           value = input_data.map { |value1| value1.first("span.value1").text }
           get_post_from = input_data.map { |value1| value1.all("span.value1")[1].text.strip.to_s }
           get_post_at = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
-          category_list = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
+          category_list = input_data.map { |value1| converter.convert_category(value1.all("span.value1")[3].text.strip.to_s) }
           profile_from_list = input_data.map { |value1| value1.all("span.value1")[4].text.strip.to_s }
 
 

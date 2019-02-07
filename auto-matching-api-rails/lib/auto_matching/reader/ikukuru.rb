@@ -49,7 +49,7 @@ module AutoMatching
           end
 
           # 各要素取得
-          category_list = session.find("#title").text.strip
+          category_list = converter.convert_category(session.find("#title").text.strip)
           get_post_at = get_time.map { |t| t.text.strip }
           url_list = get_url.map { |t| t[:href] }
           title_list = get_post_title.map { |t| t.text.strip }

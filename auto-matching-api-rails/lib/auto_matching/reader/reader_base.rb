@@ -78,10 +78,8 @@ module AutoMatching
             return
           end
 
-          logger.debug(post)
-
           if post.save!
-            logger.debug("Post save Successfully.")
+            logger.debug("Post save Successfully. #{post[:post_at]}")
           else
             logger.error("Post save error occured #{post.errors.full_messages}")
           end
