@@ -88,13 +88,13 @@ module AutoMatching
         end
 
         def continue?
-          last_search_at = SourceSite::ManualPostHistory.find_by(key: SourceSite::KEY_PCMAX).last_search_at
-          last_post_at = @post_data_list.last.post_at
+          last_search_at = SourceSite::ManualPostHistory.find_by(key: SourceSite::KEY_PCMAX).last_search_at.to_datetime
+          last_post_at = @post_data_list.last[:post_at].to_datetime
 
           if last_search_at >= last_post_at
-            false
-          else
             true
+          else
+            false
           end
         end
     end
