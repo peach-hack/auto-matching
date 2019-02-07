@@ -66,7 +66,7 @@ module AutoMatching
         end
 
         def save!(post)
-          if post.present?
+          if !post.present?
             logger.debug("Post is duplicated.")
             return
           end
