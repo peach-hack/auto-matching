@@ -81,8 +81,6 @@ module AutoMatching
           @page_no = @page_no + 1
           selector = "ul.pageNavi > li:nth-child(#{@page_no}) > a"
           session.execute_script "$('#{selector}').trigger('click')"
-
-          logger.debug(@page_no)
         end
     end
   end

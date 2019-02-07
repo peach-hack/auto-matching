@@ -55,7 +55,7 @@ module AutoMatching
 
           if last_post_at >= last_search_at
             click_next
-            true
+            false
           else
             false
           end
@@ -66,7 +66,7 @@ module AutoMatching
         end
 
         def save!(post)
-          if !post.present?
+          if post.nil?
             logger.debug("Post is duplicated.")
             return
           end
