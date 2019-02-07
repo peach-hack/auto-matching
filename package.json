@@ -22,9 +22,9 @@
     "swagger:up": "docker-compose -f docker-compose-swagger.yml up -d",
     "swagger:down": "docker-compose -f docker-compose-swagger.yml down",
     "swagger:gen": "./bin/swagger-yaml2json.sh",
-    "db:create": "docker-compose run rails rails db:create",
-    "db:recovery": "docker-compose run rails rails db:recovery",
-    "db:migrate": "docker-compose run rails rails ridgepole:apply",
-    "db:seed": "docker-compose run rails rails db:seed_fu"
+    "db:create": "docker-compose run rails env RAILS_ENV=development rails db:create",
+    "db:recovery": "docker-compose run rails env RAILS_ENV=development rails db:recovery",
+    "db:migrate": "docker-compose run rails env RAILS_ENV=development rails ridgepole:apply",
+    "db:seed": "docker-compose run rails env RAILS_ENV=development rails db:seed_fu"
   }
 }
