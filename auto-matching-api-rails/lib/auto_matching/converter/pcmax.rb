@@ -83,9 +83,9 @@ module AutoMatching
 
       private
         def convert_to_split_from(from)
-          if from.match(FROM_ALL_REGEX)
+          if from.match?(FROM_ALL_REGEX)
             from.match(FROM_ALL_REGEX).captures
-          elsif from.match(FROM_CITY_REGEX)
+          elsif from.match?(FROM_CITY_REGEX)
             from.match(FROM_CITY_REGEX).captures
           else
             from.match(FROM_PREFECTURE_REGEX).captures
