@@ -1,6 +1,8 @@
 module AutoMatching
   module Common
     module Pcmax
+      POST_COUNT = 20
+
       def source_site_key
         SourceSite::KEY_PCMAX
       end

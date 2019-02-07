@@ -1,6 +1,8 @@
 module AutoMatching
   module Common
     module Wakuwaku
+      POST_COUNT = 19
+
       def source_site_key
         SourceSite::KEY_WAKUWAKU
       end

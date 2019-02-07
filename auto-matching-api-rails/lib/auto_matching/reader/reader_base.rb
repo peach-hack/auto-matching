@@ -2,6 +2,7 @@ module AutoMatching
   module Reader
     class ReaderBase < Base
       include Common::DriverBase
+      attr_reader :post_data_list
 
       def module_type
         "READER".freeze
@@ -23,14 +24,21 @@ module AutoMatching
           search_board
 
           # 掲示板記事のスクレイピング
-          read_board
-
-          # 掲示板データ保存
-          save_board
+          scraping_board
         end
 
         def search_board
           raise NotImprementedError
+        end
+
+        def scraping_board
+          # 掲示板データ読み取り
+          read_board
+
+          # 掲示板データ保存
+          save_board
+
+          scraping_board if continue?
         end
 
         def read_board
@@ -38,7 +46,30 @@ module AutoMatching
         end
 
         def save_board
-          raise NotImprementedError
+          logging_start(__method__)
+
+          post_data_list.each do |d|
+            post = Post.compose(Post.prepare(d), Profile.prepare(d))
+            save!(post)
+          end
+
+          logging_end(__method__)
+        end
+
+        def continue?
+          last_search_at = SourceSite::SearchHistory.find_by(key: source_site_key).last_search_at&.to_datetime
+          last_post_at = post_data_list.last[:post_at].to_datetime
+
+          if last_search_at && last_post_at >= last_search_at
+            click_next
+            true
+          else
+            false
+          end
+        end
+
+        def click_next
+          raise NotImplementedError
         end
 
         def save!(post)
@@ -48,7 +79,7 @@ module AutoMatching
           end
 
           if post.save!
-            logger.debug("Post save Successfully.")
+            logger.debug("Post save Successfully. #{post[:post_at]}")
           else
             logger.error("Post save error occured #{post.errors.full_messages}")
           end

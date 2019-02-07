@@ -3,6 +3,12 @@ module AutoMatching
     class Ikukuru < ConverterBase
       SITE_ID = "ikukuru"
 
+      def convert_category(category)
+        if category == "ヒミツ掲示板"
+          CATEGORY_NOW
+        end
+      end
+
       # 性別を変換
       def sex_value_change(get_sex)
         sex_list = []
