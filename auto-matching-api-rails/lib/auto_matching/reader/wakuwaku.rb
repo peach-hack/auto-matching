@@ -3,6 +3,10 @@ module AutoMatching
     class Wakuwaku < ReaderBase
       include Common::Wakuwaku
 
+      def initialize
+        @page_no = 1
+      end
+
       private
         def search_board
           logging_start(__method__)
@@ -71,6 +75,14 @@ module AutoMatching
           end
 
           logging_end(__method__)
+        end
+
+        def click_next
+          @page_no = @page_no + 1
+          selector = "ul.pageNavi > li:nth-child(#{@page_no}) > a"
+          session.execute_script "$('#{selector}').trigger('click')"
+
+          logger.debug(@page_no)
         end
     end
   end
