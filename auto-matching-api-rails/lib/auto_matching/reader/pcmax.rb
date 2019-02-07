@@ -88,7 +88,7 @@ module AutoMatching
         end
 
         def continue?
-          last_search_at = ManualPostHistory.find_by(key: SourceSite::KEY_PCMAX).last_search_at
+          last_search_at = SourceSite::ManualPostHistory.find_by(key: SourceSite::KEY_PCMAX).last_search_at
           last_post_at = @post_data_list.last.post_at
 
           if last_search_at >= last_post_at
