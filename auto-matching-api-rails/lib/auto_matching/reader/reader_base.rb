@@ -50,7 +50,7 @@ module AutoMatching
         end
 
         def continue?
-          last_search_at = SourceSite::ManualPostHistory.find_by(key: source_site_key).last_search_at.to_datetime
+          last_search_at = SourceSite::SearchHistory.find_by(key: source_site_key).last_search_at.to_datetime
           last_post_at = post_data_list.last[:post_at].to_datetime
 
           if last_post_at >= last_search_at
@@ -66,7 +66,7 @@ module AutoMatching
         end
 
         def save!(post)
-          if post.nil?
+          if post.present?
             logger.debug("Post is duplicated.")
             return
           end
