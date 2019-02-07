@@ -48,7 +48,7 @@ module AutoMatching
 
           post_at_list = converter.post_at_change_value(get_post_at)
 
-          source_site_id = SourceSite.find_by(key: SourceSite::KEY_WAKUWAKU).id
+          source_site_id = SourceSite.find_by(key: source_site_key).id
 
           # addressには何も設定しない
           address = ""
