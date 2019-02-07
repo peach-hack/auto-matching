@@ -76,7 +76,7 @@ module AutoMatching
           address_list = ""
 
           # 配列の中にハッシュとして取得した要素を格納
-          15.times.with_index do |i|
+          POST_COUNT.times.with_index do |i|
             post_data = { source_site_id: source_site_id,
               url: url_list[i], title: title_list[i], sex: sex_list[i], name: name_list[i],
               age: age_list[i], post_at: post_at_list[i], category: category_list,
@@ -88,15 +88,8 @@ module AutoMatching
           logging_end(__method__)
         end
 
-        def save_board
-          logging_start(__method__)
-
-          @post_data_list.each do |d|
-            post = Post.compose(Post.prepare(d), Profile.prepare(d))
-            save!(post)
-          end
-
-          logging_end(__method__)
+        def click_next
+          session.click_link "次を表示"
         end
     end
   end

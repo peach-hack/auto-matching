@@ -46,7 +46,14 @@ module AutoMatching
         end
 
         def save_board
-          raise NotImprementedError
+          logging_start(__method__)
+
+          post_data_list.each do |d|
+            post = Post.compose(Post.prepare(d), Profile.prepare(d))
+            save!(post)
+          end
+
+          logging_end(__method__)
         end
 
         def continue?
@@ -70,8 +77,6 @@ module AutoMatching
             logger.debug("Post is duplicated.")
             return
           end
-
-          logger.debug(post)
 
           if post.save!
             logger.debug("Post save Successfully.")

@@ -74,17 +74,6 @@ module AutoMatching
           logging_end(__method__)
         end
 
-        def save_board
-          logging_start(__method__)
-
-          @post_data_list.each do |d|
-            post = Post.compose(Post.prepare(d), Profile.prepare(d))
-            save!(post)
-          end
-
-          logging_end(__method__)
-        end
-
         def click_next
           session.execute_script "$('table > tbody > tr > td:nth-child(3) > a').trigger('click')"
         end

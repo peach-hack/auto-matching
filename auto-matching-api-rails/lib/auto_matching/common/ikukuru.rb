@@ -1,6 +1,8 @@
 module AutoMatching
   module Common
     module Ikukuru
+      POST_COUNT = 15
+
       def source_site_key
         SourceSite::KEY_IKUKURU
       end
