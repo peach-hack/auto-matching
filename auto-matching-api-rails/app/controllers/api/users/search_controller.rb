@@ -19,7 +19,7 @@ module Api
 
       def realtime
         site_ids = params[:ids]
-        area_list = params[:area]
+        area_list = params[:area].split(" ")
         genre_list = params[:genre]
 
         reader_classes = [

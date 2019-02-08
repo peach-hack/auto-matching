@@ -2,6 +2,9 @@
 form(@submit.prevent="submit")
   .form-group
     selected-checkbox-site-table(@update:selected="selected = $event" :histories="$state.search.histories")
+  .form-group
+    label(for="areaInput") 投稿地域
+    input(type="text" v-model="area").form-control#areaInput.col-2
   .form-group        
     submit-button
 </template>
@@ -24,7 +27,8 @@ export default Vue.extend({
   },
   data: function() {
     return {
-      selected: [] as number[]
+      selected: [] as number[],
+      area: '東京都' as string
     }
   },
   methods: {
@@ -36,7 +40,8 @@ export default Vue.extend({
       this.$store.commit('search/clearPosts')
       postApiUsersSearchRealtime({
         attributes: {
-          ids: this.selected
+          ids: this.selected,
+          area: this.area
         }
       })
         .then((response: AxiosResponse) => {
