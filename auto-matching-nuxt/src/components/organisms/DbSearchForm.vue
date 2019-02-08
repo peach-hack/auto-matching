@@ -99,7 +99,7 @@ export default Vue.extend({
           return Qs.stringify(params, { arrayFormat: 'brackets' })
         }
       }
-      this.$store.dispatch('search/searchDb', queryParameters).catch(error => {
+      this.$store.dispatch('search/searchDb', queryParameters).catch(() => {
         this.$toasted.error('エラーが発生しました')
       })
     },

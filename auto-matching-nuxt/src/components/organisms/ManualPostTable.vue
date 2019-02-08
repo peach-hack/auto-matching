@@ -20,9 +20,6 @@ import SubmitButton from '@/components/atoms/SubmitButton.vue'
 //@ts-ignore
 import SelectedCheckboxSiteTable from '@/components/molecules/SelectedCheckboxSiteTable.vue'
 
-import ActionCable, { Channel } from 'actioncable'
-import { AxiosError, AxiosResponse } from 'axios'
-
 export default Vue.extend({
   components: {
     SubmitButton,
@@ -46,7 +43,7 @@ export default Vue.extend({
           debug: this.debug
         }
       })
-        .then((response: AxiosResponse) => {
+        .then(() => {
           this.$toasted.success('実行しました')
           this.$store.commit({
             type: 'posts/changeStatus',
@@ -54,7 +51,7 @@ export default Vue.extend({
             status: '実行中'
           })
         })
-        .catch((error: AxiosError) => {
+        .catch(() => {
           this.$toasted.error('エラーが発生しました')
           this.$store.commit({
             type: 'posts/changeStatus',

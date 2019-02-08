@@ -18,8 +18,6 @@ import SelectedCheckboxSiteTable from '@/components/molecules/SelectedCheckboxSi
 //@ts-ignore
 import SubmitButton from '@/components/atoms/SubmitButton.vue'
 
-import { AxiosError, AxiosResponse } from 'axios'
-
 export default Vue.extend({
   components: {
     SelectedCheckboxSiteTable,
@@ -44,7 +42,7 @@ export default Vue.extend({
           area: this.area
         }
       })
-        .then((response: AxiosResponse) => {
+        .then(() => {
           this.$toasted.success('実行しました')
           this.$store.commit({
             type: 'search/changeStatus',
@@ -52,7 +50,7 @@ export default Vue.extend({
             status: '実行中'
           })
         })
-        .catch((error: AxiosError) => {
+        .catch(() => {
           this.$toasted.error('エラーが発生しました')
           this.$store.commit({
             type: 'search/changeStatus',

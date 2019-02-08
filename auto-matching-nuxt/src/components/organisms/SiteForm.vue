@@ -28,7 +28,6 @@ import Vue from 'vue'
 import SubmitButtonGroup from '@/components/molecules/SubmitButtonGroup.vue'
 //@ts-ignore
 import { putApiUsersSettingsSitesById } from '@/plugins/api'
-import { AxiosError, AxiosResponse } from 'axios'
 
 export default Vue.extend({
   components: {
@@ -60,11 +59,11 @@ export default Vue.extend({
         id: this.site.id,
         attributes: data
       })
-        .then((response: AxiosResponse) => {
+        .then(() => {
           this.$router.push('/settings/sites')
           this.$toasted.success('更新しました')
         })
-        .catch((error: AxiosError) => {
+        .catch(() => {
           this.$toasted.error('エラーが発生しました')
         })
     }

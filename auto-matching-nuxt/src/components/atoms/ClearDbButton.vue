@@ -12,18 +12,17 @@ div
 import Vue from 'vue'
 //@ts-ignore
 import { postApiUsersSettingsPostsClear } from '@/plugins/api'
-import { AxiosResponse, AxiosError } from 'axios'
 
 export default Vue.extend({
   methods: {
     clear() {
       if (confirm('本当に削除しますか？')) {
         postApiUsersSettingsPostsClear()
-          .then((response: AxiosResponse) => {
+          .then(() => {
             this.$toasted.success('削除しました')
             window.location.reload()
           })
-          .catch((error: AxiosError) => {
+          .catch(() => {
             this.$toasted.error('エラーが発生しました')
           })
       }
