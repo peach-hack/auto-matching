@@ -33,7 +33,7 @@ services:
       - /dev/shm:/dev/shm
 
   nuxt:
-    command: /bin/sh -c 'API_URL=http://rails:3000 yarn nuxt'
+    command: /bin/sh -c 'API_URL=http://rails:3000 yarn dev'
     environment:
       HOST: 0.0.0.0
     image: node:11.3-alpine

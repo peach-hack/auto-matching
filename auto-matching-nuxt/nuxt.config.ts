@@ -1,5 +1,3 @@
-const extendConfig = require('./webpack.config.extend')
-
 module.exports = {
   mode: 'spa',
   srcDir: 'src/',
@@ -89,13 +87,8 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config) {
-      'use strict'
-
-      extendConfig(config)
-    },
     babel: {
-      presets: [
+        presets: [
         [
           '@babel/preset-env',
           {
