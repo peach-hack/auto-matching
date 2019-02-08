@@ -8,7 +8,7 @@ module AutoMatching
 
       def initialize
         super
-        @page_no = 2
+        @target_no = 3
       end
 
       private
@@ -88,8 +88,14 @@ module AutoMatching
         end
 
         def click_next
-          @page_no = @page_no + 1
-          click_selector("ul.pageNavi > li:nth-child(#{@page_no}) > a")
+          click_selector("ul.pageNavi > li:nth-child(#{@target_no}) > a")
+          if @target_no == 3
+            @target_no = 4
+          elsif @target_no == 4
+            @target_no = 5
+          else
+            @target_no = 5
+          end
         end
     end
   end

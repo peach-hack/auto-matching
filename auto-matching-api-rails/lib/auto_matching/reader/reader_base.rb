@@ -3,6 +3,8 @@ module AutoMatching
     class ReaderBase < Base
       include Common::DriverBase
       attr_reader :post_data_list
+      attr_accessor :board_genre
+      attr_accessor :area
 
       def module_type
         "READER".freeze
