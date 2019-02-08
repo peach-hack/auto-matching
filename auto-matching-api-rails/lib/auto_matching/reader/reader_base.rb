@@ -3,6 +3,8 @@ module AutoMatching
     class ReaderBase < Base
       include Common::DriverBase
       attr_reader :post_data_list
+      attr_accessor :genre
+      attr_accessor :area
 
       def module_type
         "READER".freeze
@@ -20,6 +22,9 @@ module AutoMatching
           # ログイン
           try_login
 
+          # 地域選択
+          specify_area
+
           # 掲示板検索
           search_board
 
@@ -27,8 +32,12 @@ module AutoMatching
           scraping_board
         end
 
+        def specify_area
+          raise NotImplementedError
+        end
+
         def search_board
-          raise NotImprementedError
+          raise NotImplementedError
         end
 
         def scraping_board

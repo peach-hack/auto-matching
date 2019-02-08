@@ -3,7 +3,16 @@ module AutoMatching
     class Pcmax < ReaderBase
       include Common::Pcmax
 
+      AREA_MAPPER = {
+        "東京都" => "22",
+        "神奈川県" => "23"
+      }
+
       private
+        def specify_area
+          # 地域指定はsearch_boardと一緒に操作するので、ここではなにもしない
+        end
+
         def search_board
           logging_start(__method__)
 
@@ -11,7 +20,8 @@ module AutoMatching
           session.visit "https://pcmax.jp/mobile/bbs_reference.php"
 
           # 投稿地域
-          session.find_field("pref_no").find("option[value='22']").select_option
+          area_no = AREA_MAPPER[area]
+          session.find_field("pref_no").find("option[value='#{area_no}']").select_option
 
           # 詳細地域
           # ジャンル
@@ -75,7 +85,7 @@ module AutoMatching
         end
 
         def click_next
-          session.execute_script "$('table > tbody > tr > td:nth-child(3) > a').trigger('click')"
+          click_selector("table > tbody > tr > td:nth-child(3) > a")
         end
     end
   end

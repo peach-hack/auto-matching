@@ -2,12 +2,12 @@ class RealtimeSearchJob < ManualJob
   queue_as :default
   SEARCH_CHANNEL = "search_channel".freeze
 
-  def perform(reader_class_s, start_time_s)
+  def perform(reader_class_s, start_time_s, area_list, genre_list)
     klass = reader_class_s.constantize
     @key = klass.new.source_site_key
     @time = start_time_s.to_datetime
 
-    AutoMatching::Reader::Executor.new.run(klass)
+    AutoMatching::Reader::Executor.new.run(klass, area_list, genre_list)
 
     set_success
   rescue StandardError => e
