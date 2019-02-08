@@ -3,8 +3,10 @@ module AutoMatching
     class Wakuwaku < ReaderBase
       include Common::Wakuwaku
 
-      AREA_KANAGAWA_KAWASAKI_NAKAHARA_SELECT = "http://550909.com/m/setting/set_city?mode=area&amp;city=892&amp;pref=13"
-      AREA_TOKYO_SIBUYA_SELECT = "http://550909.com/m/setting/set_city?mode=area&amp;city=237&amp;pref=14"
+      AREA_URL_MAPPER = {
+        "神奈川県" => "http://550909.com/m/setting/set_city?mode=area&amp;city=892&amp;pref=13",
+        "東京都" => "http://550909.com/m/setting/set_city?mode=area&amp;city=237&amp;pref=14"
+      }
 
       def initialize
         super
@@ -19,12 +21,9 @@ module AutoMatching
           session.visit "http://550909.com/m/setting/pref?mode=area&ref=bbs_genre_adult"
 
           # 地域確認
-          if !session.first("div.formParts > input").text.include?("東京都")
-            session.visit AREA_TOKYO_SIBUYA_SELECT
+          if !session.first("div.formParts > input").text.include?(area)
+            session.visit AREA_URL_MAPPER[area]
           end
-          # if !session.first("div.formParts > input").text.include?("神奈川県")
-          #  session.visit AREA_KANAGAWA_KAWASAKI_NAKAHARA_SELECT
-          # end
 
           logging_end(__method__)
         end
