@@ -4,7 +4,7 @@ module AutoMatching
       DEFAULT_AREA_LIST = ["東京都", "神奈川県"]
       DEFAULT_GENRE_LIST = ["スグ会いたい"]
 
-      def run(klass, area_list, genre_list)
+      def run(klass, area_list = nil, genre_list = nil)
         area_list = DEFAULT_AREA_LIST if area_list.nil?
         genre_list = DEFAULT_GENRE_LIST if genre_list.nil?
 
