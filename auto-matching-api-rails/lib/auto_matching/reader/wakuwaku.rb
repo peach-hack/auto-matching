@@ -3,12 +3,29 @@ module AutoMatching
     class Wakuwaku < ReaderBase
       include Common::Wakuwaku
 
+      AREA_KANAGAWA_KAWASAKI_NAKAHARA_SELECT = "set_city?mode=area&amp;city=892&amp;pref=13"
+      AREA_TOKYO_SIBUYA_SELECT = "http://550909.com/set_city?mode=area&amp;city=237&amp;pref=14"
+
       def initialize
         super
-        @page_no = 1
+        @page_no = 2
       end
 
       private
+        def specify_area
+          logging_start(__method__)
+
+          # 地域選択に移動
+          session.visit "http://550909.com/m/setting/pref?mode=area&ref=bbs_genre_adult"
+
+          # 地域確認
+          if !session.first("div.formParts > input").text.include?("東京都")
+            session.visit AREA_TOKYO_SIBUYA_SELECT
+          end
+
+          logging_end(__method__)
+        end
+
         def search_board
           logging_start(__method__)
 
@@ -69,8 +86,7 @@ module AutoMatching
 
         def click_next
           @page_no = @page_no + 1
-          selector = "ul.pageNavi > li:nth-child(#{@page_no}) > a"
-          session.execute_script "$('#{selector}').trigger('click')"
+          click_selector("ul.pageNavi > li:nth-child(#{@page_no}) > a")
         end
     end
   end

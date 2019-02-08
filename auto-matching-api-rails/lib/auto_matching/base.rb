@@ -1,6 +1,7 @@
 module AutoMatching
   class Base
     attr_reader :token
+    include CapybaraHelper
 
     def initialize(*_args)
       capybara_setting
