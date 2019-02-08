@@ -10,7 +10,11 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Integrated Deai Engine' }
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Integrated Deai Engine'
+      }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
@@ -60,7 +64,7 @@ module.exports = {
     // Doc: https://github.com/bootstrap-vue/bootstrap-vue
     ['bootstrap-vue/nuxt', { css: false }],
     '@nuxtjs/pwa',
-    '@nuxtjs/toast',
+    '@nuxtjs/toast'
   ],
   manifest: {
     name: 'Auto Matching',
@@ -88,7 +92,7 @@ module.exports = {
      ** You can extend webpack config here
      */
     babel: {
-        presets: [
+      presets: [
         [
           '@babel/preset-env',
           {
