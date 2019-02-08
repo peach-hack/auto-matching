@@ -3,7 +3,7 @@ module AutoMatching
     class Wakuwaku < ReaderBase
       include Common::Wakuwaku
 
-      AREA_URL_MAPPER = {
+      AREA_MAPPER = {
         "神奈川県" => "http://550909.com/m/setting/set_city?mode=area&amp;city=892&amp;pref=13",
         "東京都" => "http://550909.com/m/setting/set_city?mode=area&amp;city=237&amp;pref=14"
       }
@@ -22,7 +22,7 @@ module AutoMatching
 
           # 地域確認
           if !session.first("div.formParts > input").text.include?(area)
-            session.visit AREA_URL_MAPPER[area]
+            session.visit AREA_MAPPER[area]
           end
 
           logging_end(__method__)
