@@ -64,10 +64,7 @@ module AutoMatching
           get_name_age = value00.map { |t| t.text.gsub(/♀/, "") }
           get_from = value01.map { |t| t.text }
 
-          from_list, trip_from_list = converter.split_from_value(get_from)
-
-          # Sider落ちるため保存はしませんが、旅行先の住所を格納している変数を下に記述しておく
-          trip_from_list
+          city_list, trip_from_list = converter.split_from_value(get_from)
 
           sex_list = converter.sex_value_change(get_sex)
 
@@ -75,19 +72,14 @@ module AutoMatching
 
           post_at_list = converter.post_at_value_change(get_post_at)
 
-          source_site_id = SourceSite.find_by(key: SourceSite::KEY_IKUKURU).id
-
-          # postsのprefecture,city,addressには何も設定しない
-          prefecture_list = ""
-          city_list = ""
-          address_list = ""
+          source_site_id = SourceSite.find_by(key: source_site_key).id
 
           # 配列の中にハッシュとして取得した要素を格納
           POST_COUNT.times.with_index do |i|
             post_data = { source_site_id: source_site_id,
               url: url_list[i], title: title_list[i], sex: sex_list[i], name: name_list[i],
               age: age_list[i], post_at: post_at_list[i], category: category_list,
-              prefecture: prefecture_list, city: city_list, address: address_list, from: from_list[i]
+              prefecture: area, city: city_list[i], address: "", from: trip_from_list[i]
             }
             @post_data_list[i] = post_data
           end
