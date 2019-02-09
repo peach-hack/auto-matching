@@ -44,8 +44,8 @@ module Api
       end
 
       def result
-        posts = Post.where.has { |post| post.updated_at >= params[:time] }.ordering { post_at.desc }
-        render json: PostSerializer.new(posts, [:profile]).serialized_json
+        posts = Post.where.has { |post| post.post_at >= params[:time].to_datetime.ago(2.hours) }.ordering { post_at.desc }
+        render json: PostSerializer.new(posts).serialized_json
       end
 
       private

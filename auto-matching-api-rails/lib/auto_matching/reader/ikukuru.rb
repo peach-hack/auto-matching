@@ -49,7 +49,7 @@ module AutoMatching
           get_url = session.all(".textComment").map { |t| t.find(".refinedBbsDesign") }
 
           # fromが格納されている部分の取得
-          15.times do
+          POST_COUNT.times do
             value01 = session.all(".contentsTextContribute").each { |t|
               t.all(:css, "span")
             }

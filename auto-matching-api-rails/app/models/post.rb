@@ -38,7 +38,7 @@ class Post < ApplicationRecord
   end
 
   def self.compose(post_hash, profile_hash)
-    if Post.where(title: post_hash[:title]).where(post_at: post_hash[:post_at]).count == 1
+    if Post.where(title: post_hash[:title]).where(category: post_hash[:category]).where(city: post_hash[:city]).count == 1
       return nil
     end
 

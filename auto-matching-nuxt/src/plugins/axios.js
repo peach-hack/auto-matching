@@ -28,7 +28,7 @@ axios.interceptors.response.use(
       error.response &&
       (error.response.status === 500 || error.response.status === 400)
     ) {
-      this.$store.dispatch('session/signOut').then(() => {
+      this.$state.store.dispatch('session/signOut').then(() => {
         window.location.href = '/signin'
       })
     }
