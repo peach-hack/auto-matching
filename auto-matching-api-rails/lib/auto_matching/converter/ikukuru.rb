@@ -33,11 +33,11 @@ module AutoMatching
           from_prefecture = tmp_v[kugiri + 1..-1]
 
           if from_prefecture.blank?
-            from_list.push(from_city)
+            from_list.push("")
             from_trip_list.push("")
           else
-            from_list.push(from_prefecture)
-            from_trip_list.push(from_city)
+            from_list.push(from_city + from_prefecture)
+            from_trip_list.push("")
           end
         end
         [from_list, from_trip_list]
