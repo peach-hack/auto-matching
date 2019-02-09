@@ -22,6 +22,10 @@ module Api
             DailyCrawlJob.perform_later(reader_class, area_list, genre_list)
           end
 
+          # DB容量制限
+          include CapacityControl
+          capacity_control_DB
+
           response_success(:daily_crawl, :execute)
         end
       end
