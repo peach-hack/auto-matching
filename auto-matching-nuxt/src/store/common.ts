@@ -21,11 +21,11 @@ export const state: () => State = () => ({
 
 export const mutations: Mutations = {
   loading(state, isLoading) {
-    state.isLoading = isLoading;
+    state.isLoading = isLoading
   }
 }
 
 export default {
   state,
-  mutations,
+  mutations
 }
