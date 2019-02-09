@@ -59,7 +59,7 @@ module AutoMatching
 
           post_data_list.each do |d|
             post = Post.compose(Post.prepare(d), Profile.prepare(d))
-            save!(post)
+            save(post)
           end
 
           logging_end(__method__)
@@ -86,13 +86,13 @@ module AutoMatching
           raise NotImplementedError
         end
 
-        def save!(post)
+        def save(post)
           if post.nil?
             logger.debug("Post is duplicated.")
             return
           end
 
-          if post.save!
+          if post.save
             logger.debug("Post save Successfully. #{post[:post_at]}")
           else
             logger.error("Post save error occured #{post.errors.full_messages}")
