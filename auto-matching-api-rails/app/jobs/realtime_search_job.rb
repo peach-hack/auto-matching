@@ -2,7 +2,7 @@ class RealtimeSearchJob < ManualJob
   queue_as :default
   SEARCH_CHANNEL = "search_channel".freeze
 
-  def perform(reader_class_s, start_time_s, area_list, genre_list)
+  def perform(reader_class_s, start_time_s, area_list = nil, genre_list = nil)
     klass = reader_class_s.constantize
     @key = klass.new.source_site_key
     @time = start_time_s.to_datetime
