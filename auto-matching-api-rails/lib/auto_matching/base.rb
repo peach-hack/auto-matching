@@ -36,7 +36,7 @@ module AutoMatching
         Capybara.default_selector = :css
         Capybara.ignore_hidden_elements = false
         Capybara.configure do |config|
-          config.default_max_wait_time = 10
+          config.default_max_wait_time = 30
           config.default_driver = :headless_chrome
           config.javascript_driver = :selenium
         end
