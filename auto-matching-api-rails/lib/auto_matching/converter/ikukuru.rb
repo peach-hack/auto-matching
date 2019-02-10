@@ -3,6 +3,12 @@ module AutoMatching
     class Ikukuru < ConverterBase
       SITE_ID = "ikukuru"
 
+      def convert_category(category)
+        if category == "ヒミツ掲示板"
+          CATEGORY_NOW
+        end
+      end
+
       # 性別を変換
       def sex_value_change(get_sex)
         sex_list = []
@@ -27,10 +33,11 @@ module AutoMatching
           from_prefecture = tmp_v[kugiri + 1..-1]
 
           if from_prefecture.blank?
-            from_list.push(FROM_TO_TOKYO + from_city)
+            from_list.push("")
+            from_trip_list.push("")
           else
-            from_list.push(from_prefecture)
-            from_trip_list.push(from_city)
+            from_list.push(from_city + from_prefecture)
+            from_trip_list.push("")
           end
         end
         [from_list, from_trip_list]
@@ -44,7 +51,7 @@ module AutoMatching
         get_name_age.each do |v|
           add_name, add_age = v.split(" ")
           name_list.push(add_name.strip)
-          age_list.push(add_age.strip)
+          age_list.push(convert_to_generation(add_age.strip.chop.to_i))
         end
         [name_list, age_list]
       end

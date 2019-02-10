@@ -5,16 +5,19 @@ module Api
         before_action :authenticate_user unless Rails.env.test?
 
         def index
-          count = Post.count
+          post_count = Post.count
+          profile_count = Profile.count
+
           posts = Post.order(:post_at)
-          last = count != 0 && posts.first.post_at
-          latest = count != 0 && posts.last.post_at
-          response = { count: count, last: last, latest: latest }
+          last = post_count != 0 && posts.first.post_at
+          latest = post_count != 0 && posts.last.post_at
+          response = { post_count: post_count, profile_count: profile_count, last: last, latest: latest }
           render json: response
         end
 
         def clear
           Post.delete_all
+          Profile.delete_all
           response_success(:posts, :clear)
         end
       end

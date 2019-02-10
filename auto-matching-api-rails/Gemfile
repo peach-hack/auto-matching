@@ -96,4 +96,7 @@ group :development do
 
   gem "rails_db"
   gem "logster"
+
+  gem "sidekiq-history"
+  gem "sidekiq-failures"
 end

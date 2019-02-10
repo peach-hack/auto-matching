@@ -1,5 +1,3 @@
-const extendConfig = require('./webpack.config.extend')
-
 module.exports = {
   mode: 'spa',
   srcDir: 'src/',
@@ -12,7 +10,11 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Integrated Deai Engine' }
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Integrated Deai Engine'
+      }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
@@ -20,8 +22,7 @@ module.exports = {
   /*
    ** Customize the progress bar color
    */
-  loading: { color: '#42A5CC' },
-
+  loading: false,
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:5000',
     wsBaseUrl: process.env.WS_BASE_URL || 'ws://localhost:5000'
@@ -62,7 +63,7 @@ module.exports = {
     // Doc: https://github.com/bootstrap-vue/bootstrap-vue
     ['bootstrap-vue/nuxt', { css: false }],
     '@nuxtjs/pwa',
-    '@nuxtjs/toast',
+    '@nuxtjs/toast'
   ],
   manifest: {
     name: 'Auto Matching',
@@ -89,11 +90,6 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config) {
-      'use strict'
-
-      extendConfig(config)
-    },
     babel: {
       presets: [
         [

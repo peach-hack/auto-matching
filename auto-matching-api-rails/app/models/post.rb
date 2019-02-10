@@ -38,7 +38,9 @@ class Post < ApplicationRecord
   end
 
   def self.compose(post_hash, profile_hash)
-    return nil if Post.find_by(url: post_hash[:url])
+    if Post.where(title: post_hash[:title]).where(category: post_hash[:category]).where(city: post_hash[:city]).count == 1
+      return nil
+    end
 
     profile_obj = Profile.find_or_initialize_by(profile_hash)
     profile_obj.build_post(post_hash)

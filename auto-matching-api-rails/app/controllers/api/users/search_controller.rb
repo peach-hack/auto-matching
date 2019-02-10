@@ -19,6 +19,8 @@ module Api
 
       def realtime
         site_ids = params[:ids]
+        area_list = params[:area].split(" ")
+        genre_list = params[:genre]
 
         reader_classes = [
           AutoMatching::Reader::Happymail,
@@ -33,7 +35,7 @@ module Api
 
         site_ids.each do |id|
           reader_class = reader_classes[id - 1].to_s
-          RealtimeSearchJob.perform_later(reader_class, start_time)
+          RealtimeSearchJob.perform_later(reader_class, start_time, area_list, genre_list)
         end
 
         response_success(:search, :execute)
@@ -42,7 +44,7 @@ module Api
       end
 
       def result
-        posts = Post.where.has { |post| post.updated_at >= params[:time] }.ordering { post_at.desc }
+        posts = Post.where.has { |post| post.post_at >= params[:time].to_datetime.ago(2.hours) }.ordering { post_at.desc }
         render json: PostSerializer.new(posts).serialized_json
       end
 

@@ -27,12 +27,12 @@
 #
 
 class SourceSite < ApplicationRecord
-  KEY_HAPPY_MAIL = "happy_mail".freeze
-  KEY_WAKUWAKU = "wakuwaku".freeze
-  KEY_PCMAX = "pcmax".freeze
-  KEY_IKUKURU = "ikukuru".freeze
-  KEY_MINT = "mint".freeze
-  KEY_MERUPARA = "merupara".freeze
+  KEY_HAPPY_MAIL = "happy_mail"
+  KEY_WAKUWAKU = "wakuwaku"
+  KEY_PCMAX = "pcmax"
+  KEY_IKUKURU = "ikukuru"
+  KEY_MINT = "mint"
+  KEY_MERUPARA = "merupara"
 
   VALID_PHONE_OR_EMAIL_REGEX = /\A(\d{10}$|^\d{11})|([^@\s]+@([^@\s]+\.)+[^@\s]+)\z/
 

@@ -19,9 +19,9 @@ RSpec.describe Post, type: :model do
       url: "https://example2.com",
       post_at: Time.zone.now,
       category: "今から",
-      prefecture: "東京都",
-      city: "町田市",
-      address: "中町"
+      prefecture: "神奈川県",
+      city: "川崎市",
+      address: "中原区"
     }
   }
   let(:profile_hash) {

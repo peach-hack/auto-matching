@@ -31,6 +31,13 @@ RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
   apt-get -yqq install google-chrome-stable && \
   rm -rf /var/lib/apt/lists/*
 
+# Japanese
+RUN apt-get update -y && apt-get install locales -y
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
 RUN bundle config path /usr/local/bundle
 ENV APP_ROOT /app
 

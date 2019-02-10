@@ -19,7 +19,7 @@ SourceSite.seed_once do |p|
   p.affiliate_url = "https://550909.com/?f6858637"
   p.login_user = ENV["WAKUWAKU_LOGIN_USER"]
   p.login_password = ENV["WAKUWAKU_LOGIN_PASSWORD"]
-  p.activate_flag = false
+  p.activate_flag = true
 end
 
 # PCMAX
@@ -31,7 +31,7 @@ SourceSite.seed_once do |p|
   p.affiliate_url = "https://pcmax.jp/lp/?ad_id=rm181904"
   p.login_user = ENV["PCMAX_LOGIN_USER"]
   p.login_password = ENV["PCMAX_LOGIN_PASSWORD"]
-  p.activate_flag = false
+  p.activate_flag = true
 end
 
 # イクヨクルヨ
@@ -43,7 +43,7 @@ SourceSite.seed_once do |p|
   p.affiliate_url = "https://194964.com/AF1213451"
   p.login_user = ENV["IKUKURU_LOGIN_USER"]
   p.login_password = ENV["IKUKURU_LOGIN_PASSWORD"]
-  p.activate_flag = false
+  p.activate_flag = true
 end
 
 # ミントC!Jメール

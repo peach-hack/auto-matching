@@ -19,9 +19,9 @@ class ManualPostJob < ApplicationJob
     end
 
     set_success
-  rescue StandardError
+  rescue StandardError => e
     set_error
-  rescue hogehoge
+    raise e
   ensure
     $DEBUG = false
   end

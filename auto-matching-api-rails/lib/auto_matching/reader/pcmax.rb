@@ -3,7 +3,16 @@ module AutoMatching
     class Pcmax < ReaderBase
       include Common::Pcmax
 
+      AREA_MAPPER = {
+        "東京都" => "22",
+        "神奈川県" => "23"
+      }
+
       private
+        def specify_area
+          # 地域指定はsearch_boardと一緒に操作するので、ここではなにもしない
+        end
+
         def search_board
           logging_start(__method__)
 
@@ -11,7 +20,8 @@ module AutoMatching
           session.visit "https://pcmax.jp/mobile/bbs_reference.php"
 
           # 投稿地域
-          session.find_field("pref_no").find("option[value='22']").select_option
+          area_no = AREA_MAPPER[area]
+          session.find_field("pref_no").find("option[value='#{area_no}']").select_option
 
           # 詳細地域
           # ジャンル
@@ -48,7 +58,7 @@ module AutoMatching
           value = input_data.map { |value1| value1.first("span.value1").text }
           get_post_from = input_data.map { |value1| value1.all("span.value1")[1].text.strip.to_s }
           get_post_at = input_data.map { |value1| value1.all("span.value1")[2].text.strip.to_s }
-          category_list = input_data.map { |value1| value1.all("span.value1")[3].text.strip.to_s }
+          category_list = input_data.map { |value1| converter.convert_category(value1.all("span.value1")[3].text.strip.to_s) }
           profile_from_list = input_data.map { |value1| value1.all("span.value1")[4].text.strip.to_s }
 
 
@@ -59,10 +69,10 @@ module AutoMatching
           prefecture_list, city_list, address_list = converter.from_change(get_post_from)
 
 
-          source_site_id = SourceSite.find_by(key: SourceSite::KEY_PCMAX).id
+          source_site_id = SourceSite.find_by(key: source_site_key).id
 
           # 配列の中にハッシュとして取得した要素を格納
-          20.times.with_index do |i|
+          POST_COUNT.times.with_index do |i|
             post_data = { source_site_id: source_site_id,
                           url: url_list[i], title: title_list[i], sex: sex_list[i], name: name_list[i],
                           age: age_list[i], post_at: post_at_list[i], category: category_list[i],
@@ -71,20 +81,11 @@ module AutoMatching
             @post_data_list[i] = post_data
           end
 
-          @post_data_list
-
           logging_end(__method__)
         end
 
-        def save_board
-          logging_start(__method__)
-
-          @post_data_list.each do |d|
-            post = Post.compose(Post.prepare(d), Profile.prepare(d))
-            save!(post)
-          end
-
-          logging_end(__method__)
+        def click_next
+          click_selector("table > tbody > tr > td:nth-child(3) > a")
         end
     end
   end

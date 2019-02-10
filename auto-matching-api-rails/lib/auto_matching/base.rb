@@ -1,6 +1,7 @@
 module AutoMatching
   class Base
     attr_reader :token
+    include CapybaraHelper
 
     def initialize(*_args)
       capybara_setting
@@ -94,7 +95,7 @@ module AutoMatching
       end
 
       def logging_format(method_name)
-        "#{module_type}:#{source_site_key}:#{method_name}"
+        "#{ts}-#{module_type}:#{source_site_key}:#{method_name}"
       end
 
       def logger

@@ -1,4 +1,5 @@
 {
+  "extends": "@nuxt/typescript",
   "compilerOptions": {
     "outDir": "./build",
     "sourceMap": true,
@@ -20,6 +21,11 @@
         "src/*"
       ],
     },
+    "types": [
+      "@types/node",
+      "@types/webpack",
+      "@nuxt/vue-app"
+    ]
   },
   "exclude": [
     "node_modules",

@@ -22,14 +22,12 @@ table.table
 
 <script lang="ts">
 import Vue from 'vue'
-import moment from 'moment'
 //@ts-ignore
 import Template from '@types/template'
 //@ts-ignore
 import { deleteApiUsersPostsTemplatesById } from '@/plugins/api'
 //@ts-ignore
 import DateUtil from '@/components/mixins/DateUtil'
-import { AxiosError, AxiosResponse } from 'axios'
 
 export default Vue.extend({
   mixins: [DateUtil],
@@ -41,14 +39,14 @@ export default Vue.extend({
       deleteApiUsersPostsTemplatesById({
         id: id
       })
-        .then((response: AxiosResponse) => {
+        .then(() => {
           this.$store.commit({
             type: 'posts/deleteTemplate',
             id: id
           })
           this.$toasted.success('削除しました')
         })
-        .catch((error: AxiosError) => {
+        .catch(() => {
           this.$toasted.error('エラーが発生しました')
         })
     }

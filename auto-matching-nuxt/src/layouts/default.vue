@@ -10,6 +10,7 @@
       sidebar-footer
       sidebar-minimizer
     main.main
+      pulse-loader(:loading="$state.common.isLoading" style="position:fixed;top:50%;left:50%")
       breadcrumb(:list="[]")
       .container-fluid
         b-card
@@ -27,6 +28,7 @@ import {
   Header as AppHeader,
   Sidebar as AppSidebar
 } from '@coreui/vue'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import nav from '../components/_nav'
 import { Breadcrumb, Footer as AppFooter } from '../components'
 
@@ -41,7 +43,8 @@ export default {
     SidebarFooter,
     SidebarMinimizer,
     AppFooter,
-    Breadcrumb
+    Breadcrumb,
+    PulseLoader
   },
   data() {
     return {
