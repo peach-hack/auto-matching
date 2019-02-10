@@ -22,8 +22,7 @@ module.exports = {
   /*
    ** Customize the progress bar color
    */
-  loading: { color: '#42A5CC' },
-
+  loading: false,
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:5000',
     wsBaseUrl: process.env.WS_BASE_URL || 'ws://localhost:5000'
