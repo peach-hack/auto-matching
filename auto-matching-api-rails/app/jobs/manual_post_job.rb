@@ -1,9 +1,5 @@
-class ManualPostJob < ApplicationJob
+class ManualPostJob < ManualJob
   queue_as :default
-
-  SUCCESS = "成功".freeze
-  ERROR = "失敗".freeze
-  SUSPEND = "抑止".freeze
 
   def perform(debug_flag, sender_class_s)
     $DEBUG = debug_flag
@@ -14,14 +10,13 @@ class ManualPostJob < ApplicationJob
 
     if allow_manual_post?(history)
       AutoMatching::Sender::Executor.new.run(klass)
+      set_success
     else
-      raise hogehoge
+      set_suspend
     end
 
-    set_success
-  rescue StandardError => e
+  rescue StandardError
     set_error
-    raise e
   ensure
     $DEBUG = false
   end
@@ -29,30 +24,26 @@ class ManualPostJob < ApplicationJob
   private
     def set_success
       history = SourceSite::ManualPostHistory.find_by(key: @key)
-      history.update(last_post_status: SUCCESS, last_post_at: date)
-      ActionCable.server.broadcast "manual_post_channel", ids: [history.id], status: SUCCESS
+      history.update(last_post_status: SUCCESS, last_post_at: time_now)
+      ActionCable.server.broadcast MANUAL_POST_CHANNEL, ids: [history.id], status: SUCCESS
     end
 
     def set_error
       history = SourceSite::ManualPostHistory.find_by(key: @key)
       history.update(last_post_status: ERROR)
-      ActionCable.server.broadcast "manual_post_channel", ids: [history.id], status: ERROR
-    end
-    def set_suspend
-      ActionCable.server.broadcast "manual_post_channel", ids: [history.id], status: SUSPEND
+      ActionCable.server.broadcast MANUAL_POST_CHANNEL, ids: [history.id], status: ERROR
     end
 
-    def date
-      Time.zone.now
+    def set_suspend
+      ActionCable.server.broadcast MANUAL_POST_CHANNEL, ids: [history.id], status: SUSPEND
     end
 
     def allow_manual_post?(history)
-      # TODO: 投稿制限条件を強める考慮
-      calculate_elapsed_minutes(history) > ENV["NEXT_MANUAL_POST_ALLOW_MINUTES"].to_f || history.last_post_status != "成功"
+      calculate_elapsed_minutes(history) > ENV["NEXT_MANUAL_POST_ALLOW_MINUTES"].to_f || history.last_post_status != SUCCESS
     end
 
     def calculate_elapsed_minutes(history)
-      elapsed_seconds = date - history.last_post_at
+      elapsed_seconds = time_now - history.last_post_at
       elapsed_seconds / 60
     end
 end
