@@ -10338,13 +10338,15 @@ nuxt-babel@^0.1.2:
   dependencies:
     find-babel-config "^1.1.0"
 
-nuxt-property-decorator@^1.2.0:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/nuxt-property-decorator/-/nuxt-property-decorator-1.3.1.tgz#92518359296b3b58e75869e44fac4cfe21e5a713"
-  integrity sha512-+gWaL98841R+TnH1ZPGxjcV25U6+vA8kSDfHXRyVIR/ls8LGlQVT6iUSX59dTyx0QT6ARzugNrSvR8Uq6MrXJg==
+nuxt-property-decorator@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/nuxt-property-decorator/-/nuxt-property-decorator-2.0.1.tgz#e9afd7ccf162a9e3b1f066ec714da4dede96373f"
+  integrity sha512-dCwpXFMWFng9pj1NuzxNjlMWSSaQ42+xheh/Z0icIPg5VG+JyhZfdTEw4G35CPiWMgvBMzZhrRk9nGDRV7K2Wg==
   dependencies:
     reflect-metadata "^0.1.12"
     vue-class-component "6.3.2"
+    vue-property-decorator "^7.3.0"
+    vuex "^3.1.0"
     vuex-class "^0.3.1"
 
 nuxt-ts-edge@^2.4.1-25812008.a303ea89:
