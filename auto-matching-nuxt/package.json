@@ -120,7 +120,7 @@
     "typescript-eslint-parser": "^22.0.0",
     "vue-class-component": "^6.3.2",
     "vue-eslint-parser": "^5.0.0",
-    "vue-jest": "^3.0.2",
+    "vue-jest": "^3.0.3",
     "vuetype": "^0.3.2",
     "vuex-class": "^0.3.0"
   },
