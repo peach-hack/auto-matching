@@ -2,6 +2,7 @@ module Api
   module Users
     module Posts
       class DailyCrawlController < ::ApplicationController
+        include AutoMatching::CapacityControl
         before_action :authenticate_user unless Rails.env.test?
         def execute
           site_ids = params[:ids]
@@ -23,8 +24,7 @@ module Api
           end
 
           # DB容量制限
-          include CapacityControl
-          capacity_control_DB
+          delete_extra_posts
 
           response_success(:daily_crawl, :execute)
         end
