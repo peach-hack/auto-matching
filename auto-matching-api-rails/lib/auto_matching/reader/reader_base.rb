@@ -59,7 +59,7 @@ module AutoMatching
 
           post_data_list.each do |d|
             post = Post.compose(Post.prepare(d), Profile.prepare(d))
-            save!(post)
+            save(post)
           end
 
           logging_end(__method__)
@@ -68,6 +68,11 @@ module AutoMatching
         def continue?
           last_search_at = SourceSite::SearchHistory.find_by(key: source_site_key).last_search_at&.to_datetime
           last_post_at = post_data_list.last[:post_at].to_datetime
+
+          # とりあえず2時間以上前は取得しない
+          if Time.zone.now.ago(2.hour) > last_post_at
+            return false
+          end
 
           if last_search_at && last_post_at >= last_search_at
             click_next
@@ -81,13 +86,13 @@ module AutoMatching
           raise NotImplementedError
         end
 
-        def save!(post)
+        def save(post)
           if post.nil?
             logger.debug("Post is duplicated.")
             return
           end
 
-          if post.save!
+          if post.save
             logger.debug("Post save Successfully. #{post[:post_at]}")
           else
             logger.error("Post save error occured #{post.errors.full_messages}")
