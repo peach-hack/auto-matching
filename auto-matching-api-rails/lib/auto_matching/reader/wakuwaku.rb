@@ -54,7 +54,7 @@ module AutoMatching
           post_at_list = session.all(".time")
 
           # 各要素取得
-          prefecture = session.find(".subHeaderBBS").text.gsub(/エリア：/, "").strip
+          prefecture = area
           url_list = get_url.map { |t| t[:href] }
           title_list = get_title.map { |t| t.text.strip.to_s }
           category_list = get_category.map { |t| converter.convert_category(t.text.strip.to_s) }
