@@ -73,6 +73,9 @@ Rails.application.configure do
   Bullet.console = true
   Bullet.rails_logger = true
 
+  # redis
+  REDIS ||= Redis.new(url: ENV["REDIS_URL"] || "redis://localhost:6379")
+
   # strong parameter check
   config.action_controller.action_on_unpermitted_parameters = :raise
 end
