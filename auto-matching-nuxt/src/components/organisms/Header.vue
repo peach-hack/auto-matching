@@ -1,14 +1,7 @@
-<template>
-  <header class="app-header navbar">
-    <button
-      class="navbar-toggler mobile-sidebar-toggler d-lg-none"
-      type="button"
-      @click="mobileSidebarToggle"
-    >
-      &#9776;
-    </button>
-    <b-link class="navbar-brand" :to="{ name: 'index' }"></b-link>
-  </header>
+<template lang="pug">
+header.app-header.navbar
+  button.navbar-toggler.mobile-sidebar-toggler.d-lg-none(type="button" @click="mobileSidebarToggle") &#9776;
+  b-link.navbar-brand(:to="{ name: 'index' }")
 </template>
 
 <script>
