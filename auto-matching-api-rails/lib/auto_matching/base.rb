@@ -68,8 +68,18 @@ module AutoMatching
       end
 
       def finish
-        Capybara.reset_sessions!
+        kill_chrome_processes
         @session = nil
+      end
+
+      def kill_chrome_processes
+        system("pkill -9 chrome")
+        Signal.trap(:SIGCHLD) do
+          while pid = Process.wait(-1, Process::WNOHANG)
+            puts "Process #{pid} is dead."
+          end
+        rescue Errno::ECHILD
+        end
       end
 
       def session
