@@ -18,6 +18,8 @@ module AutoMatching
       save_current_page if Rails.env.development?
       logger.error("#{e.message}")
       raise e
+    ensure
+      finish
     end
 
     private
@@ -66,8 +68,8 @@ module AutoMatching
         Selenium::WebDriver::Remote::Capabilities.chrome(chrome_options: chrome_options)
       end
 
-      def reset_session
-        Capyara.reset_sessions!
+      def finish
+        session.driver.quit
         @session = nil
       end
 
