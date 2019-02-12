@@ -17,6 +17,8 @@ module AutoMatching
       save_current_page if Rails.env.development?
       logger.error("#{e.message}")
       raise e
+    ensure
+      finish
     end
 
     private
@@ -63,6 +65,21 @@ module AutoMatching
 
       def capabilities
         Selenium::WebDriver::Remote::Capabilities.chrome(chrome_options: chrome_options)
+      end
+
+      def finish
+        kill_chrome_processes
+        @session = nil
+      end
+
+      def kill_chrome_processes
+        system("pkill -9 chrome")
+        Signal.trap(:SIGCHLD) do
+          while pid = Process.wait(-1, Process::WNOHANG)
+            puts "Process #{pid} is dead."
+          end
+        rescue Errno::ECHILD
+        end
       end
 
       def session

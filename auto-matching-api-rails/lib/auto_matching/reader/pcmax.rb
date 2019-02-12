@@ -26,7 +26,7 @@ module AutoMatching
           # 詳細地域
           # ジャンル
           session.execute_script "$('input.location_checkbox:checked').click()"
-          session.execute_script "$('input#bbs_category9').click()"
+          session.execute_script "$('input#bbs_category2').click()"
 
           # 性別
           # 年齢
