@@ -4,6 +4,7 @@ module AutoMatching
     include CapybaraHelper
 
     def initialize(*_args)
+      reset_session
       capybara_setting
     end
 
@@ -63,6 +64,11 @@ module AutoMatching
 
       def capabilities
         Selenium::WebDriver::Remote::Capabilities.chrome(chrome_options: chrome_options)
+      end
+
+      def reset_session
+        Capyara.reset_sessions!
+        @session = nil
       end
 
       def session
