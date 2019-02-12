@@ -26,7 +26,7 @@ services:
     ports:
       - '5000:3000'
     tty: true
-    shm_size: 256m
+    shm_size: 512m
     volumes:
       - ./auto-matching-api-rails:/app
       - bundler-store:/usr/local/bundle
@@ -51,7 +51,7 @@ services:
     environment:
       DATABASE_HOST: postgres
       REDIS_URL: redis://redis:6379
-    shm_size: 256m
+    shm_size: 512m
     volumes:
       - ./auto-matching-api-rails:/app
       - bundler-store:/usr/local/bundle
