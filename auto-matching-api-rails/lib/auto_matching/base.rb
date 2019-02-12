@@ -69,7 +69,7 @@ module AutoMatching
 
       def finish
         Capybara.current_session.driver.browser.quit
-        Capybara.delete_sessions!
+        Capybara.reset_sessions!
         @session = nil
       end
 
