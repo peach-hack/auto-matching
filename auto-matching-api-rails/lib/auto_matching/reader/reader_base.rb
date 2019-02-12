@@ -74,7 +74,7 @@ module AutoMatching
             return false
           end
 
-          if last_search_at && last_post_at >= last_search_at
+          if last_search_at && last_post_at && last_post_at >= last_search_at
             click_next
             true
           else
