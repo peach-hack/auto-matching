@@ -21,12 +21,12 @@ services:
       - postgres
       - redis
     environment:
-      CC_TEST_REPORTER_ID:
       DATABASE_HOST: postgres
       REDIS_URL: redis://redis:6379
     ports:
       - '5000:3000'
     tty: true
+    shm_size: 512m
     volumes:
       - ./auto-matching-api-rails:/app
       - bundler-store:/usr/local/bundle
@@ -51,6 +51,7 @@ services:
     environment:
       DATABASE_HOST: postgres
       REDIS_URL: redis://redis:6379
+    shm_size: 512m
     volumes:
       - ./auto-matching-api-rails:/app
       - bundler-store:/usr/local/bundle
@@ -64,4 +65,3 @@ volumes:
   redis-store:
   bundler-store:
   node-modules-store:
-  
