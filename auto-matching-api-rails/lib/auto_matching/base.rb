@@ -4,7 +4,6 @@ module AutoMatching
     include CapybaraHelper
 
     def initialize(*_args)
-      reset_session
       capybara_setting
     end
 
@@ -69,7 +68,8 @@ module AutoMatching
       end
 
       def finish
-        session.driver.quit
+        Capybara.reset_sessions!
+        session.driver.restart
         @session = nil
       end
 
