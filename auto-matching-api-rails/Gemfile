@@ -56,7 +56,7 @@ gem "bcrypt"
 gem "newrelic_rpm"
 gem "rails_12factor", group: :production
 
-gem 'rubocop', require: false
+gem "rubocop", require: false
 gem "rubocop-rails_config", require: false
 
 # slack

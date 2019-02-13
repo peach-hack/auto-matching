@@ -11,7 +11,7 @@ module Api
           site_ids = [2, 3, 4]
           area_list = ["東京都", "神奈川県"]
           genre_list = ["今スグ会いたい"]
-          settings = params[:settings]
+          # settings = params[:settings]
 
           # settings.each do |setting|
           # slack設定をDBに入れる
