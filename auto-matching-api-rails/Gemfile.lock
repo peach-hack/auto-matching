@@ -320,6 +320,7 @@ GEM
     simple_scheduler (1.0.0)
       rails (>= 4.2)
       sidekiq (>= 4.2)
+    slack-notifier (2.3.2)
     solargraph (0.31.2)
       backport (~> 0.3)
       htmlentities (~> 4.3, >= 4.3.4)
@@ -422,6 +423,7 @@ DEPENDENCIES
   sidekiq-failures
   sidekiq-history
   simple_scheduler
+  slack-notifier
   solargraph
   spring
   spring-commands-rspec

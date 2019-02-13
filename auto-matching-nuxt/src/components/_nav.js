@@ -72,8 +72,8 @@ export default {
       icon: 'icon-star'
     },
     {
-      name: 'リアルタイム監視',
-      url: '/', // '/search/polling',
+      name: 'Slack連携',
+      url: '/auto/slack',
       icon: 'icon-star'
     },
     {

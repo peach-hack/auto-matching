@@ -56,8 +56,11 @@ gem "bcrypt"
 gem "newrelic_rpm"
 gem "rails_12factor", group: :production
 
-gem 'rubocop', require: false
+gem "rubocop", require: false
 gem "rubocop-rails_config", require: false
+
+# slack
+gem "slack-notifier"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
