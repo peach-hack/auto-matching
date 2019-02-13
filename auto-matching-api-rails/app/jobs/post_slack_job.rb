@@ -7,6 +7,7 @@ class PostSlackJob < AutoJob
     AutoMatching::Reader::Executor.new.run(klass, area_list, genre_list)
 
     set_success(key)
+
     util.notify_posts
 
   rescue StandardError => e

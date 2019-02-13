@@ -35,7 +35,7 @@ module AutoMatching
       end
 
       def posts
-        Post.where.has { updated_at >= @start_time }
+        Post.where.has { |post| post.updated_at >= @start_time }
       end
 
       def notifier
