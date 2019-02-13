@@ -6,16 +6,7 @@ class PostSlackJob < AutoJob
 
     # AutoMatching::Reader::Executor.new.run(klass, area_list, genre_list)
 
-    notify
+    util = AutoMatching::SlackUtils.new
+    util.notify_posts
   end
-
-  private
-    def notify
-      logger.debug("test")
-      AutoMatching::SlackUtils.post(message)
-    end
-
-    def message
-      "hello, world!"
-    end
 end
