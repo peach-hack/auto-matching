@@ -21,14 +21,17 @@ module AutoMatching
     private
       def messages
         posts.map do |post|
+          profile = post.profile
+          site = profile.source_site
           message_format(
-            title: post.title
+            title: post.title,
+            site: site.key
             )
         end
       end
 
       def message_format(post = {})
-        post[:title]
+        "#{post[:site]}: #{post[:title]}"
       end
 
       def posts
