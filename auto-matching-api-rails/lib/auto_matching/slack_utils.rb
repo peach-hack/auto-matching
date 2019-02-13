@@ -1,5 +1,9 @@
 module AutoMatching
   class SlackUtils
+    def initialize(start_time = Time.zone.now)
+      @start_time = start_time
+    end
+
     def notify_posts
       messages.each do |message|
         notify_post(message)
@@ -28,7 +32,7 @@ module AutoMatching
       end
 
       def posts
-        Post.all.limit(10)
+        Post.where.has { updated_at >= @start_time }
       end
 
       def notifier
