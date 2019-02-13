@@ -6,12 +6,11 @@ class PostSlackJob < AutoJob
 
     AutoMatching::Reader::Executor.new.run(klass, area_list, genre_list)
 
-    send
+    notify
   end
 
   private
-
-    def send
+    def notify
       # test
     end
 end

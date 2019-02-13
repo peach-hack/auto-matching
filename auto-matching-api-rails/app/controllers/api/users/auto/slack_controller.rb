@@ -1,6 +1,6 @@
 module Api
   module Users
-    module Posts
+    module Auto
       class SlackController < ::ApplicationController
         before_action :authenticate_user unless Rails.env.test?
 
@@ -13,9 +13,9 @@ module Api
           genre_list = ["今スグ会いたい"]
           settings = params[:settings]
 
-          settings.each do |setting|
-            # slack設定をDBに入れる
-          end
+          # settings.each do |setting|
+          # slack設定をDBに入れる
+          # end
 
           reader_classes = [
             AutoMatching::Reader::Happymail,

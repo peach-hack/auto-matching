@@ -321,3 +321,13 @@ paths:
           description: 成功時のレスポンス
         '500':
           description: 失敗時のレスポンス
+  /api/users/auto/slack:          
+    post:
+      summary: スラック投稿
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
