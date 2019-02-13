@@ -1,2 +1,0 @@
-class AutoPostJob < AutoJob
-end

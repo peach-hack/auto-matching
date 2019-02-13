@@ -34,6 +34,10 @@ Rails.application.routes.draw do
             post :clear, on: :collection
           end
         end
+
+        namespace :auto do
+          post :slack, to: "slack#execute"
+        end
       end
     end
   end
