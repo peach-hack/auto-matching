@@ -26,7 +26,6 @@ module AutoMatching
           message_format(
             title: post.title,
             url: post.url,
-            category: post.category,
             prefecture: post.prefecture,
             city: post.city,
             category: post.category,
