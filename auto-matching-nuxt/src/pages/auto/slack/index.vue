@@ -1,7 +1,7 @@
 <template lang="pug">
-form(@submit.prevent="submit")
-  .form-group        
-    submit-button
+div
+  slack-control-button-group
+  slack-channel-form
 </template>
 
 <script lang="ts">
@@ -13,9 +13,16 @@ import SubmitButton from '@/components/atoms/SubmitButton.vue'
 //@ts-ignore
 import { postApiUsersAutoSlack } from '@/plugins/api'
 
+//@ts-ignore
+import SlackChannelForm from '@/components/organisms/SlackChannelForm.vue'
+//@ts-ignore
+import SlackControlButtonGroup from '@/components/molecules/SlackControlButtonGroup.vue'
+
 export default Vue.extend({
   components: {
-    SubmitButton
+    SubmitButton,
+    SlackChannelForm,
+    SlackControlButtonGroup
   },
   methods: {
     submit: function() {

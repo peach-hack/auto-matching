@@ -5,7 +5,7 @@ module Api
         before_action :authenticate_user unless Rails.env.test?
 
         def index
-          workspace = SlackWorkspace.all
+          workspace = SlackWorkspace.first
           render json: SlackWorkspaceSerializer.new(workspace).serialized_json
         end
 
