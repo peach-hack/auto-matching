@@ -32,8 +32,8 @@ module AutoMatching
             category: post.category,
             post_at: post.post_at,
             site: site.name,
-            name: pfofile.name,
-            age: profile.age
+            name: profile.name,
+            age: profile.age,
             )
         end
       end
