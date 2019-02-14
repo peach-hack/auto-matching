@@ -1,0 +1,9 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "slack_channels", comment: "Slackチャンネル", force: :cascade do |t|
+  t.integer "slack_id", null: false
+  t.string "keyword", null: true
+  t.string "name", null: true
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
