@@ -9,25 +9,12 @@ module Api
           render json: SlackWorkspaceSerializer.new(workspace).serialized_json
         end
 
-        def create
-          workspace = SlackWorkspace.new(webhook_url: params[:url])
-
-          if workspace.save
-            response_success(:template, :create)
-          else
-            response_internal_server_error
-          end
-        end
-
         def update
-          workspace = SlackWorkspace.first
-          workspace.update_attributes(webhook_url: params[:url])
-
-          if workspace.save
-            response_success(:slack, :update)
-          else
-            response_internal_server_error
-          end
+          workspace = SlackWorkspace.find_or_initi_by(webhook_url: params[:webhook_url])
+          workspace.update_attributes(webhook_url: params[:webhook_url])
+          response_success(:slack, :update)
+        rescue
+          response_internal_server_error
         end
 
         def execute
