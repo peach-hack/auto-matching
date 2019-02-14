@@ -25,13 +25,26 @@ module AutoMatching
           site = profile.source_site
           message_format(
             title: post.title,
-            site: site.key
+            url: post.url,
+            category: post.category,
+            prefecture: post.prefecture,
+            city: post.city,
+            category: post.category,
+            post_at: post.post_at,
+            site: site.name,
+            name: pfofile.name,
+            age: profile.age
             )
         end
       end
 
       def message_format(post = {})
-        "#{post[:site]}: #{post[:title]}"
+        <<~MESSAGE
+          #{post[:site]}: <#{post[:url]}|#{post[:title]}>
+          #{post[:category]}
+          #{post[:age]} #{post[:prefecture]}#{post[:city]}
+          #{post[:post_at]} by #{post[:name]} #{post[:age]}
+        MESSAGE
       end
 
       def posts
