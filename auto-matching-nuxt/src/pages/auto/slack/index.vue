@@ -21,7 +21,7 @@ export default Vue.extend({
     submit: function() {
       postApiUsersAutoSlack()
         .then(() => {
-          this.$toasted.success('更新しました')
+          this.$toasted.success('実行しました')
         })
         .catch(() => {
           this.$toasted.error('エラーが発生しました')

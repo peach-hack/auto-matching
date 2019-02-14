@@ -5,6 +5,29 @@ module Api
         before_action :authenticate_user unless Rails.env.test?
 
         def index
+          workspace = SlackWorkspace.all
+          render json: SlackWorkspaceSerializer.new(workspace).serialized_json
+        end
+
+        def create
+          workspace = SlackWorkspace.new(webhook_url: params[:url])
+
+          if workspace.save
+            response_success(:template, :create)
+          else
+            response_internal_server_error
+          end
+        end
+
+        def update
+          workspace = SlackWorkspace.first
+          workspace.update_attributes(webhook_url: params[:url])
+
+          if workspace.save
+            response_success(:slack, :update)
+          else
+            response_internal_server_error
+          end
         end
 
         def execute
