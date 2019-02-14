@@ -4,4 +4,6 @@ create_table "slacks", comment: "Slack", force: :cascade do |t|
   t.string "webhook_url", null: true
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
+
+  has_many :slack_channel, dependent: :destroy
 end

@@ -45,5 +45,5 @@ class SourceSite < ApplicationRecord
 
   attribute :activate_flag, :boolean, default: -> { true }
 
-  has_one :profile, dependent: :destroy
+  has_many :profile, dependent: :destroy
 end
