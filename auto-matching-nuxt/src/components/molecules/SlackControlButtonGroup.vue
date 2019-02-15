@@ -1,6 +1,10 @@
 <template lang="pug">
 .form-group
   label Slackリアルタイム通知
+  .badge.badge-pill.badge-success(v-if="timerOn")
+    | 監視中
+  .badge.badge-pill.badge-dark(v-else)
+    | 停止中
   .button-group
     button(type="button" @click="start").btn.btn-primary
       | Start
@@ -25,12 +29,12 @@ export default Vue.extend({
     start: function() {
       console.log('slack notify start')
       postApiUsersAutoSlack()
+      this.timerOn = true
 
       this.timerObj = setInterval(function() {
         console.log('slack notify exec.')
         postApiUsersAutoSlack()
       }, 120000) // 2min
-      this.timerOn = true
     },
     stop: function() {
       clearInterval(this.timerObj)

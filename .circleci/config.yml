@@ -38,8 +38,5 @@ workflows:
   version: 2
   test_and_build:
     jobs:
-      - build:
-          filters:
-            branches:
-              only: master
       - test
+      - build
