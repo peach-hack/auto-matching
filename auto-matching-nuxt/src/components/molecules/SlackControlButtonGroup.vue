@@ -25,16 +25,18 @@ export default Vue.extend({
       postApiUsersAutoSlack()
       this.$store.commit('slack/setTimerOn', true)
 
-      const timerObj = setInterval(function() {
-        console.log('slack notify exec.')
-        postApiUsersAutoSlack()
-      }, 600000) // 5min
-
-      this.$store.commit('slack/setTimerObj', timerObj)
+      this.$store.commit(
+        'slack/setTimerObj',
+        setInterval(function() {
+          console.log('slack notify exec.')
+          postApiUsersAutoSlack()
+        }, 300000)
+      ) // 5min
     },
     stop: function() {
       clearInterval(this.$state.slack.timerObj)
       this.$store.commit('slack/setTimerOn', false)
+      this.$store.commit('slack/setTimerObj', null)
       console.log('slack notify stop')
     }
   }
