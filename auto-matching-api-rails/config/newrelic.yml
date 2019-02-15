@@ -31,6 +31,7 @@ common: &default_settings
 development:
   <<: *default_settings
   app_name: Auto Matching (Development)
+  monitor_mode: false
 
 test:
   <<: *default_settings

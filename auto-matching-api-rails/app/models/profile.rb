@@ -19,8 +19,8 @@ class Profile < ApplicationRecord
   validates :from, presence: false
 
   belongs_to :source_site
-  has_many :post, dependent: :destroy
-  accepts_nested_attributes_for :post
+  has_many :posts, dependent: :destroy
+  accepts_nested_attributes_for :posts
 
   def self.prepare(**args)
     profile = {}
