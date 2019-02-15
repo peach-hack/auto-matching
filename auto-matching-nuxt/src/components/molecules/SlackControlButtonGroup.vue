@@ -15,6 +15,12 @@ import Vue from 'vue'
 import { postApiUsersAutoSlack } from '@/plugins/api'
 
 export default Vue.extend({
+  data: function() {
+    return {
+      timerOn: false as boolean,
+      timerObj: null as object
+    }
+  },
   methods: {
     start: function() {
       console.log('slack notify start')
