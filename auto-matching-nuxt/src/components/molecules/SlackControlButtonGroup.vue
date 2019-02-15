@@ -11,13 +11,19 @@
 <script lang="ts">
 import Vue from 'vue'
 
+//@ts-ignore
+import { postApiUsersAutoSlack } from '@/plugins/api'
+
 export default Vue.extend({
   methods: {
     start: function() {
       console.log('slack notify start')
+      postApiUsersAutoSlack()
+
       this.timerObj = setInterval(function() {
         console.log('slack notify exec.')
-      }, 1000)
+        postApiUsersAutoSlack()
+      }, 120000) // 2min
       this.timerOn = true
     },
     stop: function() {
