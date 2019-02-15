@@ -34,7 +34,7 @@ export default Vue.extend({
       this.timerObj = setInterval(function() {
         console.log('slack notify exec.')
         postApiUsersAutoSlack()
-      }, 120000) // 2min
+      }, 600000) // 5min
     },
     stop: function() {
       clearInterval(this.timerObj)
