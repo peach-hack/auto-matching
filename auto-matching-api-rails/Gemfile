@@ -62,7 +62,7 @@ gem "rubocop-rails_config", require: false
 # slack
 gem "slack-notifier"
 
-
+# AWS Client
 gem "aws-sdk"
 
 group :development, :test do
