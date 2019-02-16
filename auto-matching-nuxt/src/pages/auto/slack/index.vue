@@ -1,32 +1,21 @@
 <template lang="pug">
-form(@submit.prevent="submit")
-  .form-group        
-    submit-button
+div
+  slack-control-button-group
+  // slack-channel-form
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 //@ts-ignore
-import SubmitButton from '@/components/atoms/SubmitButton.vue'
-
+// import SlackChannelForm from '@/components/organisms/SlackChannelForm.vue'
 //@ts-ignore
-import { postApiUsersAutoSlack } from '@/plugins/api'
+import SlackControlButtonGroup from '@/components/molecules/SlackControlButtonGroup.vue'
 
 export default Vue.extend({
   components: {
-    SubmitButton
-  },
-  methods: {
-    submit: function() {
-      postApiUsersAutoSlack()
-        .then(() => {
-          this.$toasted.success('更新しました')
-        })
-        .catch(() => {
-          this.$toasted.error('エラーが発生しました')
-        })
-    }
+    // SlackChannelForm,
+    SlackControlButtonGroup
   }
 })
 </script>

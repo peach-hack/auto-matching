@@ -43,6 +43,6 @@ class Post < ApplicationRecord
     end
 
     profile_obj = Profile.find_or_initialize_by(profile_hash)
-    profile_obj.build_post(post_hash)
+    profile_obj.posts.build(post_hash)
   end
 end
