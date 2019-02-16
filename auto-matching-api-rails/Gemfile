@@ -56,6 +56,12 @@ gem "bcrypt"
 gem "newrelic_rpm"
 gem "rails_12factor", group: :production
 
+gem "rubocop", require: false
+gem "rubocop-rails_config", require: false
+
+# slack
+gem "slack-notifier"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -68,9 +74,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "rspec_junit_formatter", "0.4.1" # for circleci
   gem "touch_action"
-
-  gem "rubocop"
-  gem "rubocop-rails_config"
 
   gem "factory_bot_rails"
 

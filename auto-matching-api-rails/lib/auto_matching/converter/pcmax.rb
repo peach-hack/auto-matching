@@ -82,7 +82,7 @@ module AutoMatching
       end
 
       def convert_category(category)
-        if category == "今からあそぼ"
+        if category == "スグ会いたい"
           CATEGORY_NOW
         end
       end

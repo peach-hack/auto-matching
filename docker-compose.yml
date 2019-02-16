@@ -26,17 +26,16 @@ services:
     ports:
       - '5000:3000'
     tty: true
-    shm_size: 512m
     volumes:
       - ./auto-matching-api-rails:/app
       - bundler-store:/usr/local/bundle
       - /dev/shm:/dev/shm
 
   nuxt:
+    build: ./auto-matching-nuxt/
     command: /bin/sh -c 'API_URL=http://rails:3000 yarn dev'
     environment:
       HOST: 0.0.0.0
-    image: node:11.3-alpine
     ports:
       - '3000:3000'
     tty: true
@@ -51,7 +50,6 @@ services:
     environment:
       DATABASE_HOST: postgres
       REDIS_URL: redis://redis:6379
-    shm_size: 512m
     volumes:
       - ./auto-matching-api-rails:/app
       - bundler-store:/usr/local/bundle

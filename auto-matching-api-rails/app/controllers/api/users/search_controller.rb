@@ -5,7 +5,7 @@ module Api
 
       def db
         q = Post.ransack(search_params)
-        posts = q.result(distinct: true).limit(10).ordering { post_at.desc }
+        posts = q.result(distinct: true).limit(1000).ordering { post_at.desc }
         render json: PostSerializer.new(posts).serialized_json
       end
 
