@@ -1,19 +1,22 @@
 module AutoMatching
   module Client
-    module Aws
-      class ClowdwatchUtils
+    class CloudwatchUtils
+      def list_rules
+        client.list_rules
+      end
+
+      private
         def client
-          @client ||= Aws::CloudWatch::Client.new(
+          @client ||= Aws::CloudWatchEvents::Client.new(
             access_key_id: ENV["AWS_ACCESS_KEY_ID"],
             secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
-            region: resion
+            region: region
             )
         end
 
-        def resion
+        def region
           "ap-northeast-1" # 東京
         end
-      end
     end
   end
 end
