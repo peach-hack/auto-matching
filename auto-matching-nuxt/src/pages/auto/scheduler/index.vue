@@ -1,16 +1,16 @@
 <template lang="pug">
-cron-control-sites-form
+scheduler-form
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 //@ts-ignore
-import CronControlSitesForm from '@/components/organisms/CronControlSitesForm.vue'
+import SchedulerForm from '@/components/organisms/SchedulerForm.vue'
 
 export default Vue.extend({
   components: {
-    CronControlSitesForm
+    SchedulerForm
   }
 })
 </script>
