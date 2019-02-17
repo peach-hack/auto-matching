@@ -378,11 +378,16 @@
         }
       }
     },
-    "/api/users/auto/scheduler" : {
-      "post" : {
+    "/api/users/auto/schedule/{id}" : {
+      "put" : {
         "summary" : "スケジュール設定",
         "produces" : [ "application/json" ],
-        "parameters" : [ ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer"
+        } ],
         "responses" : {
           "200" : {
             "description" : "成功時のレスポンス"

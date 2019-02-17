@@ -11,3 +11,6 @@
 #  updated_at  :datetime         not null
 #
 
+class SearchHistorySerializer < ApplicationSerializer
+  attributes :id, :post_sites, :watch_sites, :post_corn, :watch_cron
+end
