@@ -63,7 +63,7 @@ export default {
     },
     {
       name: '定期実行設定',
-      url: '/auto/scheduler',
+      url: '/auto/schedule',
       icon: 'icon-star'
     },
     {
