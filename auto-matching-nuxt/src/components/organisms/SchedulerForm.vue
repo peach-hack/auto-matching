@@ -1,25 +1,52 @@
 <template lang="pug">
-table.table
-  thead
-    tr
-      th Id 
-      th サイト名
-      th 定期投稿
-      th 定期監視
-  tbody
-    tr(v-for="site in sites" :key="site.id")
-      td {{ site.id }}
-      td {{ site.name }}
-      td
-      td
+form
+  table.table.form-group
+    thead
+      tr
+        th Id 
+        th サイト名
+        th 定期投稿対象
+        th 定期監視対象
+    tbody
+      tr(v-for="site in sites" :key="site.id")
+        td {{ site.id }}
+        td {{ site.name }}
+        td 
+          input.form-check-input.position-static(type="checkbox" v-model="info.watch.sites[site.id-1]")
+        td 
+          input.form-check-input.position-static(type="checkbox" v-model="info.watch.sites[site.id-1]")
+  .form-group
+    label(for="cronInput1") 定期投稿スケジュール
+    input(type="text" v-model="info.posts.cron").form-control#cornInput1
+  .form-group
+    label(for="cronInput2") 定期監視スケジュール
+    input(type="text" v-model="info.watch.cron").form-control#cornInput2
+  .form-grpup
+    submit-button
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
+//@ts-ignore
+import SubmitButton from '@/components/atoms/SubmitButton.vue'
+
 export default Vue.extend({
+  components: {
+    SubmitButton
+  },
   data: function() {
     return {
+      info: {
+        posts: {
+          sites: [false, true, true, true, false, false],
+          cron: ''
+        },
+        watch: {
+          sites: [false, true, true, true, false, false],
+          cron: ''
+        }
+      },
       sites: [
         {
           id: 1,
