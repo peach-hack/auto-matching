@@ -62,13 +62,8 @@ export default {
       }
     },
     {
-      name: '定期投稿設定',
-      url: '/', // '/posts/auto',
-      icon: 'icon-star'
-    },
-    {
-      name: '定期監視設定',
-      url: '/', // '/posts/auto',
+      name: '定期実行設定',
+      url: '/auto/polling',
       icon: 'icon-star'
     },
     {
