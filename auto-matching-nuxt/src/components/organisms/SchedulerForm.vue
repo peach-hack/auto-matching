@@ -1,5 +1,5 @@
 <template lang="pug">
-form
+form(@submit.prevent="submit")
   table.table.form-group
     thead
       tr
@@ -12,9 +12,9 @@ form
         td {{ site.id }}
         td {{ site.name }}
         td 
-          input.form-check-input.position-static(type="checkbox" v-model="info.watch.sites[site.id-1]")
+          input.form-check-input.position-static(type="checkbox" v-model="info.watch.sites[site.id-1]" :disabled="!info.watch.sites[site.id-1]")
         td 
-          input.form-check-input.position-static(type="checkbox" v-model="info.watch.sites[site.id-1]")
+          input.form-check-input.position-static(type="checkbox" v-model="info.watch.sites[site.id-1]" :disabled="!info.watch.sites[site.id-1]")
   .form-group
     label(for="cronInput1") 定期投稿スケジュール
     input(type="text" v-model="info.posts.cron").form-control#cornInput1
@@ -30,6 +30,9 @@ import Vue from 'vue'
 
 //@ts-ignore
 import SubmitButton from '@/components/atoms/SubmitButton.vue'
+
+//@ts-ignore
+import postApiUsersAutoSchedulerURL from '@/plugins/api'
 
 export default Vue.extend({
   components: {
@@ -73,6 +76,27 @@ export default Vue.extend({
           name: 'メルパラ'
         }
       ]
+    }
+  },
+  methods: {
+    submit: function() {
+      const data = {
+        id: 1,
+        postSites: this.info.posts.sites,
+        watchSites: this.info.watch.sites,
+        postCron: this.info.posts.cron,
+        watchCron: this.info.watch.cron
+      }
+      postApiUsersAutoSchedulerURL({
+        id: 1,
+        attributes: data
+      })
+        .then(() => {
+          this.$toasted.success('更新しました')
+        })
+        .catch(() => {
+          this.$toasted.error('エラーが発生しました')
+        })
     }
   }
 })

@@ -828,3 +828,42 @@ export const postApiUsersAutoSlackURL = function(parameters = {}) {
   let keys = Object.keys(queryParameters)
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
+/**
+ * スケジュール設定
+ * request: postApiUsersAutoScheduler
+ * url: postApiUsersAutoSchedulerURL
+ * method: postApiUsersAutoScheduler_TYPE
+ * raw_url: postApiUsersAutoScheduler_RAW_URL
+ */
+export const postApiUsersAutoScheduler = function(parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/auto/scheduler'
+  let body
+  let queryParameters = {}
+  let form = {}
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('post', domain + path, body, queryParameters, form, config)
+}
+export const postApiUsersAutoScheduler_RAW_URL = function() {
+  return '/api/users/auto/scheduler'
+}
+export const postApiUsersAutoScheduler_TYPE = function() {
+  return 'post'
+}
+export const postApiUsersAutoSchedulerURL = function(parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/auto/scheduler'
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}

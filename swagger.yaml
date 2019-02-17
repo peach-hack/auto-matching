@@ -331,3 +331,13 @@ paths:
           description: 成功時のレスポンス
         '500':
           description: 失敗時のレスポンス
+  /api/users/auto/scheduler:
+    post:
+      summary: スケジュール設定
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 成功時のレスポンス
+        '500':
+          description: 失敗時のレスポンス
