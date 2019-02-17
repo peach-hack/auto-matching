@@ -1,11 +1,11 @@
 require "sidekiq/web" if Rails.env.development?
-require "logster" if Rails.env.development?
+# require "logster" if Rails.env.development?
 
 Rails.application.routes.draw do
   match "*path" => "options_request#preflight", via: :options
 
   mount Sidekiq::Web, at: "/sidekiq" if Rails.env.development?
-  mount Logster::Web, at: "/logs" if Rails.env.development?
+  # mount Logster::Web, at: "/logs" if Rails.env.development?
   mount ActionCable.server => "/cable"
 
   defaults format: :json do

@@ -98,7 +98,7 @@ group :development do
   gem "solargraph"
 
   gem "rails_db"
-  gem "logster"
+  # gem "logster"
 
   gem "sidekiq-history"
   gem "sidekiq-failures"
