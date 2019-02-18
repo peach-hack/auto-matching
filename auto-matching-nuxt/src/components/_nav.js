@@ -44,7 +44,7 @@ export default {
     },
     {
       name: 'キーワード検索',
-      url: '/search/keyword',
+      url: '/', // '/search/keyword',
       icon: 'icon-star'
     },
     {
@@ -63,7 +63,7 @@ export default {
     },
     {
       name: '定期実行設定',
-      url: '/auto/scheduler',
+      url: '/', // '/auto/scheduler',
       icon: 'icon-star'
     },
     {
