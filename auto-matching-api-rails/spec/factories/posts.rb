@@ -21,7 +21,7 @@ FactoryBot.define do
     city { Gimei.city.kanji }
     address { Gimei.town.kanji }
     sequence(:url) { |n| "http://example#{n}.com" }
-    post_at { Time.zone.now }
+    post_at { Time.zone.now - 1.month }
     category { ["スグ会いたい", "スグじゃないけど", "アブノーマル"].sample }
     title { Faker::Lorem.sentence }
     association :profile
