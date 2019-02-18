@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
         namespace :auto do
           post :slack, to: "slack#execute"
+          resources :schedule, only: %i[index update]
         end
       end
     end
