@@ -16,8 +16,7 @@ export default {
         'search-db': 'データベース検索',
         'search-keyword': 'キーワード検索',
         'search-realtime': 'リアルタイム検索',
-        'auto-posts': '定期投稿',
-        'auto-polling': '定期監視',
+        'auto-schedule': '定期実行設定',
         'auto-slack': 'Slack連携'
       }
     }

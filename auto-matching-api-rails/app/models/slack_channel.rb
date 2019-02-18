@@ -2,12 +2,12 @@
 #
 # Table name: slack_channels
 #
-#  id         :bigint(8)        not null, primary key
-#  keyword    :string
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  slack_id   :integer          not null
+#  id                  :bigint(8)        not null, primary key
+#  keyword             :string
+#  name                :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  slack_workspace^_id :integer          not null
 #
 
 class SlackChannel < ApplicationRecord
