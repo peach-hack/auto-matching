@@ -830,35 +830,41 @@ export const postApiUsersAutoSlackURL = function(parameters = {}) {
 }
 /**
  * スケジュール設定
- * request: postApiUsersAutoScheduler
- * url: postApiUsersAutoSchedulerURL
- * method: postApiUsersAutoScheduler_TYPE
- * raw_url: postApiUsersAutoScheduler_RAW_URL
+ * request: putApiUsersAutoScheduleById
+ * url: putApiUsersAutoScheduleByIdURL
+ * method: putApiUsersAutoScheduleById_TYPE
+ * raw_url: putApiUsersAutoScheduleById_RAW_URL
+ * @param id - 
  */
-export const postApiUsersAutoScheduler = function(parameters = {}) {
+export const putApiUsersAutoScheduleById = function(parameters = {}) {
   const domain = parameters.$domain ? parameters.$domain : getDomain()
   const config = parameters.$config
-  let path = '/api/users/auto/scheduler'
+  let path = '/api/users/auto/schedule/{id}'
   let body
   let queryParameters = {}
   let form = {}
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters['id'] === undefined) {
+    return Promise.reject(new Error('Missing required  parameter: id'))
+  }
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]
     });
   }
-  return request('post', domain + path, body, queryParameters, form, config)
+  return request('put', domain + path, body, queryParameters, form, config)
 }
-export const postApiUsersAutoScheduler_RAW_URL = function() {
-  return '/api/users/auto/scheduler'
+export const putApiUsersAutoScheduleById_RAW_URL = function() {
+  return '/api/users/auto/schedule/{id}'
 }
-export const postApiUsersAutoScheduler_TYPE = function() {
-  return 'post'
+export const putApiUsersAutoScheduleById_TYPE = function() {
+  return 'put'
 }
-export const postApiUsersAutoSchedulerURL = function(parameters = {}) {
+export const putApiUsersAutoScheduleByIdURL = function(parameters = {}) {
   let queryParameters = {}
   const domain = parameters.$domain ? parameters.$domain : getDomain()
-  let path = '/api/users/auto/scheduler'
+  let path = '/api/users/auto/schedule/{id}'
+  path = path.replace('{id}', `${parameters['id']}`)
   if (parameters.$queryParameters) {
     Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
       queryParameters[parameterName] = parameters.$queryParameters[parameterName]

@@ -32,7 +32,7 @@ import Vue from 'vue'
 import SubmitButton from '@/components/atoms/SubmitButton.vue'
 
 //@ts-ignore
-import postApiUsersAutoSchedulerURL from '@/plugins/api'
+import { putApiUsersAutoScheduleById } from '@/plugins/api'
 
 export default Vue.extend({
   components: {
@@ -87,7 +87,7 @@ export default Vue.extend({
         postCron: this.info.posts.cron,
         watchCron: this.info.watch.cron
       }
-      postApiUsersAutoSchedulerURL({
+      putApiUsersAutoScheduleById({
         id: 1,
         attributes: data
       })
