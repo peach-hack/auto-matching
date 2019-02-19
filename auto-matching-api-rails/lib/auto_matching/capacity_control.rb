@@ -1,11 +1,13 @@
 module AutoMatching
   module CapacityControl
+    CAPACITY_MAX = 5000
+
     def delete_extra_posts
       puts "--- Post Table Count ---"
       capacity = Post.count
       puts "Post DB Count ---> #{capacity}"
 
-      if capacity > 7000
+      if capacity > CAPACITY_MAX
         all_delete = 0
         only_delete = 0
         ago_post = Post.where("post_at < ?", 1.week.ago)
