@@ -1,16 +1,16 @@
 module AutoMatching
   module CapacityControl
-    CAPACITY_MAX = 5000
+    CAPACITY_MAX = 7000
 
     def delete_extra_posts
       puts "--- Post Table Count ---"
-      capacity = Post.count
+      capacity = Post.count + Profile.count
       puts "Post DB Count ---> #{capacity}"
 
       if capacity > CAPACITY_MAX
         all_delete = 0
         only_delete = 0
-        ago_post = Post.where("post_at < ?", 1.week.ago)
+        ago_post = Post.where("post_at < ?", 5.days.ago)
         posts_before_7days_ago = ago_post.count
         ago_post.each do |b|
           if Post.where(profile_id: b.profile_id).count == 1
