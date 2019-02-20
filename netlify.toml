@@ -1,4 +1,0 @@
-[build]
-  base = "auto-matching-nuxt"
-  publish = "auto-matching-nuxt/dist"
-  command = "npm run generate"
