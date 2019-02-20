@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "description": "Integrated Deai Engine",
-  "author": "peach-hack"
+  "author": "peach-hack",
+  "dependencies": {
+    "docusaurus-init": "^1.0.2"
+  }
 }
