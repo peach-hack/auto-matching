@@ -51,8 +51,8 @@ v2（現代的サイト）（開発予定)
 
 お試しサーバとして以下にホスティングしています。
 
-- https://auto-matching.netlify.com/ (Nuxt.js FrontEnd)
-- https://auto-matching-api-rails.herokuapp.com/ (Rails BackEnd) 
+- https://auto-matching-demo.netlify.com/ (Nuxt.js FrontEnd)
+- https://auto-matching-demo.herokuapp.com/ (Rails BackEnd) 
 
 ## Docker Composeによるローカル開発環境立ち上げ
 

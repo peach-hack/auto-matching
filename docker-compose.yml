@@ -58,6 +58,23 @@ services:
       - postgres
       - redis
 
+  docusaurus:
+    build: ./auto-matching-docs/
+    ports:
+      - '3001:3000'
+      - 35729:35729
+    tty: true
+    volumes:
+      - ./auto-matching-docs/docs:/app/docs
+      - ./auto-matching-docs/website/blog:/app/website/blog
+      - ./auto-matching-docs/website/core:/app/website/core
+      - ./auto-matching-docs/website/i18n:/app/website/i18n
+      - ./auto-matching-docs/website/pages:/app/website/pages
+      - ./auto-matching-docs/website/static:/app/website/static
+      - ./auto-matching-docs/website/sidebars.json:/app/website/sidebars.json
+      - ./auto-matching-docs/website/siteConfig.js:/app/website/siteConfig.js
+    working_dir: /app/website
+
 volumes:
   postgres-store:
   redis-store:
