@@ -33,6 +33,9 @@ module AutoMatching
 
         def read_board
           logging_start(__method__)
+
+          sleep 5
+
           post_data = {}
           @post_data_list = []
 
