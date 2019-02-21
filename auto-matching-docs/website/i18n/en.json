@@ -23,10 +23,10 @@
       }
     },
     "links": {
-      "Docs": "Docs",
-      "API": "API",
-      "Help": "Help",
-      "Blog": "Blog"
+      "インストール": "インストール",
+      "使い方": "使い方",
+      "サポート": "サポート",
+      "ブログ": "ブログ"
     },
     "categories": {
       "Docusaurus": "Docusaurus",
