@@ -789,3 +789,42 @@ export const postApiUsersSettingsPostsClearURL = function(parameters = {}) {
   let keys = Object.keys(queryParameters)
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
+/**
+ * スラック投稿
+ * request: postApiUsersAutoSlack
+ * url: postApiUsersAutoSlackURL
+ * method: postApiUsersAutoSlack_TYPE
+ * raw_url: postApiUsersAutoSlack_RAW_URL
+ */
+export const postApiUsersAutoSlack = function(parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/auto/slack'
+  let body
+  let queryParameters = {}
+  let form = {}
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('post', domain + path, body, queryParameters, form, config)
+}
+export const postApiUsersAutoSlack_RAW_URL = function() {
+  return '/api/users/auto/slack'
+}
+export const postApiUsersAutoSlack_TYPE = function() {
+  return 'post'
+}
+export const postApiUsersAutoSlackURL = function(parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/auto/slack'
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}

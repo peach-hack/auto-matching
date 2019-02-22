@@ -1,9 +1,9 @@
 <template lang="pug">
-.app
-  app-header(fixed)
+#app.app.header-fixed.sidebar-fixed.aside-menu-fixed.aside-menu-hidden
+  app-header
     b-link.navbar-brand(:to="{ name: 'index' }")
   .app-body
-    app-sidebar(fixed)
+    app-sidebar
       sidebar-header
       sidebar-form
       sidebar-nav(:nav-items="nav")
@@ -25,12 +25,12 @@ import {
   SidebarHeader,
   SidebarMinimizer,
   SidebarNav,
-  Header as AppHeader,
   Sidebar as AppSidebar
 } from '@coreui/vue'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import nav from '../components/_nav'
 import { Breadcrumb, Footer as AppFooter } from '../components'
+import AppHeader from '../components/organisms/Header.vue'
 
 export default {
   name: 'Full',

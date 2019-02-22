@@ -21,7 +21,6 @@ services:
       - postgres
       - redis
     environment:
-      CC_TEST_REPORTER_ID:
       DATABASE_HOST: postgres
       REDIS_URL: redis://redis:6379
     ports:
@@ -33,10 +32,10 @@ services:
       - /dev/shm:/dev/shm
 
   nuxt:
+    build: ./auto-matching-nuxt/
     command: /bin/sh -c 'API_URL=http://rails:3000 yarn dev'
     environment:
       HOST: 0.0.0.0
-    image: node:11.3-alpine
     ports:
       - '3000:3000'
     tty: true
@@ -64,4 +63,3 @@ volumes:
   redis-store:
   bundler-store:
   node-modules-store:
-  

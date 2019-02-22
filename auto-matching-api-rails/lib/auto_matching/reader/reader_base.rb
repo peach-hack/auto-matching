@@ -69,12 +69,12 @@ module AutoMatching
           last_search_at = SourceSite::SearchHistory.find_by(key: source_site_key).last_search_at&.to_datetime
           last_post_at = post_data_list.last[:post_at]&.to_datetime
 
-          # とりあえず2時間以上前は取得しない
-          if Time.zone.now.ago(2.hour) > last_post_at
+          # とりあえず1時間以上前は取得しない
+          if last_post_at && Time.zone.now.ago(1.hour) > last_post_at
             return false
           end
 
-          if last_search_at && last_post_at >= last_search_at
+          if last_search_at && last_post_at && last_post_at >= last_search_at
             click_next
             true
           else
