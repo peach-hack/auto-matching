@@ -828,3 +828,48 @@ export const postApiUsersAutoSlackURL = function(parameters = {}) {
   let keys = Object.keys(queryParameters)
   return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
 }
+/**
+ * スケジュール設定
+ * request: putApiUsersAutoScheduleById
+ * url: putApiUsersAutoScheduleByIdURL
+ * method: putApiUsersAutoScheduleById_TYPE
+ * raw_url: putApiUsersAutoScheduleById_RAW_URL
+ * @param id - 
+ */
+export const putApiUsersAutoScheduleById = function(parameters = {}) {
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  const config = parameters.$config
+  let path = '/api/users/auto/schedule/{id}'
+  let body
+  let queryParameters = {}
+  let form = {}
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters['id'] === undefined) {
+    return Promise.reject(new Error('Missing required  parameter: id'))
+  }
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    });
+  }
+  return request('put', domain + path, body, queryParameters, form, config)
+}
+export const putApiUsersAutoScheduleById_RAW_URL = function() {
+  return '/api/users/auto/schedule/{id}'
+}
+export const putApiUsersAutoScheduleById_TYPE = function() {
+  return 'put'
+}
+export const putApiUsersAutoScheduleByIdURL = function(parameters = {}) {
+  let queryParameters = {}
+  const domain = parameters.$domain ? parameters.$domain : getDomain()
+  let path = '/api/users/auto/schedule/{id}'
+  path = path.replace('{id}', `${parameters['id']}`)
+  if (parameters.$queryParameters) {
+    Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+      queryParameters[parameterName] = parameters.$queryParameters[parameterName]
+    })
+  }
+  let keys = Object.keys(queryParameters)
+  return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '')
+}

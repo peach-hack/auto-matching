@@ -33,6 +33,9 @@ module AutoMatching
 
         def read_board
           logging_start(__method__)
+
+          sleep 5
+
           post_data = {}
           @post_data_list = []
 
@@ -88,7 +91,8 @@ module AutoMatching
         end
 
         def click_next
-          session.click_link "次を表示"
+          click_selector("div.nextBtn.gray555 > a")
+          # session.click_link "次を表示"
         end
     end
   end
