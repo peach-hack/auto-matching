@@ -62,6 +62,9 @@ gem "rubocop-rails_config", require: false
 # slack
 gem "slack-notifier"
 
+# AWS Client
+gem "aws-sdk"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -98,7 +101,7 @@ group :development do
   gem "solargraph"
 
   gem "rails_db"
-  gem "logster"
+  # gem "logster"
 
   gem "sidekiq-history"
   gem "sidekiq-failures"

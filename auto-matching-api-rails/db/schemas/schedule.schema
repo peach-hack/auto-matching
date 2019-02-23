@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "schedules", comment: "定期実行", force: :cascade do |t|
+  t.string "post_sites", null: true
+  t.string "watch_sites", null: true
+  t.string "post_cron", null: true
+  t.string "watch_cron", null: true
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
