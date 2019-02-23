@@ -28,7 +28,7 @@ class ManualPostJob < ManualJob
   private
 
     def allow_manual_post?(history)
-      calculate_elapsed_minutes(history) > ENV["NEXT_MANUAL_POST_ALLOW_MINUTES"].to_f || history.last_post_status != SUCCESS
+      (calculate_elapsed_minutes(history) > ENV["NEXT_MANUAL_POST_ALLOW_MINUTES"].to_f) || history.last_post_status != SUCCESS
     end
 
     def calculate_elapsed_minutes(history)
