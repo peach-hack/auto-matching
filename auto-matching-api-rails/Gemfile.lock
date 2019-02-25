@@ -959,7 +959,7 @@ GEM
     ridgepole (0.7.6)
       activerecord (>= 5.0.1, < 6)
       diffy
-    rollbar (2.18.2)
+    rollbar (2.19.1)
       multi_json
     romaji (0.2.4)
       rake (>= 0.8.0)
