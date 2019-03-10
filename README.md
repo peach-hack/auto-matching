@@ -1,10 +1,9 @@
 Auto Matching 
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 ===
 
 ![](https://img.shields.io/github/issues/peach-hack/auto-matching.svg)
 ![](https://img.shields.io/github/license/peach-hack/auto-matching.svg)
-[![CircleCI](https://circleci.com/gh/epach-hack/auto-matching.svg?style=svg)](https://circleci.com/gh/peach-hack/auto-matching)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f35b2a14-c4d4-4ad5-bab8-a530f89d02f9/deploy-status)](https://app.netlify.com/sites/auto-matching/deploys)
 [![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/peach-hack/auto-matching/)
 
