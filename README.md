@@ -1,4 +1,5 @@
 Auto Matching 
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 ===
 
 ![](https://img.shields.io/github/issues/peach-hack/auto-matching.svg)
@@ -81,3 +82,15 @@ Hey dude! Help me out for a couple of :beers:!
 頑張ってIssueやっつけるから、ぼくにビールおごってよ！！
 
 [![Beerpay](https://beerpay.io/peach-hack/auto-matching/badge.svg?style=beer-square)](https://beerpay.io/peach-hack/auto-matching)  [![Beerpay](https://beerpay.io/peach-hack/auto-matching/make-wish.svg?style=flat-square)](https://beerpay.io/peach-hack/auto-matching?focus=wish)
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars1.githubusercontent.com/u/760627?v=4" width="100px;" alt="Tsunemichi Harada"/><br /><sub><b>Tsunemichi Harada</b></sub>](https://futurismo.biz/)<br />[🚧](#maintenance-tsu-nera "Maintenance") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
