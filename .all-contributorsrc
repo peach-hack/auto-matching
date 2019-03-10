@@ -1,0 +1,23 @@
+{
+  "projectName": "auto-matching",
+  "projectOwner": "peach-hack",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "tsu-nera",
+      "name": "Tsunemichi Harada",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/760627?v=4",
+      "profile": "https://futurismo.biz/",
+      "contributions": [
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
