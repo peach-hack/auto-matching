@@ -3,7 +3,7 @@ Auto Matching
 
 ![](https://img.shields.io/github/issues/peach-hack/auto-matching.svg)
 ![](https://img.shields.io/github/license/peach-hack/auto-matching.svg)
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f35b2a14-c4d4-4ad5-bab8-a530f89d02f9/deploy-status)](https://app.netlify.com/sites/auto-matching/deploys)
 [![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/peach-hack/auto-matching/)
 
@@ -88,8 +88,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars1.githubusercontent.com/u/760627?v=4" width="100px;" alt="Tsunemichi Harada"/><br /><sub><b>Tsunemichi Harada</b></sub>](https://futurismo.biz/)<br />[🚧](#maintenance-tsu-nera "Maintenance") | [<img src="https://avatars2.githubusercontent.com/u/40140038?v=4" width="100px;" alt="Goi"/><br /><sub><b>Goi</b></sub>](https://twitter.com/i/moments/1017055118913503232)<br />[🚧](#maintenance-Goi666 "Maintenance") |
-| :---: | :---: |
+| [<img src="https://avatars1.githubusercontent.com/u/760627?v=4" width="100px;" alt="Tsunemichi Harada"/><br /><sub><b>Tsunemichi Harada</b></sub>](https://futurismo.biz/)<br />[🚧](#maintenance-tsu-nera "Maintenance") | [<img src="https://avatars2.githubusercontent.com/u/40140038?v=4" width="100px;" alt="Goi"/><br /><sub><b>Goi</b></sub>](https://twitter.com/i/moments/1017055118913503232)<br />[🚧](#maintenance-Goi666 "Maintenance") | [<img src="https://avatars3.githubusercontent.com/u/42460318?v=4" width="100px;" alt="toki"/><br /><sub><b>toki</b></sub>](https://github.com/tokidrill)<br />[🚧](#maintenance-tokidrill "Maintenance") |
+| :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
