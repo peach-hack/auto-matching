@@ -36,7 +36,7 @@
     "@types/node-sass": "^3.10.32",
     "@types/prettier": "^1.15.2",
     "@types/pug": "^2.0.4",
-    "@types/qs": "^6.5.1",
+    "@types/qs": "^6.5.2",
     "@types/typescript": "^2.0.0",
     "@types/vue": "^2.0.0",
     "@types/vue-i18n": "^7.0.0",
