@@ -1,6 +1,7 @@
 {
   "files.exclude": {
     "auto-matching-api-rails": true,
-    "auto-matching-nuxt": true
+    "auto-matching-nuxt": true,
+    "auto-matching-docs": true
   }
 }

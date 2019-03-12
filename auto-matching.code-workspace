@@ -9,6 +9,10 @@
       "path": "auto-matching-nuxt"
     },
     {
+      "name": "docs",
+      "path": "auto-matching-docs"
+    },
+    {
       "name": "root",
       "path": "."
     }
