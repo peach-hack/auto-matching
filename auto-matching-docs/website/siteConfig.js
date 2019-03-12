@@ -22,7 +22,7 @@ const users = [
 
 const siteConfig = {
   title: 'Auto Matching', // Title for your website.
-  tagline: 'Integrated Deai Engine',
+  tagline: '統合出会い系エンジン',
   url: 'https://auto-matching.netlify.com', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
