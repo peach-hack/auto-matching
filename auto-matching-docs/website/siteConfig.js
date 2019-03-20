@@ -38,7 +38,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'doc1', label: 'インストール' },
+    { doc: 'docker', label: 'インストール' },
     { doc: 'doc4', label: '使い方' },
     { blog: true, label: 'ブログ' },
   ],

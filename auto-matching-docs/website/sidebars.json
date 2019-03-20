@@ -1,10 +1,17 @@
 {
   "docs": {
-    "Docusaurus": ["doc1"],
-    "First Category": ["doc2"],
-    "Second Category": ["doc3"]
+    "インストール": [
+      "heroku",
+      "docker"
+    ],
+    "初期設定": [
+      "setting"
+    ]
   },
   "docs-other": {
-    "First Category": ["doc4", "doc5"]
+    "使い方": [
+      "doc4",
+      "doc5"
+    ]
   }
 }
