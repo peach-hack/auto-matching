@@ -2,7 +2,7 @@
   "name": "auto-matching-docs",
   "version": "1.0.0",
   "private": true,
-  "description": "Integrated Deai Engine",
+  "description": "統合出会い系エンジン",
   "author": "peach-hack",
   "dependencies": {
     "docusaurus-init": "^1.0.2"

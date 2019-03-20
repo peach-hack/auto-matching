@@ -22,7 +22,7 @@ const users = [
 
 const siteConfig = {
   title: 'Auto Matching', // Title for your website.
-  tagline: 'Integrated Deai Engine',
+  tagline: '統合出会い系エンジン',
   url: 'https://auto-matching.netlify.com', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -38,9 +38,8 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'doc1', label: 'インストール' },
-    { doc: 'doc4', label: '使い方' },
-    { page: 'help', label: 'サポート' },
+    { doc: 'install', label: 'インストール' },
+    { doc: 'usage', label: '使い方' },
     { blog: true, label: 'ブログ' },
   ],
 
@@ -54,8 +53,8 @@ const siteConfig = {
 
   /* Colors for website */
   colors: {
-    primaryColor: '#bb13c5',
-    secondaryColor: '#7e0b85',
+    primaryColor: '#cc0066',
+    secondaryColor: '#ff88ff',
   },
 
   /* Custom fonts for website */

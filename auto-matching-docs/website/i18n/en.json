@@ -3,35 +3,41 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "Integrated Deai Engine",
+    "tagline": "統合出会い系エンジン",
     "docs": {
-      "doc1": {
-        "title": "Latin-ish",
-        "sidebar_label": "Example Page"
-      },
-      "doc2": {
-        "title": "document number 2"
-      },
-      "doc3": {
-        "title": "This is document number 3"
+      "docker": {
+        "title": "Docker"
       },
       "doc4": {
         "title": "Other Document"
       },
       "doc5": {
         "title": "Fifth Document"
+      },
+      "heroku": {
+        "title": "Heroku"
+      },
+      "install": {
+        "title": "はじめに"
+      },
+      "setting": {
+        "title": "Setting"
+      },
+      "usage": {
+        "title": "はじめに"
       }
     },
     "links": {
       "インストール": "インストール",
       "使い方": "使い方",
-      "サポート": "サポート",
       "ブログ": "ブログ"
     },
     "categories": {
-      "Docusaurus": "Docusaurus",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "インストールガイド": "インストールガイド",
+      "インストール": "インストール",
+      "初期設定": "初期設定",
+      "使い方ガイド": "使い方ガイド",
+      "使い方": "使い方"
     }
   },
   "pages-strings": {
