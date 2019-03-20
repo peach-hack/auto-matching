@@ -17,8 +17,14 @@
       "heroku": {
         "title": "Heroku"
       },
+      "install": {
+        "title": "はじめに"
+      },
       "setting": {
         "title": "Setting"
+      },
+      "usage": {
+        "title": "はじめに"
       }
     },
     "links": {
@@ -27,9 +33,11 @@
       "ブログ": "ブログ"
     },
     "categories": {
+      "インストールガイド": "インストールガイド",
       "インストール": "インストール",
       "初期設定": "初期設定",
-      "First Category": "First Category"
+      "使い方ガイド": "使い方ガイド",
+      "使い方": "使い方"
     }
   },
   "pages-strings": {
