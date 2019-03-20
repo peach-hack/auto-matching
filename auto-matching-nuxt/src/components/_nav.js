@@ -52,6 +52,7 @@ export default {
       url: '/search/realtime',
       icon: 'icon-star'
     },
+    /*
     {
       title: true,
       name: '定期実行',
@@ -71,6 +72,7 @@ export default {
       url: '/auto/slack',
       icon: 'icon-star'
     },
+    */
     {
       title: true,
       name: '設定',
