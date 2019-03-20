@@ -40,7 +40,6 @@ const siteConfig = {
   headerLinks: [
     { doc: 'doc1', label: 'インストール' },
     { doc: 'doc4', label: '使い方' },
-    { page: 'help', label: 'サポート' },
     { blog: true, label: 'ブログ' },
   ],
 
