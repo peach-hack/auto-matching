@@ -33,7 +33,7 @@
     "@types/js-cookie": "^2.2.0",
     "@types/moment": "^2.13.0",
     "@types/node": "^11.9.5",
-    "@types/node-sass": "^3.10.32",
+    "@types/node-sass": "^4.11.0",
     "@types/prettier": "^1.15.2",
     "@types/pug": "^2.0.4",
     "@types/qs": "^6.5.2",
