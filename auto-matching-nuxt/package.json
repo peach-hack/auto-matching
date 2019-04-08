@@ -24,7 +24,7 @@
     "@nuxtjs/babel-preset-app": "^0.8.0",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/toast": "^3.0.2",
-    "@storybook/vue": "^4.1.13",
+    "@storybook/vue": "^5.0.6",
     "@types/actioncable": "^5.2.0",
     "@types/chart.js": "^2.7.42",
     "@types/eslint": "^4.16.5",
