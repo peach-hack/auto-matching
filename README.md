@@ -14,6 +14,8 @@ Auto Matching
 - Nuxt.js 2.3.4
 - TypeScript 3.1.1
 
+2020.1.4追記: PythonとSQLでリメイクしました。https://github.com/peach-hack/auto-matching-reiwa
+
 ## 概要
 
 統合出会い系エンジン(Integrated Deai Engine: IDE).
